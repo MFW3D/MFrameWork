@@ -1,0 +1,21 @@
+syntax = "proto3";
+package  PDB_Base; 
+
+message DBAccount
+{
+     uint64 uluid = 1;
+     string sacc = 2;
+     string spwd = 3;
+     string stel = 4;
+     string swx = 5;
+     string sqq = 6;
+     uint64 ullastlogin = 7;
+     uint64 ulcreatetime = 8;
+}
+
+message DBUserInfo
+{
+
+     uint64 uluid = 1;
+     string snickname = 2;
+}

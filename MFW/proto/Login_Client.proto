@@ -1,0 +1,38 @@
+﻿syntax = "proto3";
+import "Common_Base.proto";
+import "DB_Base.proto";
+package  PLogin_Client;  
+/*
+协议规则前两个字母代表消息流向
+D:数据服务器
+M：管理服务器
+L：登录服务器
+G：逻辑服务器
+C：客户端
+后面更协议的名字
+命令枚举以服务器前客户端后的命名_CMD,一对协议对应一个消息id，推送协议占一个消息id
+
+登录服-客户端消息：8001-9000
+*/
+
+enum ELC_CMD
+{
+    ELC_CMD_None=0;
+	ELC_CMD_Login=1;
+	ELC_CMD_Register=2;
+}
+//用户登录
+message CL_Login 
+{  
+	string acc=1;
+	string pwd=2;
+}  
+//登录成功返回管理服务器验证key
+message LC_Login 
+{
+  int32 ret=1;
+  string ManagerIp=2;
+  int32 ManagerPort=3;
+  int64 Uid=4;
+  string key=5;
+}

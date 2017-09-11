@@ -1,0 +1,38 @@
+syntax = "proto3";
+import "DB_Base.proto";
+import "Login_Client.proto";
+package  PDB_Login;
+/*
+协议规则前两个字母代表消息流向
+D:数据服务器
+M：管理服务器
+L：登录服务器
+G：逻辑服务器
+C：客户端
+后面更协议的名字
+命令枚举以服务器前客户端后的命名_CMD,一对协议对应一个消息id，推送协议占一个消息id
+数据服-登录服消息id：2001-3000
+*/
+
+/*
+数据服务器到登录服务器的消息命令定义
+*/
+enum EDL_CMD
+{
+    EDL_CMD_None=0;
+	EDL_CMD_UserCheck=2001;
+}
+
+/*玩家登录消息验证获取信息*/
+message LD_UserCheck
+{
+	int64 ConId=1;		//网络连接id
+	PLogin_Client.CL_Login loginMsg=2;
+}
+message DL_UserCheck
+{
+	int32 ret=1;
+	int64 ConId=2;		//网络连接id
+	PLogin_Client.CL_Login loginMsg=3;
+	PDB_Base.DBAccount dBAccount=4;
+}  

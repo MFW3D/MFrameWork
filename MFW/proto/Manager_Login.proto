@@ -1,0 +1,38 @@
+﻿syntax = "proto3";
+import "Common_Base.proto";
+import "DB_Base.proto";
+package  PManager_Login;  
+/*
+协议规则前两个字母代表消息流向
+D:数据服务器
+M：管理服务器
+L：登录服务器
+G：逻辑服务器
+C：客户端
+后面更协议的名字
+命令枚举以服务器前客户端后的命名_CMD,一对协议对应一个消息id，推送协议占一个消息id
+
+管理服-登录服消息：4001-5000
+*/
+enum EMC_CMD
+{
+    EMC_CMD_None=0;
+	EMC_CMD_ClientKey=4001;
+}
+
+message LM_ClientKey
+{  
+  int64 Uid=1;
+  int64 ConId=2;		//网络连接id
+}  
+
+message ML_ClientKey
+{
+  int32 ret=1;
+  string key=2;			//玩家获取的登录key
+  int64 ConId=3;		//网络连接id
+  int64 Uid=4;
+}
+
+
+  

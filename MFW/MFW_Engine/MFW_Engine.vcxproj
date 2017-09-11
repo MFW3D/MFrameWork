@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8E0365EF-70F0-40C9-8CE7-3386B08308BA}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>MFW_Engine</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)/include;$(SolutionDir)/include/uv;$(SolutionDir)/include/mysql;$(SolutionDir)/include/src;$(SolutionDir)/include/jemalloc-win;$(SolutionDir)/include/linenoise;$(SolutionDir)/include/deps/hiredis;$(SolutionDir)/include/udt;$(SolutionDir)/MFW;$(SolutionDir)/MFW_Common;$(SolutionDir)/MFW_Proto;$(SolutionDir)/MFW_Engine3D;$(SolutionDir)/include/AGG;$(SolutionDir)/include/Ogre/OgreMain;$(SolutionDir)/include/Ogre/Components;$(SolutionDir)/include/Ogre/PlugIns;$(SolutionDir)/include/Ogre/RenderSystems;$(SolutionDir)/include/Ogre/Components/HLMS;$(SolutionDir)/include/Ogre/Components/MeshLodGenerator;$(SolutionDir)/include/Ogre/Components/Overlay;$(SolutionDir)/include/Ogre/Components/Paging;$(SolutionDir)/include/Ogre/Components/Property;$(SolutionDir)/include/Ogre/Components/RTShaderSystem;$(SolutionDir)/include/Ogre/Components/Terrain;$(SolutionDir)/include/Ogre/Components/Volume;$(SolutionDir)/include/Ogre/PlugIns/BSPSceneManager;$(SolutionDir)/include/Ogre/PlugIns/CgProgramManager;$(SolutionDir)/include/Ogre/PlugIns/EXRCodec;$(SolutionDir)/include/Ogre/PlugIns/OctreeSceneManager;$(SolutionDir)/include/Ogre/PlugIns/OctreeZone;$(SolutionDir)/include/Ogre/PlugIns/ParticleFX;$(SolutionDir)/include/Ogre/PlugIns/PCZSceneManager;$(SolutionDir)/include/Ogre/PlugIns/Direct3D9;$(SolutionDir)/include/Ogre/PlugIns/Direct3D11;$(SolutionDir)/include/Ogre/PlugIns/GL;$(SolutionDir)/include/Ogre/PlugIns/GL3Plus;$(SolutionDir)/include/Ogre/PlugIns/GLES;$(SolutionDir)/include/Ogre/PlugIns/GLES2;$(SolutionDir)/include/Ogre/PlugIns/GLSupport;$(SolutionDir)/include/Ogre;$(SolutionDir)/include/Ogre/SDL2;$(SolutionDir)/include/Bullet;$(SolutionDir)/MFW_EngineHyfrax;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)/lib;$(SolutionDir)/lib/Engine/Debug;$(SolutionDir)/lib/Engine/Bullet;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)/bin/debug</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SolutionDir)/include;$(SolutionDir)/include/uv;$(SolutionDir)/include/mysql;$(SolutionDir)/include/src;$(SolutionDir)/include/jemalloc-win;$(SolutionDir)/include/linenoise;$(SolutionDir)/include/deps/hiredis;$(SolutionDir)/include/udt;$(SolutionDir)/MFW;$(SolutionDir)/MFW_Common;$(SolutionDir)/MFW_Proto;$(SolutionDir)/include/AGG;$(SolutionDir)/include/Ogre/OgreMain;$(SolutionDir)/include/Ogre/Components;$(SolutionDir)/include/Ogre/PlugIns;$(SolutionDir)/include/Ogre/RenderSystems;$(SolutionDir)/include/Ogre/Components/Bites;$(SolutionDir)/include/Ogre/Components/HLMS;$(SolutionDir)/include/Ogre/Components/MeshLodGenerator;$(SolutionDir)/include/Ogre/Components/Overlay;$(SolutionDir)/include/Ogre/Components/Paging;$(SolutionDir)/include/Ogre/Components/Property;$(SolutionDir)/include/Ogre/Components/RTShaderSystem;$(SolutionDir)/include/Ogre/Components/Terrain;$(SolutionDir)/include/Ogre/Components/Volume;$(SolutionDir)/include/Ogre/PlugIns/BSPSceneManager;$(SolutionDir)/include/Ogre/PlugIns/CgProgramManager;$(SolutionDir)/include/Ogre/PlugIns/EXRCodec;$(SolutionDir)/include/Ogre/PlugIns/OctreeSceneManager;$(SolutionDir)/include/Ogre/PlugIns/OctreeZone;$(SolutionDir)/include/Ogre/PlugIns/ParticleFX;$(SolutionDir)/include/Ogre/PlugIns/PCZSceneManager;$(SolutionDir)/include/Ogre/PlugIns/Direct3D9;$(SolutionDir)/include/Ogre/PlugIns/Direct3D11;$(SolutionDir)/include/Ogre/PlugIns/GL;$(SolutionDir)/include/Ogre/PlugIns/GL3Plus;$(SolutionDir)/include/Ogre/PlugIns/GLES;$(SolutionDir)/include/Ogre/PlugIns/GLES2;$(SolutionDir)/include/Ogre/PlugIns/GLSupport;$(SolutionDir)/include/Ogre;$(SolutionDir)/include/Ogre/SDL2;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)/lib;$(SolutionDir)/lib/Engine/release;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)bin\release</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;GLFW_DLL;_CRT_SECURE_NO_WARNINGS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <CompileAsManaged>false</CompileAsManaged>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>OgreGLSupport_d.lib;OgreHLMS_d.lib;OgreMain_d.lib;OgreMeshLodGenerator_d.lib;OgreOverlay_d.lib;OgrePaging_d.lib;OgreProperty_d.lib;OgreRTShaderSystem_d.lib;OgreTerrain_d.lib;Plugin_BSPSceneManager_d.lib;OgreVolume_d.lib;Plugin_OctreeSceneManager_d.lib;Plugin_OctreeZone_d.lib;Plugin_ParticleFX_d.lib;Plugin_PCZSceneManager_d.lib;RenderSystem_Direct3D9_d.lib;RenderSystem_GL3Plus_d.lib;RenderSystem_GL_d.lib;SDL2main.lib;SDL2.lib;MFW_Engine3D.lib;MFW_EngineHyfrax.lib;Bullet2FileLoader.lib;Bullet3Collision.lib;Bullet3Common.lib;Bullet3Dynamics.lib;Bullet3Geometry.lib;Bullet3OpenCL_clew.lib;BulletCollision.lib;BulletDynamics.lib;BulletExampleBrowserLib.lib;BulletFileLoader.lib;BulletInverseDynamics.lib;BulletInverseDynamicsUtils.lib;BulletSoftBody.lib;BulletWorldImporter.lib;BussIK.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions> /NODEFAULTLIB:library %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>OgreBites.lib;OgreGLSupport.lib;OgreHLMS.lib;OgreMain.lib;OgreMeshLodGenerator.lib;OgreOverlay.lib;OgrePaging.lib;OgreProperty.lib;OgreRTShaderSystem.lib;OgreTerrain.lib;Plugin_BSPSceneManager.lib;OgreVolume.lib;Plugin_OctreeSceneManager.lib;Plugin_OctreeZone.lib;Plugin_ParticleFX.lib;Plugin_PCZSceneManager.lib;RenderSystem_Direct3D9.lib;RenderSystem_GL3Plus.lib;RenderSystem_GL.lib;agg.lib;aggctrl.lib;aggplatform.lib;SDL2.lib;MFW_Common.lib;MFW_Produce.lib;MFW_Proto.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MaterialControls.cpp" />
+    <ClCompile Include="Scene_Level2.cpp" />
+    <ClCompile Include="Scene_Level3.cpp" />
+    <ClCompile Include="Scene_Mgr.cpp" />
+    <ClCompile Include="Scene_Level1.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MaterialControls.h" />
+    <ClInclude Include="Scene_Level2.h" />
+    <ClInclude Include="Scene_Level3.h" />
+    <ClInclude Include="Scene_Mgr.h" />
+    <ClInclude Include="Scene_Level1.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

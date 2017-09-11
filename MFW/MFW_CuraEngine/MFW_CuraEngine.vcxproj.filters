@@ -1,0 +1,519 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="infill">
+      <UniqueIdentifier>{726a0b40-534d-4d3c-a518-a05b15602f34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pathPlanning">
+      <UniqueIdentifier>{9cb3d365-26ba-48a0-8393-c430dc7e2a32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="progress">
+      <UniqueIdentifier>{53b483c8-60e3-405d-994d-6d0fd5557779}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="settings">
+      <UniqueIdentifier>{7089fa35-8479-461b-afea-73efba70e85c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{f05008f8-dfba-4464-8f71-3db40f5aeb75}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="bridge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="commandSocket.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConicalOverhang.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExtruderTrain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FffGcodeWriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FffPolygonGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FffProcessor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gcodeExport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GCodePathConfig.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="infill.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="layerPart.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LayerPlan.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LayerPlanBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MergeInfillLines.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshGroup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mold.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="multiVolumes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pathOrderOptimizer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Preheat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PrimeTower.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="raft.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="skin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SkirtBrim.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sliceDataStorage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="slicer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="support.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="timeEstimate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="wallOverlap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WallsComputation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Weaver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Wireframe2gcode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="infill\NoZigZagConnectorProcessor.cpp">
+      <Filter>infill</Filter>
+    </ClCompile>
+    <ClCompile Include="infill\SpaghettiInfill.cpp">
+      <Filter>infill</Filter>
+    </ClCompile>
+    <ClCompile Include="infill\SpaghettiInfillPathGenerator.cpp">
+      <Filter>infill</Filter>
+    </ClCompile>
+    <ClCompile Include="infill\SubDivCube.cpp">
+      <Filter>infill</Filter>
+    </ClCompile>
+    <ClCompile Include="infill\ZigzagConnectorProcessorConnectedEndPieces.cpp">
+      <Filter>infill</Filter>
+    </ClCompile>
+    <ClCompile Include="infill\ZigzagConnectorProcessorDisconnectedEndPieces.cpp">
+      <Filter>infill</Filter>
+    </ClCompile>
+    <ClCompile Include="infill\ZigzagConnectorProcessorEndPieces.cpp">
+      <Filter>infill</Filter>
+    </ClCompile>
+    <ClCompile Include="infill\ZigzagConnectorProcessorNoEndPieces.cpp">
+      <Filter>infill</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\AABB.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\AABB3D.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\Date.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\gettime.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\LinearAlg2D.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\ListPolyIt.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\logoutput.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\polygon.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\PolygonProximityLinker.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\polygonUtils.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\ProximityPointLink.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\socket.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="settings\PathConfigStorage.cpp">
+      <Filter>settings</Filter>
+    </ClCompile>
+    <ClCompile Include="settings\SettingConfig.cpp">
+      <Filter>settings</Filter>
+    </ClCompile>
+    <ClCompile Include="settings\SettingContainer.cpp">
+      <Filter>settings</Filter>
+    </ClCompile>
+    <ClCompile Include="settings\SettingRegistry.cpp">
+      <Filter>settings</Filter>
+    </ClCompile>
+    <ClCompile Include="settings\settings.cpp">
+      <Filter>settings</Filter>
+    </ClCompile>
+    <ClCompile Include="progress\Progress.cpp">
+      <Filter>progress</Filter>
+    </ClCompile>
+    <ClCompile Include="progress\ProgressStageEstimator.cpp">
+      <Filter>progress</Filter>
+    </ClCompile>
+    <ClCompile Include="pathPlanning\Comb.cpp">
+      <Filter>pathPlanning</Filter>
+    </ClCompile>
+    <ClCompile Include="pathPlanning\GCodePath.cpp">
+      <Filter>pathPlanning</Filter>
+    </ClCompile>
+    <ClCompile Include="pathPlanning\LinePolygonsCrossings.cpp">
+      <Filter>pathPlanning</Filter>
+    </ClCompile>
+    <ClCompile Include="pathPlanning\NozzleTempInsert.cpp">
+      <Filter>pathPlanning</Filter>
+    </ClCompile>
+    <ClCompile Include="pathPlanning\TimeMaterialEstimates.cpp">
+      <Filter>pathPlanning</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="bridge.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="commandSocket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ConicalOverhang.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExtruderTrain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FanSpeedLayerTime.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FffGcodeWriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FffPolygonGenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FffProcessor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FlowTempGraph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gcodeExport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GcodeLayerThreader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GCodePathConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="infill.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="layerPart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LayerPlan.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LayerPlanBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MergeInfillLines.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshGroup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mold.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="multiVolumes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pathOrderOptimizer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Preheat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PrimeTower.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PrintFeature.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="raft.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RetractionConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="skin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SkirtBrim.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sliceDataStorage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="slicer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpaceFillType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="support.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="timeEstimate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="wallOverlap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WallsComputation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="weaveDataStorage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Weaver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Wireframe2gcode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="infill\ActualZigzagConnectorProcessor.h">
+      <Filter>infill</Filter>
+    </ClInclude>
+    <ClInclude Include="infill\NoZigZagConnectorProcessor.h">
+      <Filter>infill</Filter>
+    </ClInclude>
+    <ClInclude Include="infill\SpaghettiInfill.h">
+      <Filter>infill</Filter>
+    </ClInclude>
+    <ClInclude Include="infill\SpaghettiInfillPathGenerator.h">
+      <Filter>infill</Filter>
+    </ClInclude>
+    <ClInclude Include="infill\SubDivCube.h">
+      <Filter>infill</Filter>
+    </ClInclude>
+    <ClInclude Include="infill\ZigzagConnectorProcessor.h">
+      <Filter>infill</Filter>
+    </ClInclude>
+    <ClInclude Include="infill\ZigzagConnectorProcessorConnectedEndPieces.h">
+      <Filter>infill</Filter>
+    </ClInclude>
+    <ClInclude Include="infill\ZigzagConnectorProcessorDisconnectedEndPieces.h">
+      <Filter>infill</Filter>
+    </ClInclude>
+    <ClInclude Include="infill\ZigzagConnectorProcessorEndPieces.h">
+      <Filter>infill</Filter>
+    </ClInclude>
+    <ClInclude Include="infill\ZigzagConnectorProcessorNoEndPieces.h">
+      <Filter>infill</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\AABB.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\AABB3D.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\algorithm.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\Date.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\floatpoint.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\gettime.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\intpoint.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\LazyInitialization.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\linearAlg2D.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\ListPolyIt.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\Lock.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\logoutput.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\macros.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\math.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\NoCopy.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\optional.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\orderOptimizer.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\polygon.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\PolygonProximityLinker.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\PolygonsPointIndex.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\polygonUtils.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\ProximityPointLink.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\socket.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\SparseGrid.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\SparseLineGrid.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\SparsePointGrid.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\SparsePointGridInclusive.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\string.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\SVG.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\SymmetricPair.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="settings\PathConfigStorage.h">
+      <Filter>settings</Filter>
+    </ClInclude>
+    <ClInclude Include="settings\SettingConfig.h">
+      <Filter>settings</Filter>
+    </ClInclude>
+    <ClInclude Include="settings\SettingContainer.h">
+      <Filter>settings</Filter>
+    </ClInclude>
+    <ClInclude Include="settings\SettingRegistry.h">
+      <Filter>settings</Filter>
+    </ClInclude>
+    <ClInclude Include="settings\settings.h">
+      <Filter>settings</Filter>
+    </ClInclude>
+    <ClInclude Include="settings\SettingsToGV.h">
+      <Filter>settings</Filter>
+    </ClInclude>
+    <ClInclude Include="progress\Progress.h">
+      <Filter>progress</Filter>
+    </ClInclude>
+    <ClInclude Include="progress\ProgressEstimator.h">
+      <Filter>progress</Filter>
+    </ClInclude>
+    <ClInclude Include="progress\ProgressEstimatorLinear.h">
+      <Filter>progress</Filter>
+    </ClInclude>
+    <ClInclude Include="progress\ProgressStageEstimator.h">
+      <Filter>progress</Filter>
+    </ClInclude>
+    <ClInclude Include="pathPlanning\Comb.h">
+      <Filter>pathPlanning</Filter>
+    </ClInclude>
+    <ClInclude Include="pathPlanning\CombPath.h">
+      <Filter>pathPlanning</Filter>
+    </ClInclude>
+    <ClInclude Include="pathPlanning\CombPaths.h">
+      <Filter>pathPlanning</Filter>
+    </ClInclude>
+    <ClInclude Include="pathPlanning\GCodePath.h">
+      <Filter>pathPlanning</Filter>
+    </ClInclude>
+    <ClInclude Include="pathPlanning\LinePolygonsCrossings.h">
+      <Filter>pathPlanning</Filter>
+    </ClInclude>
+    <ClInclude Include="pathPlanning\NozzleTempInsert.h">
+      <Filter>pathPlanning</Filter>
+    </ClInclude>
+    <ClInclude Include="pathPlanning\TimeMaterialEstimates.h">
+      <Filter>pathPlanning</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

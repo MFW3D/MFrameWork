@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2E1FD5B2-87F9-414D-A221-A7EB1CFAD51E}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>MFW_Engine3D</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <CLRSupport>false</CLRSupport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(SolutionDir)/include;$(SolutionDir)/include/uv;$(SolutionDir)/include/mysql;$(SolutionDir)/include/src;$(SolutionDir)/include/jemalloc-win;$(SolutionDir)/include/linenoise;$(SolutionDir)/include/deps/hiredis;$(SolutionDir)/include/udt;$(SolutionDir)/MFW;$(SolutionDir)/MFW_Common;$(SolutionDir)/MFW_Proto;$(SolutionDir)/include/AGG;$(SolutionDir)/include/Ogre/OgreMain;$(SolutionDir)/include/Ogre/Components;$(SolutionDir)/include/Ogre/PlugIns;$(SolutionDir)/include/Ogre/RenderSystems;$(SolutionDir)/include/Ogre/Components/HLMS;$(SolutionDir)/include/Ogre/Components/MeshLodGenerator;$(SolutionDir)/include/Ogre/Components/Overlay;$(SolutionDir)/include/Ogre/Components/Paging;$(SolutionDir)/include/Ogre/Components/Property;$(SolutionDir)/include/Ogre/Components/RTShaderSystem;$(SolutionDir)/include/Ogre/Components/Terrain;$(SolutionDir)/include/Ogre/Components/Volume;$(SolutionDir)/include/Ogre/PlugIns/BSPSceneManager;$(SolutionDir)/include/Ogre/PlugIns/CgProgramManager;$(SolutionDir)/include/Ogre/PlugIns/EXRCodec;$(SolutionDir)/include/Ogre/PlugIns/OctreeSceneManager;$(SolutionDir)/include/Ogre/PlugIns/OctreeZone;$(SolutionDir)/include/Ogre/PlugIns/ParticleFX;$(SolutionDir)/include/Ogre/PlugIns/PCZSceneManager;$(SolutionDir)/include/Ogre/PlugIns/Direct3D9;$(SolutionDir)/include/Ogre/PlugIns/Direct3D11;$(SolutionDir)/include/Ogre/PlugIns/GL;$(SolutionDir)/include/Ogre/PlugIns/GL3Plus;$(SolutionDir)/include/Ogre/PlugIns/GLES;$(SolutionDir)/include/Ogre/PlugIns/GLES2;$(SolutionDir)/include/Ogre/PlugIns/GLSupport;$(SolutionDir)/include/Ogre;$(SolutionDir)/include/Ogre/SDL2;$(SolutionDir)/include/CEGUI;$(SolutionDir)/include/Bullet;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)/lib;$(SolutionDir)/lib/Engine/Debug;$(SolutionDir)/lib/Engine/CEGUI;$(SolutionDir)/lib/Engine/Bullet;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)lib</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_MT;_USRDLL;CMAKE_INTDIR="Debug";OgreBites_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DotSceneLoader.cpp" />
+    <ClCompile Include="MFW3D_AdvancedRenderControls.cpp" />
+    <ClCompile Include="MFW3D_ApplicationContext.cpp" />
+    <ClCompile Include="MFW3D_Base.cpp" />
+    <ClCompile Include="MFW3D_ConfigDialog.cpp" />
+    <ClCompile Include="MFW3D_CameraMan.cpp" />
+    <ClCompile Include="MFW3D_SceneBase.cpp" />
+    <ClCompile Include="MFW3D_SceneMgr.cpp" />
+    <ClCompile Include="MFW3D_SGTechniqueResolverListener.cpp" />
+    <ClCompile Include="MFW3D_PluginLoader.cpp" />
+    <ClCompile Include="MFW_Trays.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DotSceneLoader.h" />
+    <ClInclude Include="MFW3D_AdvancedRenderControls.h" />
+    <ClInclude Include="MFW3D_ApplicationContext.h" />
+    <ClInclude Include="MFW3D_Base.h" />
+    <ClInclude Include="MFW3D_ConfigDialog.h" />
+    <ClInclude Include="MFW3D_CameraMan.h" />
+    <ClInclude Include="MFW3D_Input.h" />
+    <ClInclude Include="MFW3D_SceneBase.h" />
+    <ClInclude Include="MFW3D_SceneMgr.h" />
+    <ClInclude Include="MFW3D_SGTechniqueResolverListener.h" />
+    <ClInclude Include="MFW3D_PluginLoader.h" />
+    <ClInclude Include="MFW_Trays.h" />
+    <ClInclude Include="rapidxml.hpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{30C74AE2-DAB9-487B-8EC9-F0F8FCC8EDD2}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>MFW_CuraEngine</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)/include;$(SolutionDir)/MFW;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)/lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SolutionDir)/include;$(SolutionDir)/MFW;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)/lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;NOMINMAX;__WIN32;_WIN32;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>MFW.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>MFW.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="bridge.cpp" />
+    <ClCompile Include="commandSocket.cpp" />
+    <ClCompile Include="ConicalOverhang.cpp" />
+    <ClCompile Include="ExtruderTrain.cpp" />
+    <ClCompile Include="FffGcodeWriter.cpp" />
+    <ClCompile Include="FffPolygonGenerator.cpp" />
+    <ClCompile Include="FffProcessor.cpp" />
+    <ClCompile Include="gcodeExport.cpp" />
+    <ClCompile Include="GCodePathConfig.cpp" />
+    <ClCompile Include="infill.cpp" />
+    <ClCompile Include="infill\NoZigZagConnectorProcessor.cpp" />
+    <ClCompile Include="infill\SpaghettiInfill.cpp" />
+    <ClCompile Include="infill\SpaghettiInfillPathGenerator.cpp" />
+    <ClCompile Include="infill\SubDivCube.cpp" />
+    <ClCompile Include="infill\ZigzagConnectorProcessorConnectedEndPieces.cpp" />
+    <ClCompile Include="infill\ZigzagConnectorProcessorDisconnectedEndPieces.cpp" />
+    <ClCompile Include="infill\ZigzagConnectorProcessorEndPieces.cpp" />
+    <ClCompile Include="infill\ZigzagConnectorProcessorNoEndPieces.cpp" />
+    <ClCompile Include="layerPart.cpp" />
+    <ClCompile Include="LayerPlan.cpp" />
+    <ClCompile Include="LayerPlanBuffer.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MergeInfillLines.cpp" />
+    <ClCompile Include="mesh.cpp" />
+    <ClCompile Include="MeshGroup.cpp" />
+    <ClCompile Include="Mold.cpp" />
+    <ClCompile Include="multiVolumes.cpp" />
+    <ClCompile Include="pathOrderOptimizer.cpp" />
+    <ClCompile Include="pathPlanning\Comb.cpp" />
+    <ClCompile Include="pathPlanning\GCodePath.cpp" />
+    <ClCompile Include="pathPlanning\LinePolygonsCrossings.cpp" />
+    <ClCompile Include="pathPlanning\NozzleTempInsert.cpp" />
+    <ClCompile Include="pathPlanning\TimeMaterialEstimates.cpp" />
+    <ClCompile Include="Preheat.cpp" />
+    <ClCompile Include="PrimeTower.cpp" />
+    <ClCompile Include="progress\Progress.cpp" />
+    <ClCompile Include="progress\ProgressStageEstimator.cpp" />
+    <ClCompile Include="raft.cpp" />
+    <ClCompile Include="settings\PathConfigStorage.cpp" />
+    <ClCompile Include="settings\SettingConfig.cpp" />
+    <ClCompile Include="settings\SettingContainer.cpp" />
+    <ClCompile Include="settings\SettingRegistry.cpp" />
+    <ClCompile Include="settings\settings.cpp" />
+    <ClCompile Include="skin.cpp" />
+    <ClCompile Include="SkirtBrim.cpp" />
+    <ClCompile Include="sliceDataStorage.cpp" />
+    <ClCompile Include="slicer.cpp" />
+    <ClCompile Include="support.cpp" />
+    <ClCompile Include="timeEstimate.cpp" />
+    <ClCompile Include="utils\AABB.cpp" />
+    <ClCompile Include="utils\AABB3D.cpp" />
+    <ClCompile Include="utils\Date.cpp" />
+    <ClCompile Include="utils\gettime.cpp" />
+    <ClCompile Include="utils\LinearAlg2D.cpp" />
+    <ClCompile Include="utils\ListPolyIt.cpp" />
+    <ClCompile Include="utils\logoutput.cpp" />
+    <ClCompile Include="utils\polygon.cpp" />
+    <ClCompile Include="utils\PolygonProximityLinker.cpp" />
+    <ClCompile Include="utils\polygonUtils.cpp" />
+    <ClCompile Include="utils\ProximityPointLink.cpp" />
+    <ClCompile Include="utils\socket.cpp" />
+    <ClCompile Include="wallOverlap.cpp" />
+    <ClCompile Include="WallsComputation.cpp" />
+    <ClCompile Include="Weaver.cpp" />
+    <ClCompile Include="Wireframe2gcode.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="bridge.h" />
+    <ClInclude Include="commandSocket.h" />
+    <ClInclude Include="ConicalOverhang.h" />
+    <ClInclude Include="ExtruderTrain.h" />
+    <ClInclude Include="FanSpeedLayerTime.h" />
+    <ClInclude Include="FffGcodeWriter.h" />
+    <ClInclude Include="FffPolygonGenerator.h" />
+    <ClInclude Include="FffProcessor.h" />
+    <ClInclude Include="FlowTempGraph.h" />
+    <ClInclude Include="gcodeExport.h" />
+    <ClInclude Include="GcodeLayerThreader.h" />
+    <ClInclude Include="GCodePathConfig.h" />
+    <ClInclude Include="infill.h" />
+    <ClInclude Include="infill\ActualZigzagConnectorProcessor.h" />
+    <ClInclude Include="infill\NoZigZagConnectorProcessor.h" />
+    <ClInclude Include="infill\SpaghettiInfill.h" />
+    <ClInclude Include="infill\SpaghettiInfillPathGenerator.h" />
+    <ClInclude Include="infill\SubDivCube.h" />
+    <ClInclude Include="infill\ZigzagConnectorProcessor.h" />
+    <ClInclude Include="infill\ZigzagConnectorProcessorConnectedEndPieces.h" />
+    <ClInclude Include="infill\ZigzagConnectorProcessorDisconnectedEndPieces.h" />
+    <ClInclude Include="infill\ZigzagConnectorProcessorEndPieces.h" />
+    <ClInclude Include="infill\ZigzagConnectorProcessorNoEndPieces.h" />
+    <ClInclude Include="layerPart.h" />
+    <ClInclude Include="LayerPlan.h" />
+    <ClInclude Include="LayerPlanBuffer.h" />
+    <ClInclude Include="MergeInfillLines.h" />
+    <ClInclude Include="mesh.h" />
+    <ClInclude Include="MeshGroup.h" />
+    <ClInclude Include="Mold.h" />
+    <ClInclude Include="multiVolumes.h" />
+    <ClInclude Include="pathOrderOptimizer.h" />
+    <ClInclude Include="pathPlanning\Comb.h" />
+    <ClInclude Include="pathPlanning\CombPath.h" />
+    <ClInclude Include="pathPlanning\CombPaths.h" />
+    <ClInclude Include="pathPlanning\GCodePath.h" />
+    <ClInclude Include="pathPlanning\LinePolygonsCrossings.h" />
+    <ClInclude Include="pathPlanning\NozzleTempInsert.h" />
+    <ClInclude Include="pathPlanning\TimeMaterialEstimates.h" />
+    <ClInclude Include="Preheat.h" />
+    <ClInclude Include="PrimeTower.h" />
+    <ClInclude Include="PrintFeature.h" />
+    <ClInclude Include="progress\Progress.h" />
+    <ClInclude Include="progress\ProgressEstimator.h" />
+    <ClInclude Include="progress\ProgressEstimatorLinear.h" />
+    <ClInclude Include="progress\ProgressStageEstimator.h" />
+    <ClInclude Include="raft.h" />
+    <ClInclude Include="RetractionConfig.h" />
+    <ClInclude Include="settings\PathConfigStorage.h" />
+    <ClInclude Include="settings\SettingConfig.h" />
+    <ClInclude Include="settings\SettingContainer.h" />
+    <ClInclude Include="settings\SettingRegistry.h" />
+    <ClInclude Include="settings\settings.h" />
+    <ClInclude Include="settings\SettingsToGV.h" />
+    <ClInclude Include="skin.h" />
+    <ClInclude Include="SkirtBrim.h" />
+    <ClInclude Include="sliceDataStorage.h" />
+    <ClInclude Include="slicer.h" />
+    <ClInclude Include="SpaceFillType.h" />
+    <ClInclude Include="support.h" />
+    <ClInclude Include="timeEstimate.h" />
+    <ClInclude Include="utils\AABB.h" />
+    <ClInclude Include="utils\AABB3D.h" />
+    <ClInclude Include="utils\algorithm.h" />
+    <ClInclude Include="utils\Date.h" />
+    <ClInclude Include="utils\floatpoint.h" />
+    <ClInclude Include="utils\gettime.h" />
+    <ClInclude Include="utils\intpoint.h" />
+    <ClInclude Include="utils\LazyInitialization.h" />
+    <ClInclude Include="utils\linearAlg2D.h" />
+    <ClInclude Include="utils\ListPolyIt.h" />
+    <ClInclude Include="utils\Lock.h" />
+    <ClInclude Include="utils\logoutput.h" />
+    <ClInclude Include="utils\macros.h" />
+    <ClInclude Include="utils\math.h" />
+    <ClInclude Include="utils\NoCopy.h" />
+    <ClInclude Include="utils\optional.h" />
+    <ClInclude Include="utils\orderOptimizer.h" />
+    <ClInclude Include="utils\polygon.h" />
+    <ClInclude Include="utils\PolygonProximityLinker.h" />
+    <ClInclude Include="utils\PolygonsPointIndex.h" />
+    <ClInclude Include="utils\polygonUtils.h" />
+    <ClInclude Include="utils\ProximityPointLink.h" />
+    <ClInclude Include="utils\socket.h" />
+    <ClInclude Include="utils\SparseGrid.h" />
+    <ClInclude Include="utils\SparseLineGrid.h" />
+    <ClInclude Include="utils\SparsePointGrid.h" />
+    <ClInclude Include="utils\SparsePointGridInclusive.h" />
+    <ClInclude Include="utils\string.h" />
+    <ClInclude Include="utils\SVG.h" />
+    <ClInclude Include="utils\SymmetricPair.h" />
+    <ClInclude Include="wallOverlap.h" />
+    <ClInclude Include="WallsComputation.h" />
+    <ClInclude Include="weaveDataStorage.h" />
+    <ClInclude Include="Weaver.h" />
+    <ClInclude Include="Wireframe2gcode.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

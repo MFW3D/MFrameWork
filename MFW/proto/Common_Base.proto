@@ -1,0 +1,91 @@
+﻿syntax = "proto3";
+package  PCommon_Base;  
+/*
+协议规则前两个字母代表消息流向
+D:数据服务器
+M：管理服务器
+L：登录服务器
+G：逻辑服务器
+C：客户端
+后面更协议的名字
+命令枚举以服务器前客户端后的命名_CMD,一对协议对应一个消息id，推送协议占一个消息id
+
+公共消息id：1-1000
+*/
+
+//公共传输协议id占用1-1000内的协议号
+enum EPublic_CMD
+{
+	EPublic_CMD_None=0;
+	EPublic_CMD_PackTransferMsg=1;
+}
+
+enum EPublic_Ret
+{
+	EPublic_Ret_OK=0;
+	EPublic_Ret_Error=1;
+}
+
+message NetHead
+{
+	int32 key=1;			//服务器下发的key，key不正确不处理
+	int32 Cmd=2;			//消息id
+	int32 Index=3;			//包编号
+	int32 Count=4;			//包总数
+	int32 DataLength=5;		//数据长度
+}
+//网络封包传送子包
+message NetTransferMsg
+{
+	uint64 id=1;
+	int32 cmd=2;
+	string data=3;
+}
+//网络封包传送包
+message NetTransferMsgs
+{
+	repeated NetTransferMsg NetTransferMsgs=1;
+}
+
+//玩家信息
+message PUserInfo
+{
+	int64 uid=1;
+	bytes nickname=2;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+enum ETest
+{
+	 Test1=0;
+	 Test2=1;
+	 Test3=2;
+}
+
+message MTest1
+{
+	int32 a=1;
+	int32 b=2;
+}
+
+message MTest2
+{
+	int32 a=2;
+	int32 b=3;
+}
+

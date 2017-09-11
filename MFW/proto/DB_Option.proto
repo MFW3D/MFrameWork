@@ -1,0 +1,153 @@
+syntax = "proto3";
+import "DB_Base.proto";
+package  PDB_Option;
+
+//替换消息头的宏定义
+
+enum EDB_CMD{
+    DB_CMD_NONE=0;
+
+    GD_GET_DBACCOUNT=202;
+    DG_GET_DBACCOUNT=203;
+    GD_CREATE_DBACCOUNT=204;
+    DG_CREATE_DBACCOUNT=205;
+    GD_UPDATE_DBACCOUNT=206;
+    DG_UPDATE_DBACCOUNT=207;
+    GD_DELETE_DBACCOUNT=208;
+    DG_DELETE_DBACCOUNT=209;
+    GD_GET_DBUSERINFO=210;
+    DG_GET_DBUSERINFO=211;
+    GD_CREATE_DBUSERINFO=212;
+    DG_CREATE_DBUSERINFO=213;
+    GD_UPDATE_DBUSERINFO=214;
+    DG_UPDATE_DBUSERINFO=215;
+    GD_DELETE_DBUSERINFO=216;
+    DG_DELETE_DBUSERINFO=217;
+}
+//通过id获取DBAccount中的对应数据
+message GD_GetDBAccount
+{
+    //#define GD_GET_DBACCOUNT 	202
+    uint32 uiaccid = 1; 
+         uint64 ulDBAccountid = 2; 
+
+}
+
+message DG_GetDBAccount
+{
+    //#define DG_GET_DBACCOUNT 	203
+    uint32 uiaccid = 1; 
+    int32 iRet = 2;
+    PDB_Base.DBAccount stDBAccount =3;
+}
+
+//创建DBAccount中的对应数据
+message GD_CreateDBAccount
+{
+    //#define GD_CREATE_DBACCOUNT 	204
+    uint32 uiaccid = 1; 
+    PDB_Base.DBAccount stDBAccount =2;
+}
+
+message DG_CreateDBAccount
+{
+    //#define DG_CREATE_DBACCOUNT 	205
+    uint32 uiaccid = 1; 
+    int32 iRet =2;
+    PDB_Base.DBAccount stDBAccount =3;
+}
+
+//更新DBAccount中的对应数据
+message GD_UpdateDBAccount
+{
+    //#define GD_UPDATE_DBACCOUNT 	206
+    uint32 uiaccid = 1; 
+    PDB_Base.DBAccount stDBAccount =2;
+}
+
+message DG_UpdateDBAccount
+{
+    //#define DG_UPDATE_DBACCOUNT 	207
+    uint32 uiaccid = 1; 
+    int32 iRet = 2;
+}
+
+//通过id删除DBAccount中的对应数据
+message GD_DeleteDBAccount
+{
+    //#define GD_DELETE_DBACCOUNT 	208
+    uint32 uiaccid = 1; 
+        uint64 ulDBAccountid = 2; 
+
+}
+
+message DG_DeleteDBAccount
+{
+    //#define DG_DELETE_DBACCOUNT 	209
+    uint32 uiaccid = 1; 
+    int32 iRet = 2;
+}
+
+//通过id获取DBUserInfo中的对应数据
+message GD_GetDBUserInfo
+{
+    //#define GD_GET_DBUSERINFO 	210
+    uint32 uiaccid = 1; 
+         uint64 ulDBUserInfoid = 2; 
+
+}
+
+message DG_GetDBUserInfo
+{
+    //#define DG_GET_DBUSERINFO 	211
+    uint32 uiaccid = 1; 
+    int32 iRet = 2;
+    PDB_Base.DBUserInfo stDBUserInfo =3;
+}
+
+//创建DBUserInfo中的对应数据
+message GD_CreateDBUserInfo
+{
+    //#define GD_CREATE_DBUSERINFO 	212
+    uint32 uiaccid = 1; 
+    PDB_Base.DBUserInfo stDBUserInfo =2;
+}
+
+message DG_CreateDBUserInfo
+{
+    //#define DG_CREATE_DBUSERINFO 	213
+    uint32 uiaccid = 1; 
+    int32 iRet =2;
+    PDB_Base.DBUserInfo stDBUserInfo =3;
+}
+
+//更新DBUserInfo中的对应数据
+message GD_UpdateDBUserInfo
+{
+    //#define GD_UPDATE_DBUSERINFO 	214
+    uint32 uiaccid = 1; 
+    PDB_Base.DBUserInfo stDBUserInfo =2;
+}
+
+message DG_UpdateDBUserInfo
+{
+    //#define DG_UPDATE_DBUSERINFO 	215
+    uint32 uiaccid = 1; 
+    int32 iRet = 2;
+}
+
+//通过id删除DBUserInfo中的对应数据
+message GD_DeleteDBUserInfo
+{
+    //#define GD_DELETE_DBUSERINFO 	216
+    uint32 uiaccid = 1; 
+        uint64 ulDBUserInfoid = 2; 
+
+}
+
+message DG_DeleteDBUserInfo
+{
+    //#define DG_DELETE_DBUSERINFO 	217
+    uint32 uiaccid = 1; 
+    int32 iRet = 2;
+}
