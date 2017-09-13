@@ -10,7 +10,7 @@ namespace MFW3D
 		mInfo["Thumbnail"] = "";
 		mInfo["Help"] = "";
 
-		mTrayMgr = 0;
+		mUIMgr = 0;
 		mCameraMan = 0;
 		mCamera = 0;
 		mCameraNode = 0;
@@ -22,7 +22,7 @@ namespace MFW3D
 	
 	 void MFW3D_SceneBase::unpaused()
 	{
-		mTrayMgr->refreshCursor();
+		mUIMgr->refreshCursor();
 	}
 	
 	 void MFW3D_SceneBase::saveState(Ogre::NameValuePairList& state)
@@ -45,9 +45,9 @@ namespace MFW3D
 	}
 	 bool MFW3D_SceneBase::frameRenderingQueued(const Ogre::FrameEvent& evt)
 	{
-		mTrayMgr->frameRendered(evt);
+		mUIMgr->frameRendered(evt);
 		mControls->frameRendered(evt);
-		if (!mTrayMgr->isDialogVisible())
+		if (!mUIMgr->isDialogVisible())
 		{
 			mCameraMan->frameRendered(evt);  
 		}
@@ -62,10 +62,10 @@ namespace MFW3D
 		int key = evt.keysym.sym;
 		if (key == 'h' || key == SDLK_F1)  
 		{
-			if (!mTrayMgr->isDialogVisible() && mInfo["Help"] != "") mTrayMgr->showOkDialog("Help", mInfo["Help"]);
-			else mTrayMgr->closeDialog();
+			if (!mUIMgr->isDialogVisible() && mInfo["Help"] != "") mUIMgr->showOkDialog("Help", mInfo["Help"]);
+			else mUIMgr->closeDialog();
 		}
-		if (mTrayMgr->isDialogVisible()) return true;   // don't process any more keys if dialog is up
+		if (mUIMgr->isDialogVisible()) return true;   // don't process any more keys if dialog is up
 		if (key == SDLK_F6)   // take a screenshot
 		{
 			mWindow->writeContentsToTimestampedFile("screenshot", ".png");
@@ -94,7 +94,7 @@ namespace MFW3D
 
 	 bool MFW3D_SceneBase::mouseMoved(const MFW3D::MouseMotionEvent& evt)
 	{
-		if (mTrayMgr->mouseMoved(evt)) 
+		if (mUIMgr->mouseMoved(evt)) 
 			return true;
 		mCameraMan->mouseMoved(evt);
 		return true;
@@ -109,7 +109,7 @@ namespace MFW3D
 
 	 bool MFW3D_SceneBase::mousePressed(const MFW3D::MouseButtonEvent& evt)
 	{
-		if (mTrayMgr->mousePressed(evt)) 
+		if (mUIMgr->mousePressed(evt)) 
 			return true;
 		if (mDragLook && evt.button == MFW3D::BUTTON_LEFT)
 		{
@@ -129,7 +129,7 @@ namespace MFW3D
 
 	 bool MFW3D_SceneBase::mouseReleased(const MFW3D::MouseButtonEvent& evt)
 	{
-		if (mTrayMgr->mouseReleased(evt)) return true;
+		if (mUIMgr->mouseReleased(evt)) return true;
 
 		if (mDragLook && evt.button == MFW3D::BUTTON_LEFT)
 		{
@@ -160,16 +160,16 @@ namespace MFW3D
 		createSceneManager();
 		setupView();
 
-		mTrayMgr = new MFW3D::TrayManager("SampleControls", window, this);  // create a tray interface
+		mUIMgr = new MFW3D::MFW3D_UIMgr("SampleControls", window, this);  // create a tray interface
 
 		loadResources();
 		mResourcesLoaded = true;
 
-		mTrayMgr->showFrameStats(TL_BOTTOMLEFT);
-		//mTrayMgr->showLogo(TL_BOTTOMRIGHT);
-		//mTrayMgr->hideCursor();
-		//mTrayMgr->createLabel(MFW3D::TL_BOTTOM, "title", "bast scene", 50);
-		mControls = new MFW3D::AdvancedRenderControls(mTrayMgr, mCamera);
+		mUIMgr->showFrameStats(TL_BOTTOMLEFT);
+		//mUIMgr->showLogo(TL_BOTTOMRIGHT);
+		mUIMgr->hideCursor();
+		//mUIMgr->createLabel(MFW3D::TL_BOTTOM, "title", "bast scene", 50);
+		mControls = new MFW3D::MFW3D_AdRender(mUIMgr, mCamera);
 		setupContent();
 		mContentSetup = true;
 		mDone = false;
@@ -178,7 +178,7 @@ namespace MFW3D
 	{
 		MFW3D_Base::_shutdown();
 		delete mControls;
-		delete mTrayMgr;
+		delete mUIMgr;
 		delete mCameraMan;
 		Ogre::MaterialManager::getSingleton().setDefaultTextureFiltering(Ogre::TFO_BILINEAR);
 		Ogre::MaterialManager::getSingleton().setDefaultAnisotropy(1);
@@ -194,7 +194,7 @@ namespace MFW3D
 		mCamera->setAutoAspectRatio(true);
 		mCamera->setNearClipDistance(5);
 		// 设置基础的camera控制器
-		mCameraMan = new MFW3D::CameraMan(mCameraNode);  
+		mCameraMan = new MFW3D::MFW3D_CameraController(mCameraNode);  
 	}
 	 void MFW3D_SceneBase::setDragLook(bool enabled)
 	{

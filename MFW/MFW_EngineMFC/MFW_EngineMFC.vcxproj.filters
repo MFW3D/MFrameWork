@@ -45,8 +45,11 @@
     <ClInclude Include="Scene_Level1.h">
       <Filter>Ogre</Filter>
     </ClInclude>
-    <ClInclude Include="Scene_Mgr.h">
+    <ClInclude Include="Scene_Level2.h">
       <Filter>Ogre</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialControls.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -68,8 +71,11 @@
     <ClCompile Include="Scene_Level1.cpp">
       <Filter>Ogre</Filter>
     </ClCompile>
-    <ClCompile Include="Scene_Mgr.cpp">
+    <ClCompile Include="Scene_Level2.cpp">
       <Filter>Ogre</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialControls.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

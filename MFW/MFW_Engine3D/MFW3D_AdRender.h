@@ -5,7 +5,7 @@
 #endif
 
 namespace MFW3D {
-class TrayManager;
+class MFW3D_UIMgr;
 class ParamsPanel;
 /**
    - F:        Toggle frame rate stats on/off
@@ -23,17 +23,17 @@ class ParamsPanel;
    - F3:       Toggle default shader generator lighting model from per vertex to per pixel.
    - F4:       Switch vertex shader outputs compaction policy.
  */
-class AdvancedRenderControls : public InputListener {
+class MFW3D_AdRender : public MFW3D_InputListener {
 public:
-    AdvancedRenderControls(TrayManager* trayMgr, Ogre::Camera* cam);
-    ~AdvancedRenderControls();
+    MFW3D_AdRender(MFW3D_UIMgr* trayMgr, Ogre::Camera* cam);
+    ~MFW3D_AdRender();
 
     bool keyPressed(const KeyboardEvent& evt);
     void frameRendered(const Ogre::FrameEvent& evt);
 protected:
     Ogre::Root* mRoot;
     Ogre::Camera* mCamera;      // main camera
-    TrayManager* mTrayMgr;      // tray interface manager
+    MFW3D_UIMgr* mTrayMgr;      // tray interface manager
     ParamsPanel* mDetailsPanel; // sample details panel
 #ifdef OGRE_BUILD_COMPONENT_RTSHADERSYSTEM
     Ogre::RTShader::ShaderGenerator* mShaderGenerator;

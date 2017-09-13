@@ -1,13 +1,13 @@
 ﻿#pragma once
-#include "MFW3D_ApplicationContext.h"
+#include "MFW3D_MgrContext.h"
 #include "MFW3D_Base.h"
 #include "Ogre.h"
+#include "Singleton.h"
 namespace MFW3D
 {
-    class MFW3D_SceneMgr : public MFW3D::ApplicationContext, MFW3D::InputListener
+    class MFW3D_SceneMgr : public MFW::Singleton<MFW3D_SceneMgr>, public MFW3D::MFW3D_MgrContext, MFW3D::MFW3D_InputListener
     {
     public:
-
 		MFW3D_SceneMgr(const Ogre::String& appName = OGRE_VERSION_NAME,
 			bool grabInput = true);
 		virtual MFW3D_Base* getCurrentScene();

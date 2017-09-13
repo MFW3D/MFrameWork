@@ -144,7 +144,7 @@ bool Scene_Level3::frameRenderingQueued(const Ogre::FrameEvent& evt)
 		// fire ray
 		Ogre::Ray ray;
 		//ray = mCamera->getCameraToViewportRay(0.5, 0.5);
-		ray = mTrayMgr->getCursorRay(mCamera);
+		ray = mUIMgr->getCursorRay(mCamera);
 
 		Ogre::TerrainGroup::RayResult rayResult = mTerrainGroup->rayIntersects(ray);
 		if (rayResult.hit)
@@ -209,7 +209,7 @@ bool Scene_Level3::frameRenderingQueued(const Ogre::FrameEvent& evt)
 
 	if (mTerrainGroup->isDerivedDataUpdateInProgress())
 	{
-		mTrayMgr->moveWidgetToTray(mInfoLabel, MFW3D::TL_TOP, 0);
+		mUIMgr->moveWidgetToTray(mInfoLabel, MFW3D::TL_TOP, 0);
 		mInfoLabel->show();
 		if (mTerrainsImported)
 		{
@@ -222,7 +222,7 @@ bool Scene_Level3::frameRenderingQueued(const Ogre::FrameEvent& evt)
 	}
 	else
 	{
-		mTrayMgr->removeWidgetFromTray(mInfoLabel);
+		mUIMgr->removeWidgetFromTray(mInfoLabel);
 		mInfoLabel->hide();
 		if (mTerrainsImported)
 		{
@@ -464,10 +464,10 @@ void Scene_Level3::addTextureDebugOverlay(MFW3D::TrayLocation loc, const Ogre::S
 
 	// add widget
 	Ogre::String widgetName = "DebugTex" + Ogre::StringConverter::toString(i);
-	MFW3D::Widget* w = mTrayMgr->getWidget(widgetName);
+	MFW3D::Widget* w = mUIMgr->getWidget(widgetName);
 	if (!w)
 	{
-		w = mTrayMgr->createDecorWidget(loc, widgetName, "Ogre/DebugTexOverlay");
+		w = mUIMgr->createDecorWidget(loc, widgetName, "Ogre/DebugTexOverlay");
 	}
 	w->getOverlayElement()->setMaterialName(matName);
 }
@@ -601,25 +601,25 @@ void Scene_Level3::setupView()
 }
 void Scene_Level3::setupControls()
 {
-	mTrayMgr->showCursor();
+	mUIMgr->showCursor();
 
 	// make room for the controls
-	mTrayMgr->showLogo(MFW3D::TL_TOPRIGHT);
-	mTrayMgr->showFrameStats(MFW3D::TL_TOPRIGHT);
-	mTrayMgr->toggleAdvancedFrameStats();
+	mUIMgr->showLogo(MFW3D::TL_TOPRIGHT);
+	mUIMgr->showFrameStats(MFW3D::TL_TOPRIGHT);
+	mUIMgr->toggleAdvancedFrameStats();
 
-	mInfoLabel = mTrayMgr->createLabel(MFW3D::TL_TOP, "TInfo", "", 350);
+	mInfoLabel = mUIMgr->createLabel(MFW3D::TL_TOP, "TInfo", "", 350);
 
-	mEditMenu = mTrayMgr->createLongSelectMenu(MFW3D::TL_BOTTOM, "EditMode", "Edit Mode", 370, 250, 3);
+	mEditMenu = mUIMgr->createLongSelectMenu(MFW3D::TL_BOTTOM, "EditMode", "Edit Mode", 370, 250, 3);
 	mEditMenu->addItem("None");
 	mEditMenu->addItem("Elevation");
 	mEditMenu->addItem("Blend");
 	mEditMenu->selectItem(0);  // no edit mode
 
-	mFlyBox = mTrayMgr->createCheckBox(MFW3D::TL_BOTTOM, "Fly", "Fly");
+	mFlyBox = mUIMgr->createCheckBox(MFW3D::TL_BOTTOM, "Fly", "Fly");
 	mFlyBox->setChecked(false, false);
 
-	mShadowsMenu = mTrayMgr->createLongSelectMenu(MFW3D::TL_BOTTOM, "Shadows", "Shadows", 370, 250, 3);
+	mShadowsMenu = mUIMgr->createLongSelectMenu(MFW3D::TL_BOTTOM, "Shadows", "Shadows", 370, 250, 3);
 	mShadowsMenu->addItem("None");
 	mShadowsMenu->addItem("Colour Shadows");
 	mShadowsMenu->addItem("Depth Shadows");
@@ -628,7 +628,7 @@ void Scene_Level3::setupControls()
 								  // a friendly reminder
 	Ogre::StringVector names;
 	names.push_back("Help");
-	mTrayMgr->createParamsPanel(MFW3D::TL_TOPLEFT, "Help", 100, names)->setParamValue(0, "H/F1");
+	mUIMgr->createParamsPanel(MFW3D::TL_TOPLEFT, "Help", 100, names)->setParamValue(0, "H/F1");
 }
 void Scene_Level3::setupContent()
 {

@@ -1,4 +1,5 @@
-﻿#include "Scene_Level2.h"
+﻿#include "stdafx.h"
+#include "Scene_Level2.h"
 
 /**********************************************************************
 Static declarations

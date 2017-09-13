@@ -42,10 +42,10 @@ namespace MFW3D
     class Slider;
     class CheckBox;
 	//界面事件
-    class  TrayListener
+    class  MFW3D_UIListener
     {
     public:
-        virtual ~TrayListener() {}
+        virtual ~MFW3D_UIListener() {}
         virtual void buttonHit(Button* button) {}
         virtual void itemSelected(SelectMenu* menu) {}
         virtual void labelHit(Label* label) {}
@@ -100,11 +100,11 @@ namespace MFW3D
         virtual void _focusLost() {}
 		//不直接调用
 		void _assignToTray(TrayLocation trayLoc) { mTrayLoc = trayLoc; }
-        void _assignListener(TrayListener* listener) { mListener = listener; }
+        void _assignListener(MFW3D_UIListener* listener) { mListener = listener; }
     protected:
         Ogre::OverlayElement* mElement;
         TrayLocation mTrayLoc;
-        TrayListener* mListener;
+        MFW3D_UIListener* mListener;
     };
     typedef std::vector<Widget*> WidgetList;
     typedef Ogre::VectorIterator<WidgetList> WidgetIterator;
@@ -447,12 +447,12 @@ namespace MFW3D
         Ogre::OverlayElement* mFill;
         Ogre::Real mProgress;
     };
-    class  TrayManager : public TrayListener, public Ogre::ResourceGroupListener, public InputListener
+    class  MFW3D_UIMgr : public MFW3D_UIListener, public Ogre::ResourceGroupListener, public MFW3D_InputListener
     {
     public:
 		//创建trayManager
-        TrayManager(const Ogre::String& name, Ogre::RenderWindow* window, TrayListener* listener = 0);
-        virtual ~TrayManager();
+        MFW3D_UIMgr(const Ogre::String& name, Ogre::RenderWindow* window, MFW3D_UIListener* listener = 0);
+        virtual ~MFW3D_UIMgr();
 		//将屏幕坐标转为三维坐标
 		static Ogre::Ray screenToScene(Ogre::Camera* cam, const Ogre::Vector2& pt);
 		//将三维坐标转为屏幕坐标
@@ -466,11 +466,11 @@ namespace MFW3D
         Ogre::OverlayContainer* getCursorContainer() { return mCursor; }
         Ogre::OverlayElement* getCursorImage() { return mCursor->getChild(mCursor->getName() + "/CursorImage"); }
 		//设置事件监听
-        void setListener(TrayListener* listener)
+        void setListener(MFW3D_UIListener* listener)
         {
             mListener = listener;
         }
-        TrayListener* getListener()
+        MFW3D_UIListener* getListener()
         {
             return mListener;
         }
@@ -672,7 +672,7 @@ namespace MFW3D
         WidgetList mWidgets[10];              // widgets
         WidgetList mWidgetDeathRow;           // widget queue for deletion
         Ogre::OverlayContainer* mCursor;      // cursor
-        TrayListener* mListener;           // tray listener
+        MFW3D_UIListener* mListener;           // tray listener
         Ogre::Real mWidgetPadding;            // widget padding
         Ogre::Real mWidgetSpacing;            // widget spacing
         Ogre::Real mTrayPadding;              // tray padding

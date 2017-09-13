@@ -1,11 +1,10 @@
-﻿#include "MFW3D_AdvancedRenderControls.h"
+﻿#include "MFW3D_AdRender.h"
 #include <OgreTextureManager.h>
 #include <OgreMaterialManager.h>
-
-#include "MFW_Trays.h"
+#include "MFW3D_UIMgr.h"
 
 namespace MFW3D {
-AdvancedRenderControls::AdvancedRenderControls(TrayManager* trayMgr, Ogre::Camera* cam)
+MFW3D_AdRender::MFW3D_AdRender(MFW3D_UIMgr* trayMgr, Ogre::Camera* cam)
     : mCamera(cam), mTrayMgr(trayMgr) {
     mRoot = Ogre::Root::getSingletonPtr();
 
@@ -51,11 +50,11 @@ AdvancedRenderControls::AdvancedRenderControls(TrayManager* trayMgr, Ogre::Camer
 #endif
 }
 
-AdvancedRenderControls::~AdvancedRenderControls() {
+MFW3D_AdRender::~MFW3D_AdRender() {
     mTrayMgr->destroyWidget(mDetailsPanel);
 }
 
-bool AdvancedRenderControls::keyPressed(const KeyboardEvent& evt) {
+bool MFW3D_AdRender::keyPressed(const KeyboardEvent& evt) {
     if (mTrayMgr->isDialogVisible())
         return true; // don't process any more keys if dialog is up
 
@@ -223,7 +222,7 @@ bool AdvancedRenderControls::keyPressed(const KeyboardEvent& evt) {
     return true;
 }
 
-void AdvancedRenderControls::frameRendered(const Ogre::FrameEvent& evt) {
+void MFW3D_AdRender::frameRendered(const Ogre::FrameEvent& evt) {
     if (!mTrayMgr->isDialogVisible() && mDetailsPanel->isVisible())
     {
         // if details panel is visible, then update its contents

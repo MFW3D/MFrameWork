@@ -7,7 +7,7 @@
 
 #include "CMyOgreApp.h" 
 #include "Scene_Level1.h"
-#include "Scene_Mgr.h"
+#include "MFW3D_SceneMgr.h"
 // CChildView window
 
 class CChildView : public CWnd
@@ -17,9 +17,12 @@ public:
 	CChildView();
 
 // Attributes
+private:
+	int oldx=0;
+	int oldy= 0;
+	bool isRote = false;
 public:
 	CMyOgreApp m_ogreApp;//ogre ÷˜¿‡  
-	Scene_Mgr mgr;
 	Scene_Level1 ss1;
 	bool m_firstDraw;//≥ı¥Œ‰÷»æ  
 // Operations

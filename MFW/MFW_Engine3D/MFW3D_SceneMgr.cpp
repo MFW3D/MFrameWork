@@ -1,15 +1,16 @@
 ﻿#include "MFW3D_SceneMgr.h"
+#include "MFW3D_InputMgr.h"
 namespace MFW3D
 {
 	MFW3D_SceneMgr::MFW3D_SceneMgr(const Ogre::String& appName ,
 		bool grabInput )
-		:MFW3D::ApplicationContext(appName, grabInput)
+		:MFW3D::MFW3D_MgrContext(appName, grabInput)
 	{
 		mCurrentScene = 0;
 		mScenePaused = false;
 		mLastRun = false;
 		mLastScene = 0;
-		addInputListener(this);
+		MFW3D_InputMgr::GetInstance()->addInputListener(this);
 	}
 	MFW3D_Base* MFW3D_SceneMgr::getCurrentScene()
 	{
@@ -93,7 +94,7 @@ namespace MFW3D
 			mLastRun = true;  // 假定是最后一次运行
 			initApp();
 			createWindow();
-			setup();
+			setup(false);
 
 #if OGRE_PLATFORM != OGRE_PLATFORM_ANDROID
 			// 如果有需要恢复的场景就恢复一个，如果没有就运行新的场景
@@ -293,7 +294,7 @@ namespace MFW3D
 		mLastScene = mCurrentScene;
 		if (mCurrentScene) mCurrentScene->saveState(mLastSampleState);
 		mLastRun = false;            
-		ApplicationContext::reconfigure(renderer, options);
+		MFW3D_MgrContext::reconfigure(renderer, options);
 	}
 	void MFW3D_SceneMgr::recoverLastScene()
 	{
@@ -309,6 +310,6 @@ namespace MFW3D
 			mCurrentScene->_shutdown();
 			mCurrentScene = 0;
 		}
-		ApplicationContext::shutdown();
+		MFW3D_MgrContext::shutdown();
 	}
 }

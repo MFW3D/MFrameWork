@@ -189,10 +189,11 @@
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="CMyOgreApp.h" />
     <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="MaterialControls.h" />
     <ClInclude Include="MFW_EngineMFC.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene_Level1.h" />
-    <ClInclude Include="Scene_Mgr.h" />
+    <ClInclude Include="Scene_Level2.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -200,9 +201,10 @@
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="CMyOgreApp.cpp" />
     <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="MaterialControls.cpp" />
     <ClCompile Include="MFW_EngineMFC.cpp" />
     <ClCompile Include="Scene_Level1.cpp" />
-    <ClCompile Include="Scene_Mgr.cpp" />
+    <ClCompile Include="Scene_Level2.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

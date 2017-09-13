@@ -1,9 +1,9 @@
-﻿#include "MFW3D_CameraMan.h"
+﻿#include "MFW3D_CameraController.h"
 #include "OgreSceneManager.h"
 
 namespace MFW3D {
 
-CameraMan::CameraMan(Ogre::SceneNode *cam)
+MFW3D_CameraController::MFW3D_CameraController(Ogre::SceneNode *cam)
     : mCamera(0)
     , mStyle(CS_MANUAL)
     , mTarget(0)
@@ -24,12 +24,12 @@ CameraMan::CameraMan(Ogre::SceneNode *cam)
     setStyle(CS_FREELOOK);
 }
 
-void CameraMan::setCamera(Ogre::SceneNode *cam)
+void MFW3D_CameraController::setCamera(Ogre::SceneNode *cam)
 {
     mCamera = cam;
 }
 
-void CameraMan::setTarget(Ogre::SceneNode *target)
+void MFW3D_CameraController::setTarget(Ogre::SceneNode *target)
 {
     if (target != mTarget)
     {
@@ -49,7 +49,7 @@ void CameraMan::setTarget(Ogre::SceneNode *target)
 
 }
 
-void CameraMan::setYawPitchDist(Ogre::Radian yaw, Ogre::Radian pitch, Ogre::Real dist)
+void MFW3D_CameraController::setYawPitchDist(Ogre::Radian yaw, Ogre::Radian pitch, Ogre::Real dist)
 {
     mCamera->setPosition(mTarget->_getDerivedPosition());
     mCamera->setOrientation(mTarget->_getDerivedOrientation());
@@ -58,7 +58,7 @@ void CameraMan::setYawPitchDist(Ogre::Radian yaw, Ogre::Radian pitch, Ogre::Real
     mCamera->translate(Ogre::Vector3(0, 0, dist), Ogre::Node::TS_LOCAL);
 }
 
-void CameraMan::setStyle(CameraStyle style)
+void MFW3D_CameraController::setStyle(CameraStyle style)
 {
     if (mStyle != CS_ORBIT && style == CS_ORBIT)
     {
@@ -81,7 +81,7 @@ void CameraMan::setStyle(CameraStyle style)
 
 }
 
-void CameraMan::manualStop()
+void MFW3D_CameraController::manualStop()
 {
     if (mStyle == CS_FREELOOK)
     {
@@ -95,7 +95,7 @@ void CameraMan::manualStop()
     }
 }
 
-void CameraMan::frameRendered(const Ogre::FrameEvent &evt)
+void MFW3D_CameraController::frameRendered(const Ogre::FrameEvent &evt)
 {
     if (mStyle == CS_FREELOOK)
     {
@@ -134,7 +134,7 @@ void CameraMan::frameRendered(const Ogre::FrameEvent &evt)
     }
 }
 
-bool CameraMan::keyPressed(const KeyboardEvent &evt)
+bool MFW3D_CameraController::keyPressed(const KeyboardEvent &evt)
 {
     if (mStyle == CS_FREELOOK)
     {
@@ -148,10 +148,10 @@ bool CameraMan::keyPressed(const KeyboardEvent &evt)
         else if (key == SDLK_LSHIFT) mFastMove = true;
     }
 
-    return InputListener::keyPressed(evt);
+    return MFW3D_InputListener::keyPressed(evt);
 }
 
-bool CameraMan::keyReleased(const KeyboardEvent &evt)
+bool MFW3D_CameraController::keyReleased(const KeyboardEvent &evt)
 {
     if (mStyle == CS_FREELOOK)
     {
@@ -165,10 +165,10 @@ bool CameraMan::keyReleased(const KeyboardEvent &evt)
         else if (key == SDLK_LSHIFT) mFastMove = false;
     }
 
-    return InputListener::keyReleased(evt);
+    return MFW3D_InputListener::keyReleased(evt);
 }
 
-bool CameraMan::mouseMoved(const MouseMotionEvent &evt)
+bool MFW3D_CameraController::mouseMoved(const MouseMotionEvent &evt)
 {
     if (mStyle == CS_ORBIT)
     {
@@ -197,20 +197,20 @@ bool CameraMan::mouseMoved(const MouseMotionEvent &evt)
         mCamera->pitch(Ogre::Degree(-evt.yrel * 0.15f));
     }
 
-    return InputListener::mouseMoved(evt);
+    return MFW3D_InputListener::mouseMoved(evt);
 }
 
-bool CameraMan::mouseWheelRolled(const MouseWheelEvent &evt) {
+bool MFW3D_CameraController::mouseWheelRolled(const MouseWheelEvent &evt) {
     if (mStyle == CS_ORBIT && evt.y != 0)
     {
         Ogre::Real dist = (mCamera->getPosition() - mTarget->_getDerivedPosition()).length();
         mCamera->translate(Ogre::Vector3(0, 0, -evt.y * 0.08f * dist), Ogre::Node::TS_LOCAL);
     }
 
-    return InputListener::mouseWheelRolled(evt);
+    return MFW3D_InputListener::mouseWheelRolled(evt);
 }
 
-bool CameraMan::mousePressed(const MouseButtonEvent &evt)
+bool MFW3D_CameraController::mousePressed(const MouseButtonEvent &evt)
 {
     if (mStyle == CS_ORBIT)
     {
@@ -218,10 +218,10 @@ bool CameraMan::mousePressed(const MouseButtonEvent &evt)
         else if (evt.button == BUTTON_RIGHT) mZooming = true;
     }
 
-    return InputListener::mousePressed(evt);
+    return MFW3D_InputListener::mousePressed(evt);
 }
 
-bool CameraMan::mouseReleased(const MouseButtonEvent &evt)
+bool MFW3D_CameraController::mouseReleased(const MouseButtonEvent &evt)
 {
     if (mStyle == CS_ORBIT)
     {
@@ -229,7 +229,7 @@ bool CameraMan::mouseReleased(const MouseButtonEvent &evt)
         else if (evt.button == BUTTON_RIGHT) mZooming = false;
     }
 
-    return InputListener::mouseReleased(evt);
+    return MFW3D_InputListener::mouseReleased(evt);
 }
 
 }

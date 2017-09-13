@@ -15,21 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="MFW_Trays.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MFW3D_ApplicationContext.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MFW3D_CameraMan.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MFW3D_AdvancedRenderControls.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MFW3D_Base.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -45,24 +30,24 @@
     <ClCompile Include="MFW3D_SGTRListener.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MFW3D_Content.cpp">
+    <ClCompile Include="MFW3D_InputMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MFW3D_MgrContext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MFW3D_AdRender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MFW3D_UIMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MFW3D_CameraController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MFW_Trays.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MFW3D_Input.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MFW3D_ApplicationContext.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MFW3D_CameraMan.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MFW3D_AdvancedRenderControls.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MFW3D_SceneMgr.h">
@@ -83,10 +68,19 @@
     <ClInclude Include="MFW3D_SGTRListener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MFW3D_Content.h">
+    <ClInclude Include="MFW3D_InputMgr.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MFW3D_InputListener.h">
+    <ClInclude Include="MFW3D_MgrContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MFW3D_AdRender.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MFW3D_UIMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MFW3D_CameraController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

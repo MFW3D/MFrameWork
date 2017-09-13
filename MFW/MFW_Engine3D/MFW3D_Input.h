@@ -131,8 +131,8 @@ namespace Ogre {
 }
 
 namespace MFW3D {
-struct  InputListener {
-    virtual ~InputListener() {}
+struct  MFW3D_InputListener {
+    virtual ~MFW3D_InputListener() {}
     virtual void frameRendered(const Ogre::FrameEvent& evt) { }
     virtual bool keyPressed(const KeyboardEvent& evt) { return true;}
     virtual bool keyReleased(const KeyboardEvent& evt) { return true; }

@@ -133,33 +133,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="DotSceneLoader.cpp" />
-    <ClCompile Include="MFW3D_AdvancedRenderControls.cpp" />
-    <ClCompile Include="MFW3D_ApplicationContext.cpp" />
+    <ClCompile Include="MFW3D_AdRender.cpp" />
+    <ClCompile Include="MFW3D_MgrContext.cpp" />
     <ClCompile Include="MFW3D_Base.cpp" />
-    <ClCompile Include="MFW3D_CameraMan.cpp" />
-    <ClCompile Include="MFW3D_Content.cpp" />
+    <ClCompile Include="MFW3D_CameraController.cpp" />
     <ClCompile Include="MFW3D_SceneBase.cpp" />
     <ClCompile Include="MFW3D_SceneMgr.cpp" />
+    <ClCompile Include="MFW3D_InputMgr.cpp" />
     <ClCompile Include="MFW3D_SGTRListener.cpp" />
-    <ClCompile Include="MFW_Trays.cpp" />
+    <ClCompile Include="MFW3D_UIMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DotSceneLoader.h" />
-    <ClInclude Include="MFW3D_AdvancedRenderControls.h" />
-    <ClInclude Include="MFW3D_ApplicationContext.h" />
+    <ClInclude Include="MFW3D_AdRender.h" />
+    <ClInclude Include="MFW3D_MgrContext.h" />
     <ClInclude Include="MFW3D_Base.h" />
-    <ClInclude Include="MFW3D_CameraMan.h" />
-    <ClInclude Include="MFW3D_Content.h" />
+    <ClInclude Include="MFW3D_CameraController.h" />
     <ClInclude Include="MFW3D_Input.h" />
-    <ClInclude Include="MFW3D_InputListener.h" />
     <ClInclude Include="MFW3D_SceneBase.h" />
     <ClInclude Include="MFW3D_SceneMgr.h" />
+    <ClInclude Include="MFW3D_InputMgr.h" />
     <ClInclude Include="MFW3D_SGTRListener.h" />
-    <ClInclude Include="MFW_Trays.h" />
+    <ClInclude Include="MFW3D_UIMgr.h" />
     <ClInclude Include="rapidxml.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

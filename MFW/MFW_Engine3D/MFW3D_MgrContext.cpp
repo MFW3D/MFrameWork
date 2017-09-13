@@ -1,4 +1,4 @@
-﻿#include "MFW3D_ApplicationContext.h"
+﻿#include "MFW3D_MgrContext.h"
 
 #include "OgreRoot.h"
 #include "OgreGpuProgramManager.h"
@@ -8,11 +8,7 @@
 #include "OgreOverlaySystem.h"
 #include "OgreDataStream.h"
 #include "OgreConfigDialog.h"
-
-#if OGRE_BITES_HAVE_SDL
-#include <SDL_video.h>
-#include <SDL_syswm.h>
-#endif
+#include "MFW3D_InputMgr.h"
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_ANDROID
 #include "OgreArchiveManager.h"
@@ -24,7 +20,7 @@ namespace MFW3D {
 
 	static const char* SHADER_CACHE_FILENAME = "cache.bin";
 
-	ApplicationContext::ApplicationContext(const Ogre::String& appName, bool grabInput)
+	MFW3D_MgrContext::MFW3D_MgrContext(const Ogre::String& appName, bool grabInput)
 #if (OGRE_THREAD_PROVIDER == 3) && (OGRE_NO_TBB_SCHEDULER == 1)
 		: mTaskScheduler(tbb::task_scheduler_init::deferred)
 #endif
@@ -35,7 +31,6 @@ namespace MFW3D {
 		mRoot = NULL;
 		mWindow = NULL;
 		mOverlaySystem = NULL;
-		mSDLWindow = NULL;
 		mFirstRun = true;
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_ANDROID
@@ -50,12 +45,12 @@ namespace MFW3D {
 #endif
 	}
 
-	ApplicationContext::~ApplicationContext()
+	MFW3D_MgrContext::~MFW3D_MgrContext()
 	{
 		delete mFSLayer;
 	}
 
-	void ApplicationContext::initApp()
+	void MFW3D_MgrContext::initApp()
 	{
 		setlocale(LC_ALL, "Chinese-simplified");
 		createRoot();
@@ -84,12 +79,10 @@ namespace MFW3D {
 		// if the context was reconfigured, set requested renderer
 		if (!mFirstRun) mRoot->setRenderSystem(mRoot->getRenderSystemByName(mNextRenderer));
 #endif
-		//maomao
-		//setup();
 #endif
 	}
 
-	void ApplicationContext::closeApp()
+	void MFW3D_MgrContext::closeApp()
 	{
 #if OGRE_PLATFORM != OGRE_PLATFORM_ANDROID
 		mRoot->saveConfig();
@@ -107,7 +100,7 @@ namespace MFW3D {
 #endif
 	}
 
-	bool ApplicationContext::initialiseRTShaderSystem()
+	bool MFW3D_MgrContext::initialiseRTShaderSystem()
 	{
 #ifdef OGRE_BUILD_COMPONENT_RTSHADERSYSTEM
 		if (Ogre::RTShader::ShaderGenerator::initialize())
@@ -122,7 +115,7 @@ namespace MFW3D {
 
 			// Create and register the material manager listener if it doesn't exist yet.
 			if (!mMaterialMgrListener) {
-				mMaterialMgrListener = new SGTRListener(mShaderGenerator);
+				mMaterialMgrListener = new MFW3D_SGTRListener(mShaderGenerator);
 				Ogre::MaterialManager::getSingleton().addListener(mMaterialMgrListener);
 			}
 		}
@@ -133,7 +126,7 @@ namespace MFW3D {
 #endif
 	}
 
-	void ApplicationContext::setRTSSWriteShadersToDisk(bool write)
+	void MFW3D_MgrContext::setRTSSWriteShadersToDisk(bool write)
 	{
 #ifdef OGRE_BUILD_COMPONENT_RTSHADERSYSTEM
 		if (!write) {
@@ -152,7 +145,7 @@ namespace MFW3D {
 #endif
 	}
 
-	void ApplicationContext::destroyRTShaderSystem()
+	void MFW3D_MgrContext::destroyRTShaderSystem()
 	{
 #ifdef OGRE_BUILD_COMPONENT_RTSHADERSYSTEM
 		//mShaderGenerator->removeAllShaderBasedTechniques();
@@ -178,7 +171,7 @@ namespace MFW3D {
 #endif
 	}
 
-	void ApplicationContext::setup(bool UseSdl)
+	void MFW3D_MgrContext::setup(bool UseSdl)
 	{
 		//maomao
 		//mWindow = createWindow();
@@ -200,7 +193,7 @@ namespace MFW3D {
 #endif
 	}
 
-	void ApplicationContext::createRoot()
+	void MFW3D_MgrContext::createRoot()
 	{
 #if (OGRE_THREAD_PROVIDER == 3) && (OGRE_NO_TBB_SCHEDULER == 1)
 		mTaskScheduler.initialize(OGRE_THREAD_HARDWARE_CONCURRENCY);
@@ -220,7 +213,7 @@ namespace MFW3D {
 		mOverlaySystem = OGRE_NEW Ogre::OverlaySystem();
 	}
 
-	bool ApplicationContext::oneTimeConfig()
+	bool MFW3D_MgrContext::oneTimeConfig()
 	{
 #if OGRE_PLATFORM == OGRE_PLATFORM_ANDROID || OGRE_PLATFORM == OGRE_PLATFORM_EMSCRIPTEN
 		mRoot->setRenderSystem(mRoot->getAvailableRenderers().at(0));
@@ -237,7 +230,7 @@ namespace MFW3D {
 		return true;
 	}
 
-	void ApplicationContext::createDummyScene()
+	void MFW3D_MgrContext::createDummyScene()
 	{
 		mWindow->removeAllViewports();
 		Ogre::SceneManager* sm = mRoot->createSceneManager(Ogre::ST_GENERIC, "DummyScene");
@@ -258,7 +251,7 @@ namespace MFW3D {
 #endif // OGRE_BUILD_COMPONENT_RTSHADERSYSTEM
 	}
 
-	void ApplicationContext::destroyDummyScene()
+	void MFW3D_MgrContext::destroyDummyScene()
 	{
 		if (!mRoot->hasSceneManager("DummyScene"))
 			return;
@@ -272,7 +265,7 @@ namespace MFW3D {
 		mRoot->destroySceneManager(dummyScene);
 	}
 
-	void ApplicationContext::enableShaderCache() const
+	void MFW3D_MgrContext::enableShaderCache() const
 	{
 		Ogre::GpuProgramManager::getSingleton().setSaveMicrocodesToCache(true);
 
@@ -287,17 +280,13 @@ namespace MFW3D {
 		}
 	}
 
-	bool ApplicationContext::frameRenderingQueued(const Ogre::FrameEvent& evt)
+	bool MFW3D_MgrContext::frameRenderingQueued(const Ogre::FrameEvent& evt)
 	{
-		for (std::set<InputListener*>::iterator it = mInputListeners.begin();
-			it != mInputListeners.end(); ++it) {
-			(*it)->frameRendered(evt);
-		}
-
+		MFW3D_InputMgr::GetInstance()->FrameRenderQueue(evt);
 		return true;
 	}
 
-	Ogre::RenderWindow *ApplicationContext::createWindow()
+	Ogre::RenderWindow *MFW3D_MgrContext::createWindow()
 	{
 		mRoot->initialise(false, mAppName);
 		Ogre::NameValuePairList miscParams;
@@ -315,9 +304,7 @@ namespace MFW3D {
 		return Ogre::Root::getSingleton().createRenderWindow(mAppName, 0, 0, false, &miscParams);
 #else
 		Ogre::ConfigOptionMap ropts = mRoot->getRenderSystem()->getConfigOptions();
-
 		Ogre::uint32 w, h;
-
 		std::istringstream mode(ropts["Video Mode"].currentValue);
 		Ogre::String token;
 		mode >> w; // width
@@ -326,36 +313,14 @@ namespace MFW3D {
 
 		miscParams["FSAA"] = ropts["FSAA"].currentValue;
 		miscParams["vsync"] = ropts["VSync"].currentValue;
-
-#if OGRE_BITES_HAVE_SDL
-		if (!SDL_WasInit(SDL_INIT_VIDEO)) {
-			SDL_InitSubSystem(SDL_INIT_VIDEO);
-		}
-
-		mSDLWindow = SDL_CreateWindow(mAppName.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, SDL_WINDOW_RESIZABLE);
-
-#if OGRE_PLATFORM == OGRE_PLATFORM_EMSCRIPTEN
-		SDL_GL_CreateContext(mSDLWindow);
-		miscParams["currentGLContext"] = "true";
-#else
-		SDL_SysWMinfo wmInfo;
-		SDL_VERSION(&wmInfo.version);
-		SDL_GetWindowWMInfo(mSDLWindow, &wmInfo);
-#endif
-
-#if OGRE_PLATFORM == OGRE_PLATFORM_LINUX
-		miscParams["parentWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.x11.window));
-#elif OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-		miscParams["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.win.window));
-#elif OGRE_PLATFORM == OGRE_PLATFORM_APPLE
-		assert(wmInfo.subsystem == SDL_SYSWM_COCOA);
-		miscParams["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.cocoa.window));
-#endif
-#endif
-		return mWindow = mRoot->createRenderWindow(mAppName, w, h, false, &miscParams);
+		SDL_SysWMinfo mWindowInfo = MFW3D_InputMgr::GetInstance()->InitWindow(mAppName, mRoot);
+		miscParams["externalWindowHandle"] = Ogre::StringConverter::toString((int)mWindowInfo.info.dummy);
+		mWindow = mRoot->createRenderWindow(mAppName, w, h, false, &miscParams);
+		MFW3D_InputMgr::GetInstance()->init(mWindow, std::bind(&MFW3D_MgrContext::windowResized, this, std::placeholders::_1));
+		return mWindow;
 #endif
 	}
-	Ogre::RenderWindow * ApplicationContext::createWindow(HWND m_hWnd, int width, int height)
+	Ogre::RenderWindow * MFW3D_MgrContext::createWindow(HWND m_hWnd, int width, int height)
 	{
 		mRoot->initialise(false, mAppName);//禁止ogre创建新的渲染窗口，而使用MFC的窗口
 		Ogre::NameValuePairList miscParams;
@@ -441,69 +406,16 @@ namespace MFW3D {
 		}
 
 		_fireInputEvent(evt);
-	}
+}
 #endif
 
-	void ApplicationContext::_fireInputEvent(const Event& event) const
-	{
-		for (std::set<InputListener*>::iterator it = mInputListeners.begin();
-			it != mInputListeners.end(); ++it) {
-			InputListener& l = **it;
 
-			switch (event.type)
-			{
-			case SDL_KEYDOWN:
-				// Ignore repeated signals from key being held down.
-				if (event.key.repeat) break;
-				l.keyPressed(event.key);
-				break;
-			case SDL_KEYUP:
-				l.keyReleased(event.key);
-				break;
-			case SDL_MOUSEBUTTONDOWN:
-				l.mousePressed(event.button);
-				break;
-			case SDL_MOUSEBUTTONUP:
-				l.mouseReleased(event.button);
-				break;
-			case SDL_MOUSEWHEEL:
-				l.mouseWheelRolled(event.wheel);
-				break;
-			case SDL_MOUSEMOTION:
-				l.mouseMoved(event.motion);
-				break;
-			case SDL_FINGERDOWN:
-				// for finger down we have to move the pointer first
-				l.touchMoved(event.tfinger);
-				l.touchPressed(event.tfinger);
-				break;
-			case SDL_FINGERUP:
-				l.touchReleased(event.tfinger);
-				break;
-			case SDL_FINGERMOTION:
-				l.touchMoved(event.tfinger);
-				break;
-			}
-		}
+	void MFW3D_MgrContext::setupInput(bool _grab)
+	{
+		MFW3D_InputMgr::GetInstance()->SetupWindow(_grab);
 	}
 
-	void ApplicationContext::setupInput(bool _grab)
-	{
-#if OGRE_BITES_HAVE_SDL
-		if (!mSDLWindow)
-		{
-			OGRE_EXCEPT(Ogre::Exception::ERR_INVALID_STATE,
-				"you must create a SDL window first",
-				"SampleContext::setupInput");
-		}
-		SDL_ShowCursor(SDL_FALSE);
-		SDL_bool grab = SDL_bool(_grab);
-		SDL_SetWindowGrab(mSDLWindow, grab);
-		SDL_SetRelativeMouseMode(grab);
-#endif
-	}
-
-	void ApplicationContext::locateResources()
+	void MFW3D_MgrContext::locateResources()
 	{
 #if OGRE_PLATFORM == OGRE_PLATFORM_NACL
 		Ogre::ResourceGroupManager::getSingleton().addResourceLocation("Essential.zip", "EmbeddedZip", "Essential");
@@ -621,14 +533,14 @@ namespace MFW3D {
 		}
 #endif /* OGRE_BUILD_COMPONENT_RTSHADERSYSTEM */
 #endif /* OGRE_PLATFORM == OGRE_PLATFORM_NACL */
-	}
+		}
 
-	void ApplicationContext::loadResources()
+	void MFW3D_MgrContext::loadResources()
 	{
 		Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 	}
 
-	void ApplicationContext::reconfigure(const Ogre::String &renderer, Ogre::NameValuePairList &options)
+	void MFW3D_MgrContext::reconfigure(const Ogre::String &renderer, Ogre::NameValuePairList &options)
 	{
 		mNextRenderer = renderer;
 		Ogre::RenderSystem* rs = mRoot->getRenderSystemByName(renderer);
@@ -648,18 +560,18 @@ namespace MFW3D {
 					mWindow->getViewport(0)->setOrientationMode(Ogre::OR_LANDSCAPERIGHT, true);
 				else if (it->second == "Portrait")
 					mWindow->getViewport(0)->setOrientationMode(Ogre::OR_PORTRAIT, true);
-			}
-#endif
 		}
+#endif
+	}
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_APPLE_IOS
 		// Need to save the config on iOS to make sure that changes are kept on disk
 		mRoot->saveConfig();
 #endif
 		mRoot->queueEndRendering();   // break from render loop
-	}
+		}
 
-	void ApplicationContext::shutdown()
+	void MFW3D_MgrContext::shutdown()
 	{
 		if (Ogre::GpuProgramManager::getSingleton().isCacheDirty())
 		{
@@ -690,47 +602,13 @@ namespace MFW3D {
 		{
 			OGRE_DELETE mOverlaySystem;
 		}
-
-#if OGRE_BITES_HAVE_SDL
-		if (mSDLWindow) {
-			SDL_DestroyWindow(mSDLWindow);
-			SDL_QuitSubSystem(SDL_INIT_VIDEO);
-			mSDLWindow = NULL;
-		}
-#endif
-
 #if OGRE_PLATFORM == OGRE_PLATFORM_ANDROID
 		AConfiguration_delete(mAConfig);
 #endif
-	}
+		}
 
-	void ApplicationContext::pollEvents()
+	void MFW3D_MgrContext::pollEvents()
 	{
-#if OGRE_BITES_HAVE_SDL
-		if (!mSDLWindow)
-		{
-			return;
-		}
-
-		SDL_Event event;
-		while (SDL_PollEvent(&event))
-		{
-			switch (event.type)
-			{
-			case SDL_QUIT:
-				mRoot->queueEndRendering();
-				break;
-			case SDL_WINDOWEVENT:
-				if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
-					mWindow->resize(event.window.data1, event.window.data2);
-					windowResized(mWindow);
-				}
-				break;
-			default:
-				_fireInputEvent(event);
-				break;
-			}
-		}
-#endif
+		MFW3D_InputMgr::GetInstance()->PollEvent();
 	}
-}
+	}
