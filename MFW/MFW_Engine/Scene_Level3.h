@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "MFW3D_SceneBase.h"
 #include "MaterialControls.h"
 #include "OgreBillboard.h"

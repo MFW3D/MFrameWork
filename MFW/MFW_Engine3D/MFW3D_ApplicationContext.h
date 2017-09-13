@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "OgreBitesPrerequisites.h"
 #include "OgreBuildSettings.h"
@@ -6,10 +6,9 @@
 #include "OgrePlugin.h"
 #include "OgreFileSystemLayer.h"
 #include "OgreFrameListener.h"
-#include "MFW3D_PluginLoader.h"
 
 #ifdef OGRE_BUILD_COMPONENT_RTSHADERSYSTEM
-#include "MFW3D_SGTechniqueResolverListener.h"
+#include "MFW3D_SGTRListener.h"
 #endif 
 // forward declarations
 extern "C" struct SDL_Window;
@@ -57,13 +56,13 @@ namespace MFW3D
         Ogre::OverlaySystem* getOverlaySystem() const {
             return mOverlaySystem;
         }
-        //³õÊ¼»¯äÖÈ¾ÏµÍ³ºÍ×ÊÔ´
+        //åˆå§‹åŒ–æ¸²æŸ“ç³»ç»Ÿå’Œèµ„æº
         void initApp();
 #if OGRE_PLATFORM == OGRE_PLATFORM_ANDROID
         void initAppForAndroid(AAssetManager* assetMgr, ANativeWindow* window);
         void _fireInputEventAndroid(AInputEvent* event, int wheel = 0);
 #endif
-		//¹Ø±Õapp
+		//å…³é—­app
 		void closeApp();
         virtual bool frameStarted(const Ogre::FrameEvent& evt) {
             pollEvents();
@@ -81,25 +80,25 @@ namespace MFW3D
         bool initialiseRTShaderSystem();
         void setRTSSWriteShadersToDisk(bool write);
         void destroyRTShaderSystem();
-		//ÉèÖÃÄÚÈİ
+		//è®¾ç½®å†…å®¹
 		virtual void setup(bool UseSdl=true);
-		//´´½¨ogre¸ù½Úµã
+		//åˆ›å»ºogreæ ¹èŠ‚ç‚¹
         virtual void createRoot();
-		//Ö»½øĞĞÒ»´ÎµÄÅäÖÃ
+		//åªè¿›è¡Œä¸€æ¬¡çš„é…ç½®
         virtual bool oneTimeConfig();
-		//ÉèÖÃSDLµÄÅäÖÃ
+		//è®¾ç½®SDLçš„é…ç½®
         virtual void setupInput(bool grab);
-		//ÉèÖÃ×ÊÔ´µÄ¼ÓÔØÂ·¾¶£¬Ä¬ÈÏÎªÅäÖÃµÄÂ·¾¶£¬Ò²¿ÉÒÔ×Ô¼º¶¨Òå
+		//è®¾ç½®èµ„æºçš„åŠ è½½è·¯å¾„ï¼Œé»˜è®¤ä¸ºé…ç½®çš„è·¯å¾„ï¼Œä¹Ÿå¯ä»¥è‡ªå·±å®šä¹‰
         virtual void locateResources();
         virtual void loadResources();
         virtual void reconfigure(const Ogre::String& renderer, Ogre::NameValuePairList& options);
-		//¹Ø±Õ
+		//å…³é—­
         virtual void shutdown();
-		//×ª·¢´°¿ÚÊÂ¼ş
+		//è½¬å‘çª—å£äº‹ä»¶
         void pollEvents();
-		//´´½¨ÑùÆ·³¡¾°
+		//åˆ›å»ºæ ·å“åœºæ™¯
         void createDummyScene();
-		//Ïú»ÙÑùÆ·³¡¾°
+		//é”€æ¯æ ·å“åœºæ™¯
         void destroyDummyScene();
         void enableShaderCache() const;
         void addInputListener(InputListener* lis) {
@@ -109,9 +108,9 @@ namespace MFW3D
             mInputListeners.erase(lis);
         }
     protected:
-		//´´½¨Ò»¸ö´°¿Ú£¬±ØĞëÊÇsdlµÄ·ñÔòsdlÎŞ·¨½ÓÊÕµ½ÏûÏ¢ÊÂ¼ş
+		//åˆ›å»ºä¸€ä¸ªçª—å£ï¼Œå¿…é¡»æ˜¯sdlçš„å¦åˆ™sdlæ— æ³•æ¥æ”¶åˆ°æ¶ˆæ¯äº‹ä»¶
         virtual Ogre::RenderWindow* createWindow();
-		//´´½¨×Ô¶¨ÒåµÄ´°¿Ú
+		//åˆ›å»ºè‡ªå®šä¹‰çš„çª—å£
 		virtual Ogre::RenderWindow * createWindow(HWND m_hWnd, int width, int height);
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_ANDROID
@@ -127,7 +126,6 @@ namespace MFW3D
         Ogre::OverlaySystem* mOverlaySystem;  // Overlay system
         Ogre::FileSystemLayer* mFSLayer; // File system abstraction layer
         Ogre::Root* mRoot;              // OGRE root
-        MFW3D_PluginLoader mStaticPluginLoader;
         bool mGrabInput;
         bool mFirstRun;
         Ogre::String mNextRenderer;     // name of renderer used for next run
@@ -138,7 +136,7 @@ namespace MFW3D
         std::set<InputListener*> mInputListeners;
 #ifdef OGRE_BUILD_COMPONENT_RTSHADERSYSTEM
         Ogre::RTShader::ShaderGenerator*       mShaderGenerator; // The Shader generator instance.
-        SGTechniqueResolverListener*       mMaterialMgrListener; // Shader generator material manager listener.
+        SGTRListener*       mMaterialMgrListener; // Shader generator material manager listener.
         Ogre::String                           mRTShaderLibPath;
 #endif // INCLUDE_RTSHADER_SYSTEM
     };

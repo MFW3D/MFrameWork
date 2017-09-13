@@ -1,4 +1,4 @@
-#include "MFW_Trays.h"
+﻿#include "MFW_Trays.h"
 
 #if OGRE_UNICODE_SUPPORT
 #   if  OGRE_STRING_USE_CUSTOM_MEMORY_ALLOCATOR

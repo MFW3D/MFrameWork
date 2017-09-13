@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "MFW3D_ApplicationContext.h"
 #include "MFW3D_Base.h"
 #include "Ogre.h"
@@ -45,10 +45,10 @@ namespace MFW3D
 			Ogre::NameValuePairList& options);
 		virtual void recoverLastScene();
 		virtual void shutdown();
-		MFW3D_Base* mCurrentScene;			// µ±Ç°ÔËĞĞµÄ³¡¾°
-        bool mScenePaused;					// µ±Ç°³¡¾°ÊÇ·ñÔİÍ£
-        bool mLastRun;						// ÊÇ·ñÊÇµÚÒ»´ÎÔËĞĞ³¡¾°
-		MFW3D_Base* mLastScene;				// ÖØĞÂ¼ÓÔØÅäÖÃºóµÄ³¡×îºóÒ»¸öÔËĞĞ³¡¾°
-        Ogre::NameValuePairList mLastSampleState;     // ×îºóÒ»¸ö³¡¾°µÄ×´Ì¬
+		MFW3D_Base* mCurrentScene;			// å½“å‰è¿è¡Œçš„åœºæ™¯
+        bool mScenePaused;					// å½“å‰åœºæ™¯æ˜¯å¦æš‚åœ
+        bool mLastRun;						// æ˜¯å¦æ˜¯ç¬¬ä¸€æ¬¡è¿è¡Œåœºæ™¯
+		MFW3D_Base* mLastScene;				// é‡æ–°åŠ è½½é…ç½®åçš„åœºæœ€åä¸€ä¸ªè¿è¡Œåœºæ™¯
+        Ogre::NameValuePairList mLastSampleState;     // æœ€åä¸€ä¸ªåœºæ™¯çš„çŠ¶æ€
     };
 }

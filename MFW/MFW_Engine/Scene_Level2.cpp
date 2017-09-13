@@ -1,4 +1,4 @@
-#include "Scene_Level2.h"
+ï»¿#include "Scene_Level2.h"
 
 /**********************************************************************
 Static declarations
@@ -49,7 +49,7 @@ Ogre::SceneNode* mLightPivots[NUM_LIGHTS];
 
 Scene_Level2::Scene_Level2()
 {
-	mInfo["Title"] = "´óº£";
+	mInfo["Title"] = "å¤§æµ·";
 	mInfo["Description"] = "An example demonstrating ocean rendering using shaders.";
 	mInfo["Thumbnail"] = "thumb_ocean.png";
 	mInfo["Category"] = "Environment";

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "MFW3D_SceneBase.h"
 #include "Hydrax.h"
 #include "Perlin.h"

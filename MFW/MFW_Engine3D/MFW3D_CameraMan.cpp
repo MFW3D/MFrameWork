@@ -1,4 +1,4 @@
-#include "MFW3D_CameraMan.h"
+﻿#include "MFW3D_CameraMan.h"
 #include "OgreSceneManager.h"
 
 namespace MFW3D {

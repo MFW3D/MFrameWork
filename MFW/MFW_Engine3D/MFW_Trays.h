@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "OgreBitesPrerequisites.h"
 #include "OgreOverlay.h"
 #include "OgreOverlaySystem.h"
@@ -14,7 +14,7 @@
 #include <iomanip>
 namespace MFW3D
 {
-	//ÃªµãÎ»ÖÃ
+	//é”šç‚¹ä½ç½®
     enum TrayLocation   
     {
         TL_TOPLEFT,
@@ -28,7 +28,7 @@ namespace MFW3D
         TL_BOTTOMRIGHT,
         TL_NONE
     };
-	//°´Å¥×´Ì¬
+	//æŒ‰é’®çŠ¶æ€
     enum ButtonState  
     {
         BS_UP,
@@ -41,7 +41,7 @@ namespace MFW3D
     class Label;
     class Slider;
     class CheckBox;
-	//½çÃæÊÂ¼þ
+	//ç•Œé¢äº‹ä»¶
     class  TrayListener
     {
     public:
@@ -60,15 +60,15 @@ namespace MFW3D
         Widget();
         virtual ~Widget() {}
         void cleanup();
-        //µÝ¹éµÄÉ¾³ý¿Ø¼þ¿ÌÏÂÃæµÄËùÓÐ×Ó¿Ø¼þ
+        //é€’å½’çš„åˆ é™¤æŽ§ä»¶åˆ»ä¸‹é¢çš„æ‰€æœ‰å­æŽ§ä»¶
         static void nukeOverlayElement(Ogre::OverlayElement* element);
-		//¼ì²é¹â±êÊÇ·ñÔÚ¿Ø¼þÉÏÃæ
+		//æ£€æŸ¥å…‰æ ‡æ˜¯å¦åœ¨æŽ§ä»¶ä¸Šé¢
         static bool isCursorOver(Ogre::OverlayElement* element, const Ogre::Vector2& cursorPos, Ogre::Real voidBorder = 0);
-		//¹â±êÔÚ¿Ø¼þÉÏµÄÎ»ÒÆ
+		//å…‰æ ‡åœ¨æŽ§ä»¶ä¸Šçš„ä½ç§»
         static Ogre::Vector2 cursorOffset(Ogre::OverlayElement* element, const Ogre::Vector2& cursorPos);
-		//»ñÈ¡ÃëÊýÎÄ×ÖµÄ¿í¶È
+		//èŽ·å–ç§’æ•°æ–‡å­—çš„å®½åº¦
         static Ogre::Real getCaptionWidth(const Ogre::DisplayString& caption, Ogre::TextAreaOverlayElement* area);
-		//½ØÈ¡ÎÄ×ÖÀ´ÊÊÓ¦¿í¶È
+		//æˆªå–æ–‡å­—æ¥é€‚åº”å®½åº¦
         static void fitCaptionToArea(const Ogre::DisplayString& caption, Ogre::TextAreaOverlayElement* area, Ogre::Real maxWidth);
         Ogre::OverlayElement* getOverlayElement()
         {
@@ -98,7 +98,7 @@ namespace MFW3D
         virtual void _cursorReleased(const Ogre::Vector2& cursorPos) {}
         virtual void _cursorMoved(const Ogre::Vector2& cursorPos, float wheelDelta) {}
         virtual void _focusLost() {}
-		//²»Ö±½Óµ÷ÓÃ
+		//ä¸ç›´æŽ¥è°ƒç”¨
 		void _assignToTray(TrayLocation trayLoc) { mTrayLoc = trayLoc; }
         void _assignListener(TrayListener* listener) { mListener = listener; }
     protected:
@@ -111,7 +111,7 @@ namespace MFW3D
     class  Button : public Widget
     {
     public:
-        //Ê¹ÓÃtrayManager´´½¨¿Ø¼þ
+        //ä½¿ç”¨trayManageråˆ›å»ºæŽ§ä»¶
         Button(const Ogre::String& name, const Ogre::DisplayString& caption, Ogre::Real width);
         virtual ~Button() {}
         const Ogre::DisplayString& getCaption()
@@ -450,14 +450,14 @@ namespace MFW3D
     class  TrayManager : public TrayListener, public Ogre::ResourceGroupListener, public InputListener
     {
     public:
-		//´´½¨trayManager
+		//åˆ›å»ºtrayManager
         TrayManager(const Ogre::String& name, Ogre::RenderWindow* window, TrayListener* listener = 0);
         virtual ~TrayManager();
-		//½«ÆÁÄ»×ø±ê×ªÎªÈýÎ¬×ø±ê
+		//å°†å±å¹•åæ ‡è½¬ä¸ºä¸‰ç»´åæ ‡
 		static Ogre::Ray screenToScene(Ogre::Camera* cam, const Ogre::Vector2& pt);
-		//½«ÈýÎ¬×ø±ê×ªÎªÆÁÄ»×ø±ê
+		//å°†ä¸‰ç»´åæ ‡è½¬ä¸ºå±å¹•åæ ‡
         static Ogre::Vector2 sceneToScreen(Ogre::Camera* cam, const Ogre::Vector3& pt);
-		//»ñÈ¡½çÃæÔªËØ
+		//èŽ·å–ç•Œé¢å…ƒç´ 
         Ogre::OverlayContainer* getTrayContainer(TrayLocation trayLoc) { return mTrays[trayLoc]; }
         Ogre::Overlay* getBackdropLayer() { return mBackdropLayer; }
         Ogre::Overlay* getTraysLayer() { return mTraysLayer; }
@@ -465,7 +465,7 @@ namespace MFW3D
         Ogre::OverlayContainer* getBackdropContainer() { return mBackdrop; }
         Ogre::OverlayContainer* getCursorContainer() { return mCursor; }
         Ogre::OverlayElement* getCursorImage() { return mCursor->getChild(mCursor->getName() + "/CursorImage"); }
-		//ÉèÖÃÊÂ¼þ¼àÌý
+		//è®¾ç½®äº‹ä»¶ç›‘å¬
         void setListener(TrayListener* listener)
         {
             mListener = listener;
@@ -476,13 +476,13 @@ namespace MFW3D
         }
         void showAll();
         void hideAll();
-		//ÏÔÊ¾±³¾°
+		//æ˜¾ç¤ºèƒŒæ™¯
         void showBackdrop(const Ogre::String& materialName = Ogre::BLANKSTRING);
         void hideBackdrop()
         {
             mBackdropLayer->hide();
         }
-		//ÏÔÊ¾¹â±ê
+		//æ˜¾ç¤ºå…‰æ ‡
 		void showCursor(const Ogre::String& materialName = Ogre::BLANKSTRING);
         void hideCursor();
         void refreshCursor();

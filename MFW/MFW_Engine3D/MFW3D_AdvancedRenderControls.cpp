@@ -1,4 +1,4 @@
-#include "MFW3D_AdvancedRenderControls.h"
+﻿#include "MFW3D_AdvancedRenderControls.h"
 #include <OgreTextureManager.h>
 #include <OgreMaterialManager.h>
 

@@ -7,7 +7,7 @@
 /*
 解决tcp消息的黏包，拆包，组包问题
 */
-class NetTcpMsgBuilder:public Singleton<NetTcpMsgBuilder>
+class NetTcpMsgBuilder:public MFW::Singleton<NetTcpMsgBuilder>
 {
 public:
 

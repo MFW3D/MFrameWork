@@ -1,4 +1,4 @@
-#include "MFW3D_SceneBase.h"
+ï»¿#include "MFW3D_SceneBase.h"
 
 namespace MFW3D
 {
@@ -165,7 +165,7 @@ namespace MFW3D
 		loadResources();
 		mResourcesLoaded = true;
 
-		//mTrayMgr->showFrameStats(TL_BOTTOMLEFT);
+		mTrayMgr->showFrameStats(TL_BOTTOMLEFT);
 		//mTrayMgr->showLogo(TL_BOTTOMRIGHT);
 		//mTrayMgr->hideCursor();
 		//mTrayMgr->createLabel(MFW3D::TL_BOTTOM, "title", "bast scene", 50);
@@ -193,7 +193,7 @@ namespace MFW3D
 		mCamera->setAspectRatio((Ogre::Real)mViewport->getActualWidth() / (Ogre::Real)mViewport->getActualHeight());
 		mCamera->setAutoAspectRatio(true);
 		mCamera->setNearClipDistance(5);
-		// ÉèÖÃ»ù´¡µÄcamera¿ØÖÆÆ÷
+		// è®¾ç½®åŸºç¡€çš„cameraæ§åˆ¶å™¨
 		mCameraMan = new MFW3D::CameraMan(mCameraNode);  
 	}
 	 void MFW3D_SceneBase::setDragLook(bool enabled)

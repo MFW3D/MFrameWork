@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "OgreBitesPrerequisites.h"
 #include "OgreCamera.h"
@@ -6,7 +6,7 @@
 #include "OgreFrameListener.h"
 #include "MFW3D_Input.h"
 /*
-Ïà»ú¿ØÖÆ
+ç›¸æœºæŽ§åˆ¶
 */
 namespace MFW3D
 {
@@ -22,7 +22,7 @@ namespace MFW3D
     public:
         CameraMan(Ogre::SceneNode* cam);
 
-        //¸ü¸ÄÖ÷Ïà»ú
+        //æ›´æ”¹ä¸»ç›¸æœº
         void setCamera(Ogre::SceneNode* cam);
         Ogre::SceneNode* getCamera()
         {

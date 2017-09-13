@@ -1,4 +1,4 @@
-#include "Scene_Level1.h"
+﻿#include "Scene_Level1.h"
 float seed_ = 801;
 float rnd_(const float& min, const float& max)
 {

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "OgreRoot.h"
 #include "OgreOverlaySystem.h"
@@ -15,7 +15,7 @@
 #endif
 
 /*
-ÉèÖÃ±£´æ³¡¾°ÖĞµÄĞÅÏ¢,´´½¨³¡¾°¹ÜÀíÆ÷
+è®¾ç½®ä¿å­˜åœºæ™¯ä¸­çš„ä¿¡æ¯,åˆ›å»ºåœºæ™¯ç®¡ç†å™¨
 */
 
 namespace MFW3D
@@ -75,15 +75,15 @@ namespace MFW3D
 		virtual void setupContent();
 		virtual void cleanupContent();
 		virtual void unloadResources();
-        Ogre::Root* mRoot;                // OGREµÄ¸ù½Úµã
-        Ogre::OverlaySystem* mOverlaySystem; // UIÏµÍ³
-        Ogre::RenderWindow* mWindow;      // ÄÚÈİäÖÈ¾´°¿Ú
-        Ogre::FileSystemLayer* mFSLayer;          // ÎÄ¼şÏµÍ³³éÏó²ã
-        Ogre::SceneManager* mSceneMgr;    // Õâ¸öÀı×ÓµÄ³¡¾°¹ÜÀíÆ÷
-        Ogre::NameValuePairList mInfo;    // ×Ô¶¨ÒåĞÅÏ¢
-        bool mDone;                       //±ê¼Ç³¡¾°½áÊø
-        bool mResourcesLoaded;    // ×ÊÔ´ÊÇ·ñ¼ÓÔØ
-        bool mContentSetup;       // ³¡¾°ÊÇ·ñ´´½¨
+        Ogre::Root* mRoot;                // OGREçš„æ ¹èŠ‚ç‚¹
+        Ogre::OverlaySystem* mOverlaySystem; // UIç³»ç»Ÿ
+        Ogre::RenderWindow* mWindow;      // å†…å®¹æ¸²æŸ“çª—å£
+        Ogre::FileSystemLayer* mFSLayer;          // æ–‡ä»¶ç³»ç»ŸæŠ½è±¡å±‚
+        Ogre::SceneManager* mSceneMgr;    // è¿™ä¸ªä¾‹å­çš„åœºæ™¯ç®¡ç†å™¨
+        Ogre::NameValuePairList mInfo;    // è‡ªå®šä¹‰ä¿¡æ¯
+        bool mDone;                       //æ ‡è®°åœºæ™¯ç»“æŸ
+        bool mResourcesLoaded;    // èµ„æºæ˜¯å¦åŠ è½½
+        bool mContentSetup;       // åœºæ™¯æ˜¯å¦åˆ›å»º
 #ifdef INCLUDE_RTSHADER_SYSTEM
 		Ogre::RTShader::ShaderGenerator*            mShaderGenerator;           // The Shader generator instance.
 	public:

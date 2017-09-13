@@ -1,4 +1,4 @@
-#include "MFW3D_ApplicationContext.h"
+ï»¿#include "MFW3D_ApplicationContext.h"
 
 #include "OgreRoot.h"
 #include "OgreGpuProgramManager.h"
@@ -7,7 +7,7 @@
 #include "OgreViewport.h"
 #include "OgreOverlaySystem.h"
 #include "OgreDataStream.h"
-#include "MFW3D_ConfigDialog.h"
+#include "OgreConfigDialog.h"
 
 #if OGRE_BITES_HAVE_SDL
 #include <SDL_video.h>
@@ -57,6 +57,7 @@ namespace MFW3D {
 
 	void ApplicationContext::initApp()
 	{
+		setlocale(LC_ALL, "Chinese-simplified");
 		createRoot();
 #if OGRE_PLATFORM == OGRE_PLATFORM_APPLE_IOS
 		if (!oneTimeConfig()) return;
@@ -100,11 +101,6 @@ namespace MFW3D {
 			OGRE_DELETE mRoot;
 			mRoot = NULL;
 		}
-
-#ifdef OGRE_STATIC_LIB
-		mStaticPluginLoader.unload();
-#endif
-
 #if (OGRE_THREAD_PROVIDER == 3) && (OGRE_NO_TBB_SCHEDULER == 1)
 		if (mTaskScheduler.is_active())
 			mTaskScheduler.terminate();
@@ -126,7 +122,7 @@ namespace MFW3D {
 
 			// Create and register the material manager listener if it doesn't exist yet.
 			if (!mMaterialMgrListener) {
-				mMaterialMgrListener = new SGTechniqueResolverListener(mShaderGenerator);
+				mMaterialMgrListener = new SGTRListener(mShaderGenerator);
 				Ogre::MaterialManager::getSingleton().addListener(mMaterialMgrListener);
 			}
 		}
@@ -190,6 +186,7 @@ namespace MFW3D {
 		{
 			setupInput(mGrabInput);
 		}
+
 		locateResources();
 #ifdef OGRE_BUILD_COMPONENT_RTSHADERSYSTEM
 		initialiseRTShaderSystem();
@@ -220,9 +217,6 @@ namespace MFW3D {
 			mFSLayer->getWritablePath("ogre.log"));
 #endif
 
-#ifdef OGRE_STATIC_LIB
-		mStaticPluginLoader.load();
-#endif
 		mOverlaySystem = OGRE_NEW Ogre::OverlaySystem();
 	}
 
@@ -232,7 +226,12 @@ namespace MFW3D {
 		mRoot->setRenderSystem(mRoot->getAvailableRenderers().at(0));
 #else
 		if (!mRoot->restoreConfig()) {
-			return mRoot->showConfigDialog(MFW3D::getNativeConfigDialog());
+#if OGRE_PLATFORM == OGRE_PLATFORM_LINUX || OGRE_PLATFORM == OGRE_PLATFORM_WIN32 || OGRE_PLATFORM == OGRE_PLATFORM_APPLE
+			static Ogre::ConfigDialog dialog;
+			return mRoot->showConfigDialog(&dialog);
+#else
+			return mRoot->showConfigDialog(NULL);
+#endif
 		}
 #endif
 		return true;
@@ -358,7 +357,7 @@ namespace MFW3D {
 	}
 	Ogre::RenderWindow * ApplicationContext::createWindow(HWND m_hWnd, int width, int height)
 	{
-		mRoot->initialise(false, mAppName);//½ûÖ¹ogre´´½¨ÐÂµÄäÖÈ¾´°¿Ú£¬¶øÊ¹ÓÃMFCµÄ´°¿Ú
+		mRoot->initialise(false, mAppName);//ç¦æ­¢ogreåˆ›å»ºæ–°çš„æ¸²æŸ“çª—å£ï¼Œè€Œä½¿ç”¨MFCçš„çª—å£
 		Ogre::NameValuePairList miscParams;
 		miscParams["externalWindowHandle"] = Ogre::StringConverter::toString((int)m_hWnd);
 		return mWindow = mRoot->createRenderWindow("OgreRenderWindow", width, height, false, &miscParams);
@@ -497,11 +496,8 @@ namespace MFW3D {
 				"you must create a SDL window first",
 				"SampleContext::setupInput");
 		}
-
 		SDL_ShowCursor(SDL_FALSE);
-
 		SDL_bool grab = SDL_bool(_grab);
-
 		SDL_SetWindowGrab(mSDLWindow, grab);
 		SDL_SetRelativeMouseMode(grab);
 #endif
@@ -737,5 +733,4 @@ namespace MFW3D {
 		}
 #endif
 	}
-
 }

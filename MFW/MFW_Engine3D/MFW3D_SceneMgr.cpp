@@ -1,4 +1,4 @@
-#include "MFW3D_SceneMgr.h"
+ï»¿#include "MFW3D_SceneMgr.h"
 namespace MFW3D
 {
 	MFW3D_SceneMgr::MFW3D_SceneMgr(const Ogre::String& appName ,
@@ -22,13 +22,13 @@ namespace MFW3D
 		if (prof)
 			prof->setEnabled(false);
 #endif
-		//¹Ø±Õµ±Ç°³¡¾°
+		//å…³é—­å½“å‰åœºæ™¯
 		if (mCurrentScene)
 		{
 			mCurrentScene->_shutdown();   
 			mScenePaused = false;       
 		}
-		//È¥³ýÊÓ¿Ú
+		//åŽ»é™¤è§†å£
 		mWindow->removeAllViewports(); 
 		mWindow->resetStatistics();
 		if (sceneBase!=nullptr)
@@ -61,7 +61,7 @@ namespace MFW3D
 				OGRE_EXCEPT(Ogre::Exception::ERR_INVALID_STATE, desc, src);
 			}
 			sceneBase->testCapabilities(mRoot->getRenderSystem()->getCapabilities());
-			sceneBase->_setup(mWindow, mFSLayer, mOverlaySystem);   // ¿ªÊ¼ÐÂµÄÀý×Ó
+			sceneBase->_setup(mWindow, mFSLayer, mOverlaySystem);   // å¼€å§‹æ–°çš„ä¾‹å­
 		}
 #if OGRE_PROFILING
 		if (prof)
@@ -90,20 +90,20 @@ namespace MFW3D
 #else
 		while (!mLastRun)
 		{
-			mLastRun = true;  // ¼Ù¶¨ÊÇ×îºóÒ»´ÎÔËÐÐ
+			mLastRun = true;  // å‡å®šæ˜¯æœ€åŽä¸€æ¬¡è¿è¡Œ
 			initApp();
 			createWindow();
 			setup();
 
 #if OGRE_PLATFORM != OGRE_PLATFORM_ANDROID
-			// Èç¹ûÓÐÐèÒª»Ö¸´µÄ³¡¾°¾Í»Ö¸´Ò»¸ö£¬Èç¹ûÃ»ÓÐ¾ÍÔËÐÐÐÂµÄ³¡¾°
+			// å¦‚æžœæœ‰éœ€è¦æ¢å¤çš„åœºæ™¯å°±æ¢å¤ä¸€ä¸ªï¼Œå¦‚æžœæ²¡æœ‰å°±è¿è¡Œæ–°çš„åœºæ™¯
 			if (!mFirstRun) recoverLastScene();
 			else if (initialScene) runScene(initialScene);
 #endif
 			loadStartUpScene();
 			if (mRoot->getRenderSystem() != NULL)
 			{
-				mRoot->startRendering();    // ¿ªÊ¼äÖÈ¾Ñ­»·
+				mRoot->startRendering();    // å¼€å§‹æ¸²æŸ“å¾ªçŽ¯
 			}
 			closeApp();
 			mFirstRun = false;
@@ -130,20 +130,20 @@ namespace MFW3D
 #else
 		while (!mLastRun)
 		{
-			mLastRun = true;  // ¼Ù¶¨ÊÇ×îºóÒ»´ÎÔËÐÐ
+			mLastRun = true;  // å‡å®šæ˜¯æœ€åŽä¸€æ¬¡è¿è¡Œ
 			initApp();
 			createWindow(hWnd,width,height);
 			setup(false);
 
 #if OGRE_PLATFORM != OGRE_PLATFORM_ANDROID
-			// Èç¹ûÓÐÐèÒª»Ö¸´µÄ³¡¾°¾Í»Ö¸´Ò»¸ö£¬Èç¹ûÃ»ÓÐ¾ÍÔËÐÐÐÂµÄ³¡¾°
+			// å¦‚æžœæœ‰éœ€è¦æ¢å¤çš„åœºæ™¯å°±æ¢å¤ä¸€ä¸ªï¼Œå¦‚æžœæ²¡æœ‰å°±è¿è¡Œæ–°çš„åœºæ™¯
 			if (!mFirstRun) recoverLastScene();
 			else if (initialScene) runScene(initialScene);
 #endif
 			loadStartUpScene();
 			if (mRoot->getRenderSystem() != NULL)
 			{
-				mRoot->startRendering();    // ¿ªÊ¼äÖÈ¾Ñ­»·
+				mRoot->startRendering();    // å¼€å§‹æ¸²æŸ“å¾ªçŽ¯
 			}
 			closeApp();
 			mFirstRun = false;
@@ -180,13 +180,13 @@ namespace MFW3D
 	bool MFW3D_SceneMgr::frameStarted(const Ogre::FrameEvent& evt)
 	{
 		pollEvents();
-		// ÊÖ¶¯µ÷ÓÃÀý×ÓµÄ»Øµ÷À´±£Ö¤ÕýÈ·µÄË³Ðò
+		// æ‰‹åŠ¨è°ƒç”¨ä¾‹å­çš„å›žè°ƒæ¥ä¿è¯æ­£ç¡®çš„é¡ºåº
 		return (mCurrentScene && !mScenePaused) ? mCurrentScene->frameStarted(evt) : true;
 	}
 	
 	bool MFW3D_SceneMgr::frameRenderingQueued(const Ogre::FrameEvent& evt)
 	{
-		// ÊÖ¶¯µ÷ÓÃ³¡¾°µÄÖ¡äÖÈ¾
+		// æ‰‹åŠ¨è°ƒç”¨åœºæ™¯çš„å¸§æ¸²æŸ“
 		return (mCurrentScene && !mScenePaused) ? mCurrentScene->frameRenderingQueued(evt) : true;
 	}
 	

@@ -1,11 +1,11 @@
-#pragma once
+ï»¿#pragma once
 #include "MFW3D_Base.h"
 #include "MFW_Trays.h"
 #include "MFW3D_CameraMan.h"
 #include "MFW3D_AdvancedRenderControls.h"
 #include "Ogre.h"
 /*
-³¡¾°µÄ»ù±¾¿ØÖÆ£¬ºÍÏà»úµÄÉèÖÃ£¬ÒÔ¼°¶ÔÊó±ê¼üÅÌ´°ÌåÊÂ¼şµÄ¼à¿Ø
+åœºæ™¯çš„åŸºæœ¬æ§åˆ¶ï¼Œå’Œç›¸æœºçš„è®¾ç½®ï¼Œä»¥åŠå¯¹é¼ æ ‡é”®ç›˜çª—ä½“äº‹ä»¶çš„ç›‘æ§
 */
 namespace MFW3D
 {
@@ -33,14 +33,14 @@ namespace MFW3D
     protected:
 		virtual void setupView();
 		virtual void setDragLook(bool enabled);
-        Ogre::Viewport* mViewport;          // Ö÷ÊÓ½Ç
-        Ogre::Camera* mCamera;              // Ö÷Ïà»ú
-        Ogre::SceneNode* mCameraNode;       // Ïà»ú½Úµã
-		MFW3D::TrayManager* mTrayMgr;           // tray¹ÜÀí½Ó¿Ú
-		MFW3D::CameraMan* mCameraMan;           // »ù±¾µÄÏà»ú¿ØÖÆÆ÷
-		MFW3D::AdvancedRenderControls* mControls; // Àı×ÓÏêÏ¸ĞÅÏ¢Ãæ°å
-        bool mCursorWasVisible;             // µ±¶Ô»°¿ò³öÏÖµÄÊ±ºòÊó±ê¹â±êÊÇ·ñ¿É¼û
-        bool mDragLook;                     // µã»÷ÍÏ¶¯ËÄ´¦²é¿´
+        Ogre::Viewport* mViewport;          // ä¸»è§†è§’
+        Ogre::Camera* mCamera;              // ä¸»ç›¸æœº
+        Ogre::SceneNode* mCameraNode;       // ç›¸æœºèŠ‚ç‚¹
+		MFW3D::TrayManager* mTrayMgr;           // trayç®¡ç†æ¥å£
+		MFW3D::CameraMan* mCameraMan;           // åŸºæœ¬çš„ç›¸æœºæ§åˆ¶å™¨
+		MFW3D::AdvancedRenderControls* mControls; // ä¾‹å­è¯¦ç»†ä¿¡æ¯é¢æ¿
+        bool mCursorWasVisible;             // å½“å¯¹è¯æ¡†å‡ºç°çš„æ—¶å€™é¼ æ ‡å…‰æ ‡æ˜¯å¦å¯è§
+        bool mDragLook;                     // ç‚¹å‡»æ‹–åŠ¨å››å¤„æŸ¥çœ‹
     };
 }
 

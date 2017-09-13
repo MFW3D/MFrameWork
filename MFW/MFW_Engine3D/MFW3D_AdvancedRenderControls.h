@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "MFW3D_Input.h"
 #ifdef OGRE_BUILD_COMPONENT_RTSHADERSYSTEM
 #include <OgreRTShaderSystem.h>
