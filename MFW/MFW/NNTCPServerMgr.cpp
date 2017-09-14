@@ -472,5 +472,63 @@ bool NNTCPServerMgr::RunServer(std::vector<NNNodeInfo>NNServerInfos)
 
 	return uv_run(loop, UV_RUN_DEFAULT);
 }
+bool NNTCPServerMgr::RunServer(NNNodeInfo nNServerInfo)
+{
+	uv_loop_t* loop;
+	loops.push_back(loop);
+	loop = uv_loop_new();
+	int r;
+	std::shared_ptr<NNTCPClient> NetSessionPtr(new NNTCPClient());
+	r = uv_timer_init(loop, &NetSessionPtr->timerHandle);
+	NetSessionPtr->timerHandle.data = (void*)&nNServerInfo;
+	if (nNServerInfo.OnTimered != nullptr) {
+		NetSessionPtr->timerCB = nNServerInfo.OnTimered;
+	}
+	r = uv_timer_start(&NetSessionPtr->timerHandle, NNTCPServerMgr::TimerCb, 1, 1);
+	mNetNodesMutex.lock();
+	mNetClients.insert(std::pair<int, std::shared_ptr<NNTCPClient>>(nNServerInfo.Port, NetSessionPtr));
+	mNetNodesMutex.unlock();
+	return uv_run(loop, UV_RUN_DEFAULT);
+}
+bool NNTCPServerMgr::AddServer(uv_loop_t* loop,NNNodeInfo nNServerInfo)
+{
+	int r;
+	std::shared_ptr<NNTCPClient> NetSessionPtr(new NNTCPClient());
+	NetSessionPtr->OnConnected = nNServerInfo.OnConnected;
+	NetSessionPtr->OnDisConnected = nNServerInfo.OnDisConnected;
+	NetSessionPtr->OnRead = nNServerInfo.OnRead;
+	NetSessionPtr->nNNodeInfo = nNServerInfo;
+	mNetNodesMutex.lock();
+	if (mNetClients.find(nNServerInfo.Port) != mNetClients.end())
+	{
+		mNetNodesMutex.unlock();
+		return false;
+	}
+	mNetNodesMutex.unlock();
+
+	struct sockaddr_in addr;
+
+	assert(0 == uv_ip4_addr(nNServerInfo.Ip.c_str(), nNServerInfo.Port, &addr));
+	r = uv_tcp_init(loop, &NetSessionPtr->server);
+	assert(r == 0);
+
+	r = uv_tcp_connect(&NetSessionPtr->con, &NetSessionPtr->server, (const struct sockaddr*)&addr, NNTCPServerMgr::ConnectCbClient);
+	assert(r == 0);
+
+	NetSessionPtr->server.data = (void*)&NetSessionPtr->nNNodeInfo;
+	NetSessionPtr->con.data = (void*)&NetSessionPtr->nNNodeInfo;
+	NetSessionPtr->port = nNServerInfo.Port;
+
+	r = uv_timer_init(loop, &NetSessionPtr->timerHandle);
+	NetSessionPtr->timerHandle.data = (void*)&nNServerInfo;
+	if (nNServerInfo.OnTimered != nullptr) {
+		NetSessionPtr->timerCB = nNServerInfo.OnTimered;
+	}
+	r = uv_timer_start(&NetSessionPtr->timerHandle, NNTCPServerMgr::TimerCb, 1, 1);
+
+	mNetNodesMutex.lock();
+	mNetClients.insert(std::pair<int, std::shared_ptr<NNTCPClient>>(nNServerInfo.Port, NetSessionPtr));
+	mNetNodesMutex.unlock();
+}
 
 

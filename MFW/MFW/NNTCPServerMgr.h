@@ -105,12 +105,14 @@ private:
 	static std::map<int, std::shared_ptr<NNTCPClient>> mNetClients;
 public:
 	static bool RunServer(std::vector<NNNodeInfo> NNServerInfos);
+	static bool RunServer(NNNodeInfo nNServerInfo);
+	static bool AddServer(uv_loop_t* loop, NNNodeInfo nNServerInfo);
+
 	static void AllocBuffer(uv_handle_t *h, size_t size, uv_buf_t *buf);
 	static void ReadCb(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf);
 	static void CloseCb(uv_handle_t* handle);
 	static void ConnectCb(uv_stream_t *server, int status);
 	static void WriteCb(uv_write_t* client, int status);
 	static void TimerCb(uv_timer_t* handle);
-
 	static void ConnectCbClient(uv_connect_t* conn_req, int status);
 };

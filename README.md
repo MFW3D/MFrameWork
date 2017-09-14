@@ -1,7 +1,7 @@
-作者联系方式：
+﻿作者联系方式：
 	Email：captainl1993@126.com
 	QQ：1452882479
-	官方网站：mfw3d.com mfw3d.cn 
+	官方网站：http://mfw3d.com http://mfw3d.cn 
 
 # MFrameWork
 MFrameWork:
