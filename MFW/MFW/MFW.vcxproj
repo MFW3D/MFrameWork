@@ -154,6 +154,7 @@
     <ClCompile Include="DBWriter.cpp" />
     <ClCompile Include="fsm.cpp" />
     <ClCompile Include="Global.cpp" />
+    <ClCompile Include="HTTPClientMgr.cpp" />
     <ClCompile Include="HttpMgr.cpp" />
     <ClCompile Include="HttpParser.cpp" />
     <ClCompile Include="http_parser.c" />
@@ -184,6 +185,7 @@
     <ClInclude Include="DBWriter.h" />
     <ClInclude Include="fsm.hpp" />
     <ClInclude Include="Global.h" />
+    <ClInclude Include="HTTPClientMgr.h" />
     <ClInclude Include="HttpMgr.h" />
     <ClInclude Include="HttpParser.h" />
     <ClInclude Include="http_parser.h" />

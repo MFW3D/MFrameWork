@@ -20,7 +20,7 @@
 */
 
 
-class HTTRequestInfo
+class HTTPRequestInfo
 {
 public:
 	std::function<void(HttpResPonse& httpResPonse, NNTCPNode& netNode)> OnReadClientPtr = nullptr;
@@ -33,7 +33,7 @@ public:
 
 class HTTPResposeInfo
 {
-	HTTRequestInfo mHTTRequest;
+	HTTPRequestInfo mHTTRequest;
 	std::string Data;
 };
 
@@ -42,29 +42,21 @@ class HTTPClientMgr:public MFW::Singleton<HTTPClientMgr>
 {
 private:
 	//http客户端的队列
-	std::queue<HTTRequestInfo> mHTTRequests;
+	std::queue<HTTPRequestInfo> mHTTRequests;
 	std::mutex mHTTRequestsMutex;
 	//消息恢复队列
 	std::queue<HTTPResposeInfo> mHTTPResposes;
 	std::mutex mHTTPResposesMutex;
 
-	//读取连接数据
 	void OnRead(std::shared_ptr<NNTCPLinkNode>  session, std::string data, NNTCPNode& netNode);
-	//连接进入
 	void OnConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNode& netNode);
-	//连接断开
 	void OnDisConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNode& netNode);
-	//定时器返回
 	void OnTimer(uv_timer_t* handle);
-	//httpclient
-	void pushHTTRequest(HTTRequestInfo& hTTRequest);
-	bool popHTTRequest(HTTRequestInfo& hTTRequest);
 public:
+	void start();
+	//httpclient
+	void pushHTTRequest(HTTPRequestInfo& hTTRequest);
+	bool popHTTRequest(HTTPRequestInfo& hTTRequest);
 	void pushHTTRequest(HTTPResposeInfo& hTTPResposeInfo);
 	bool popHTTRequest(HTTPResposeInfo& hTTPResposeInfo);
-
-	//启动http连接客户端管理器
-	void Start();
-	//发起一个http请求
-	void AddRequest(HTTRequestInfo& hTTRequest);
 };

@@ -3,6 +3,7 @@
 #include "Timer.h"
 #include "Net_ClientHandler.h"
 #include "ServerGlobal.h"
+#include "HTTPClientMgr.h"
 void ServerCenterMgr::Init()
 {
 	//初始化全局变量
@@ -32,7 +33,12 @@ void ServerCenterMgr::Start()
 			Net_ClientHandler::GetInstance().get(), std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
 		httpMgr.Start(ports);
 	}));
-
+	HTTPRequestInfo info;
+	info.ip = "67.218.141.114";
+	info.port = 8080;
+	info.url = "index.html";
+	HTTPClientMgr::GetInstance()->pushHTTRequest(info);
+	HTTPClientMgr::GetInstance()->start();
 	//启动定时管理器
 	mMainTimerMgr.Run();
 	while (true)

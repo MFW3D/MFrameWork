@@ -8,7 +8,7 @@
 服务器之间跳转等
 特点：先于逻辑服务器和数据服务器启动
 */
-class ServerCenterMgr :public Singleton<ServerCenterMgr>
+class ServerCenterMgr :public MFW::Singleton<ServerCenterMgr>
 {
 private:
 	NNTCPServerMgr mNNTCPServerMgr;

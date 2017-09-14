@@ -78,7 +78,7 @@ public:
 
 	static char Str2Bin(char *str);
 	static int php_htoi(char *s);
-
+	static std::string UrlEncode(const std::string& str);
 	static std::string urldecode(std::string &str_source);
 
 	static std::string intToBytes(int value);

@@ -99,6 +99,9 @@
     <ClCompile Include="Singleton.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="HTTPClientMgr.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cc.h">
@@ -192,6 +195,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="clipper.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HTTPClientMgr.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

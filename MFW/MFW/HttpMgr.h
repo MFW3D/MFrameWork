@@ -12,6 +12,7 @@ public:
 	int mPort = 5555;
 	bool mIsClient = false;
 };
+
 class HttpMgr {
 private:
 	//读取连接数据
@@ -33,4 +34,7 @@ public:
 	//发送数据，并关闭连接
 	void SendDataClient(std::shared_ptr<NNTCPLinkNode> session, std::string data, NNTCPNode& netNode, std::map<std::string, std::string> params, std::string Url);
 	void SendData(std::shared_ptr<NNTCPLinkNode> session, std::string data, std::map<std::string, std::string> params, NNTCPNode& netNode);
+
+
 };
+

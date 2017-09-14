@@ -498,14 +498,10 @@ bool NNTCPServerMgr::AddServer(uv_loop_t* loop,NNNodeInfo nNServerInfo)
 	NetSessionPtr->OnDisConnected = nNServerInfo.OnDisConnected;
 	NetSessionPtr->OnRead = nNServerInfo.OnRead;
 	NetSessionPtr->nNNodeInfo = nNServerInfo;
-	mNetNodesMutex.lock();
 	if (mNetClients.find(nNServerInfo.Port) != mNetClients.end())
 	{
-		mNetNodesMutex.unlock();
 		return false;
 	}
-	mNetNodesMutex.unlock();
-
 	struct sockaddr_in addr;
 
 	assert(0 == uv_ip4_addr(nNServerInfo.Ip.c_str(), nNServerInfo.Port, &addr));
@@ -519,16 +515,7 @@ bool NNTCPServerMgr::AddServer(uv_loop_t* loop,NNNodeInfo nNServerInfo)
 	NetSessionPtr->con.data = (void*)&NetSessionPtr->nNNodeInfo;
 	NetSessionPtr->port = nNServerInfo.Port;
 
-	r = uv_timer_init(loop, &NetSessionPtr->timerHandle);
-	NetSessionPtr->timerHandle.data = (void*)&nNServerInfo;
-	if (nNServerInfo.OnTimered != nullptr) {
-		NetSessionPtr->timerCB = nNServerInfo.OnTimered;
-	}
-	r = uv_timer_start(&NetSessionPtr->timerHandle, NNTCPServerMgr::TimerCb, 1, 1);
-
-	mNetNodesMutex.lock();
 	mNetClients.insert(std::pair<int, std::shared_ptr<NNTCPClient>>(nNServerInfo.Port, NetSessionPtr));
-	mNetNodesMutex.unlock();
 }
 
 

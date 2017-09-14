@@ -3,7 +3,7 @@
 #include "HttpMgr.h"
 #include "Net_Handler.h"
 #include <vector>
-class Net_ClientHandler :public Singleton<Net_ClientHandler>
+class Net_ClientHandler :public MFW::Singleton<Net_ClientHandler>
 {
 private:
 	HttpMgr httpMgr;

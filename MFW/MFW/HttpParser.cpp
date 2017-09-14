@@ -76,7 +76,7 @@ void  HttpMsg::SetVesionMinor(int vesion)
 {
 	mVesionMijor = vesion;
 }
-std::map<std::string, std::string> HttpMsg::GetParams()
+std::unordered_map<std::string, std::string> HttpMsg::GetParams()
 {
 	return mParams;
 }
@@ -128,11 +128,11 @@ bool HttpRequest::ParseToString(std::string& result)
 	result.append(" ");
 	result.append(mUrl);
 	result.append(" ");
-	result.append(" HTTP/");
+	result.append("HTTP/");
 	result.append(std::to_string(mVesionMajor));
 	result.append(".");
 	result.append(std::to_string(mVesionMijor));
-	result.append(" \r\n");
+	result.append("\r\n");
 	for (auto itr = mParams.begin(); itr != mParams.end(); itr++)
 	{
 		result.append(itr->first);
@@ -140,6 +140,7 @@ bool HttpRequest::ParseToString(std::string& result)
 		result.append(itr->second);
 		result.append("\r\n");
 	}
+	result.append("\r\n");
 	result.append(mBody);
 	return true;
 }
@@ -177,7 +178,6 @@ bool HttpResPonse::ParseToString(std::string& result)
 	}
 	result.append("\r\n");
 	result.append(mBody);
-	return true;
 	return true;
 }
 void HttpResPonse::Clear()

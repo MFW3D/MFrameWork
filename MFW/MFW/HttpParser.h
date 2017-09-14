@@ -4,6 +4,7 @@
 #include <iostream>
 #include <map>
 #include <iostream>
+#include <unordered_map>
 
 enum class EHttpMethod
 {
@@ -51,7 +52,7 @@ public:
 	int mVesionMajor;
 	int mVesionMijor;
 	std::string mUrl;
-	std::map<std::string, std::string> mParams;
+	std::unordered_map<std::string, std::string> mParams;
 
 	std::string  GetBody();
 	void  SetBody(std::string body);
@@ -65,7 +66,7 @@ public:
 	void  SetVesionMinor(int vesion);
 	std::string GetUrl();
 	void SetUrl(std::string url);
-	std::map<std::string, std::string> GetParams();
+	std::unordered_map<std::string, std::string> GetParams();
 	bool AddParam(std::string key, std::string value);
 
 	virtual bool ParseToString(std::string& result) = 0;
