@@ -45,7 +45,8 @@ class  NNNodeInfo
 public:
 	std::string Ip = "0.0.0.0";
 	int Port = 0;
-	bool isClient = true;
+	bool IsClient = true;
+	unsigned long long ClientId=0;
 	std::function<void(std::shared_ptr<NNTCPLinkNode> session, std::string data, NNTCPNode& netNode)> OnRead;
 	std::function<void(std::shared_ptr<NNTCPLinkNode> session, NNTCPNode& netNode)> OnConnected = nullptr;
 	std::function<void(std::shared_ptr<NNTCPLinkNode> session, NNTCPNode& netNode)> OnDisConnected = nullptr;
@@ -99,14 +100,16 @@ class NNTCPServerMgr
 private:
 	static std::vector<uv_loop_t*> loops;
 	static std::mutex mNetNodesMutex;
+	static unsigned long long mClientId;
+
 	//自己作为服务器的网络结构
 	static std::map<int, std::shared_ptr<NNTCPServer>> mNetServers;
 	//自己作为客户端的网络结构
-	static std::map<int, std::shared_ptr<NNTCPClient>> mNetClients;
+	static std::map<unsigned long long, std::shared_ptr<NNTCPClient>> mNetClients;
 public:
 	static bool RunServer(std::vector<NNNodeInfo> NNServerInfos);
 	static bool RunServer(NNNodeInfo nNServerInfo);
-	static bool AddServer(uv_loop_t* loop, NNNodeInfo nNServerInfo);
+	static unsigned long long  AddServer(uv_loop_t* loop, NNNodeInfo nNServerInfo);
 
 	static void AllocBuffer(uv_handle_t *h, size_t size, uv_buf_t *buf);
 	static void ReadCb(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf);
@@ -116,3 +119,4 @@ public:
 	static void TimerCb(uv_timer_t* handle);
 	static void ConnectCbClient(uv_connect_t* conn_req, int status);
 };
+

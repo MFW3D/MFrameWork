@@ -27,13 +27,17 @@ public:
 	std::string ip = "";
 	int port = 0;
 	std::string url = "";
+	std::string body="";
 	std::map<std::string, std::string> params;
-	std::string body;
+	EHttpMethod mEHttpMethod = EHttpMethod::GET;
+	unsigned long long flag = 0;
 };
 
 class HTTPResposeInfo
 {
+public:
 	HTTPRequestInfo mHTTRequest;
+	HttpResPonse httpResPonse;
 	std::string Data;
 };
 
@@ -48,6 +52,11 @@ private:
 	std::queue<HTTPResposeInfo> mHTTPResposes;
 	std::mutex mHTTPResposesMutex;
 
+	std::map<unsigned long long, HTTPRequestInfo> mRequestDealings;
+	std::string mteamp = "";
+	bool isretry = false;
+	HttpResPonse mHttpResPonse;
+	int datalength = 0;
 	void OnRead(std::shared_ptr<NNTCPLinkNode>  session, std::string data, NNTCPNode& netNode);
 	void OnConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNode& netNode);
 	void OnDisConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNode& netNode);
@@ -55,8 +64,8 @@ private:
 public:
 	void start();
 	//httpclient
-	void pushHTTRequest(HTTPRequestInfo& hTTRequest);
-	bool popHTTRequest(HTTPRequestInfo& hTTRequest);
-	void pushHTTRequest(HTTPResposeInfo& hTTPResposeInfo);
-	bool popHTTRequest(HTTPResposeInfo& hTTPResposeInfo);
+	void pushHTTPRequest(HTTPRequestInfo& hTTRequest);
+	bool popHTTPRequest(HTTPRequestInfo& hTTRequest);
+	void pushHTTPRespose(HTTPResposeInfo& hTTPResposeInfo);
+	bool popHTTPRespose(HTTPResposeInfo& hTTPResposeInfo);
 };

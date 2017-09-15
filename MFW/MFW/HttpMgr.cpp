@@ -4,7 +4,7 @@
 
 void HttpMgr::OnRead(std::shared_ptr<NNTCPLinkNode>  session, std::string data, NNTCPNode& netNode)
 {
-	if (netNode.nNNodeInfo.isClient)
+	if (netNode.nNNodeInfo.IsClient)
 	{
 		HttpResPonse httpResPonse;
 		if (HttpParser::ParseDataResponse(data, httpResPonse))
@@ -59,7 +59,7 @@ void HttpMgr::Start(std::vector<HttpStartInfo> startInfos)
 	{
 		NNNodeInfo nNNodeInfo;
 		nNNodeInfo.Ip = startInfos[i].mIp;
-		nNNodeInfo.isClient = startInfos[i].mIsClient;
+		nNNodeInfo.IsClient = startInfos[i].mIsClient;
 		nNNodeInfo.Port = startInfos[i].mPort;
 		nNNodeInfo.OnConnected = std::bind(&HttpMgr::OnConnected, this, std::placeholders::_1, std::placeholders::_2);
 		nNNodeInfo.OnDisConnected = std::bind(&HttpMgr::OnDisConnected, this, std::placeholders::_1, std::placeholders::_2);
@@ -72,7 +72,7 @@ void HttpMgr::Start(std::vector<HttpStartInfo> startInfos)
 }
 void HttpMgr::SendDataClient(std::shared_ptr<NNTCPLinkNode> session, std::string data, NNTCPNode& netNode, std::map<std::string, std::string> params, std::string Url)
 {
-	if (netNode.nNNodeInfo.isClient)
+	if (netNode.nNNodeInfo.IsClient)
 	{
 		HttpRequest httpRequest;
 		httpRequest.SetUrl(Url);
@@ -101,7 +101,7 @@ void HttpMgr::SendDataClient(std::shared_ptr<NNTCPLinkNode> session, std::string
 void HttpMgr::SendData(std::shared_ptr<NNTCPLinkNode> session, std::string data, 
 	std::map<std::string, std::string> params, NNTCPNode& netNode)
 {
-	if (!netNode.nNNodeInfo.isClient)
+	if (!netNode.nNNodeInfo.IsClient)
 	{
 		HttpResPonse httpResPonse;
 		httpResPonse.SetStatus(200);

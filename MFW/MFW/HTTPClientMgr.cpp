@@ -3,31 +3,89 @@
 void HTTPClientMgr::OnRead(std::shared_ptr<NNTCPLinkNode>  session, std::string data, NNTCPNode& netNode)
 {
 	HttpResPonse httpResPonse;
+	if (isretry)
+	{
+		int oldsize = mteamp.size();
+		//继续接收
+		mteamp.append(data);
+		if (mteamp.size() == oldsize + datalength)
+		{
+			if (mRequestDealings.find(netNode.nNNodeInfo.ClientId) != mRequestDealings.end())
+			{
+				HTTPResposeInfo info;
+				info.mHTTRequest = mRequestDealings[netNode.nNNodeInfo.ClientId];
+				info.Data = mteamp;
+				mHttpResPonse.SetBody("");
+				info.httpResPonse = mHttpResPonse;
+				pushHTTPRespose(info);
+			}
+			mteamp = "";
+			isretry = false;
+		}
+		return;
+	}
 	if (HttpParser::ParseDataResponse(data, httpResPonse))
 	{
-
-	}
-	else
-	{
-
+		mHttpResPonse = httpResPonse;
+		if (httpResPonse.mParams.find("Content-Length") != httpResPonse.mParams.end())
+		{
+			datalength = atoi(httpResPonse.mParams["Content-Length"].c_str());
+			if (httpResPonse.mBody.size() == datalength)
+			{
+				mteamp = httpResPonse.mBody;
+				if (mRequestDealings.find(netNode.nNNodeInfo.ClientId) != mRequestDealings.end())
+				{
+					HTTPResposeInfo info;
+					info.mHTTRequest = mRequestDealings[netNode.nNNodeInfo.ClientId];
+					info.Data = mteamp;
+					mHttpResPonse.SetBody("");
+					info.httpResPonse = mHttpResPonse;
+					pushHTTPRespose(info);
+				}
+				isretry = false;
+			}
+			else
+			{
+				isretry = true;
+				int oldsize = mteamp.size();
+				//继续接收
+				mteamp.append(data);
+				if (mteamp.size() == oldsize + datalength)
+				{
+					if (mRequestDealings.find(netNode.nNNodeInfo.ClientId) != mRequestDealings.end())
+					{
+						HTTPResposeInfo info;
+						info.mHTTRequest = mRequestDealings[netNode.nNNodeInfo.ClientId];
+						info.Data = mteamp;
+						mHttpResPonse.SetBody("");
+						info.httpResPonse = mHttpResPonse;
+						pushHTTPRespose(info);
+					}
+					mteamp = "";
+					isretry = false;
+				}
+			}
+			std::cout << datalength << std::endl;
+		}
 	}
 }
 void HTTPClientMgr::OnConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNode& netNode)
 {
+	if (mRequestDealings.find(netNode.nNNodeInfo.ClientId) == mRequestDealings.end())
+		return;
+	HTTPRequestInfo info = mRequestDealings[netNode.nNNodeInfo.ClientId];
 	HttpRequest request;
-	request.SetMethod(EHttpMethod::GET);
-	//request.SetUrl(NetUtility::UrlEncode("/index.html"));
-	request.SetUrl("/");
+	request.SetMethod(info.mEHttpMethod);
+	request.SetUrl("" + info.url + "");
 	request.SetVesionMajor(1);
 	request.SetVesionMinor(1);
-	request.AddParam("Host", "67.218.141.114 : 8080");
+	request.AddParam("Host", "" + info.ip + " : " + std::to_string(info.port) + "");
 	request.AddParam("Connection", "keep - alive");
-	request.AddParam("Upgrade - Insecure - Requests", "1");
-	request.AddParam("User - Agent", "Mozilla / 5.0 (Windows NT 6.1; WOW64) AppleWebKit / 537.36 (KHTML, like Gecko) Chrome / 60.0.3112.90 Safari / 537.36");
-	request.AddParam("Accept", "text / html, application / xhtml + xml, application / xml; q = 0.9, image / webp, image / apng, */*;q=0.8");
-	request.AddParam("Accept-Encoding", "gzip, deflate");
-	request.AddParam("Accept-Language", "zh-CN,zh;q=0.8");
-	request.SetBody("");
+	for each(auto itr in info.params)
+	{
+		request.AddParam(itr.first, itr.second);
+	}
+	request.SetBody(info.body);
 	std::string data = "";
 	request.ParseToString(data);
 	netNode.SendData(session, data);
@@ -38,17 +96,25 @@ void HTTPClientMgr::OnDisConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTC
 void HTTPClientMgr::OnTimer(uv_timer_t* handle)
 {
 	HTTPRequestInfo info;
-	while (popHTTRequest(info))
+	int count = 100;
+	while (popHTTPRequest(info))
 	{
+		count--;
+		if (count <= 0)
+			return;
 		NNNodeInfo nNNodeInfo;
 		nNNodeInfo.Ip = info.ip;
-		nNNodeInfo.isClient = true;
+		nNNodeInfo.IsClient = true;
 		nNNodeInfo.Port = info.port;
 		nNNodeInfo.OnConnected = std::bind(&HTTPClientMgr::OnConnected, this, std::placeholders::_1, std::placeholders::_2);
 		nNNodeInfo.OnDisConnected = std::bind(&HTTPClientMgr::OnDisConnected, this, std::placeholders::_1, std::placeholders::_2);
 		nNNodeInfo.OnRead = std::bind(&HTTPClientMgr::OnRead, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
 
-		NNTCPServerMgr::AddServer(handle->loop, nNNodeInfo);
+		unsigned long long  clientId = NNTCPServerMgr::AddServer(handle->loop, nNNodeInfo);
+		if (clientId != -1)
+		{
+			mRequestDealings.insert(std::pair<unsigned long long, HTTPRequestInfo>(clientId, info));
+		}
 	}
 
 }
@@ -56,7 +122,7 @@ void HTTPClientMgr::start()
 {
 	NNNodeInfo nNNodeInfo;
 	nNNodeInfo.Ip = "0.0.0.0";
-	nNNodeInfo.isClient = true;
+	nNNodeInfo.IsClient = true;
 	nNNodeInfo.Port = 8888;
 	nNNodeInfo.OnConnected = std::bind(&HTTPClientMgr::OnConnected, this, std::placeholders::_1, std::placeholders::_2);
 	nNNodeInfo.OnDisConnected = std::bind(&HTTPClientMgr::OnDisConnected, this, std::placeholders::_1, std::placeholders::_2);
@@ -66,12 +132,12 @@ void HTTPClientMgr::start()
 }
 
 //httpclient
-void HTTPClientMgr::pushHTTRequest(HTTPRequestInfo& hTTRequest)
+void HTTPClientMgr::pushHTTPRequest(HTTPRequestInfo& hTTRequest)
 {
 	std::lock_guard < std::mutex > lg(mHTTRequestsMutex);
 	mHTTRequests.push(hTTRequest);
 }
-bool HTTPClientMgr::popHTTRequest(HTTPRequestInfo& hTTRequest)
+bool HTTPClientMgr::popHTTPRequest(HTTPRequestInfo& hTTRequest)
 {
 	std::lock_guard < std::mutex > lg(mHTTRequestsMutex);
 	if (mHTTRequests.size() == 0)
@@ -80,12 +146,12 @@ bool HTTPClientMgr::popHTTRequest(HTTPRequestInfo& hTTRequest)
 	mHTTRequests.pop();
 	return true;
 }
-void HTTPClientMgr::pushHTTRequest(HTTPResposeInfo& hTTPResposeInfo)
+void HTTPClientMgr::pushHTTPRespose(HTTPResposeInfo& hTTPResposeInfo)
 {
 	std::lock_guard < std::mutex > lg(mHTTPResposesMutex);
 	mHTTPResposes.push(hTTPResposeInfo);
 }
-bool HTTPClientMgr::popHTTRequest(HTTPResposeInfo& hTTPResposeInfo)
+bool HTTPClientMgr::popHTTPRespose(HTTPResposeInfo& hTTPResposeInfo)
 {
 	std::lock_guard < std::mutex > lg(mHTTPResposesMutex);
 	if (mHTTPResposes.size() == 0)
