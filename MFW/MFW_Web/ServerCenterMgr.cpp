@@ -35,8 +35,7 @@ void ServerCenterMgr::Start()
 
 		HTTPClientMgr::GetInstance()->start();
 	}));
-
-	for (int i = 0; i < 1000; i++)
+	for (int i = 0; i < 10000; i++)
 	{
 		HTTPRequestInfo info;
 		info.ip = "67.218.141.114";
@@ -45,23 +44,30 @@ void ServerCenterMgr::Start()
 		info.mEHttpMethod = EHttpMethod::GET;
 		info.flag = i;
 		info.body = "";
-		//info.params.insert(std::pair<std::string, std::string>("Upgrade - Insecure - Requests", "1"));
-		//info.params.insert(std::pair<std::string, std::string>("User - Agent", "Mozilla / 5.0 (Windows NT 6.1; WOW64) AppleWebKit / 537.36 (KHTML, like Gecko) Chrome / 60.0.3112.90 Safari / 537.36"));
-		//info.params.insert(std::pair<std::string, std::string>("Accept", "text / html, application / xhtml + xml, application / xml; q = 0.9, image / webp, image / apng, */*;q=0.8"));
-		//info.params.insert(std::pair<std::string, std::string>("Accept-Encoding", "gzip, deflate"));
-		//info.params.insert(std::pair<std::string, std::string>("Accept-Language", "zh-CN,zh;q=0.8"));
+		info.params.insert(std::pair<std::string, std::string>("Upgrade - Insecure - Requests", "1"));
+		info.params.insert(std::pair<std::string, std::string>("User - Agent", "Mozilla / 5.0 (Windows NT 6.1; WOW64) AppleWebKit / 537.36 (KHTML, like Gecko) Chrome / 60.0.3112.90 Safari / 537.36"));
+		info.params.insert(std::pair<std::string, std::string>("Accept", "text / html, application / xhtml + xml, application / xml; q = 0.9, image / webp, image / apng, */*;q=0.8"));
+		info.params.insert(std::pair<std::string, std::string>("Accept-Encoding", "gzip, deflate"));
+		info.params.insert(std::pair<std::string, std::string>("Accept-Language", "zh-CN,zh;q=0.8"));
 		HTTPClientMgr::GetInstance()->pushHTTPRequest(info);
-		//Sleep(10);
 	}
 	//启动定时管理器
 	mMainTimerMgr.Run();
+	int i = 0;
 	while (true)
 	{
 		mMainTimerMgr.Process();
+		//处理http响应回复
 		HTTPResposeInfo info;
 		while (HTTPClientMgr::GetInstance()->popHTTPRespose(info))
 		{
-			std::cout << info.Data << std::endl;
+			//std::cout << info.Data << std::endl;
+			++i;
+			std::cout << i << std::endl;
+			/*if (i == 10000)
+			{
+				return;
+			}*/
 		}
 		//系统轮询处理
 #if _WIN32

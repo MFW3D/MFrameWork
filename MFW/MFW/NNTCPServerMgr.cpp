@@ -213,10 +213,10 @@ void NNTCPClient::CloseCb(uv_handle_t* handle)
 	NNTCPClientNodePtr->mIPStr = NetUtility::inttoip(ip);
 	NNTCPClientNodePtr->mPort = port;
 	NNTCPClientNodePtr->session = (uv_stream_t*)handle;
-	if (OnDisConnected != nullptr)
+	/*if (OnDisConnected != nullptr)
 	{
 		OnDisConnected(NNTCPClientNodePtr, *this);
-	}
+	}*/
 }
 void NNTCPClient::ReadCb(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf)
 {
@@ -250,7 +250,7 @@ std::map<int, std::shared_ptr<NNTCPServer>> NNTCPServerMgr::mNetServers;
 std::map<unsigned long long, std::shared_ptr<NNTCPClient>> NNTCPServerMgr::mNetClients;
 std::mutex NNTCPServerMgr::mNetNodesMutex;
 std::vector<uv_loop_t*> NNTCPServerMgr::loops;
-unsigned long long NNTCPServerMgr::mClientId=0;
+unsigned long long NNTCPServerMgr::mClientId=1;
 void NNTCPServerMgr::AllocBuffer(uv_handle_t *h, size_t size, uv_buf_t *buf) {
 	size = DEFAULT_BACKLOG;
 	buf->base = (char*)malloc(size);
@@ -505,7 +505,7 @@ unsigned long long  NNTCPServerMgr::AddServer(uv_loop_t* loop, NNNodeInfo nNServ
 	NetSessionPtr->nNNodeInfo = nNServerInfo;
 	if (mNetClients.find(nNServerInfo.ClientId) != mNetClients.end())
 	{
-		return false;
+		return -1;
 	}
 	struct sockaddr_in addr;
 

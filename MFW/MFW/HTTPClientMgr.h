@@ -18,8 +18,6 @@
 3、执行请求
 4、收到数据返回上一层
 */
-
-
 class HTTPRequestInfo
 {
 public:
@@ -41,7 +39,6 @@ public:
 	std::string Data;
 };
 
-
 class HTTPClientMgr:public MFW::Singleton<HTTPClientMgr>
 {
 private:
@@ -57,6 +54,7 @@ private:
 	bool isretry = false;
 	HttpResPonse mHttpResPonse;
 	int datalength = 0;
+	int teamp = 0;
 	void OnRead(std::shared_ptr<NNTCPLinkNode>  session, std::string data, NNTCPNode& netNode);
 	void OnConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNode& netNode);
 	void OnDisConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNode& netNode);

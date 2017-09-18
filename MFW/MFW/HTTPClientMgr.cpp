@@ -1,6 +1,7 @@
 ﻿#include "HTTPClientMgr.h"
 
-void HTTPClientMgr::OnRead(std::shared_ptr<NNTCPLinkNode>  session, std::string data, NNTCPNode& netNode)
+void HTTPClientMgr::OnRead(std::shared_ptr<NNTCPLinkNode>  session,
+	std::string data, NNTCPNode& netNode)
 {
 	HttpResPonse httpResPonse;
 	if (isretry)
@@ -19,6 +20,7 @@ void HTTPClientMgr::OnRead(std::shared_ptr<NNTCPLinkNode>  session, std::string 
 				info.httpResPonse = mHttpResPonse;
 				pushHTTPRespose(info);
 			}
+			datalength = 0;
 			mteamp = "";
 			isretry = false;
 		}
@@ -42,6 +44,8 @@ void HTTPClientMgr::OnRead(std::shared_ptr<NNTCPLinkNode>  session, std::string 
 					info.httpResPonse = mHttpResPonse;
 					pushHTTPRespose(info);
 				}
+				datalength = 0;
+				mteamp = "";
 				isretry = false;
 			}
 			else
@@ -61,11 +65,11 @@ void HTTPClientMgr::OnRead(std::shared_ptr<NNTCPLinkNode>  session, std::string 
 						info.httpResPonse = mHttpResPonse;
 						pushHTTPRespose(info);
 					}
+					datalength = 0;
 					mteamp = "";
 					isretry = false;
 				}
 			}
-			std::cout << datalength << std::endl;
 		}
 	}
 }
@@ -80,7 +84,7 @@ void HTTPClientMgr::OnConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNo
 	request.SetVesionMajor(1);
 	request.SetVesionMinor(1);
 	request.AddParam("Host", "" + info.ip + " : " + std::to_string(info.port) + "");
-	request.AddParam("Connection", "keep - alive");
+	request.AddParam("Connection", "close");
 	for each(auto itr in info.params)
 	{
 		request.AddParam(itr.first, itr.second);
@@ -92,16 +96,13 @@ void HTTPClientMgr::OnConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNo
 }
 void HTTPClientMgr::OnDisConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNode& netNode)
 {
+
 }
 void HTTPClientMgr::OnTimer(uv_timer_t* handle)
 {
 	HTTPRequestInfo info;
-	int count = 100;
-	while (popHTTPRequest(info))
+	if (popHTTPRequest(info))
 	{
-		count--;
-		if (count <= 0)
-			return;
 		NNNodeInfo nNNodeInfo;
 		nNNodeInfo.Ip = info.ip;
 		nNNodeInfo.IsClient = true;
@@ -116,7 +117,6 @@ void HTTPClientMgr::OnTimer(uv_timer_t* handle)
 			mRequestDealings.insert(std::pair<unsigned long long, HTTPRequestInfo>(clientId, info));
 		}
 	}
-
 }
 void HTTPClientMgr::start()
 {
