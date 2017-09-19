@@ -29,9 +29,9 @@ void ThreadDBWriteBack::DBwriteBack()
 	{
 		
 #if _WIN32
-		Sleep(100);
+		Sleep(10);
 #else
-		usleep(100000);
+		usleep(10000);
 #endif
 	}
 	LOGW("主线程退出");
@@ -48,8 +48,15 @@ void ThreadDBWriteBack::RediswriteBack()
 	while (true)
 	{
 		dbWriter.Process();
-		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+		while (true)
+		{
 
+#if _WIN32
+			Sleep(10);
+#else
+			usleep(10000);
+#endif
+		}
 	}
 	LOGI("******" << "Redis回写线程退出完成" << "******");
 	redisWBEngine.disConnect();

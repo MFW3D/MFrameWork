@@ -3,6 +3,11 @@
 	QQ：1452882479
 	官方网站：http://mfw3d.com http://mfw3d.cn 
 
+Author contact information:
+	Email：captainl1993@126.com
+	QQ：1452882479
+	official website：http://mfw3d.com http://mfw3d.cn 
+
 # MFrameWork
 MFrameWork:
 1、集成高效的数据存储和访问
@@ -13,9 +18,27 @@ MFrameWork:
 6、自动化代码生成方案，数据增删改查操作无需写代码，数据协议文件自
 动生成
 
-实现目的
+# MFrameWork
+MFrameWork:
+1、Integrated, efficient data storage and access
+2、Network mechanism
+3、Distributed server framework
+4、3D engine framework
+5、client framework, etc.
+6、Automatic code generation scheme, data additions and deletions, 
+search operations without writing code, data protocol files from
+Dynamic generation.
+
+实现目的:
 1、实现方便快捷的转变为游戏服务器，数据服务器，以及三维应用客户端
 2、逻辑框架实现麻将逻辑，以棋牌服务器为例进行开发
+
+purpose:
+1、Easy to implement changes to game servers, data servers, 
+and 3D application clients
+2、Logic framework to achieve mahjong logic, chess server as
+ an example for development
+
 
 项目配置：
 1、安装vs2015编译器，项目代码支持linux编译
@@ -24,6 +47,17 @@ MFrameWork:
 3、下载后将压缩包内容解压到MFW项目根目录，也就是bin，lib，include
 目录与解决方案文件同目录
 4、使用debug x64 进行编译，这样配置好依赖的路径
+
+
+configuration：
+1、To run this project ,install vs2015.you can also use linux Compile this project.
+2、Download pre compiled project dependencies and download addresses：
+Baidu cloud link：http://pan.baidu.com/s/1qYI6HwK  passwd：ra9s
+3、After downloading, extract the contents of the compressed package into the root of
+ the MFW project, that is, the contents of the packet "bin，lib，include",The directory 
+ and the solution file are in the same directory
+4、Compile using debug x64, so that you configure the path of dependency.
+
 
 框架结构介绍：
 =============================================================

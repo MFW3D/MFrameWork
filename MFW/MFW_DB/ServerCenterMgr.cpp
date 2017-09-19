@@ -17,7 +17,7 @@ void ServerCenterMgr::InitServer()
 {
 	//初始化
 	//ServerGlobal::init("./servercfg.ini");
-	ServerGlobal::GetInstance()->Init("E:\\MFW\\trunk\\Server\\MFW\\x64\\Debug\\servercfg.ini");
+	ServerGlobal::GetInstance()->Init("./servercfg.ini");
 
 
 	LOGD("全局初始化完成");
@@ -108,9 +108,9 @@ bool ServerCenterMgr::StartServer()
 		NNNodeInfo_Logic.Port = ServerCfg::GetInstance()->DB_Port2Logic;
 		//NNNodeInfo_Manager.Port = ServerCfg::GetInstance()->DB_Port2Manager;
 
-		//NNNodeInfo_Login.isClient = false;
-		NNNodeInfo_Logic.isClient = false;
-		//NNNodeInfo_Manager.isClient = false;
+		//NNNodeInfo_Login.IsClient = false;
+		NNNodeInfo_Logic.IsClient = false;
+		//NNNodeInfo_Manager.IsClient = false;
 
 		//NNNodeInfo_Login.OnConnected = std::bind(&Net_LoginHandler::OnConnected, Net_LoginHandler::GetInstance().get(),
 		//	std::placeholders::_1, std::placeholders::_2);
@@ -170,9 +170,9 @@ bool ServerCenterMgr::StartServer()
 			LOGE("网络数据处理发生错误");
 		}
 #if _WIN32
-		Sleep(1);
+		Sleep(10);
 #else
-		usleep(1000);
+		usleep(10000);
 #endif
 		}
 	LOGW("主线程退出");

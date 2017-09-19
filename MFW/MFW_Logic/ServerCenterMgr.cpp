@@ -9,7 +9,7 @@
 void ServerCenterMgr::Init()
 {
 	//初始化全局变量
-	ServerGlobal::GetInstance()->Init("E:\\MFW\\trunk\\Server\\MFW\\x64\\Debug\\servercfg.ini");
+	ServerGlobal::GetInstance()->Init("./servercfg.ini");
 	redisHandlerEngine.connect(ServerCfg::GetInstance()->DB_RedisIp.c_str(),
 		ServerCfg::GetInstance()->DB_RedisPort);
 
@@ -43,9 +43,9 @@ void ServerCenterMgr::Start()
 		//NNNodeInfo_DB.Port = ServerCfg::GetInstance()->DB_Port2Logic;
 		NNNodeInfo_Client.Port = ServerCfg::GetInstance()->Logic_Port2Client;
 
-		//NNNodeInfo_Manager.isClient = true;
-		//NNNodeInfo_DB.isClient = true;
-		NNNodeInfo_Client.isClient = false;
+		//NNNodeInfo_Manager.IsClient = true;
+		//NNNodeInfo_DB.IsClient = true;
+		NNNodeInfo_Client.IsClient = false;
 
 		//NNNodeInfo_Manager.OnConnected = std::bind(&Net_ManagerHandler::OnConnected, Net_ManagerHandler::GetInstance().get(),
 		//	std::placeholders::_1, std::placeholders::_2);
@@ -92,9 +92,9 @@ void ServerCenterMgr::Start()
 		Que_ManagerHandler::GetInstance()->Process();
 		Que_DBHandler::GetInstance()->Process();
 #if _WIN32
-		Sleep(1);
+		Sleep(10);
 #else
-		uSleep(1000);
+		uSleep(10000);
 #endif
 	}
 }

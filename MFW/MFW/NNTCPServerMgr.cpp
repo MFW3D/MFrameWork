@@ -135,22 +135,6 @@ void NNTCPServer::ReadCb(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf
 		{
 			OnDisConnected(NNTCPClientNodePtr, *this);
 		}
-		//客户端断开
-		int ip;
-		int port;
-		NetUtility::GetIpPort((uv_tcp_t*)client, ip, port);
-		unsigned long long id = NetUtility::CombineInt32(ip, port);
-
-		if (Clients.find(id) != Clients.end())
-		{
-			Clients.erase(id);
-		}
-		else
-		{
-			//warning
-		}
-
-		uv_close((uv_handle_t*)client, NNTCPServerMgr::CloseCb);
 		return;
 	}
 	buf->base[nread] = '\0';
