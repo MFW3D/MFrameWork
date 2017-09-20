@@ -32,7 +32,7 @@ public:
 	//客户端的唯一ID,由连接地址和端口决定
 	unsigned long long mId = 0;
 	std::string mIPStr = "0.0.0.0";
-	int mIP = 0;
+	unsigned long mIP = 0;
 	int mPort = 0;
 	//TCP连接信息
 	uv_stream_t * session;

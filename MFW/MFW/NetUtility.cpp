@@ -5,7 +5,7 @@
 
 #include <string>
 #include <clocale>
-
+#include <string.h>  
 #include <iostream>
 using namespace std;
 
@@ -745,8 +745,12 @@ std::string NetUtility::urldecode(std::string &str_source)
 	int out_str_len = 0;
 	std::string out_str;
 	char *str;
-
+#if _WIN32
 	str = _strdup(in_str);
+#else
+	str = strdup(in_str);
+#endif
+
 	char *dest = str;
 	char *data = str;
 
