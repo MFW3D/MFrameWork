@@ -1,5 +1,16 @@
 ﻿#include "NNTCPServerMgr.h"
 #include <iostream>
+
+#include <stdio.h>  
+#include <stdlib.h>  
+#include <string.h>  
+#include <errno.h> 
+
+
+#define MAC_SIZE    18  
+#define IP_SIZE     16  
+
+
 void NNTCPNode::SendData(std::shared_ptr<NNTCPLinkNode> session, std::string data)
 {
 	write_req_t* wr = (write_req_t*)malloc(sizeof *wr);
@@ -229,6 +240,14 @@ void NNTCPClient::ReadCb(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf
 	}
 }
 
+// 根据域名获取ip  
+std::string  get_ip_by_domain(const char *domain)
+{
+	hostent *phst = gethostbyname(domain);
+	in_addr * iddr = (in_addr*)phst->h_addr;
+	unsigned long IPUL = iddr->s_addr;
+	return std::string( inet_ntoa(*iddr));
+}
 
 std::map<int, std::shared_ptr<NNTCPServer>> NNTCPServerMgr::mNetServers;
 std::map<unsigned long long, std::shared_ptr<NNTCPClient>> NNTCPServerMgr::mNetClients;
@@ -492,8 +511,7 @@ unsigned long long  NNTCPServerMgr::AddServer(uv_loop_t* loop, NNNodeInfo nNServ
 		return -1;
 	}
 	struct sockaddr_in addr;
-
-	if (0 != uv_ip4_addr(nNServerInfo.Ip.c_str(), nNServerInfo.Port, &addr))
+	if (0 != uv_ip4_addr(get_ip_by_domain(nNServerInfo.Ip.c_str()).c_str(), nNServerInfo.Port, &addr))
 		return -1;
 	r = uv_tcp_init(loop, &NetSessionPtr->server);
 	if (r != 0)
