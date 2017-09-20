@@ -22,13 +22,13 @@ class NetUtility
 private:
 public:
 	/*合并后n1占高32位，n2占低32位*/
-	static unsigned long long CombineInt32(int n1,int n2);
+	static unsigned long long CombineInt32(unsigned long n1,int n2);
 	/*拆解后n1值高32位，n2值低32位*/
-	static void SplitLongLong(int& n1,int& n2, long long l);
+	static void SplitLongLong(unsigned long& n1,int& n2, long long l);
 	/*ip int 和string类型的转换*/
 	static int iptoint(  const char *ipstr);
-	static std::string inttoip(int ipint);
-	static void GetIpPort(uv_tcp_t* client, int& ip, int& port);
+	static std::string inttoip(unsigned int ipint);
+	static void GetIpPort(uv_tcp_t* client, unsigned long& ip, int& port);
 	static std::string BinToHex(const std::string &strBin, bool bIsUpper=false);
 	static std::string HexToBin(const std::string &strHex);
 

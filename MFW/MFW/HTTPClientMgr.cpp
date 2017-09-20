@@ -83,8 +83,10 @@ void HTTPClientMgr::OnConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNo
 	request.SetUrl("" + info.url + "");
 	request.SetVesionMajor(1);
 	request.SetVesionMinor(1);
-	request.AddParam("Host", "" + info.ip + " : " + std::to_string(info.port) + "");
+	//request.AddParam("Host", "" + info.ip + " : " + std::to_string(info.port) + "");
+	request.AddParam("Host",  info.ip );
 	request.AddParam("Connection", "close");
+	//request.AddParam("Connection", "keep-alive");
 	for each(auto itr in info.params)
 	{
 		request.AddParam(itr.first, itr.second);

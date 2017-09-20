@@ -40,14 +40,14 @@ void swapStr(char *str, int begin, int end)
 	}
 }
 
-unsigned long long NetUtility::CombineInt32(int n1, int n2)
+unsigned long long NetUtility::CombineInt32(unsigned long n1, int n2)
 {
 	long long l = n1;
 	l = l << 32;
 	l = l | n2;
 	return l;
 }
-void NetUtility::SplitLongLong(int& n1, int& n2, long long l)
+void NetUtility::SplitLongLong(unsigned long& n1, int& n2, long long l)
 {
 	n2 = l & 0x00000000FFFFFFFF;
 	l = l & 0xFFFFFFFF00000000;
@@ -60,7 +60,7 @@ int NetUtility::iptoint( const char *ipstr)
 	return  ntohl(inet_addr(ipstr));
 }
 
-std::string  NetUtility::inttoip(int ipint)
+std::string  NetUtility::inttoip(unsigned int ipint)
 {
 	char * newchars = (char *)malloc(LEN);
 	memset(newchars, '\0', LEN);
@@ -93,7 +93,7 @@ std::string  NetUtility::inttoip(int ipint)
 	return newchars;
 }
 
-void NetUtility::GetIpPort(uv_tcp_t* client, int& ip, int& port)
+void NetUtility::GetIpPort(uv_tcp_t* client, unsigned long& ip, int& port)
 {
 	sockaddr_in addrMy;
 	memset(&addrMy, 0, sizeof(addrMy));

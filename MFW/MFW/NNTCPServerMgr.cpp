@@ -60,7 +60,7 @@ void NNTCPServer::ConnectCb(uv_loop_t* loop, uv_stream_t *server, int status)
 		uv_read_start((uv_stream_t*)client, NNTCPServerMgr::AllocBuffer, NNTCPServerMgr::ReadCb);
 
 		//客户端连接进入
-		int ip;
+		unsigned long ip;
 		int port;
 		NetUtility::GetIpPort(client, ip, port);
 		unsigned long long id = NetUtility::CombineInt32(ip, port);
@@ -95,7 +95,7 @@ void NNTCPServer::ConnectCb(uv_loop_t* loop, uv_stream_t *server, int status)
 }
 void NNTCPServer::CloseCb(uv_handle_t* handle)
 {
-	int ip;
+	unsigned long ip;
 	int port;
 	NetUtility::GetIpPort((uv_tcp_t*)handle, ip, port);
 	unsigned long long id = NetUtility::CombineInt32(ip, port);
@@ -118,7 +118,7 @@ void NNTCPServer::CloseCb(uv_handle_t* handle)
 }
 void NNTCPServer::ReadCb(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf)
 {
-	int ip;
+	unsigned long ip;
 	int port;
 	NetUtility::GetIpPort((uv_tcp_t*)client, ip, port);
 	unsigned long long id = NetUtility::CombineInt32(ip, port);
@@ -185,7 +185,7 @@ void NNTCPClient::ConnectCbClient(uv_loop_t* loop, uv_connect_t* conn_req, int s
 		return;
 	}
 	int r = uv_read_start((uv_stream_t*)&server, NNTCPServerMgr::AllocBuffer, NNTCPServerMgr::ReadCb);
-	int ip;
+	unsigned long ip;
 	int port;
 	NetUtility::GetIpPort(&server, ip, port);
 	unsigned long long id = NetUtility::CombineInt32(ip, port);
@@ -199,7 +199,7 @@ void NNTCPClient::ConnectCbClient(uv_loop_t* loop, uv_connect_t* conn_req, int s
 }
 void NNTCPClient::CloseCb(uv_handle_t* handle)
 {
-	int ip;
+	unsigned long ip;
 	int port;
 	NetUtility::GetIpPort((uv_tcp_t*)handle, ip, port);
 	unsigned long long id = NetUtility::CombineInt32(ip, port);
@@ -215,7 +215,7 @@ void NNTCPClient::CloseCb(uv_handle_t* handle)
 }
 void NNTCPClient::ReadCb(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf)
 {
-	int ip;
+	unsigned long ip;
 	int port;
 	NetUtility::GetIpPort((uv_tcp_t*)client, ip, port);
 	unsigned long long id = NetUtility::CombineInt32(ip, port);
