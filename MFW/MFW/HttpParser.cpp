@@ -142,6 +142,7 @@ bool HttpRequest::ParseToString(std::string& result)
 	}
 	result.append("\r\n");
 	result.append(mBody);
+	result.append("\r\n");
 	return true;
 }
 void HttpRequest::Clear()

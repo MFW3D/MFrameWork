@@ -5,6 +5,7 @@
 #include "NNTCPServerMgr.h"
 #include <string>
 #include "HttpParser.h"
+#include "Timer.h"
 class HttpStartInfo
 {
 public:
@@ -23,6 +24,7 @@ private:
 	void OnDisConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNode& netNode);
 	//定时器返回
 	void OnTimer(uv_timer_t* handle);
+
 public:
 	std::function<void(std::shared_ptr<NNTCPLinkNode>  session, HttpRequest& httpRequest, NNTCPNode& netNode)> OnReadServerPtr = nullptr;
 	std::function<void(std::shared_ptr<NNTCPLinkNode>  session, HttpResPonse& httpResPonse, NNTCPNode& netNode)> OnReadClientPtr = nullptr;
@@ -31,8 +33,6 @@ public:
 	std::function<void(uv_timer_t* handle)> OnTimerPtr = nullptr;
 	//启动
 	void Start(std::vector<HttpStartInfo> startInfos);
-	//发送数据，并关闭连接
-	void SendDataClient(std::shared_ptr<NNTCPLinkNode> session, std::string data, NNTCPNode& netNode, std::map<std::string, std::string> params, std::string Url);
 	void SendData(std::shared_ptr<NNTCPLinkNode> session, std::string data, std::map<std::string, std::string> params, NNTCPNode& netNode);
 
 

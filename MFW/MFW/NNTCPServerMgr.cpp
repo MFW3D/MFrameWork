@@ -16,13 +16,17 @@ void NNTCPNode::SendData(std::shared_ptr<NNTCPLinkNode> session, std::string dat
 	write_req_t* wr = (write_req_t*)malloc(sizeof *wr);
 	uv_buf_t buf = uv_buf_init((char*)data.data(), data.size());
 	wr->buf = uv_buf_init(buf.base, data.size());
-	session->session->data = (void*)&nNNodeInfo;
+	//session->session->data = (void*)&nNNodeInfo;
 	uv_write(&wr->req, session->session, &wr->buf, 1, NNTCPServerMgr::WriteCb);
 }
 bool NNTCPNode::CloseSession(std::shared_ptr<NNTCPLinkNode> session)
 {
 	uv_close((uv_handle_t*)session->session, NNTCPServerMgr::CloseCb);
 	return true;
+}
+void NNTCPNode::StopTimer()
+{
+	uv_timer_stop(&timerHandle);
 }
 void NNTCPNode::ReadCb(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf)
 {
@@ -251,7 +255,6 @@ std::string  get_ip_by_domain(const char *domain)
 
 std::map<int, std::shared_ptr<NNTCPServer>> NNTCPServerMgr::mNetServers;
 std::map<unsigned long long, std::shared_ptr<NNTCPClient>> NNTCPServerMgr::mNetClients;
-std::mutex NNTCPServerMgr::mNetNodesMutex;
 std::vector<uv_loop_t*> NNTCPServerMgr::loops;
 unsigned long long NNTCPServerMgr::mClientId=1;
 void NNTCPServerMgr::AllocBuffer(uv_handle_t *h, size_t size, uv_buf_t *buf) {
@@ -260,7 +263,6 @@ void NNTCPServerMgr::AllocBuffer(uv_handle_t *h, size_t size, uv_buf_t *buf) {
 	buf->len = size;
 }
 void NNTCPServerMgr::ReadCb(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf) {
-	std::lock_guard<std::mutex> lg(mNetNodesMutex);
 	NNNodeInfo node = *(NNNodeInfo*)client->data;
 	if (!node.IsClient)
 	{
@@ -287,7 +289,6 @@ void NNTCPServerMgr::ReadCb(uv_stream_t *client, ssize_t nread, const uv_buf_t *
 }
 void NNTCPServerMgr::CloseCb(uv_handle_t* handle)
 {
-	std::lock_guard<std::mutex> lg(mNetNodesMutex);
 	NNNodeInfo node = *(NNNodeInfo*)handle->data;
 	if (!node.IsClient)
 	{
@@ -299,7 +300,6 @@ void NNTCPServerMgr::CloseCb(uv_handle_t* handle)
 		if (netNodePtr == nullptr)
 			return;
 		netNodePtr->CloseCb(handle);
-		mNetServers.erase(node.Port);
 	}
 	else
 	{
@@ -311,11 +311,9 @@ void NNTCPServerMgr::CloseCb(uv_handle_t* handle)
 		if (netNodePtr == nullptr)
 			return;
 		netNodePtr->CloseCb(handle);
-		mNetClients.erase(node.ClientId);
 	}
 }
 void NNTCPServerMgr::TimerCb(uv_timer_t* handle) {
-	std::lock_guard<std::mutex> lg(mNetNodesMutex);
 	NNNodeInfo node = *(NNNodeInfo*)handle->data;
 	if (!node.IsClient)
 	{
@@ -342,7 +340,6 @@ void NNTCPServerMgr::TimerCb(uv_timer_t* handle) {
 
 }
 void NNTCPServerMgr::ConnectCb(uv_stream_t *server, int status) {
-	std::lock_guard<std::mutex> lg(mNetNodesMutex);
 	std::shared_ptr<NNTCPServer> netNodePtr;
 	NNNodeInfo node = *(NNNodeInfo*)server->data;
 	if (!node.IsClient)
@@ -357,7 +354,6 @@ void NNTCPServerMgr::ConnectCb(uv_stream_t *server, int status) {
 	}
 }
 void NNTCPServerMgr::ConnectCbClient(uv_connect_t* conn_req, int status) {
-	std::lock_guard<std::mutex> lg(mNetNodesMutex);
 	NNNodeInfo node = *(NNNodeInfo*)conn_req->data;
 	if (node.IsClient)
 	{
@@ -372,7 +368,6 @@ void NNTCPServerMgr::ConnectCbClient(uv_connect_t* conn_req, int status) {
 	}
 }
 void NNTCPServerMgr::WriteCb(uv_write_t* client, int status) {
-	std::lock_guard<std::mutex> lg(mNetNodesMutex);
 	NNNodeInfo node = *(NNNodeInfo*)client->handle->data;
 	std::shared_ptr<NNTCPServer> netNodePtr;
 	if (mNetServers.find(node.Port) != mNetServers.end())
@@ -398,14 +393,10 @@ bool NNTCPServerMgr::RunServer(std::vector<NNNodeInfo>NNServerInfos)
 			NetSessionPtr->OnDisConnected = NNServerInfos[i].OnDisConnected;
 			NetSessionPtr->OnRead = NNServerInfos[i].OnRead;
 			NetSessionPtr->nNNodeInfo = NNServerInfos[i];
-			mNetNodesMutex.lock();
 			if (mNetServers.find(NNServerInfos[i].Port) != mNetServers.end())
 			{
-				mNetNodesMutex.unlock();
 				continue;
 			}
-			mNetNodesMutex.unlock();
-
 			struct sockaddr_in addr;
 
 			assert(0 == uv_ip4_addr(NNServerInfos[i].Ip.c_str(), NNServerInfos[i].Port, &addr));
@@ -427,10 +418,7 @@ bool NNTCPServerMgr::RunServer(std::vector<NNNodeInfo>NNServerInfos)
 				NetSessionPtr->timerCB = NNServerInfos[i].OnTimered;
 			}
 			r = uv_timer_start(&NetSessionPtr->timerHandle, NNTCPServerMgr::TimerCb, 1, 1);
-
-			mNetNodesMutex.lock();
 			mNetServers.insert(std::pair<int, std::shared_ptr<NNTCPServer>>(NNServerInfos[i].Port, NetSessionPtr));
-			mNetNodesMutex.unlock();
 		}
 		else
 		{
@@ -439,14 +427,10 @@ bool NNTCPServerMgr::RunServer(std::vector<NNNodeInfo>NNServerInfos)
 			NetSessionPtr->OnDisConnected = NNServerInfos[i].OnDisConnected;
 			NetSessionPtr->OnRead = NNServerInfos[i].OnRead;
 			NetSessionPtr->nNNodeInfo = NNServerInfos[i];
-			mNetNodesMutex.lock();
 			if (mNetClients.find(NNServerInfos[i].ClientId) != mNetClients.end())
 			{
-				mNetNodesMutex.unlock();
 				continue;
 			}
-			mNetNodesMutex.unlock();
-
 			struct sockaddr_in addr;
 
 			assert(0 == uv_ip4_addr(NNServerInfos[i].Ip.c_str(), NNServerInfos[i].Port, &addr));
@@ -468,10 +452,8 @@ bool NNTCPServerMgr::RunServer(std::vector<NNNodeInfo>NNServerInfos)
 			}
 			r = uv_timer_start(&NetSessionPtr->timerHandle, NNTCPServerMgr::TimerCb, 1, 1);
 
-			mNetNodesMutex.lock();
 			mNetClients.insert(std::pair<unsigned long long,
 				std::shared_ptr<NNTCPClient>>(NNServerInfos[i].ClientId, NetSessionPtr));
-			mNetNodesMutex.unlock();
 
 		}
 	}
@@ -492,9 +474,7 @@ bool NNTCPServerMgr::RunServer(NNNodeInfo nNServerInfo)
 		NetSessionPtr->timerCB = nNServerInfo.OnTimered;
 	}
 	r = uv_timer_start(&NetSessionPtr->timerHandle, NNTCPServerMgr::TimerCb, 1, 1);
-	mNetNodesMutex.lock();
 	mNetClients.insert(std::pair<unsigned long long, std::shared_ptr<NNTCPClient>>(nNServerInfo.ClientId, NetSessionPtr));
-	mNetNodesMutex.unlock();
 	return uv_run(loop, UV_RUN_DEFAULT);
 }
 unsigned long long  NNTCPServerMgr::AddServer(uv_loop_t* loop, NNNodeInfo nNServerInfo)

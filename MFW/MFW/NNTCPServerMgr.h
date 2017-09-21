@@ -56,6 +56,7 @@ public:
 class NNTCPNode
 {
 public:
+	int CloseTick = 100;
 	int port = 0;
 	uv_tcp_t server;
 	uv_timer_t timerHandle;
@@ -66,6 +67,7 @@ public:
 	std::function<void(std::shared_ptr<NNTCPLinkNode> session, NNTCPNode& netNode)> OnDisConnected;
 	void  SendData(std::shared_ptr<NNTCPLinkNode> session, std::string data);
 	bool CloseSession(std::shared_ptr<NNTCPLinkNode> session);
+	void StopTimer();
 	virtual void ReadCb(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf);
 	virtual void CloseCb(uv_handle_t* handle);
 	virtual void ConnectCb(uv_loop_t* loop, uv_stream_t *server, int status);
@@ -99,7 +101,6 @@ class NNTCPServerMgr
 {
 private:
 	static std::vector<uv_loop_t*> loops;
-	static std::mutex mNetNodesMutex;
 	static unsigned long long mClientId;
 
 	//自己作为服务器的网络结构
