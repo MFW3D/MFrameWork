@@ -85,17 +85,17 @@ void HTTPClientMgr::OnConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNo
 	request.SetVesionMinor(1);
 	if (request.GetMethod() == EHttpMethod::POST)
 	{
-		info.params.insert(std::pair<std::string, std::string>("Host", "127.0.0.1:9999"));
+		request.SetBody(info.body);
+		request.AddParam("Content-Length", std::to_string(info.body.size()));
 	}
 	//request.AddParam("Host", "" + info.ip + " : " + std::to_string(info.port) + "");
 	//request.AddParam("Host",  info.ip );
-	request.AddParam("Connection", "close");
+	//request.AddParam("Connection", "close");
 	//request.AddParam("Connection", "keep-alive");
 	for(auto itr =info.params.begin();itr!= info.params.end();itr++)
 	{
 		request.AddParam(itr->first, itr->second);
 	}
-	request.SetBody(info.body);
 	std::string data = "";
 	request.ParseToString(data);
 	netNode.SendData(session, data);
