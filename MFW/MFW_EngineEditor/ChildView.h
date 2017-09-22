@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include "CMyOgreApp.h" 
+#include "Scene_Level2.h"
 #include "Scene_Level1.h"
 #include "MFW3D_SceneMgr.h"
 // CChildView window
@@ -22,7 +22,7 @@ private:
 	int oldy= 0;
 	bool isRote = false;
 public:
-	CMyOgreApp m_ogreApp;//ogre ÷˜¿‡  
+	Scene_Level2 ss2;
 	Scene_Level1 ss1;
 	bool m_firstDraw;//≥ı¥Œ‰÷»æ  
 // Operations
@@ -55,5 +55,7 @@ public:
 	afx_msg void OnMouseHWheel(UINT nFlags, short zDelta, CPoint pt);
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
+	afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
+	void ExitOgre();
 };
 

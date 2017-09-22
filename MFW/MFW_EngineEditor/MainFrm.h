@@ -34,7 +34,7 @@ public:
 
 protected:  // control bar embedded members
 	CToolBar          m_wndToolBar;
-	CStatusBar        m_wndStatusBar;
+	//CStatusBar        m_wndStatusBar;
 	CChildView    m_wndView;
 
 // Generated message map functions
@@ -43,6 +43,8 @@ protected:
 	afx_msg void OnSetFocus(CWnd *pOldWnd);
 	DECLARE_MESSAGE_MAP()
 
+public:
+	afx_msg void OnClose();
 };
 
 

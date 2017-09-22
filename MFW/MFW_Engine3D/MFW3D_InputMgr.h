@@ -11,6 +11,7 @@ namespace MFW3D
 	class MFW3D_InputMgr:public MFW::Singleton<MFW3D_InputMgr>
 	{
 	private:
+		bool mUseSDL = false;
 		SDL_Window*	mSDLWindow;
 		std::set<MFW3D_InputListener*> mInputListeners;
 		Ogre::Root* mRoot = nullptr;
@@ -27,7 +28,6 @@ namespace MFW3D
 		void removeInputListener(MFW3D_InputListener* lis) {
 			mInputListeners.erase(lis);
 		}
-		void FrameRenderQueue(const Ogre::FrameEvent& evt);
 		void Destroy();
 	};
 }

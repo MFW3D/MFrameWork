@@ -72,7 +72,20 @@ namespace MFW3D {
 #if OGRE_PLATFORM == OGRE_PLATFORM_NACL
 		mNextRenderer = mRoot->getAvailableRenderers()[0]->getName();
 #else
-		if (!oneTimeConfig()) return;
+
+
+#if OGRE_PLATFORM == OGRE_PLATFORM_ANDROID || OGRE_PLATFORM == OGRE_PLATFORM_EMSCRIPTEN
+		mRoot->setRenderSystem(mRoot->getAvailableRenderers().at(0));
+#else
+		if (!mRoot->restoreConfig()) {
+#if OGRE_PLATFORM == OGRE_PLATFORM_LINUX || OGRE_PLATFORM == OGRE_PLATFORM_WIN32 || OGRE_PLATFORM == OGRE_PLATFORM_APPLE
+			static Ogre::ConfigDialog dialog;
+			mRoot->showConfigDialog(&dialog);
+#else
+			mRoot->showConfigDialog(NULL);
+#endif
+		}
+#endif
 #endif
 
 #if OGRE_PLATFORM != OGRE_PLATFORM_ANDROID
@@ -87,7 +100,6 @@ namespace MFW3D {
 #if OGRE_PLATFORM != OGRE_PLATFORM_ANDROID
 		mRoot->saveConfig();
 #endif
-
 		shutdown();
 		if (mRoot)
 		{
@@ -171,22 +183,13 @@ namespace MFW3D {
 #endif
 	}
 
-	void MFW3D_MgrContext::setup(bool UseSdl)
+	void MFW3D_MgrContext::setup()
 	{
-		//maomao
-		//mWindow = createWindow();
-		if (UseSdl)
-		{
-			setupInput(mGrabInput);
-		}
-
 		locateResources();
 #ifdef OGRE_BUILD_COMPONENT_RTSHADERSYSTEM
 		initialiseRTShaderSystem();
 #endif
 		loadResources();
-
-		// adds context as listener to process context-level (above the sample level) events
 		mRoot->addFrameListener(this);
 #if OGRE_PLATFORM != OGRE_PLATFORM_ANDROID
 		Ogre::WindowEventUtilities::addWindowEventListener(mWindow, this);
@@ -203,32 +206,13 @@ namespace MFW3D {
 		mRoot = OGRE_NEW Ogre::Root("");
 #else
 		Ogre::String pluginsPath = Ogre::BLANKSTRING;
-#   ifndef OGRE_STATIC_LIB
 		pluginsPath = mFSLayer->getConfigFilePath("plugins.cfg");
-#   endif
 		mRoot = OGRE_NEW Ogre::Root(pluginsPath, mFSLayer->getWritablePath("ogre.cfg"),
 			mFSLayer->getWritablePath("ogre.log"));
 #endif
-
 		mOverlaySystem = OGRE_NEW Ogre::OverlaySystem();
 	}
 
-	bool MFW3D_MgrContext::oneTimeConfig()
-	{
-#if OGRE_PLATFORM == OGRE_PLATFORM_ANDROID || OGRE_PLATFORM == OGRE_PLATFORM_EMSCRIPTEN
-		mRoot->setRenderSystem(mRoot->getAvailableRenderers().at(0));
-#else
-		if (!mRoot->restoreConfig()) {
-#if OGRE_PLATFORM == OGRE_PLATFORM_LINUX || OGRE_PLATFORM == OGRE_PLATFORM_WIN32 || OGRE_PLATFORM == OGRE_PLATFORM_APPLE
-			static Ogre::ConfigDialog dialog;
-			return mRoot->showConfigDialog(&dialog);
-#else
-			return mRoot->showConfigDialog(NULL);
-#endif
-		}
-#endif
-		return true;
-	}
 
 	void MFW3D_MgrContext::createDummyScene()
 	{
@@ -282,10 +266,9 @@ namespace MFW3D {
 
 	bool MFW3D_MgrContext::frameRenderingQueued(const Ogre::FrameEvent& evt)
 	{
-		MFW3D_InputMgr::GetInstance()->FrameRenderQueue(evt);
 		return true;
 	}
-
+	//使用内部创建窗体
 	Ogre::RenderWindow *MFW3D_MgrContext::createWindow()
 	{
 		mRoot->initialise(false, mAppName);
@@ -317,13 +300,19 @@ namespace MFW3D {
 		miscParams["externalWindowHandle"] = Ogre::StringConverter::toString((int)mWindowInfo.info.dummy);
 		mWindow = mRoot->createRenderWindow(mAppName, w, h, false, &miscParams);
 		MFW3D_InputMgr::GetInstance()->init(mWindow, std::bind(&MFW3D_MgrContext::windowResized, this, std::placeholders::_1));
+
+		MFW3D_InputMgr::GetInstance()->SetupWindow(false);
 		return mWindow;
 #endif
 	}
+	//使用外部窗体
 	Ogre::RenderWindow * MFW3D_MgrContext::createWindow(HWND m_hWnd, int width, int height)
 	{
 		mRoot->initialise(false, mAppName);//禁止ogre创建新的渲染窗口，而使用MFC的窗口
 		Ogre::NameValuePairList miscParams;
+		Ogre::ConfigOptionMap ropts = mRoot->getRenderSystem()->getConfigOptions();
+		miscParams["FSAA"] = ropts["FSAA"].currentValue;
+		miscParams["vsync"] = ropts["VSync"].currentValue;
 		miscParams["externalWindowHandle"] = Ogre::StringConverter::toString((int)m_hWnd);
 		return mWindow = mRoot->createRenderWindow("OgreRenderWindow", width, height, false, &miscParams);
 	}
@@ -406,14 +395,8 @@ namespace MFW3D {
 		}
 
 		_fireInputEvent(evt);
-}
-#endif
-
-
-	void MFW3D_MgrContext::setupInput(bool _grab)
-	{
-		MFW3D_InputMgr::GetInstance()->SetupWindow(_grab);
 	}
+#endif
 
 	void MFW3D_MgrContext::locateResources()
 	{
@@ -533,7 +516,7 @@ namespace MFW3D {
 		}
 #endif /* OGRE_BUILD_COMPONENT_RTSHADERSYSTEM */
 #endif /* OGRE_PLATFORM == OGRE_PLATFORM_NACL */
-		}
+	}
 
 	void MFW3D_MgrContext::loadResources()
 	{
@@ -560,16 +543,16 @@ namespace MFW3D {
 					mWindow->getViewport(0)->setOrientationMode(Ogre::OR_LANDSCAPERIGHT, true);
 				else if (it->second == "Portrait")
 					mWindow->getViewport(0)->setOrientationMode(Ogre::OR_PORTRAIT, true);
-		}
+			}
 #endif
-	}
+		}
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_APPLE_IOS
 		// Need to save the config on iOS to make sure that changes are kept on disk
 		mRoot->saveConfig();
 #endif
 		mRoot->queueEndRendering();   // break from render loop
-		}
+	}
 
 	void MFW3D_MgrContext::shutdown()
 	{
@@ -605,10 +588,11 @@ namespace MFW3D {
 #if OGRE_PLATFORM == OGRE_PLATFORM_ANDROID
 		AConfiguration_delete(mAConfig);
 #endif
-		}
+		MFW3D_InputMgr::GetInstance()->Destroy();
+	}
 
 	void MFW3D_MgrContext::pollEvents()
 	{
 		MFW3D_InputMgr::GetInstance()->PollEvent();
 	}
-	}
+}

@@ -79,13 +79,9 @@ namespace MFW3D
 		void setRTSSWriteShadersToDisk(bool write);
 		void destroyRTShaderSystem();
 		//设置内容
-		virtual void setup(bool UseSdl = true);
+		virtual void setup();
 		//创建ogre根节点
 		virtual void createRoot();
-		//只进行一次的配置
-		virtual bool oneTimeConfig();
-		//设置SDL的配置
-		virtual void setupInput(bool grab);
 		//设置资源的加载路径，默认为配置的路径，也可以自己定义
 		virtual void locateResources();
 		virtual void loadResources();

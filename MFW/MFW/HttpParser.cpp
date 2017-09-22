@@ -142,8 +142,6 @@ bool HttpRequest::ParseToString(std::string& result)
 	}
 	result.append("\r\n");
 	result.append(mBody);
-	result.append("\r\n");
-	result.append("\r\n");
 	return true;
 }
 void HttpRequest::Clear()
@@ -184,6 +182,7 @@ bool HttpResPonse::ParseToString(std::string& result)
 }
 void HttpResPonse::Clear()
 {
+	::HttpMsg::Clear();
 }
 
 void HttpParser::Init()

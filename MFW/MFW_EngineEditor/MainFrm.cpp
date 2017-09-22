@@ -18,6 +18,7 @@ IMPLEMENT_DYNAMIC(CMainFrame, CFrameWnd)
 BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_WM_CREATE()
 	ON_WM_SETFOCUS()
+	ON_WM_CLOSE()
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -51,31 +52,50 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		return -1;
 	}
 
-	if (!m_wndToolBar.CreateEx(this, TBSTYLE_FLAT, WS_CHILD | WS_VISIBLE | CBRS_TOP | CBRS_GRIPPER | CBRS_TOOLTIPS | CBRS_FLYBY | CBRS_SIZE_DYNAMIC) ||
-		!m_wndToolBar.LoadToolBar(IDR_MAINFRAME))
-	{
-		TRACE0("Failed to create toolbar\n");
-		return -1;      // fail to create
-	}
+	//去掉标题栏及其他样式
+	//SetWindowLong(this->m_hWnd, GWL_STYLE, 0);
+	//去掉边框及其他样式
+	//SetWindowLong(this->m_hWnd, GWL_EXSTYLE, 0);
 
-	if (!m_wndStatusBar.Create(this))
-	{
-		TRACE0("Failed to create status bar\n");
-		return -1;      // fail to create
-	}
-	m_wndStatusBar.SetIndicators(indicators, sizeof(indicators)/sizeof(UINT));
+
+	//if (!m_wndStatusBar.Create(this))
+	//{
+	//	TRACE0("Failed to create status bar\n");
+	//	return -1;      // fail to create
+	//}
+	//m_wndStatusBar.SetIndicators(indicators, sizeof(indicators)/sizeof(UINT));
 
 	// TODO: Delete these three lines if you don't want the toolbar to be dockable
-	m_wndToolBar.EnableDocking(CBRS_ALIGN_ANY);
 	EnableDocking(CBRS_ALIGN_ANY);
-	DockControlBar(&m_wndToolBar);
-
+	// 获取窗口的菜单句柄  
+	CMenu *pMenu = GetMenu();
+	if (NULL != pMenu)
+	{
+		int Menucount = GetMenuItemCount(pMenu->GetSafeHmenu());
+		for (int i = Menucount - 1; i > -1; i--)
+		{
+			::DeleteMenu(pMenu->GetSafeHmenu(), i, MF_BYPOSITION);
+		}
+	}
 
 	return 0;
 }
 
 BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 {
+	RECT   rect;
+	::GetWindowRect(GetDesktopWindow()->m_hWnd, &rect);
+
+	/*cs.x = -3;
+	cs.y = -30;
+	cs.cx = rect.right + 5;
+	cs.cy = rect.bottom;*/
+
+	//去掉菜单栏
+	if (cs.hMenu != NULL)
+	{
+		cs.hMenu = NULL;
+	}
 	if( !CFrameWnd::PreCreateWindow(cs) )
 		return FALSE;
 	// TODO: Modify the Window class or styles here by modifying
@@ -119,3 +139,11 @@ BOOL CMainFrame::OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO*
 	return CFrameWnd::OnCmdMsg(nID, nCode, pExtra, pHandlerInfo);
 }
 
+
+
+void CMainFrame::OnClose()
+{
+	// TODO: Add your message handler code here and/or call default
+	m_wndView.ExitOgre();
+	CFrameWnd::OnClose();
+}

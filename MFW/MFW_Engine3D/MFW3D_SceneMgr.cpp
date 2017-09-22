@@ -1,9 +1,10 @@
 ﻿#include "MFW3D_SceneMgr.h"
 #include "MFW3D_InputMgr.h"
+
 namespace MFW3D
 {
-	MFW3D_SceneMgr::MFW3D_SceneMgr(const Ogre::String& appName ,
-		bool grabInput )
+	MFW3D_SceneMgr::MFW3D_SceneMgr(const Ogre::String& appName,
+		bool grabInput)
 		:MFW3D::MFW3D_MgrContext(appName, grabInput)
 	{
 		mCurrentScene = 0;
@@ -26,13 +27,13 @@ namespace MFW3D
 		//关闭当前场景
 		if (mCurrentScene)
 		{
-			mCurrentScene->_shutdown();   
-			mScenePaused = false;       
+			mCurrentScene->_shutdown();
+			mScenePaused = false;
 		}
 		//去除视口
-		mWindow->removeAllViewports(); 
+		mWindow->removeAllViewports();
 		mWindow->resetStatistics();
-		if (sceneBase!=nullptr)
+		if (sceneBase != nullptr)
 		{
 			Ogre::Root::PluginInstanceList ip = mRoot->getInstalledPlugins();
 			Ogre::StringVector rp = sceneBase->getRequiredPlugins();
@@ -47,7 +48,7 @@ namespace MFW3D
 						break;
 					}
 				}
-				if (!found)  
+				if (!found)
 				{
 					Ogre::String desc = "Sample requires plugin: " + *j;
 					Ogre::String src = "SampleContext::runSample";
@@ -94,7 +95,7 @@ namespace MFW3D
 			mLastRun = true;  // 假定是最后一次运行
 			initApp();
 			createWindow();
-			setup(false);
+			setup();
 
 #if OGRE_PLATFORM != OGRE_PLATFORM_ANDROID
 			// 如果有需要恢复的场景就恢复一个，如果没有就运行新的场景
@@ -111,7 +112,7 @@ namespace MFW3D
 		}
 #endif
 	}
-	void MFW3D_SceneMgr::go(MFW3D_Base* initialScene,HWND hWnd, int width, int height)
+	void MFW3D_SceneMgr::go(MFW3D_Base* initialScene, HWND hWnd, int width, int height)
 	{
 #if OGRE_PLATFORM == OGRE_PLATFORM_APPLE_IOS || ((OGRE_PLATFORM == OGRE_PLATFORM_APPLE) && __LP64__)
 		createRoot();
@@ -133,8 +134,8 @@ namespace MFW3D
 		{
 			mLastRun = true;  // 假定是最后一次运行
 			initApp();
-			createWindow(hWnd,width,height);
-			setup(false);
+			createWindow(hWnd, width, height);
+			setup();
 
 #if OGRE_PLATFORM != OGRE_PLATFORM_ANDROID
 			// 如果有需要恢复的场景就恢复一个，如果没有就运行新的场景
@@ -177,20 +178,20 @@ namespace MFW3D
 			mCurrentScene->unpaused();
 		}
 	}
-	
+
 	bool MFW3D_SceneMgr::frameStarted(const Ogre::FrameEvent& evt)
 	{
 		pollEvents();
-		// 手动调用例子的回调来保证正确的顺序
 		return (mCurrentScene && !mScenePaused) ? mCurrentScene->frameStarted(evt) : true;
+		// 手动调用例子的回调来保证正确的顺序
 	}
-	
+
 	bool MFW3D_SceneMgr::frameRenderingQueued(const Ogre::FrameEvent& evt)
 	{
 		// 手动调用场景的帧渲染
 		return (mCurrentScene && !mScenePaused) ? mCurrentScene->frameRenderingQueued(evt) : true;
 	}
-	
+
 	bool MFW3D_SceneMgr::frameEnded(const Ogre::FrameEvent& evt)
 	{
 		if (mCurrentScene && !mScenePaused && !mCurrentScene->frameEnded(evt)) return false;
@@ -198,7 +199,7 @@ namespace MFW3D
 		if (mCurrentScene && mCurrentScene->isDone()) runScene(0);
 		return true;
 	}
-	
+
 	void MFW3D_SceneMgr::windowResized(Ogre::RenderWindow* rw)
 	{
 		if (mCurrentScene && !mScenePaused) mCurrentScene->windowResized(rw);
@@ -283,17 +284,17 @@ namespace MFW3D
 		if (mCurrentScene && !mScenePaused)
 			return mCurrentScene->mouseWheelRolled(evt);
 		return true;
-	}
+}
 	bool MFW3D_SceneMgr::isFirstRun() { return mFirstRun; }
 	void MFW3D_SceneMgr::setFirstRun(bool flag) { mFirstRun = flag; }
 	bool MFW3D_SceneMgr::isLastRun() { return mLastRun; }
 	void MFW3D_SceneMgr::setLastRun(bool flag) { mLastRun = flag; }
-	void MFW3D_SceneMgr::reconfigure(const Ogre::String& renderer, 
+	void MFW3D_SceneMgr::reconfigure(const Ogre::String& renderer,
 		Ogre::NameValuePairList& options)
 	{
 		mLastScene = mCurrentScene;
 		if (mCurrentScene) mCurrentScene->saveState(mLastSampleState);
-		mLastRun = false;            
+		mLastRun = false;
 		MFW3D_MgrContext::reconfigure(renderer, options);
 	}
 	void MFW3D_SceneMgr::recoverLastScene()

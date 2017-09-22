@@ -37,6 +37,7 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_MOUSEHWHEEL()
 	ON_WM_LBUTTONDOWN()
 	ON_WM_LBUTTONUP()
+	ON_WM_SETCURSOR()
 END_MESSAGE_MAP()
 
 
@@ -67,12 +68,10 @@ void CChildView::OnPaint()
 			m_firstDraw = false;
 			CRect   rect;
 			GetClientRect(&rect);
-			//m_ogreApp.go(rect, m_hWnd);//传入MFC主窗口句柄  
-			MFW3D::MFW3D_SceneMgr::GetInstance()->go(&ss1, m_hWnd, rect.Width(), rect.Height());
+			MFW3D::MFW3D_SceneMgr::GetInstance()->go(&ss2, m_hWnd, rect.Width(), rect.Height());
 			SetTimer(1, 20, 0);
 		}
 		MFW3D::MFW3D_SceneMgr::GetInstance()->getRoot()->renderOneFrame();
-		//m_ogreApp.getRoot()->renderOneFrame();
 	}
 	catch (Ogre::Exception& e) {
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32  
@@ -89,10 +88,6 @@ void CChildView::OnPaint()
 void CChildView::OnTimer(UINT_PTR nIDEvent)
 {
 	// TODO: Add your message handler code here and/or call default
-	if (1 == nIDEvent)
-	{
-		m_ogreApp.getRoot()->renderOneFrame();
-	}
 	CWnd::OnTimer(nIDEvent);
 }
 
@@ -108,7 +103,7 @@ BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 void CChildView::OnClose()
 {
 	// TODO: Add your message handler code here and/or call default
-	//MFW3D::MFW3D_SceneMgr::GetInstance()->closeApp();
+	
 	CWnd::OnClose();
 }
 
@@ -117,7 +112,6 @@ void CChildView::OnSize(UINT nType, int cx, int cy)
 {
 	CWnd::OnSize(nType, cx, cy);
 
-	//m_ogreApp.go(rect, m_hWnd);//传入MFC主窗口句柄  
 	// TODO: Add your message handler code here
 }
 
@@ -151,18 +145,27 @@ void CChildView::OnMouseMove(UINT nFlags, CPoint point)
 		oldx = point.x;
 		oldy = point.y;
 	}
-	if (isRote)
-	{
+	//if (isRote)
+	//{
 		//evt.state = SDL_PRESSED;
-		evt.x = point.x - oldx;
-		evt.y = point.y - oldy; //point.y;
-		evt.xrel = point.x - oldx; //point.x;
-		evt.yrel = point.y - oldy; //point.y;
+		//evt.x = point.x - oldx;
+		//evt.y = point.y - oldy; //point.y;
+		//evt.xrel = point.x - oldx; //point.x;
+		//evt.yrel = point.y - oldy; //point.y;
+	if (isRote)
+		evt.state = SDL_PRESSED;
+	else
+		evt.state = SDL_RELEASED;
 
-		oldx = point.x;
-		oldy = point.y;
-		MFW3D::MFW3D_SceneMgr::GetInstance()->mouseMoved(evt);
-	}
+	evt.x = point.x;
+	evt.y = point.y; //point.y;
+	evt.xrel = point.x; //point.x;
+	evt.yrel = point.y; //point.y;
+
+	oldx = point.x;
+	oldy = point.y;
+	MFW3D::MFW3D_SceneMgr::GetInstance()->mouseMoved(evt);
+	//}
 	CWnd::OnMouseMove(nFlags, point);
 }
 
@@ -180,10 +183,22 @@ void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	// TODO: Add your message handler code here and/or call default
 	MFW3D::KeyboardEvent evt;
 
+	if (nChar + 32 == 'c')
+	{
+		MFW3D::MFW3D_SceneMgr::GetInstance()->runScene(&ss1);
+		return;
+	}
+	else if (nChar +32 == 'g')
+	{
+		MFW3D::MFW3D_SceneMgr::GetInstance()->runScene(&ss2);
+		return;
+	}
+
 	evt.keysym.sym = nChar + 32;
 	evt.type = SDL_KEYDOWN;
 	evt.repeat = nRepCnt;
 	MFW3D::MFW3D_SceneMgr::GetInstance()->keyPressed(evt);
+
 	CWnd::OnKeyDown(nChar, nRepCnt, nFlags);
 }
 
@@ -204,8 +219,6 @@ void CChildView::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 int CChildView::OnMouseActivate(CWnd* pDesktopWnd, UINT nHitTest, UINT message)
 {
 	// TODO: Add your message handler code here and/or call default
-
-
 	return CWnd::OnMouseActivate(pDesktopWnd, nHitTest, message);
 }
 
@@ -249,4 +262,20 @@ void CChildView::OnLButtonUp(UINT nFlags, CPoint point)
 	evt.y = point.y;
 	MFW3D::MFW3D_SceneMgr::GetInstance()->mouseReleased(evt);
 	CWnd::OnLButtonUp(nFlags, point);
+}
+
+
+BOOL CChildView::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
+{
+	// TODO: Add your message handler code here and/or call default
+	ShowCursor(FALSE);
+	return TRUE; // 直接return
+	return CWnd::OnSetCursor(pWnd, nHitTest, message);
+}
+
+
+void CChildView::ExitOgre()
+{
+	MFW3D::MFW3D_SceneMgr::GetInstance()->getRoot()->queueEndRendering();
+	//MFW3D::MFW3D_SceneMgr::GetInstance()->closeApp();
 }

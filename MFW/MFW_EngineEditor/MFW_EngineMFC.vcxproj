@@ -23,6 +23,7 @@
     <RootNamespace>MFW_EngineMFC</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
     <Keyword>MFCProj</Keyword>
+    <ProjectName>MFW_EngineEditor</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -187,7 +188,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChildView.h" />
-    <ClInclude Include="CMyOgreApp.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="MaterialControls.h" />
     <ClInclude Include="MFW_EngineMFC.h" />
@@ -199,7 +199,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChildView.cpp" />
-    <ClCompile Include="CMyOgreApp.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="MaterialControls.cpp" />
     <ClCompile Include="MFW_EngineMFC.cpp" />

@@ -58,6 +58,7 @@ private:
 	void OnRead(std::shared_ptr<NNTCPLinkNode>  session, std::string data, NNTCPNode& netNode);
 	void OnConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNode& netNode);
 	void OnDisConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNode& netNode);
+	void OnFailConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNode& netNode);
 	void OnTimer(uv_timer_t* handle);
 public:
 	void start();

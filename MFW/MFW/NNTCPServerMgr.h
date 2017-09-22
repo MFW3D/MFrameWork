@@ -50,6 +50,7 @@ public:
 	std::function<void(std::shared_ptr<NNTCPLinkNode> session, std::string data, NNTCPNode& netNode)> OnRead;
 	std::function<void(std::shared_ptr<NNTCPLinkNode> session, NNTCPNode& netNode)> OnConnected = nullptr;
 	std::function<void(std::shared_ptr<NNTCPLinkNode> session, NNTCPNode& netNode)> OnDisConnected = nullptr;
+	std::function<void(std::shared_ptr<NNTCPLinkNode> session, NNTCPNode& netNode)> OnFailConnected = nullptr;
 	std::function<void(uv_timer_t* handle) > OnTimered = nullptr;
 };
 /*单个网络结构，保存开的服务器信息*/
@@ -65,6 +66,7 @@ public:
 	std::function<void(std::shared_ptr<NNTCPLinkNode> session, std::string data, NNTCPNode& netNode)> OnRead;
 	std::function<void(std::shared_ptr<NNTCPLinkNode> session, NNTCPNode& netNode)> OnConnected;
 	std::function<void(std::shared_ptr<NNTCPLinkNode> session, NNTCPNode& netNode)> OnDisConnected;
+	std::function<void(std::shared_ptr<NNTCPLinkNode> session, NNTCPNode& netNode)> OnFailConnected;
 	void  SendData(std::shared_ptr<NNTCPLinkNode> session, std::string data);
 	bool CloseSession(std::shared_ptr<NNTCPLinkNode> session);
 	void StopTimer();

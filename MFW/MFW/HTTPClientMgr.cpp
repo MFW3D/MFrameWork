@@ -18,6 +18,7 @@ void HTTPClientMgr::OnRead(std::shared_ptr<NNTCPLinkNode>  session,
 				info.Data = mteamp;
 				mHttpResPonse.SetBody("");
 				info.httpResPonse = mHttpResPonse;
+				netNode.CloseSession(session);
 				pushHTTPRespose(info);
 			}
 			datalength = 0;
@@ -42,6 +43,7 @@ void HTTPClientMgr::OnRead(std::shared_ptr<NNTCPLinkNode>  session,
 					info.Data = mteamp;
 					mHttpResPonse.SetBody("");
 					info.httpResPonse = mHttpResPonse;
+					netNode.CloseSession(session);
 					pushHTTPRespose(info);
 				}
 				datalength = 0;
@@ -63,6 +65,7 @@ void HTTPClientMgr::OnRead(std::shared_ptr<NNTCPLinkNode>  session,
 						info.Data = mteamp;
 						mHttpResPonse.SetBody("");
 						info.httpResPonse = mHttpResPonse;
+						netNode.CloseSession(session);
 						pushHTTPRespose(info);
 					}
 					datalength = 0;
@@ -85,22 +88,27 @@ void HTTPClientMgr::OnConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNo
 	request.SetVesionMinor(1);
 	if (request.GetMethod() == EHttpMethod::POST)
 	{
-		info.params.insert(std::pair<std::string, std::string>("Host", "127.0.0.1:9999"));
+		request.SetBody(info.body);
+		request.AddParam("Content-Length", std::to_string(info.body.size()));
 	}
 	//request.AddParam("Host", "" + info.ip + " : " + std::to_string(info.port) + "");
 	//request.AddParam("Host",  info.ip );
-	request.AddParam("Connection", "close");
+	//request.AddParam("Connection", "close");
 	//request.AddParam("Connection", "keep-alive");
 	for(auto itr =info.params.begin();itr!= info.params.end();itr++)
 	{
 		request.AddParam(itr->first, itr->second);
 	}
-	request.SetBody(info.body);
 	std::string data = "";
 	request.ParseToString(data);
 	netNode.SendData(session, data);
 }
 void HTTPClientMgr::OnDisConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNode& netNode)
+{
+
+}
+
+void HTTPClientMgr::OnFailConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNode& netNode)
 {
 
 }
@@ -115,6 +123,7 @@ void HTTPClientMgr::OnTimer(uv_timer_t* handle)
 		nNNodeInfo.Port = info.port;
 		nNNodeInfo.OnConnected = std::bind(&HTTPClientMgr::OnConnected, this, std::placeholders::_1, std::placeholders::_2);
 		nNNodeInfo.OnDisConnected = std::bind(&HTTPClientMgr::OnDisConnected, this, std::placeholders::_1, std::placeholders::_2);
+		nNNodeInfo.OnFailConnected = std::bind(&HTTPClientMgr::OnFailConnected, this, std::placeholders::_1, std::placeholders::_2);
 		nNNodeInfo.OnRead = std::bind(&HTTPClientMgr::OnRead, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
 
 		unsigned long long  clientId = NNTCPServerMgr::AddServer(handle->loop, nNNodeInfo);

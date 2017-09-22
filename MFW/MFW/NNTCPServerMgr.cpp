@@ -185,10 +185,6 @@ NNTCPClient::NNTCPClient()
 }
 void NNTCPClient::ConnectCbClient(uv_loop_t* loop, uv_connect_t* conn_req, int status)
 {
-	if (status < 0) {
-		return;
-	}
-	int r = uv_read_start((uv_stream_t*)&server, NNTCPServerMgr::AllocBuffer, NNTCPServerMgr::ReadCb);
 	unsigned long ip;
 	int port;
 	NetUtility::GetIpPort(&server, ip, port);
@@ -198,6 +194,13 @@ void NNTCPClient::ConnectCbClient(uv_loop_t* loop, uv_connect_t* conn_req, int s
 	NNTCPClientNodePtr->mIPStr = NetUtility::inttoip(ip);
 	NNTCPClientNodePtr->mPort = port;
 	NNTCPClientNodePtr->session = (uv_stream_t*)&server;
+	if (status < 0) {
+		if (OnFailConnected != nullptr)
+			OnFailConnected(NNTCPClientNodePtr, *this);
+		return;
+	}
+	int r = uv_read_start((uv_stream_t*)&server, NNTCPServerMgr::AllocBuffer, NNTCPServerMgr::ReadCb);
+	
 	if (OnConnected != nullptr)
 		OnConnected(NNTCPClientNodePtr, *this);
 }
@@ -212,10 +215,10 @@ void NNTCPClient::CloseCb(uv_handle_t* handle)
 	NNTCPClientNodePtr->mIPStr = NetUtility::inttoip(ip);
 	NNTCPClientNodePtr->mPort = port;
 	NNTCPClientNodePtr->session = (uv_stream_t*)handle;
-	/*if (OnDisConnected != nullptr)
+	if (OnDisConnected != nullptr)
 	{
 		OnDisConnected(NNTCPClientNodePtr, *this);
-	}*/
+	}
 }
 void NNTCPClient::ReadCb(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf)
 {
@@ -307,6 +310,7 @@ void NNTCPServerMgr::CloseCb(uv_handle_t* handle)
 		if (mNetClients.find(node.ClientId) != mNetClients.end())
 		{
 			netNodePtr = mNetClients[node.ClientId];
+			mNetClients.erase(node.ClientId);
 		}
 		if (netNodePtr == nullptr)
 			return;
@@ -391,6 +395,7 @@ bool NNTCPServerMgr::RunServer(std::vector<NNNodeInfo>NNServerInfos)
 			std::shared_ptr<NNTCPServer> NetSessionPtr(new NNTCPServer());
 			NetSessionPtr->OnConnected = NNServerInfos[i].OnConnected;
 			NetSessionPtr->OnDisConnected = NNServerInfos[i].OnDisConnected;
+			NetSessionPtr->OnFailConnected = NNServerInfos[i].OnFailConnected;
 			NetSessionPtr->OnRead = NNServerInfos[i].OnRead;
 			NetSessionPtr->nNNodeInfo = NNServerInfos[i];
 			if (mNetServers.find(NNServerInfos[i].Port) != mNetServers.end())
@@ -425,6 +430,7 @@ bool NNTCPServerMgr::RunServer(std::vector<NNNodeInfo>NNServerInfos)
 			std::shared_ptr<NNTCPClient> NetSessionPtr(new NNTCPClient());
 			NetSessionPtr->OnConnected = NNServerInfos[i].OnConnected;
 			NetSessionPtr->OnDisConnected = NNServerInfos[i].OnDisConnected;
+			NetSessionPtr->OnFailConnected = NNServerInfos[i].OnFailConnected;
 			NetSessionPtr->OnRead = NNServerInfos[i].OnRead;
 			NetSessionPtr->nNNodeInfo = NNServerInfos[i];
 			if (mNetClients.find(NNServerInfos[i].ClientId) != mNetClients.end())
@@ -484,6 +490,7 @@ unsigned long long  NNTCPServerMgr::AddServer(uv_loop_t* loop, NNNodeInfo nNServ
 	std::shared_ptr<NNTCPClient> NetSessionPtr(new NNTCPClient());
 	NetSessionPtr->OnConnected = nNServerInfo.OnConnected;
 	NetSessionPtr->OnDisConnected = nNServerInfo.OnDisConnected;
+	NetSessionPtr->OnFailConnected = nNServerInfo.OnFailConnected;
 	NetSessionPtr->OnRead = nNServerInfo.OnRead;
 	NetSessionPtr->nNNodeInfo = nNServerInfo;
 	if (mNetClients.find(nNServerInfo.ClientId) != mNetClients.end())
