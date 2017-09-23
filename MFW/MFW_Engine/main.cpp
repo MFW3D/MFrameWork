@@ -2,6 +2,7 @@
 #include "Scene_Level1.h"
 #include "Scene_Level2.h"
 #include "Scene_Level3.h"
+#include "NetUtility.h"
 
 int main(int argc, char *argv[])
 {

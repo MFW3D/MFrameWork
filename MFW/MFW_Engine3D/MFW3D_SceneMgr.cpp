@@ -143,11 +143,11 @@ namespace MFW3D
 			else if (initialScene) runScene(initialScene);
 #endif
 			loadStartUpScene();
-			if (mRoot->getRenderSystem() != NULL)
-			{
-				mRoot->startRendering();    // 开始渲染循环
-			}
-			closeApp();
+			//if (mRoot->getRenderSystem() != NULL)
+			//{
+			//	mRoot->startRendering();    // 开始渲染循环
+			//}
+			//closeApp();
 			mFirstRun = false;
 		}
 #endif

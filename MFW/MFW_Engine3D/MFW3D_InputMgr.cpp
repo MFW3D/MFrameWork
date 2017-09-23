@@ -26,8 +26,9 @@ namespace MFW3D
 		return wmInfo;
 	}
 
-	void MFW3D_InputMgr::init(Ogre::RenderWindow* window, std::function<void(Ogre::RenderWindow* rw)> onwindowResized)
+	void MFW3D_InputMgr::init(Ogre::Root* root, Ogre::RenderWindow* window, std::function<void(Ogre::RenderWindow* rw)> onwindowResized)
 	{
+		mRoot = root;
 		mWindow = window;
 		OnwindowResized = onwindowResized;
 	}
@@ -46,13 +47,13 @@ namespace MFW3D
 		SDL_SetRelativeMouseMode(grab);
 	}
 
-	void MFW3D_InputMgr::PollEvent()
+	bool MFW3D_InputMgr::PollEvent()
 	{
 		if (mUseSDL)
 		{
 			if (!mSDLWindow)
 			{
-				return;
+				return false;
 			}
 			SDL_Event event;
 			while (SDL_PollEvent(&event))
@@ -110,6 +111,7 @@ namespace MFW3D
 					break;
 				}
 			}
+			return true;
 		}
 	}
 
@@ -121,4 +123,62 @@ namespace MFW3D
 			mSDLWindow = NULL;
 		}
 	}
+
+
+	void MFW3D_InputMgr::PushSDL_Event(SDL_Event& event)
+	{
+		switch (event.type)
+		{
+		case SDL_QUIT:
+			if (mRoot != nullptr)
+				mRoot->queueEndRendering();
+		case SDL_WINDOWEVENT:
+			if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
+				mWindow->resize(event.window.data1, event.window.data2);
+				OnwindowResized(mWindow);
+			}
+			break;
+		default:
+			for (std::set<MFW3D_InputListener*>::iterator it = mInputListeners.begin();
+				it != mInputListeners.end(); ++it) {
+				MFW3D_InputListener& l = **it;
+				switch (event.type)
+				{
+				case SDL_KEYDOWN:
+					// Ignore repeated signals from key being held down.
+					l.keyPressed(event.key);
+					break;
+				case SDL_KEYUP:
+					l.keyReleased(event.key);
+					break;
+				case SDL_MOUSEBUTTONDOWN:
+					l.mousePressed(event.button);
+					break;
+				case SDL_MOUSEBUTTONUP:
+					l.mouseReleased(event.button);
+					break;
+				case SDL_MOUSEWHEEL:
+					l.mouseWheelRolled(event.wheel);
+					break;
+				case SDL_MOUSEMOTION:
+					l.mouseMoved(event.motion);
+					break;
+				case SDL_FINGERDOWN:
+					// for finger down we have to move the pointer first
+					l.touchMoved(event.tfinger);
+					l.touchPressed(event.tfinger);
+					break;
+				case SDL_FINGERUP:
+					l.touchReleased(event.tfinger);
+					break;
+				case SDL_FINGERMOTION:
+					l.touchMoved(event.tfinger);
+					break;
+				}
+			}
+			break;
+		}
+	}
+
+
 }

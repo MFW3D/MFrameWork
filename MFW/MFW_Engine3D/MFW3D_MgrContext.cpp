@@ -299,7 +299,7 @@ namespace MFW3D {
 		SDL_SysWMinfo mWindowInfo = MFW3D_InputMgr::GetInstance()->InitWindow(mAppName, mRoot);
 		miscParams["externalWindowHandle"] = Ogre::StringConverter::toString((int)mWindowInfo.info.dummy);
 		mWindow = mRoot->createRenderWindow(mAppName, w, h, false, &miscParams);
-		MFW3D_InputMgr::GetInstance()->init(mWindow, std::bind(&MFW3D_MgrContext::windowResized, this, std::placeholders::_1));
+		MFW3D_InputMgr::GetInstance()->init(mRoot,mWindow, std::bind(&MFW3D_MgrContext::windowResized, this, std::placeholders::_1));
 
 		MFW3D_InputMgr::GetInstance()->SetupWindow(false);
 		return mWindow;
@@ -314,7 +314,9 @@ namespace MFW3D {
 		miscParams["FSAA"] = ropts["FSAA"].currentValue;
 		miscParams["vsync"] = ropts["VSync"].currentValue;
 		miscParams["externalWindowHandle"] = Ogre::StringConverter::toString((int)m_hWnd);
-		return mWindow = mRoot->createRenderWindow("OgreRenderWindow", width, height, false, &miscParams);
+		mWindow = mRoot->createRenderWindow("OgreRenderWindow", width, height, false, &miscParams);
+		MFW3D_InputMgr::GetInstance()->init(mRoot, mWindow, std::bind(&MFW3D_MgrContext::windowResized, this, std::placeholders::_1));
+		return mWindow;
 	}
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_ANDROID
@@ -591,8 +593,8 @@ namespace MFW3D {
 		MFW3D_InputMgr::GetInstance()->Destroy();
 	}
 
-	void MFW3D_MgrContext::pollEvents()
+	bool MFW3D_MgrContext::pollEvents()
 	{
-		MFW3D_InputMgr::GetInstance()->PollEvent();
+		return MFW3D_InputMgr::GetInstance()->PollEvent();
 	}
 }

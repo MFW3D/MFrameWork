@@ -166,9 +166,8 @@ namespace MFW3D
 		mResourcesLoaded = true;
 
 		mUIMgr->showFrameStats(TL_BOTTOMLEFT);
-		//mUIMgr->showLogo(TL_BOTTOMRIGHT);
+		mUIMgr->showLogo(TL_BOTTOMRIGHT);
 		mUIMgr->hideCursor();
-		//mUIMgr->createLabel(MFW3D::TL_BOTTOM, "title", "bast scene", 50);
 		mControls = new MFW3D::MFW3D_AdRender(mUIMgr, mCamera);
 		setupContent();
 		mContentSetup = true;

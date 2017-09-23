@@ -4,6 +4,7 @@
 #include <SDL_syswm.h>
 #include "MFW3D_Input.h"
 
+#include <queue>
 #include "Singleton.h"
 extern "C" struct SDL_Window;
 namespace MFW3D
@@ -18,10 +19,10 @@ namespace MFW3D
 		Ogre::RenderWindow* mWindow = nullptr;
 		std::function<void(Ogre::RenderWindow* rw)> OnwindowResized = nullptr;
 	public:
-		void init(Ogre::RenderWindow* window, std::function<void(Ogre::RenderWindow* rw)> onwindowResized);
+		void init(Ogre::Root* root, Ogre::RenderWindow* window, std::function<void(Ogre::RenderWindow* rw)> onwindowResized);
 		SDL_SysWMinfo InitWindow(Ogre::String mAppName, Ogre::Root* root);
 		void SetupWindow(bool _grab);
-		void PollEvent();
+		bool PollEvent();
 		void addInputListener(MFW3D_InputListener* lis) {
 			mInputListeners.insert(lis);
 		}
@@ -29,5 +30,8 @@ namespace MFW3D
 			mInputListeners.erase(lis);
 		}
 		void Destroy();
+
+		void PushSDL_Event(SDL_Event& event);
+
 	};
 }

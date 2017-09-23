@@ -113,7 +113,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>OgreGLSupport_d.lib;OgreHLMS_d.lib;OgreMain_d.lib;OgreMeshLodGenerator_d.lib;OgreOverlay_d.lib;OgrePaging_d.lib;OgreProperty_d.lib;OgreRTShaderSystem_d.lib;OgreTerrain_d.lib;Plugin_BSPSceneManager_d.lib;OgreVolume_d.lib;Plugin_OctreeSceneManager_d.lib;Plugin_OctreeZone_d.lib;Plugin_ParticleFX_d.lib;Plugin_PCZSceneManager_d.lib;RenderSystem_Direct3D9_d.lib;RenderSystem_GL3Plus_d.lib;RenderSystem_GL_d.lib;SDL2main.lib;SDL2.lib;MFW_Engine3D.lib;MFW_EngineHyfrax.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>OgreGLSupport_d.lib;OgreHLMS_d.lib;OgreMain_d.lib;OgreMeshLodGenerator_d.lib;OgreOverlay_d.lib;OgrePaging_d.lib;OgreProperty_d.lib;OgreRTShaderSystem_d.lib;OgreTerrain_d.lib;Plugin_BSPSceneManager_d.lib;OgreVolume_d.lib;Plugin_OctreeSceneManager_d.lib;Plugin_OctreeZone_d.lib;Plugin_ParticleFX_d.lib;Plugin_PCZSceneManager_d.lib;RenderSystem_Direct3D9_d.lib;RenderSystem_GL3Plus_d.lib;RenderSystem_GL_d.lib;SDL2main.lib;SDL2.lib;MFW_Engine3D.lib;MFW_EngineHyfrax.lib;MFW.lib;MFW_Common.lib;MFW_Produce.lib;MFW_Proto.lib;openvr_api.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions> /NODEFAULTLIB:library %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>

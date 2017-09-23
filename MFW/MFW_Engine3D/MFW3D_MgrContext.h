@@ -89,7 +89,7 @@ namespace MFW3D
 		//关闭
 		virtual void shutdown();
 		//转发窗口事件
-		void pollEvents();
+		bool pollEvents();
 		//创建样品场景
 		void createDummyScene();
 		//销毁样品场景
