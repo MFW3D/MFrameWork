@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{2003C15A-F047-4A8B-A56B-00CCA2B1B761}</ProjectGuid>
+    <ProjectGuid>{7B9EE9C5-8C30-4F7F-B3CA-928CDD3EE595}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>MFW_Web</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
@@ -82,8 +82,6 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)/include;$(SolutionDir)/include/uv;$(SolutionDir)/include/mysql;$(SolutionDir)/include/src;$(SolutionDir)/include/jemalloc-win;$(SolutionDir)/include/linenoise;$(SolutionDir)/include/deps/hiredis;$(SolutionDir)/include/udt;$(SolutionDir)/MFW;$(SolutionDir)/MFW_Common;$(SolutionDir)/MFW_Proto;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)/lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -139,26 +137,20 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>MFW.lib;MFW_Proto.lib;MFW_Common.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CGSHelper.cpp" />
-    <ClCompile Include="CGSTest.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Net_ClientHandler.cpp" />
     <ClCompile Include="ServerCenterMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CGSHelper.h" />
-    <ClInclude Include="CGSTest.h" />
     <ClInclude Include="Net_ClientHandler.h" />
     <ClInclude Include="ServerCenterMgr.h" />
   </ItemGroup>
