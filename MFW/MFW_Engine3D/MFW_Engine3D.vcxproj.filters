@@ -55,6 +55,21 @@
     <Filter Include="Input">
       <UniqueIdentifier>{cc77d09f-398d-4847-801c-0a427c6d722f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Audio">
+      <UniqueIdentifier>{ed3737d1-16fb-4608-bbc1-d8c0f73e8542}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Light">
+      <UniqueIdentifier>{36cf7372-fb31-4ffc-9c0e-8d3eadfcc8ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vedio">
+      <UniqueIdentifier>{efa91821-49bf-46cb-a41b-e241fe8644c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Particle">
+      <UniqueIdentifier>{3d88a429-87df-40d5-a3a5-cf5463d51f73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripts">
+      <UniqueIdentifier>{c02fa07a-71eb-43e0-a3e8-09e5c473144f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MFW3D_ViveVR.cpp">
@@ -89,6 +104,12 @@
     </ClCompile>
     <ClCompile Include="MFW3D_CameraController.cpp">
       <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="MFW3D_NetHandler.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="MFW3D_NetMgr.cpp">
+      <Filter>Network</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +151,12 @@
     </ClInclude>
     <ClInclude Include="MFW3D_CameraController.h">
       <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="MFW3D_NetHandler.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="MFW3D_NetMgr.h">
+      <Filter>Network</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
