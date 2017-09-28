@@ -1,14 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
@@ -19,9 +11,6 @@
     <Filter Include="2D">
       <UniqueIdentifier>{6cc00e89-6d17-4a04-ba79-a4470817b3ca}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Animation">
-      <UniqueIdentifier>{a42e8a7a-5c9b-4edb-901e-6d5867b43fea}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Physics">
       <UniqueIdentifier>{4cbc962e-839c-44a6-96b5-d75d85ec1510}</UniqueIdentifier>
     </Filter>
@@ -31,17 +20,8 @@
     <Filter Include="Render">
       <UniqueIdentifier>{101f9082-73c9-4b72-b537-9ec4f2389d54}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Shader">
-      <UniqueIdentifier>{3cabf737-499c-4d4d-866f-44d497e44008}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Network">
       <UniqueIdentifier>{71e238e0-34a7-477b-8da8-8a130a236c4e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Effect">
-      <UniqueIdentifier>{a41792db-80ce-4f8d-ad7e-887aac27b789}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Models">
-      <UniqueIdentifier>{007dd571-896c-409f-81c7-467086dddad0}</UniqueIdentifier>
     </Filter>
     <Filter Include="VR">
       <UniqueIdentifier>{3da3f857-552c-4f39-864b-585457795dc4}</UniqueIdentifier>
@@ -55,20 +35,35 @@
     <Filter Include="Input">
       <UniqueIdentifier>{cc77d09f-398d-4847-801c-0a427c6d722f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scripts">
+      <UniqueIdentifier>{c02fa07a-71eb-43e0-a3e8-09e5c473144f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{3cabf737-499c-4d4d-866f-44d497e44008}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3D\Animation">
+      <UniqueIdentifier>{a42e8a7a-5c9b-4edb-901e-6d5867b43fea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3D\Effect">
+      <UniqueIdentifier>{a41792db-80ce-4f8d-ad7e-887aac27b789}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3D\Light">
+      <UniqueIdentifier>{36cf7372-fb31-4ffc-9c0e-8d3eadfcc8ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3D\Particle">
+      <UniqueIdentifier>{3d88a429-87df-40d5-a3a5-cf5463d51f73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3D\Vedio">
+      <UniqueIdentifier>{efa91821-49bf-46cb-a41b-e241fe8644c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3D\Models">
+      <UniqueIdentifier>{007dd571-896c-409f-81c7-467086dddad0}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Audio">
       <UniqueIdentifier>{ed3737d1-16fb-4608-bbc1-d8c0f73e8542}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Light">
-      <UniqueIdentifier>{36cf7372-fb31-4ffc-9c0e-8d3eadfcc8ff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Vedio">
-      <UniqueIdentifier>{efa91821-49bf-46cb-a41b-e241fe8644c2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Particle">
-      <UniqueIdentifier>{3d88a429-87df-40d5-a3a5-cf5463d51f73}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scripts">
-      <UniqueIdentifier>{c02fa07a-71eb-43e0-a3e8-09e5c473144f}</UniqueIdentifier>
+    <Filter Include="Geo">
+      <UniqueIdentifier>{8a7538f2-b214-4ce7-9049-f06fce3f5005}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +105,21 @@
     </ClCompile>
     <ClCompile Include="MFW3D_NetMgr.cpp">
       <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="MFWGeo_ProjTrans.cpp">
+      <Filter>Geo</Filter>
+    </ClCompile>
+    <ClCompile Include="MFWGeo_Planet.cpp">
+      <Filter>Geo</Filter>
+    </ClCompile>
+    <ClCompile Include="MFWGeo_Earth.cpp">
+      <Filter>Geo</Filter>
+    </ClCompile>
+    <ClCompile Include="MFWGeo_Moon.cpp">
+      <Filter>Geo</Filter>
+    </ClCompile>
+    <ClCompile Include="MFWGeo_Datas.cpp">
+      <Filter>Geo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +167,21 @@
     </ClInclude>
     <ClInclude Include="MFW3D_NetMgr.h">
       <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="MFWGeo_ProjTrans.h">
+      <Filter>Geo</Filter>
+    </ClInclude>
+    <ClInclude Include="MFWGeo_Planet.h">
+      <Filter>Geo</Filter>
+    </ClInclude>
+    <ClInclude Include="MFWGeo_Earth.h">
+      <Filter>Geo</Filter>
+    </ClInclude>
+    <ClInclude Include="MFWGeo_Moon.h">
+      <Filter>Geo</Filter>
+    </ClInclude>
+    <ClInclude Include="MFWGeo_Datas.h">
+      <Filter>Geo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

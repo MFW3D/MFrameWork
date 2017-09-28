@@ -5,7 +5,7 @@ namespace MFW3D
 {
 	namespace Net
 	{
-		void MFW3D_NetMgr::InitNet()
+		void MFW3D_NetMgr::StartNet()
 		{
 			mNetMDBThread = std::shared_ptr<std::thread>(new std::thread([&]() {
 				std::vector<NNNodeInfo> NNNodeInfos;

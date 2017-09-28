@@ -3,6 +3,7 @@
 #ifdef OGRE_BUILD_COMPONENT_RTSHADERSYSTEM
 #include <OgreRTShaderSystem.h>
 #endif
+#include "MFWGeo_ProjTrans.h"
 
 namespace MFW3D {
 class MFW3D_UIMgr;
