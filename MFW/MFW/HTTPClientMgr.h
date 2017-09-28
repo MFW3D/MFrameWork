@@ -36,7 +36,7 @@ class HTTPResposeInfo
 public:
 	HTTPRequestInfo mHTTRequest;
 	HttpResPonse httpResPonse;
-	std::string Data;
+	std::string Data = "";
 };
 
 class HTTPClientMgr:public MFW::Singleton<HTTPClientMgr>
@@ -53,6 +53,7 @@ private:
 	std::string mteamp = "";
 	bool isretry = false;
 	HttpResPonse mHttpResPonse;
+	HTTPRequestInfo mHTTPRequestInfo;
 	int datalength = 0;
 	int teamp = 0;
 	void OnRead(std::shared_ptr<NNTCPLinkNode>  session, std::string data, NNTCPNode& netNode);

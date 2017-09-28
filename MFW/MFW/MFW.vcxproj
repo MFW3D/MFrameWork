@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)/include;$(SolutionDir)/include/uv;$(SolutionDir)/include/mysql;$(SolutionDir)/include/src;$(SolutionDir)/include/jemalloc-win;$(SolutionDir)/include/linenoise;$(SolutionDir)/include/deps/hiredis;$(SolutionDir)/include/udt;C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.10150.0\ucrt;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)/include;$(SolutionDir)/include/uv;$(SolutionDir)/include/mysql;$(SolutionDir)/include/src;$(SolutionDir)/include/jemalloc-win;$(SolutionDir)/include/linenoise;$(SolutionDir)/include/deps/hiredis;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)/lib</OutDir>
     <LibraryPath>$(SolutionDir)/lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
@@ -105,7 +105,7 @@
     </Link>
     <Lib />
     <Lib>
-      <AdditionalDependencies>lua.lib;geohash.lib;Win32_Interop.lib;hiredis.lib;kernel32.lib;ws2_32.lib;advapi32.lib;iphlpapi.lib;psapi.lib;shell32.lib;user32.lib;userenv.lib;libmysql.lib;jsoncpp.lib;libuv.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>lua.lib;geohash.lib;Win32_Interop.lib;hiredis.lib;kernel32.lib;ws2_32.lib;advapi32.lib;iphlpapi.lib;psapi.lib;shell32.lib;user32.lib;userenv.lib;libmysql.lib;jsoncpp.lib;libuv.lib;enet.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -145,9 +145,13 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
+    <ClCompile Include="algorithms\2darray.cpp" />
+    <ClCompile Include="algorithms\8queen.cpp" />
+    <ClCompile Include="algorithms\astar.cpp" />
+    <ClCompile Include="algorithms\avl.cpp" />
+    <ClCompile Include="algorithms\base64.cpp" />
+    <ClCompile Include="algorithms\bellman_ford.cpp" />
+    <ClCompile Include="algorithms\binary_search_tree.cpp" />
     <ClCompile Include="clipper.cpp" />
     <ClCompile Include="ConvertUTF.c" />
     <ClCompile Include="CSVparser.cpp" />
@@ -174,10 +178,82 @@
     <ClCompile Include="String2Hex.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TimeSpan.cpp" />
-    <ClCompile Include="UDTServerMgr.cpp" />
     <ClCompile Include="WriteBackMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="algorithms\2darray.h" />
+    <ClInclude Include="algorithms\8queen.h" />
+    <ClInclude Include="algorithms\astar.h" />
+    <ClInclude Include="algorithms\avl.h" />
+    <ClInclude Include="algorithms\base64.h" />
+    <ClInclude Include="algorithms\bellman_ford.h" />
+    <ClInclude Include="algorithms\binary_search_tree.h" />
+    <ClInclude Include="algorithms\bitset.h" />
+    <ClInclude Include="algorithms\bloom_filter.h" />
+    <ClInclude Include="algorithms\btree.h" />
+    <ClInclude Include="algorithms\bubble_sort.h" />
+    <ClInclude Include="algorithms\byteorder.h" />
+    <ClInclude Include="algorithms\dictionary.h" />
+    <ClInclude Include="algorithms\dijkstra.h" />
+    <ClInclude Include="algorithms\directed_graph.h" />
+    <ClInclude Include="algorithms\disjoint-set.h" />
+    <ClInclude Include="algorithms\dos_tree.h" />
+    <ClInclude Include="algorithms\double_linked_list.h" />
+    <ClInclude Include="algorithms\edmonds_karp.h" />
+    <ClInclude Include="algorithms\fenwick_tree.h" />
+    <ClInclude Include="algorithms\fib-heap.h" />
+    <ClInclude Include="algorithms\gb18030.h" />
+    <ClInclude Include="algorithms\generic.h" />
+    <ClInclude Include="algorithms\graph_defs.h" />
+    <ClInclude Include="algorithms\graph_search.h" />
+    <ClInclude Include="algorithms\hash_code.h" />
+    <ClInclude Include="algorithms\hash_multi.h" />
+    <ClInclude Include="algorithms\hash_string.h" />
+    <ClInclude Include="algorithms\hash_table.h" />
+    <ClInclude Include="algorithms\heap.h" />
+    <ClInclude Include="algorithms\huffman.h" />
+    <ClInclude Include="algorithms\imath.h" />
+    <ClInclude Include="algorithms\insertion_sort.h" />
+    <ClInclude Include="algorithms\integer.h" />
+    <ClInclude Include="algorithms\interval_tree.h" />
+    <ClInclude Include="algorithms\k-means.h" />
+    <ClInclude Include="algorithms\kmp.h" />
+    <ClInclude Include="algorithms\kruskal_mst.h" />
+    <ClInclude Include="algorithms\LCA.h" />
+    <ClInclude Include="algorithms\lcs.h" />
+    <ClInclude Include="algorithms\LRU_cache.h" />
+    <ClInclude Include="algorithms\max_subarray.h" />
+    <ClInclude Include="algorithms\md5.h" />
+    <ClInclude Include="algorithms\merge_sort.h" />
+    <ClInclude Include="algorithms\palindrome.h" />
+    <ClInclude Include="algorithms\perfect_hash.h" />
+    <ClInclude Include="algorithms\prime.h" />
+    <ClInclude Include="algorithms\prim_mst.h" />
+    <ClInclude Include="algorithms\priority_queue.h" />
+    <ClInclude Include="algorithms\queue.h" />
+    <ClInclude Include="algorithms\quick_sort.h" />
+    <ClInclude Include="algorithms\radix_sort.h" />
+    <ClInclude Include="algorithms\random.h" />
+    <ClInclude Include="algorithms\random_select.h" />
+    <ClInclude Include="algorithms\rbtree.h" />
+    <ClInclude Include="algorithms\rbtree_defs.h" />
+    <ClInclude Include="algorithms\relabel_to_front.h" />
+    <ClInclude Include="algorithms\scc.h" />
+    <ClInclude Include="algorithms\selection_sort.h" />
+    <ClInclude Include="algorithms\sha1.h" />
+    <ClInclude Include="algorithms\shell_sort.h" />
+    <ClInclude Include="algorithms\shuffle.h" />
+    <ClInclude Include="algorithms\simhash.h" />
+    <ClInclude Include="algorithms\skiplist.h" />
+    <ClInclude Include="algorithms\sol.h" />
+    <ClInclude Include="algorithms\sort.h" />
+    <ClInclude Include="algorithms\stack.h" />
+    <ClInclude Include="algorithms\suffix_array.h" />
+    <ClInclude Include="algorithms\suffix_tree.h" />
+    <ClInclude Include="algorithms\trie.h" />
+    <ClInclude Include="algorithms\undirected_graph.h" />
+    <ClInclude Include="algorithms\universal_hash.h" />
+    <ClInclude Include="algorithms\word_seg.h" />
     <ClInclude Include="cc.h" />
     <ClInclude Include="clipper.hpp" />
     <ClInclude Include="ConvertUTF.h" />
@@ -208,7 +284,6 @@
     <ClInclude Include="ThreadPool.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TimeSpan.h" />
-    <ClInclude Include="UDTServerMgr.h" />
     <ClInclude Include="WriteBackMgr.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

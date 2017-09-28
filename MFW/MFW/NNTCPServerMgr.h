@@ -17,7 +17,7 @@ class NNMsg;
 class NNNodeInfo;
 class NNTCPNode;
 
-#define DEFAULT_BACKLOG 10240
+#define DEFAULT_BACKLOG 1024
 
 typedef struct {
 	uv_write_t req;
