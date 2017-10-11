@@ -17,7 +17,7 @@ class NNMsg;
 class NNNodeInfo;
 class NNTCPNode;
 
-#define DEFAULT_BACKLOG 1024
+#define DEFAULT_BACKLOG 10240
 
 typedef struct {
 	uv_write_t req;
@@ -105,6 +105,7 @@ private:
 	static std::vector<uv_loop_t*> loops;
 	static unsigned long long mClientId;
 
+	static char buffer[DEFAULT_BACKLOG];
 	//自己作为服务器的网络结构
 	static std::map<int, std::shared_ptr<NNTCPServer>> mNetServers;
 	//自己作为客户端的网络结构

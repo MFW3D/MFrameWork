@@ -28,38 +28,21 @@ void HTTPClientMgr::OnRead(std::shared_ptr<NNTCPLinkNode>  session,
 		}
 		return;
 	}
-	if (HttpParser::ParseDataResponse(data, httpResPonse))
+	std::vector<std::string> datas;
+	NetUtility::split(data, datas, "HTTP/1.1");
+	for (int i = 0; i < datas.size(); i++)
 	{
-		mHttpResPonse = httpResPonse;
-		if (httpResPonse.mParams.find("Content-Length") != httpResPonse.mParams.end())
+		data = "HTTP/1.1";
+		data += datas[i];
+		if (HttpParser::ParseDataResponse(data, httpResPonse))
 		{
-			datalength = atoi(httpResPonse.mParams["Content-Length"].c_str());
-			if (httpResPonse.mBody.size() == datalength)
+			mHttpResPonse = httpResPonse;
+			if (httpResPonse.mParams.find("Content-Length") != httpResPonse.mParams.end())
 			{
-				mteamp = httpResPonse.mBody;
-				if (mRequestDealings.find(netNode.nNNodeInfo.ClientId) != mRequestDealings.end())
+				datalength = atoi(httpResPonse.mParams["Content-Length"].c_str());
+				if (httpResPonse.mBody.size() == datalength)
 				{
-					HTTPResposeInfo info;
-					info.mHTTRequest = mRequestDealings[netNode.nNNodeInfo.ClientId];
-					info.Data = mteamp;
-					mHttpResPonse.SetBody("");
-					info.httpResPonse = mHttpResPonse;
-					netNode.CloseSession(session);
-					pushHTTPRespose(info);
-					mRequestDealings.erase(netNode.nNNodeInfo.ClientId);
-				}
-				datalength = 0;
-				mteamp = "";
-				isretry = false;
-			}
-			else
-			{
-				isretry = true;
-				int oldsize = mteamp.size();
-				//继续接收
-				mteamp.append(data);
-				if (mteamp.size() == oldsize + datalength)
-				{
+					mteamp = httpResPonse.mBody;
 					if (mRequestDealings.find(netNode.nNNodeInfo.ClientId) != mRequestDealings.end())
 					{
 						HTTPResposeInfo info;
@@ -74,6 +57,30 @@ void HTTPClientMgr::OnRead(std::shared_ptr<NNTCPLinkNode>  session,
 					datalength = 0;
 					mteamp = "";
 					isretry = false;
+				}
+				else
+				{
+					isretry = true;
+					int oldsize = mteamp.size();
+					//继续接收
+					mteamp.append(data);
+					if (mteamp.size() == oldsize + datalength)
+					{
+						if (mRequestDealings.find(netNode.nNNodeInfo.ClientId) != mRequestDealings.end())
+						{
+							HTTPResposeInfo info;
+							info.mHTTRequest = mRequestDealings[netNode.nNNodeInfo.ClientId];
+							info.Data = mteamp;
+							mHttpResPonse.SetBody("");
+							info.httpResPonse = mHttpResPonse;
+							netNode.CloseSession(session);
+							pushHTTPRespose(info);
+							mRequestDealings.erase(netNode.nNNodeInfo.ClientId);
+						}
+						datalength = 0;
+						mteamp = "";
+						isretry = false;
+					}
 				}
 			}
 		}
@@ -113,26 +120,33 @@ void HTTPClientMgr::OnDisConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTC
 
 void HTTPClientMgr::OnFailConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNode& netNode)
 {
-
+	if (mRequestDealings.find(netNode.nNNodeInfo.ClientId) == mRequestDealings.end())
+		return;
+	HTTPRequestInfo info = mRequestDealings[netNode.nNNodeInfo.ClientId];
+	if (FailConnected != nullptr)
+		FailConnected(session, netNode, info);
 }
 void HTTPClientMgr::OnTimer(uv_timer_t* handle)
 {
-	if (popHTTPRequest(mHTTPRequestInfo))
+	for (int i = 0; i < 30; i++)
 	{
-		NNNodeInfo nNNodeInfo;
-		nNNodeInfo.Ip = mHTTPRequestInfo.ip;
-		nNNodeInfo.IsClient = true;
-		nNNodeInfo.Port = mHTTPRequestInfo.port;
-		nNNodeInfo.OnConnected = std::bind(&HTTPClientMgr::OnConnected, this, std::placeholders::_1, std::placeholders::_2);
-		nNNodeInfo.OnDisConnected = std::bind(&HTTPClientMgr::OnDisConnected, this, std::placeholders::_1, std::placeholders::_2);
-		nNNodeInfo.OnFailConnected = std::bind(&HTTPClientMgr::OnFailConnected, this, std::placeholders::_1, std::placeholders::_2);
-		nNNodeInfo.OnRead = std::bind(&HTTPClientMgr::OnRead, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
-
-		unsigned long long  clientId = NNTCPServerMgr::AddServer(handle->loop, nNNodeInfo);
-
-		if (clientId != -1)
+		if (popHTTPRequest(mHTTPRequestInfo))
 		{
-			mRequestDealings.insert(std::pair<unsigned long long, HTTPRequestInfo>(clientId, mHTTPRequestInfo));
+			NNNodeInfo nNNodeInfo;
+			nNNodeInfo.Ip = mHTTPRequestInfo.ip;
+			nNNodeInfo.IsClient = true;
+			nNNodeInfo.Port = mHTTPRequestInfo.port;
+			nNNodeInfo.OnConnected = std::bind(&HTTPClientMgr::OnConnected, this, std::placeholders::_1, std::placeholders::_2);
+			nNNodeInfo.OnDisConnected = std::bind(&HTTPClientMgr::OnDisConnected, this, std::placeholders::_1, std::placeholders::_2);
+			nNNodeInfo.OnFailConnected = std::bind(&HTTPClientMgr::OnFailConnected, this, std::placeholders::_1, std::placeholders::_2);
+			nNNodeInfo.OnRead = std::bind(&HTTPClientMgr::OnRead, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
+
+			unsigned long long  clientId = NNTCPServerMgr::AddServer(handle->loop, nNNodeInfo);
+
+			if (clientId != -1)
+			{
+				mRequestDealings.insert(std::pair<unsigned long long, HTTPRequestInfo>(clientId, mHTTPRequestInfo));
+			}
 		}
 	}
 }

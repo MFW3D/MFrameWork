@@ -48,7 +48,8 @@ private:
 	//消息恢复队列
 	std::queue<HTTPResposeInfo> mHTTPResposes;
 	std::mutex mHTTPResposesMutex;
-
+	//连接失败事件
+	std::function<void (std::shared_ptr<NNTCPLinkNode>  , NNTCPNode&, HTTPRequestInfo)> FailConnected;
 	std::map<unsigned long long, HTTPRequestInfo> mRequestDealings;
 	std::string mteamp = "";
 	bool isretry = false;

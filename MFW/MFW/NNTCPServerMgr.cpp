@@ -259,9 +259,9 @@ std::map<int, std::shared_ptr<NNTCPServer>> NNTCPServerMgr::mNetServers;
 std::map<unsigned long long, std::shared_ptr<NNTCPClient>> NNTCPServerMgr::mNetClients;
 std::vector<uv_loop_t*> NNTCPServerMgr::loops;
 unsigned long long NNTCPServerMgr::mClientId = 1;
+char NNTCPServerMgr::buffer[DEFAULT_BACKLOG];
 void NNTCPServerMgr::AllocBuffer(uv_handle_t *h, size_t size, uv_buf_t *buf) {
-	size = DEFAULT_BACKLOG;
-	buf->base = new char[size];// (char*)malloc(size);
+	buf->base = buffer;
 	buf->len = size;
 }
 void NNTCPServerMgr::ReadCb(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf) {
@@ -286,7 +286,7 @@ void NNTCPServerMgr::ReadCb(uv_stream_t *client, ssize_t nread, const uv_buf_t *
 		if (netNodePtr != nullptr)
 			netNodePtr->ReadCb(client, nread, buf);
 	}
-	delete[] buf->base;
+	memset(buf->base, 0, sizeof(buf->base));
 }
 void NNTCPServerMgr::CloseCb(uv_handle_t* handle)
 {
