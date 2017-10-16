@@ -14,9 +14,7 @@
 void NNTCPNode::SendData(std::shared_ptr<NNTCPLinkNode> session, std::string data)
 {
 	write_req_t* wr = new write_req_t();
-	//uv_buf_t buf = uv_buf_init((char*)data.data(), data.size());
-	wr->buf = uv_buf_init((char*)data.data(), data.size());// uv_buf_init(buf.base, data.size());
-	//session->session->data = (void*)&nNNodeInfo;
+	wr->buf = uv_buf_init((char*)data.data(), data.size());
 	uv_write(&wr->req, session->session, &wr->buf, 1, NNTCPServerMgr::WriteCb);
 }
 bool NNTCPNode::CloseSession(std::shared_ptr<NNTCPLinkNode> session)
@@ -56,16 +54,16 @@ void NNTCPServer::ConnectCb(uv_loop_t* loop, uv_stream_t *server, int status)
 	if (status < 0) {
 		return;
 	}
-	std::shared_ptr<uv_tcp_t>client = std::shared_ptr<uv_tcp_t>(new uv_tcp_t());
-	uv_tcp_init(loop, client.get());
-	if (uv_accept(server, (uv_stream_t*)client.get()) == 0) {
+	uv_tcp_t *client = (uv_tcp_t*)malloc(sizeof(uv_tcp_t));
+	uv_tcp_init(loop, client);
+	if (uv_accept(server, (uv_stream_t*)client) == 0) {
 		client->data = server->data;
-		uv_read_start((uv_stream_t*)client.get(), NNTCPServerMgr::AllocBuffer, NNTCPServerMgr::ReadCb);
+		uv_read_start((uv_stream_t*)client, NNTCPServerMgr::AllocBuffer, NNTCPServerMgr::ReadCb);
 
 		//客户端连接进入
 		unsigned long ip;
 		int port;
-		NetUtility::GetIpPort(client.get(), ip, port);
+		NetUtility::GetIpPort(client, ip, port);
 		unsigned long long id = NetUtility::CombineInt32(ip, port);
 
 		std::shared_ptr<NNTCPLinkNode > NNTCPClientNodePtr(new NNTCPLinkNode());
@@ -75,7 +73,7 @@ void NNTCPServer::ConnectCb(uv_loop_t* loop, uv_stream_t *server, int status)
 			NNTCPClientNodePtr->mIP = ip;
 			NNTCPClientNodePtr->mIPStr = NetUtility::inttoip(ip);
 			NNTCPClientNodePtr->mPort = port;
-			NNTCPClientNodePtr->session = (uv_stream_t*)client.get();
+			NNTCPClientNodePtr->session = (uv_stream_t*)client;
 			Clients.insert(std::pair<unsigned long long, std::shared_ptr<NNTCPLinkNode>>(id, NNTCPClientNodePtr));
 		}
 		else
@@ -84,7 +82,7 @@ void NNTCPServer::ConnectCb(uv_loop_t* loop, uv_stream_t *server, int status)
 			NNTCPClientNodePtr->mIP = ip;
 			NNTCPClientNodePtr->mIPStr = NetUtility::inttoip(ip);
 			NNTCPClientNodePtr->mPort = port;
-			NNTCPClientNodePtr->session = (uv_stream_t*)client.get();
+			NNTCPClientNodePtr->session = (uv_stream_t*)client;
 			Clients[id] = NNTCPClientNodePtr;
 		}
 		if (OnConnected != nullptr)
@@ -93,7 +91,7 @@ void NNTCPServer::ConnectCb(uv_loop_t* loop, uv_stream_t *server, int status)
 		}
 	}
 	else {
-		uv_close((uv_handle_t*)client.get(), NULL);
+		uv_close((uv_handle_t*)client, NULL);
 	}
 }
 void NNTCPServer::CloseCb(uv_handle_t* handle)
@@ -259,9 +257,9 @@ std::map<int, std::shared_ptr<NNTCPServer>> NNTCPServerMgr::mNetServers;
 std::map<unsigned long long, std::shared_ptr<NNTCPClient>> NNTCPServerMgr::mNetClients;
 std::vector<uv_loop_t*> NNTCPServerMgr::loops;
 unsigned long long NNTCPServerMgr::mClientId = 1;
-char NNTCPServerMgr::buffer[DEFAULT_BACKLOG];
 void NNTCPServerMgr::AllocBuffer(uv_handle_t *h, size_t size, uv_buf_t *buf) {
-	buf->base = buffer;
+	size = DEFAULT_BACKLOG;
+	buf->base = (char*)malloc(size);
 	buf->len = size;
 }
 void NNTCPServerMgr::ReadCb(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf) {
@@ -286,7 +284,8 @@ void NNTCPServerMgr::ReadCb(uv_stream_t *client, ssize_t nread, const uv_buf_t *
 		if (netNodePtr != nullptr)
 			netNodePtr->ReadCb(client, nread, buf);
 	}
-	memset(buf->base, 0, sizeof(buf->base));
+	if (buf->base != NULL)
+		free(buf->base);
 }
 void NNTCPServerMgr::CloseCb(uv_handle_t* handle)
 {
@@ -418,7 +417,6 @@ bool NNTCPServerMgr::RunServer(std::vector<NNNodeInfo>NNServerInfos)
 			assert(0 == uv_ip4_addr(NNServerInfos[i].Ip.c_str(), NNServerInfos[i].Port, &addr));
 			r = uv_tcp_init(loop, &NetSessionPtr->server);
 			assert(r == 0);
-
 			r = uv_tcp_bind(&NetSessionPtr->server, (const struct sockaddr*)&addr, 0);
 
 			assert(r == 0);
