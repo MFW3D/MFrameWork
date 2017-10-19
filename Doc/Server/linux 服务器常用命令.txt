@@ -1,0 +1,2 @@
+查看应用程序所占用的socket数量：ls /proc/<进程pid>/fd -l | grep socket: | wc -l
+ssh： ssh root@192.168.2.16
