@@ -1,0 +1,1 @@
+numpy, scipy, Pillow, matplotlib£¬ipython, jupyter notebook£¬hdf5, pandas ,six, wheel
