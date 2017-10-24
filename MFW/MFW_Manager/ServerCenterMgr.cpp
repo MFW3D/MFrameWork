@@ -25,16 +25,16 @@ void ServerCenterMgr::Init()
 		&redisHandlerEngine, ServerCfg::GetInstance()->Queue_login_manager));
 	mRedisQueueTLogin = std::shared_ptr<RedisQueue>(new RedisQueue(
 		&redisHandlerEngine, ServerCfg::GetInstance()->Queue_manager_login));
-	mRedisQueueFLogic = std::shared_ptr<RedisQueue>(new RedisQueue(
-		&redisHandlerEngine, ServerCfg::GetInstance()->Queue_logic_manager));
-	mRedisQueueTLogic = std::shared_ptr<RedisQueue>(new RedisQueue(
-		&redisHandlerEngine, ServerCfg::GetInstance()->Queue_manager_logic));
+	//mRedisQueueFLogic = std::shared_ptr<RedisQueue>(new RedisQueue(
+	//	&redisHandlerEngine, ServerCfg::GetInstance()->Queue_logic_manager));
+	//mRedisQueueTLogic = std::shared_ptr<RedisQueue>(new RedisQueue(
+	//	&redisHandlerEngine, ServerCfg::GetInstance()->Queue_manager_logic));
 	mRedisQueueFDB = std::shared_ptr<RedisQueue>(new RedisQueue(
 		&redisHandlerEngine, ServerCfg::GetInstance()->Queue_db_manager));
 	mRedisQueueTDB = std::shared_ptr<RedisQueue>(new RedisQueue(
 		&redisHandlerEngine, ServerCfg::GetInstance()->Queue_manager_db));
 	Que_LoginHandler::GetInstance()->Init(mRedisQueueTLogin,mRedisQueueFLogin);
-	Que_LogicHandler::GetInstance()->Init(mRedisQueueTLogic,mRedisQueueFLogic);
+	//Que_LogicHandler::GetInstance()->Init(mRedisQueueTLogic,mRedisQueueFLogic);
 	Que_DBHandler::GetInstance()->Init(mRedisQueueTDB,mRedisQueueFDB);
 }
 void ServerCenterMgr::Start()
@@ -122,7 +122,7 @@ void ServerCenterMgr::Start()
 		mMainTimerMgr.Process();
 		//系统轮询处理
 		Que_LoginHandler::GetInstance()->Process();
-		Que_LogicHandler::GetInstance()->Process();
+		//Que_LogicHandler::GetInstance()->Process();
 		Que_DBHandler::GetInstance()->Process();
 #if _WIN32
 		Sleep(1);

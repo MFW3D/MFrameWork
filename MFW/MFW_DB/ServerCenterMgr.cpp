@@ -35,16 +35,16 @@ void ServerCenterMgr::InitServer()
 		&redisHandlerEngine, ServerCfg::GetInstance()->Queue_login_db));
 	mRedisQueueTLogin = std::shared_ptr<RedisQueue>(new RedisQueue(
 		&redisHandlerEngine, ServerCfg::GetInstance()->Queue_db_login));
-	mRedisQueueFLogic = std::shared_ptr<RedisQueue>(new RedisQueue(
-		&redisHandlerEngine, ServerCfg::GetInstance()->Queue_logic_db));
-	mRedisQueueTLogic = std::shared_ptr<RedisQueue>(new RedisQueue(
-		&redisHandlerEngine, ServerCfg::GetInstance()->Queue_db_logic));
+	//mRedisQueueFLogic = std::shared_ptr<RedisQueue>(new RedisQueue(
+	//	&redisHandlerEngine, ServerCfg::GetInstance()->Queue_logic_db));
+	//mRedisQueueTLogic = std::shared_ptr<RedisQueue>(new RedisQueue(
+	//	&redisHandlerEngine, ServerCfg::GetInstance()->Queue_db_logic));
 	mRedisQueueFManager = std::shared_ptr<RedisQueue>(new RedisQueue(
 		&redisHandlerEngine, ServerCfg::GetInstance()->Queue_manager_db));
 	mRedisQueueTManager = std::shared_ptr<RedisQueue>(new RedisQueue(
 		&redisHandlerEngine, ServerCfg::GetInstance()->Queue_db_manager));
 	 Que_LoginHandler::GetInstance()->Init(mRedisQueueTLogin,mRedisQueueFLogin);
-	 Que_LogicHandler::GetInstance()->Init(mRedisQueueTLogic,mRedisQueueFLogic);
+	 //Que_LogicHandler::GetInstance()->Init(mRedisQueueTLogic,mRedisQueueFLogic);
 	 Que_ManagerHandler::GetInstance()->Init(mRedisQueueTManager,mRedisQueueFManager);
 
 	LOGD("数据库配置初始化完成");
@@ -162,7 +162,7 @@ bool ServerCenterMgr::StartServer()
 		{
 			//取队列
 			Que_LoginHandler::GetInstance()->Process();
-			Que_LogicHandler::GetInstance()->Process();
+			//Que_LogicHandler::GetInstance()->Process();
 			Que_ManagerHandler::GetInstance()->Process();
 		}
 		catch (std::exception& e)

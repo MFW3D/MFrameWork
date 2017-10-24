@@ -233,7 +233,6 @@ void NNTCPClient::ReadCb(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf
 		{
 			OnDisConnected(NNTCPClientNodePtr, *this);
 		}
-		uv_close((uv_handle_t*)client, NNTCPServerMgr::CloseCb);
 		return;
 	}
 	buf->base[nread] = '\0';
