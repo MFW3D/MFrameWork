@@ -1,4 +1,4 @@
-#ifndef http_parser_h
+﻿#ifndef http_parser_h
 #define http_parser_h
 #ifdef __cplusplus
 extern "C" {

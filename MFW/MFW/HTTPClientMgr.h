@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Singleton.h"
 #include <iostream>
 #include <stdlib.h>
@@ -7,16 +7,16 @@
 #include <string>
 #include "HttpParser.h"
 /*
-×÷Îªhttp¿Í»§¶ËÁ¬½Ó¹ÜÀíÆ÷
+ä½œä¸ºhttpå®¢æˆ·ç«¯è¿æ¥ç®¡ç†å™¨
 */
 
 
 /*
-×÷ÎªÒ»¸öwebclient
-1¡¢loopÒ»Ö±Ö´ĞĞ×Å
-2¡¢¶¨Ê±Æ÷¼ì²éÇëÇó
-3¡¢Ö´ĞĞÇëÇó
-4¡¢ÊÕµ½Êı¾İ·µ»ØÉÏÒ»²ã
+ä½œä¸ºä¸€ä¸ªwebclient
+1ã€loopä¸€ç›´æ‰§è¡Œç€
+2ã€å®šæ—¶å™¨æ£€æŸ¥è¯·æ±‚
+3ã€æ‰§è¡Œè¯·æ±‚
+4ã€æ”¶åˆ°æ•°æ®è¿”å›ä¸Šä¸€å±‚
 */
 class HTTPRequestInfo
 {
@@ -42,13 +42,13 @@ public:
 class HTTPClientMgr:public MFW::Singleton<HTTPClientMgr>
 {
 private:
-	//http¿Í»§¶ËµÄ¶ÓÁĞ
+	//httpå®¢æˆ·ç«¯çš„é˜Ÿåˆ—
 	std::queue<HTTPRequestInfo> mHTTRequests;
 	std::mutex mHTTRequestsMutex;
-	//ÏûÏ¢»Ö¸´¶ÓÁĞ
+	//æ¶ˆæ¯æ¢å¤é˜Ÿåˆ—
 	std::queue<HTTPResposeInfo> mHTTPResposes;
 	std::mutex mHTTPResposesMutex;
-	//Á¬½ÓÊ§°ÜÊÂ¼ş
+	//è¿æ¥å¤±è´¥äº‹ä»¶
 	std::function<void (std::shared_ptr<NNTCPLinkNode>  , NNTCPNode&, HTTPRequestInfo)> FailConnected;
 	std::map<unsigned long long, HTTPRequestInfo> mRequestDealings;
 	std::string mteamp = "";

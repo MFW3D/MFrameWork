@@ -1,4 +1,4 @@
-#ifndef _http_Method__
+﻿#ifndef _http_Method__
 #define _http_Method__
 
 // Copyright(c) Andre Caron <andre.l.caron@gmail.com>, 2011

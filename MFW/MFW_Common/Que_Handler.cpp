@@ -9,14 +9,10 @@ void Que_Handler::Init(std::shared_ptr<RedisQueue>& tque, std::shared_ptr<RedisQ
 
 void Que_Handler::Process()
 {
-	int count = 100;
 	mData = "";
 	while (mFQue->PopData(mData))
 	{
 		OnRead(mData);
-		count--;
-		if (count <= 0)
-			return;
 	}
 
 }

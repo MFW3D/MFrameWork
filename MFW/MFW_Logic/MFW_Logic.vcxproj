@@ -153,7 +153,6 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Net_ClientHandler.cpp" />
-    <ClCompile Include="Net_ClientHandlerbk.cpp" />
     <ClCompile Include="Net_DBHandler.cpp" />
     <ClCompile Include="Net_ManagerHandler.cpp" />
     <ClCompile Include="Que_ManagerHandler.cpp" />
@@ -162,7 +161,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Net_ClientHandler.h" />
-    <ClInclude Include="Net_ClientHandlerbk.h" />
     <ClInclude Include="Net_DBHandler.h" />
     <ClInclude Include="Net_ManagerHandler.h" />
     <ClInclude Include="Que_DBHandler.h" />

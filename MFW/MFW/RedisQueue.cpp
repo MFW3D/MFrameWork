@@ -1,4 +1,4 @@
-#include "RedisQueue.h"
+ï»¿#include "RedisQueue.h"
 #include "String2Hex.h"
 
 RedisQueue::RedisQueue(DBProduce::RedisDBEngine*redisDBEngine,	std::string queName)
@@ -8,15 +8,15 @@ RedisQueue::RedisQueue(DBProduce::RedisDBEngine*redisDBEngine,	std::string queNa
 }
 void RedisQueue::PushData(std::string& data)
 {
-	//ÍÆÈë
-	std::string cmd = "LPUSH " + mQueueName+" ";
+	//æŽ¨å…¥
+	std::string cmd = "RPUSH " + mQueueName+" ";
 
 	cmd.append(String2Hex::BinToHex(data));
 	mRedisDBEngine->excuteCommoned(cmd);
 }
 bool RedisQueue::PopData(std::string& data)
 {
-	//È¡³ö
+	//å–å‡º
 	std::string cmd = "LPOP " + mQueueName ;
 	bool result=mRedisDBEngine->excuteCommoned(cmd, data);
 	data= String2Hex::HexToBin(data);

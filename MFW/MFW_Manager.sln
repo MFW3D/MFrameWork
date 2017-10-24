@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MFW_Proto", "MFW_Proto\MFW_
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MFW_Common", "MFW_Common\MFW_Common.vcxproj", "{4869C016-D59C-4A6E-AAAC-2D4C0DD38593}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MFW_Produce", "MFW_Produce\MFW_Produce.vcxproj", "{B1CA8226-083C-489D-859F-A53B43E47A26}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,14 @@ Global
 		{4869C016-D59C-4A6E-AAAC-2D4C0DD38593}.Release|x64.Build.0 = Release|x64
 		{4869C016-D59C-4A6E-AAAC-2D4C0DD38593}.Release|x86.ActiveCfg = Release|Win32
 		{4869C016-D59C-4A6E-AAAC-2D4C0DD38593}.Release|x86.Build.0 = Release|Win32
+		{B1CA8226-083C-489D-859F-A53B43E47A26}.Debug|x64.ActiveCfg = Debug|x64
+		{B1CA8226-083C-489D-859F-A53B43E47A26}.Debug|x64.Build.0 = Debug|x64
+		{B1CA8226-083C-489D-859F-A53B43E47A26}.Debug|x86.ActiveCfg = Debug|Win32
+		{B1CA8226-083C-489D-859F-A53B43E47A26}.Debug|x86.Build.0 = Debug|Win32
+		{B1CA8226-083C-489D-859F-A53B43E47A26}.Release|x64.ActiveCfg = Release|x64
+		{B1CA8226-083C-489D-859F-A53B43E47A26}.Release|x64.Build.0 = Release|x64
+		{B1CA8226-083C-489D-859F-A53B43E47A26}.Release|x86.ActiveCfg = Release|Win32
+		{B1CA8226-083C-489D-859F-A53B43E47A26}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

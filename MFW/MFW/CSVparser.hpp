@@ -1,4 +1,4 @@
-#ifndef     _CSVPARSER_HPP_
+﻿#ifndef     _CSVPARSER_HPP_
 # define    _CSVPARSER_HPP_
 
 # include <stdexcept>

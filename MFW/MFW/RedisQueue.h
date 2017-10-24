@@ -1,14 +1,14 @@
-#pragma once
+ï»¿#pragma once
 #include <memory>
 #include <functional>
 #include "RedisDBEngine.h"
 /*
-Ê¹ÓÃredis¶ÓÁĞÊµÏÖÏûÏ¢µÄÖĞ¼ä»º´æºÍ³Ö¾Ã»¯
+ä½¿ç”¨redisé˜Ÿåˆ—å®ç°æ¶ˆæ¯çš„ä¸­é—´ç¼“å­˜å’ŒæŒä¹…åŒ–
 */
 class RedisQueue
 {
 private:
-	//redisÒıÇæ
+	//rediså¼•æ“
 	DBProduce::RedisDBEngine* mRedisDBEngine;
 	std::string mQueueName = "";
 public:

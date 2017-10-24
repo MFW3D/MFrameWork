@@ -163,11 +163,6 @@ namespace DBProduce
 			locker.unlock();
 			return false;
 		}
-		if (!(r->type == REDIS_REPLY_STATUS && strcasecmp(r->str, "OK") == 0))
-		{
-			locker.unlock();
-			return false;
-		}
 		locker.unlock();
 		return true;
 	}
@@ -185,11 +180,6 @@ namespace DBProduce
 		r = (redisReply*)redisCommand(c, cmd);
 
 		if (NULL == r)
-		{
-			locker.unlock();
-			return false;
-		}
-		if (!(r->type == REDIS_REPLY_STATUS && strcasecmp(r->str, "OK") == 0))
 		{
 			locker.unlock();
 			return false;

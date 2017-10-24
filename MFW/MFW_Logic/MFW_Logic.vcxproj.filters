@@ -24,9 +24,6 @@
     <ClCompile Include="Net_DBHandler.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Net_ClientHandlerbk.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Net_ClientHandler.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -45,9 +42,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Net_DBHandler.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Net_ClientHandlerbk.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Net_ClientHandler.h">

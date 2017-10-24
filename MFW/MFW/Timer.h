@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <map>
 #include <thread>
 #include <stack>
@@ -9,8 +9,8 @@
 class Timer
 {
 public:
-	long long mId;	//Ê±¼äid
-	long long mTick;	//¶¨Ê±µã
+	long long mId;	//æ—¶é—´id
+	long long mTick;	//å®šæ—¶ç‚¹
 	long long mStartTime;	
 	void OnTimerCB();
 	std::function<void(Timer)> OnTimerPtr;
@@ -25,8 +25,8 @@ private:
 	long long mTimerId = 0;
 	std::shared_ptr<std::thread> mThreadPtr;
 	void TimerRun();
-	std::map<long long, std::shared_ptr<Timer>> mIDTimers;//id¶ÔÓ¦
-	std::multimap<long long, std::shared_ptr<Timer>,std::less<long long>> mTickTimers;//Ê±¼ä¶ÔÓ¦
+	std::map<long long, std::shared_ptr<Timer>> mIDTimers;//idå¯¹åº”
+	std::multimap<long long, std::shared_ptr<Timer>,std::less<long long>> mTickTimers;//æ—¶é—´å¯¹åº”
 	std::mutex mTimerMutex;
 
 	void PushTimer(Timer& timer);
@@ -36,7 +36,7 @@ public:
 	void Process();
 	long long  StartTimer(long long& NextTick, std::function<void(Timer)> timerCB, void* data);
 	long long  StartTimerMill(long long& ticks, std::function<void(Timer)> timerCB, void* data);
-	//Æô¶¯¶¨Ê±Æ÷£¬Ê±¼ä¼ä¸ôÃëÃë
+	//å¯åŠ¨å®šæ—¶å™¨ï¼Œæ—¶é—´é—´éš”ç§’ç§’
 	long long  StartTimerSecond(long long& ticks, std::function<void(Timer)> timerCB, void* data);
 	bool ResetTimer(long long& timerId, long long& NextTick);
 	bool ResetTimerMill(long long& timerId, long long& ticks);

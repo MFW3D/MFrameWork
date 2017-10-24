@@ -1,4 +1,4 @@
-#include "Timer.h"
+ï»¿#include "Timer.h"
 #include <chrono>
 #if _WIN32
 #include <windows.h>
@@ -134,7 +134,7 @@ long long  TimerMgr::StartTimerSecond(long long& ticks, std::function<void(Timer
 
 bool TimerMgr::ResetTimer(long long& timerId, long long& NextTick)
 {
-	//ÖØÖÃ¶¨Ê±Æ÷
+	//é‡ç½®å®šæ—¶å™¨
 	long long startTime = std::chrono::time_point_cast<std::chrono::milliseconds>(
 		std::chrono::time_point<std::chrono::system_clock>::clock::now()).time_since_epoch().count();
 	mTimerMutex.lock();
@@ -145,7 +145,7 @@ bool TimerMgr::ResetTimer(long long& timerId, long long& NextTick)
 		{
 			if (itr->second->mId == timerId)
 			{
-				//ÖØÖÃ¶¨Ê±Æ÷
+				//é‡ç½®å®šæ—¶å™¨
 				itr->second->mTick= NextTick;
 				itr->second->mStartTime = startTime;
 				mTickTimers.erase(itr);
@@ -166,7 +166,7 @@ bool TimerMgr::ResetTimer(long long& timerId, long long& NextTick)
 }
 bool TimerMgr::ResetTimerMill(long long& timerId, long long& ticks)
 {
-	//ÖØÖÃ¶¨Ê±Æ÷
+	//é‡ç½®å®šæ—¶å™¨
 	long long startTime = std::chrono::time_point_cast<std::chrono::milliseconds>(
 		std::chrono::time_point<std::chrono::system_clock>::clock::now()).time_since_epoch().count();
 	mTimerMutex.lock();
@@ -177,7 +177,7 @@ bool TimerMgr::ResetTimerMill(long long& timerId, long long& ticks)
 		{
 			if (itr->second->mId == timerId)
 			{
-				//ÖØÖÃ¶¨Ê±Æ÷
+				//é‡ç½®å®šæ—¶å™¨
 				itr->second->mStartTime = startTime;
 				itr->second->mTick = itr->second->mStartTime+ticks;
 				mTickTimers.erase(itr);
@@ -198,7 +198,7 @@ bool TimerMgr::ResetTimerMill(long long& timerId, long long& ticks)
 }
 bool TimerMgr::ResetTimerSecond(long long& timerId, long long& ticks)
 {
-	//ÖØÖÃ¶¨Ê±Æ÷
+	//é‡ç½®å®šæ—¶å™¨
 	long long startTime = std::chrono::time_point_cast<std::chrono::milliseconds>(
 		std::chrono::time_point<std::chrono::system_clock>::clock::now()).time_since_epoch().count();
 	mTimerMutex.lock();
@@ -209,7 +209,7 @@ bool TimerMgr::ResetTimerSecond(long long& timerId, long long& ticks)
 		{
 			if (itr->second->mId == timerId)
 			{
-				//ÖØÖÃ¶¨Ê±Æ÷
+				//é‡ç½®å®šæ—¶å™¨
 				itr->second->mStartTime = startTime;
 				itr->second->mTick = itr->second->mStartTime+ticks*1000;
 				mTickTimers.erase(itr);

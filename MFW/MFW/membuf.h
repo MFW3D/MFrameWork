@@ -1,4 +1,4 @@
-#ifndef __MEMBUF_H__
+﻿#ifndef __MEMBUF_H__
 #define __MEMBUF_H__
 
 // `membuf_t` is a growable continuous in-memory buffer.

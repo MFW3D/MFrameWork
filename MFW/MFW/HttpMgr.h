@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <iostream>
 #include <stdlib.h>
 #include <memory>
@@ -16,13 +16,13 @@ public:
 
 class HttpMgr {
 private:
-	//¶ÁÈ¡Á¬½ÓÊı¾İ
+	//è¯»å–è¿æ¥æ•°æ®
 	void OnRead(std::shared_ptr<NNTCPLinkNode>  session, std::string data, NNTCPNode& netNode);
-	//Á¬½Ó½øÈë
+	//è¿æ¥è¿›å…¥
 	void OnConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNode& netNode);
-	//Á¬½Ó¶Ï¿ª
+	//è¿æ¥æ–­å¼€
 	void OnDisConnected(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNode& netNode);
-	//¶¨Ê±Æ÷·µ»Ø
+	//å®šæ—¶å™¨è¿”å›
 	void OnTimer(uv_timer_t* handle);
 
 public:
@@ -31,7 +31,7 @@ public:
 	std::function<void(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNode& netNode)> OnConnectedPtr = nullptr;
 	std::function<void(std::shared_ptr<NNTCPLinkNode>  session, NNTCPNode& netNode)> OnDisConnectedPtr = nullptr;
 	std::function<void(uv_timer_t* handle)> OnTimerPtr = nullptr;
-	//Æô¶¯
+	//å¯åŠ¨
 	void Start(std::vector<HttpStartInfo> startInfos);
 	void SendData(std::shared_ptr<NNTCPLinkNode> session, std::string data, std::map<std::string, std::string> params, NNTCPNode& netNode);
 

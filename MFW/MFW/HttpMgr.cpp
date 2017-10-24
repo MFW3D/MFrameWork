@@ -1,4 +1,4 @@
-#include "HttpMgr.h"
+ï»¿#include "HttpMgr.h"
 #include <fstream>
 #include "HttpParser.h"
 
@@ -69,7 +69,7 @@ void HttpMgr::SendData(std::shared_ptr<NNTCPLinkNode> session, std::string data,
 		httpResPonse.AddParam(itr->first, itr->second);
 	}
 	httpResPonse.SetBody(data);
-	//»Ø¸´¿Í»§¶Ë
+	//å›å¤å®¢æˆ·ç«¯
 	std::string responsestr = "";
 	if (httpResPonse.ParseToString(responsestr))
 	{

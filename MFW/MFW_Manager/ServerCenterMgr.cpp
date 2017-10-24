@@ -30,9 +30,9 @@ void ServerCenterMgr::Init()
 	mRedisQueueTLogic = std::shared_ptr<RedisQueue>(new RedisQueue(
 		&redisHandlerEngine, ServerCfg::GetInstance()->Queue_manager_logic));
 	mRedisQueueFDB = std::shared_ptr<RedisQueue>(new RedisQueue(
-		&redisHandlerEngine, ServerCfg::GetInstance()->Queue_manager_login));
+		&redisHandlerEngine, ServerCfg::GetInstance()->Queue_db_manager));
 	mRedisQueueTDB = std::shared_ptr<RedisQueue>(new RedisQueue(
-		&redisHandlerEngine, ServerCfg::GetInstance()->Queue_login_manager));
+		&redisHandlerEngine, ServerCfg::GetInstance()->Queue_manager_db));
 	Que_LoginHandler::GetInstance()->Init(mRedisQueueTLogin,mRedisQueueFLogin);
 	Que_LogicHandler::GetInstance()->Init(mRedisQueueTLogic,mRedisQueueFLogic);
 	Que_DBHandler::GetInstance()->Init(mRedisQueueTDB,mRedisQueueFDB);

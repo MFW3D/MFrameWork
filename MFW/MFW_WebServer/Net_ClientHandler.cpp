@@ -18,10 +18,11 @@ void Net_ClientHandler::OnRead(std::shared_ptr<NNTCPLinkNode>  session, HttpRequ
 {
 
 	if (httpRequest.GetMethod() != EHttpMethod::POST)
-		return;
+	return;
 	std::string url = httpRequest.GetUrl();
 	std::string body = httpRequest.GetBody();
-
+	std::map<std::string, std::string>params;
+	httpMgr.SendData(session, "hello", params, netNode);
 	HandleData(session, body, netNode);
 	return;
 }

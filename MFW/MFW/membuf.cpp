@@ -1,4 +1,4 @@
-#include "membuf.h"
+﻿#include "membuf.h"
 #include <stdlib.h>
 #include <memory.h>
 #include <string.h>
