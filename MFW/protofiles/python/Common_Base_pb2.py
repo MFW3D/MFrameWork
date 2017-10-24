@@ -20,9 +20,55 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='Common_Base.proto',
   package='PCommon_Base',
   syntax='proto3',
-  serialized_pb=_b('\n\x11\x43ommon_Base.proto\x12\x0cPCommon_Base\"U\n\x07NetHead\x12\x0b\n\x03\x43md\x18\x01 \x01(\x05\x12\r\n\x05Index\x18\x02 \x01(\x05\x12\r\n\x05\x43ount\x18\x03 \x01(\x05\x12\x12\n\nDataLength\x18\x04 \x01(\x05\x12\x0b\n\x03key\x18\x05 \x01(\x05\"\x1e\n\x06MTest1\x12\t\n\x01\x61\x18\x01 \x01(\x05\x12\t\n\x01\x62\x18\x02 \x01(\x05\"\x1e\n\x06MTest2\x12\t\n\x01\x61\x18\x02 \x01(\x05\x12\t\n\x01\x62\x18\x03 \x01(\x05*(\n\x05\x45Test\x12\t\n\x05Test1\x10\x00\x12\t\n\x05Test2\x10\x01\x12\t\n\x05Test3\x10\x02\x62\x06proto3')
+  serialized_pb=_b('\n\x11\x43ommon_Base.proto\x12\x0cPCommon_Base\"U\n\x07NetHead\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\x0b\n\x03\x43md\x18\x02 \x01(\x05\x12\r\n\x05Index\x18\x03 \x01(\x05\x12\r\n\x05\x43ount\x18\x04 \x01(\x05\x12\x12\n\nDataLength\x18\x05 \x01(\x05\"7\n\x0eNetTransferMsg\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x0b\n\x03\x63md\x18\x02 \x01(\x05\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t\"H\n\x0fNetTransferMsgs\x12\x35\n\x0fNetTransferMsgs\x18\x01 \x03(\x0b\x32\x1c.PCommon_Base.NetTransferMsg\"*\n\tPUserInfo\x12\x0b\n\x03uid\x18\x01 \x01(\x03\x12\x10\n\x08nickname\x18\x02 \x01(\x0c\"\x1e\n\x06MTest1\x12\t\n\x01\x61\x18\x01 \x01(\x05\x12\t\n\x01\x62\x18\x02 \x01(\x05\"\x1e\n\x06MTest2\x12\t\n\x01\x61\x18\x02 \x01(\x05\x12\t\n\x01\x62\x18\x03 \x01(\x05*D\n\x0b\x45Public_CMD\x12\x14\n\x10\x45Public_CMD_None\x10\x00\x12\x1f\n\x1b\x45Public_CMD_PackTransferMsg\x10\x01*8\n\x0b\x45Public_Ret\x12\x12\n\x0e\x45Public_Ret_OK\x10\x00\x12\x15\n\x11\x45Public_Ret_Error\x10\x01*(\n\x05\x45Test\x12\t\n\x05Test1\x10\x00\x12\t\n\x05Test2\x10\x01\x12\t\n\x05Test3\x10\x02\x62\x06proto3')
 )
 
+_EPUBLIC_CMD = _descriptor.EnumDescriptor(
+  name='EPublic_CMD',
+  full_name='PCommon_Base.EPublic_CMD',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='EPublic_CMD_None', index=0, number=0,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='EPublic_CMD_PackTransferMsg', index=1, number=1,
+      options=None,
+      type=None),
+  ],
+  containing_type=None,
+  options=None,
+  serialized_start=361,
+  serialized_end=429,
+)
+_sym_db.RegisterEnumDescriptor(_EPUBLIC_CMD)
+
+EPublic_CMD = enum_type_wrapper.EnumTypeWrapper(_EPUBLIC_CMD)
+_EPUBLIC_RET = _descriptor.EnumDescriptor(
+  name='EPublic_Ret',
+  full_name='PCommon_Base.EPublic_Ret',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='EPublic_Ret_OK', index=0, number=0,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='EPublic_Ret_Error', index=1, number=1,
+      options=None,
+      type=None),
+  ],
+  containing_type=None,
+  options=None,
+  serialized_start=431,
+  serialized_end=487,
+)
+_sym_db.RegisterEnumDescriptor(_EPUBLIC_RET)
+
+EPublic_Ret = enum_type_wrapper.EnumTypeWrapper(_EPUBLIC_RET)
 _ETEST = _descriptor.EnumDescriptor(
   name='ETest',
   full_name='PCommon_Base.ETest',
@@ -44,12 +90,16 @@ _ETEST = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=186,
-  serialized_end=226,
+  serialized_start=489,
+  serialized_end=529,
 )
 _sym_db.RegisterEnumDescriptor(_ETEST)
 
 ETest = enum_type_wrapper.EnumTypeWrapper(_ETEST)
+EPublic_CMD_None = 0
+EPublic_CMD_PackTransferMsg = 1
+EPublic_Ret_OK = 0
+EPublic_Ret_Error = 1
 Test1 = 0
 Test2 = 1
 Test3 = 2
@@ -64,35 +114,35 @@ _NETHEAD = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='Cmd', full_name='PCommon_Base.NetHead.Cmd', index=0,
+      name='key', full_name='PCommon_Base.NetHead.key', index=0,
       number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='Index', full_name='PCommon_Base.NetHead.Index', index=1,
+      name='Cmd', full_name='PCommon_Base.NetHead.Cmd', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='Count', full_name='PCommon_Base.NetHead.Count', index=2,
+      name='Index', full_name='PCommon_Base.NetHead.Index', index=2,
       number=3, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='DataLength', full_name='PCommon_Base.NetHead.DataLength', index=3,
+      name='Count', full_name='PCommon_Base.NetHead.Count', index=3,
       number=4, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='key', full_name='PCommon_Base.NetHead.key', index=4,
+      name='DataLength', full_name='PCommon_Base.NetHead.DataLength', index=4,
       number=5, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -112,6 +162,120 @@ _NETHEAD = _descriptor.Descriptor(
   ],
   serialized_start=35,
   serialized_end=120,
+)
+
+
+_NETTRANSFERMSG = _descriptor.Descriptor(
+  name='NetTransferMsg',
+  full_name='PCommon_Base.NetTransferMsg',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='PCommon_Base.NetTransferMsg.id', index=0,
+      number=1, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='cmd', full_name='PCommon_Base.NetTransferMsg.cmd', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='data', full_name='PCommon_Base.NetTransferMsg.data', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=122,
+  serialized_end=177,
+)
+
+
+_NETTRANSFERMSGS = _descriptor.Descriptor(
+  name='NetTransferMsgs',
+  full_name='PCommon_Base.NetTransferMsgs',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='NetTransferMsgs', full_name='PCommon_Base.NetTransferMsgs.NetTransferMsgs', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=179,
+  serialized_end=251,
+)
+
+
+_PUSERINFO = _descriptor.Descriptor(
+  name='PUserInfo',
+  full_name='PCommon_Base.PUserInfo',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='uid', full_name='PCommon_Base.PUserInfo.uid', index=0,
+      number=1, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='nickname', full_name='PCommon_Base.PUserInfo.nickname', index=1,
+      number=2, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=253,
+  serialized_end=295,
 )
 
 
@@ -148,8 +312,8 @@ _MTEST1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=122,
-  serialized_end=152,
+  serialized_start=297,
+  serialized_end=327,
 )
 
 
@@ -186,13 +350,19 @@ _MTEST2 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=154,
-  serialized_end=184,
+  serialized_start=329,
+  serialized_end=359,
 )
 
+_NETTRANSFERMSGS.fields_by_name['NetTransferMsgs'].message_type = _NETTRANSFERMSG
 DESCRIPTOR.message_types_by_name['NetHead'] = _NETHEAD
+DESCRIPTOR.message_types_by_name['NetTransferMsg'] = _NETTRANSFERMSG
+DESCRIPTOR.message_types_by_name['NetTransferMsgs'] = _NETTRANSFERMSGS
+DESCRIPTOR.message_types_by_name['PUserInfo'] = _PUSERINFO
 DESCRIPTOR.message_types_by_name['MTest1'] = _MTEST1
 DESCRIPTOR.message_types_by_name['MTest2'] = _MTEST2
+DESCRIPTOR.enum_types_by_name['EPublic_CMD'] = _EPUBLIC_CMD
+DESCRIPTOR.enum_types_by_name['EPublic_Ret'] = _EPUBLIC_RET
 DESCRIPTOR.enum_types_by_name['ETest'] = _ETEST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -202,6 +372,27 @@ NetHead = _reflection.GeneratedProtocolMessageType('NetHead', (_message.Message,
   # @@protoc_insertion_point(class_scope:PCommon_Base.NetHead)
   ))
 _sym_db.RegisterMessage(NetHead)
+
+NetTransferMsg = _reflection.GeneratedProtocolMessageType('NetTransferMsg', (_message.Message,), dict(
+  DESCRIPTOR = _NETTRANSFERMSG,
+  __module__ = 'Common_Base_pb2'
+  # @@protoc_insertion_point(class_scope:PCommon_Base.NetTransferMsg)
+  ))
+_sym_db.RegisterMessage(NetTransferMsg)
+
+NetTransferMsgs = _reflection.GeneratedProtocolMessageType('NetTransferMsgs', (_message.Message,), dict(
+  DESCRIPTOR = _NETTRANSFERMSGS,
+  __module__ = 'Common_Base_pb2'
+  # @@protoc_insertion_point(class_scope:PCommon_Base.NetTransferMsgs)
+  ))
+_sym_db.RegisterMessage(NetTransferMsgs)
+
+PUserInfo = _reflection.GeneratedProtocolMessageType('PUserInfo', (_message.Message,), dict(
+  DESCRIPTOR = _PUSERINFO,
+  __module__ = 'Common_Base_pb2'
+  # @@protoc_insertion_point(class_scope:PCommon_Base.PUserInfo)
+  ))
+_sym_db.RegisterMessage(PUserInfo)
 
 MTest1 = _reflection.GeneratedProtocolMessageType('MTest1', (_message.Message,), dict(
   DESCRIPTOR = _MTEST1,

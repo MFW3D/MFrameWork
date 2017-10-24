@@ -19,6 +19,18 @@ public final class ManagerClient {
       com.google.protobuf.MessageOrBuilder {
   }
   /**
+   * <pre>
+   *协议规则前两个字母代表消息流向
+   *D:数据服务器
+   *M：管理服务器
+   *L：登录服务器
+   *G：逻辑服务器
+   *C：客户端
+   *后面更协议的名字
+   *命令枚举以服务器前客户端后的命名_CMD,一对协议对应一个消息id，推送协议占一个消息id
+   *管理服-客户端消息：6001-8000
+   * </pre>
+   *
    * Protobuf type {@code PManager_Client.Point_Fb}
    */
   public  static final class Point_Fb extends
@@ -218,6 +230,18 @@ public final class ManagerClient {
       return builder;
     }
     /**
+     * <pre>
+     *协议规则前两个字母代表消息流向
+     *D:数据服务器
+     *M：管理服务器
+     *L：登录服务器
+     *G：逻辑服务器
+     *C：客户端
+     *后面更协议的名字
+     *命令枚举以服务器前客户端后的命名_CMD,一对协议对应一个消息id，推送协议占一个消息id
+     *管理服-客户端消息：6001-8000
+     * </pre>
+     *
      * Protobuf type {@code PManager_Client.Point_Fb}
      */
     public static final class Builder extends

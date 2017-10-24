@@ -19,4 +19,8 @@ public:
 	virtual void OnDisConnected(std::shared_ptr<NNTCPLinkNode> session, NNTCPNode& netNode);
 	virtual void OnTimered(uv_timer_t* handle);
 
+	//Âß¼­·þÎñÆ÷×¢²á
+	void HandleRegister(std::shared_ptr<NNTCPLinkNode>&  session, const int& cmd, std::string& data, NNTCPNode& netNode);
+	void HandleClientKey(std::shared_ptr<NNTCPLinkNode>&  session, const int& cmd, std::string& data, NNTCPNode& netNode);
+
 };

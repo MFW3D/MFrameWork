@@ -15,21 +15,21 @@ public final class DBLogic {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
-   * Protobuf enum {@code PDB_Logic.EDB_LOGIC_CMD}
+   * Protobuf enum {@code PDB_Logic.EDG_CMD}
    */
-  public enum EDB_LOGIC_CMD
+  public enum EDG_CMD
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>Identification = 0;</code>
+     * <code>EDG_CMD_None = 0;</code>
      */
-    Identification(0),
+    EDG_CMD_None(0),
     UNRECOGNIZED(-1),
     ;
 
     /**
-     * <code>Identification = 0;</code>
+     * <code>EDG_CMD_None = 0;</code>
      */
-    public static final int Identification_VALUE = 0;
+    public static final int EDG_CMD_None_VALUE = 0;
 
 
     public final int getNumber() {
@@ -44,26 +44,26 @@ public final class DBLogic {
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
-    public static EDB_LOGIC_CMD valueOf(int value) {
+    public static EDG_CMD valueOf(int value) {
       return forNumber(value);
     }
 
-    public static EDB_LOGIC_CMD forNumber(int value) {
+    public static EDG_CMD forNumber(int value) {
       switch (value) {
-        case 0: return Identification;
+        case 0: return EDG_CMD_None;
         default: return null;
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<EDB_LOGIC_CMD>
+    public static com.google.protobuf.Internal.EnumLiteMap<EDG_CMD>
         internalGetValueMap() {
       return internalValueMap;
     }
     private static final com.google.protobuf.Internal.EnumLiteMap<
-        EDB_LOGIC_CMD> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<EDB_LOGIC_CMD>() {
-            public EDB_LOGIC_CMD findValueByNumber(int number) {
-              return EDB_LOGIC_CMD.forNumber(number);
+        EDG_CMD> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<EDG_CMD>() {
+            public EDG_CMD findValueByNumber(int number) {
+              return EDG_CMD.forNumber(number);
             }
           };
 
@@ -80,9 +80,9 @@ public final class DBLogic {
       return PDB_Logic.DBLogic.getDescriptor().getEnumTypes().get(0);
     }
 
-    private static final EDB_LOGIC_CMD[] VALUES = values();
+    private static final EDG_CMD[] VALUES = values();
 
-    public static EDB_LOGIC_CMD valueOf(
+    public static EDG_CMD valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
@@ -96,11 +96,11 @@ public final class DBLogic {
 
     private final int value;
 
-    private EDB_LOGIC_CMD(int value) {
+    private EDG_CMD(int value) {
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:PDB_Logic.EDB_LOGIC_CMD)
+    // @@protoc_insertion_point(enum_scope:PDB_Logic.EDG_CMD)
   }
 
   public interface LDIdentificationOrBuilder extends
@@ -876,8 +876,7 @@ public final class DBLogic {
     java.lang.String[] descriptorData = {
       "\n\016DB_Logic.proto\022\tPDB_Logic\032\rDB_Base.pro" +
       "to\"\022\n\020LDIdentification\"\022\n\020DLIdentificati" +
-      "on*#\n\rEDB_LOGIC_CMD\022\022\n\016Identification\020\000b" +
-      "\006proto3"
+      "on*\033\n\007EDG_CMD\022\020\n\014EDG_CMD_None\020\000b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

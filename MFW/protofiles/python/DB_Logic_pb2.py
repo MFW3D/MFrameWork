@@ -21,30 +21,30 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='DB_Logic.proto',
   package='PDB_Logic',
   syntax='proto3',
-  serialized_pb=_b('\n\x0e\x44\x42_Logic.proto\x12\tPDB_Logic\x1a\rDB_Base.proto\"\x12\n\x10LDIdentification\"\x12\n\x10\x44LIdentification*#\n\rEDB_LOGIC_CMD\x12\x12\n\x0eIdentification\x10\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x0e\x44\x42_Logic.proto\x12\tPDB_Logic\x1a\rDB_Base.proto\"\x12\n\x10LDIdentification\"\x12\n\x10\x44LIdentification*\x1b\n\x07\x45\x44G_CMD\x12\x10\n\x0c\x45\x44G_CMD_None\x10\x00\x62\x06proto3')
   ,
   dependencies=[DB__Base__pb2.DESCRIPTOR,])
 
-_EDB_LOGIC_CMD = _descriptor.EnumDescriptor(
-  name='EDB_LOGIC_CMD',
-  full_name='PDB_Logic.EDB_LOGIC_CMD',
+_EDG_CMD = _descriptor.EnumDescriptor(
+  name='EDG_CMD',
+  full_name='PDB_Logic.EDG_CMD',
   filename=None,
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='Identification', index=0, number=0,
+      name='EDG_CMD_None', index=0, number=0,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
   serialized_start=84,
-  serialized_end=119,
+  serialized_end=111,
 )
-_sym_db.RegisterEnumDescriptor(_EDB_LOGIC_CMD)
+_sym_db.RegisterEnumDescriptor(_EDG_CMD)
 
-EDB_LOGIC_CMD = enum_type_wrapper.EnumTypeWrapper(_EDB_LOGIC_CMD)
-Identification = 0
+EDG_CMD = enum_type_wrapper.EnumTypeWrapper(_EDG_CMD)
+EDG_CMD_None = 0
 
 
 
@@ -97,7 +97,7 @@ _DLIDENTIFICATION = _descriptor.Descriptor(
 
 DESCRIPTOR.message_types_by_name['LDIdentification'] = _LDIDENTIFICATION
 DESCRIPTOR.message_types_by_name['DLIdentification'] = _DLIDENTIFICATION
-DESCRIPTOR.enum_types_by_name['EDB_LOGIC_CMD'] = _EDB_LOGIC_CMD
+DESCRIPTOR.enum_types_by_name['EDG_CMD'] = _EDG_CMD
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 LDIdentification = _reflection.GeneratedProtocolMessageType('LDIdentification', (_message.Message,), dict(

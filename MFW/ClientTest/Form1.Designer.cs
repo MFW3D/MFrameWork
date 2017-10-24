@@ -43,6 +43,10 @@
             this.m_managerIp = new System.Windows.Forms.Label();
             this.m_managerport = new System.Windows.Forms.Label();
             this.m_Managerkey = new System.Windows.Forms.Label();
+            this.m_managerServer = new System.Windows.Forms.Button();
+            this.m_managerLogion = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.m_uidlabal = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // m_connectServer
@@ -174,6 +178,43 @@
             this.m_Managerkey.Size = new System.Drawing.Size(0, 12);
             this.m_Managerkey.TabIndex = 1;
             // 
+            // m_managerServer
+            // 
+            this.m_managerServer.Location = new System.Drawing.Point(306, 12);
+            this.m_managerServer.Name = "m_managerServer";
+            this.m_managerServer.Size = new System.Drawing.Size(99, 23);
+            this.m_managerServer.TabIndex = 0;
+            this.m_managerServer.Text = "连接管理服务器";
+            this.m_managerServer.UseVisualStyleBackColor = true;
+            this.m_managerServer.Click += new System.EventHandler(this.m_managerServer_Click);
+            // 
+            // m_managerLogion
+            // 
+            this.m_managerLogion.Location = new System.Drawing.Point(306, 51);
+            this.m_managerLogion.Name = "m_managerLogion";
+            this.m_managerLogion.Size = new System.Drawing.Size(99, 23);
+            this.m_managerLogion.TabIndex = 0;
+            this.m_managerLogion.Text = "发送登录消息";
+            this.m_managerLogion.UseVisualStyleBackColor = true;
+            this.m_managerLogion.Click += new System.EventHandler(this.m_managerLogion_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(26, 301);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(29, 12);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "UID:";
+            // 
+            // m_uidlabal
+            // 
+            this.m_uidlabal.AutoSize = true;
+            this.m_uidlabal.Location = new System.Drawing.Point(84, 301);
+            this.m_uidlabal.Name = "m_uidlabal";
+            this.m_uidlabal.Size = new System.Drawing.Size(0, 12);
+            this.m_uidlabal.TabIndex = 1;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -184,7 +225,9 @@
             this.Controls.Add(this.m_data);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.m_uidlabal);
             this.Controls.Add(this.m_Managerkey);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.m_managerport);
             this.Controls.Add(this.label6);
@@ -192,6 +235,8 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.m_managerLogion);
+            this.Controls.Add(this.m_managerServer);
             this.Controls.Add(this.m_login);
             this.Controls.Add(this.m_connectServer);
             this.Name = "Form1";
@@ -218,6 +263,10 @@
         private System.Windows.Forms.Label m_managerIp;
         private System.Windows.Forms.Label m_managerport;
         private System.Windows.Forms.Label m_Managerkey;
+        private System.Windows.Forms.Button m_managerServer;
+        private System.Windows.Forms.Button m_managerLogion;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label m_uidlabal;
     }
 }
 

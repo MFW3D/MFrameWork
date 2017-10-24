@@ -23,35 +23,34 @@ namespace PManagerClient {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChRNYW5hZ2VyX0NsaWVudC5wcm90bxIPUE1hbmFnZXJfQ2xpZW50GhFDb21t",
-            "b25fQmFzZS5wcm90bxoNREJfQmFzZS5wcm90byIKCghQb2ludF9GYmIGcHJv",
-            "dG8z"));
+            "b25fQmFzZS5wcm90bxoNREJfQmFzZS5wcm90byIkCghDTV9Mb2dpbhILCgNV",
+            "aWQYASABKAMSCwoDa2V5GAIgASgJIkYKCE1DX0xvZ2luEgsKA3JldBgBIAEo",
+            "BRIOCgZHYW1lSXAYAiABKAkSEAoIR2FtZVBvcnQYAyABKAUSCwoDa2V5GAQg",
+            "ASgJKi4KB0VNQ19DTUQSEAoMRU1DX0NNRF9Ob25lEAASEQoNRU1DX0NNRF9M",
+            "b2dpbhABYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::PCommonBase.CommonBaseReflection.Descriptor, global::PDBBase.DBBaseReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::PManagerClient.Point_Fb), global::PManagerClient.Point_Fb.Parser, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::PManagerClient.EMC_CMD), }, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::PManagerClient.CM_Login), global::PManagerClient.CM_Login.Parser, new[]{ "Uid", "Key" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PManagerClient.MC_Login), global::PManagerClient.MC_Login.Parser, new[]{ "Ret", "GameIp", "GamePort", "Key" }, null, null, null)
           }));
     }
     #endregion
 
   }
+  #region Enums
+  public enum EMC_CMD {
+    [pbr::OriginalName("EMC_CMD_None")] None = 0,
+    [pbr::OriginalName("EMC_CMD_Login")] Login = 1,
+  }
+
+  #endregion
+
   #region Messages
-  /// <summary>
-  ///
-  ///协议规则前两个字母代表消息流向
-  ///D:数据服务器
-  ///M：管理服务器
-  ///L：登录服务器
-  ///G：逻辑服务器
-  ///C：客户端
-  ///后面更协议的名字
-  ///命令枚举以服务器前客户端后的命名_CMD,一对协议对应一个消息id，推送协议占一个消息id
-  ///
-  ///管理服-客户端消息：6001-8000
-  /// </summary>
-  public sealed partial class Point_Fb : pb::IMessage<Point_Fb> {
-    private static readonly pb::MessageParser<Point_Fb> _parser = new pb::MessageParser<Point_Fb>(() => new Point_Fb());
+  public sealed partial class CM_Login : pb::IMessage<CM_Login> {
+    private static readonly pb::MessageParser<CM_Login> _parser = new pb::MessageParser<CM_Login>(() => new CM_Login());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Point_Fb> Parser { get { return _parser; } }
+    public static pb::MessageParser<CM_Login> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -64,40 +63,68 @@ namespace PManagerClient {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Point_Fb() {
+    public CM_Login() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Point_Fb(Point_Fb other) : this() {
+    public CM_Login(CM_Login other) : this() {
+      uid_ = other.uid_;
+      key_ = other.key_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Point_Fb Clone() {
-      return new Point_Fb(this);
+    public CM_Login Clone() {
+      return new CM_Login(this);
+    }
+
+    /// <summary>Field number for the "Uid" field.</summary>
+    public const int UidFieldNumber = 1;
+    private long uid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long Uid {
+      get { return uid_; }
+      set {
+        uid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "key" field.</summary>
+    public const int KeyFieldNumber = 2;
+    private string key_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Key {
+      get { return key_; }
+      set {
+        key_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as Point_Fb);
+      return Equals(other as CM_Login);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Point_Fb other) {
+    public bool Equals(CM_Login other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Uid != other.Uid) return false;
+      if (Key != other.Key) return false;
       return true;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (Uid != 0L) hash ^= Uid.GetHashCode();
+      if (Key.Length != 0) hash ^= Key.GetHashCode();
       return hash;
     }
 
@@ -108,18 +135,38 @@ namespace PManagerClient {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (Uid != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(Uid);
+      }
+      if (Key.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Key);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (Uid != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Uid);
+      }
+      if (Key.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Key);
+      }
       return size;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Point_Fb other) {
+    public void MergeFrom(CM_Login other) {
       if (other == null) {
         return;
+      }
+      if (other.Uid != 0L) {
+        Uid = other.Uid;
+      }
+      if (other.Key.Length != 0) {
+        Key = other.Key;
       }
     }
 
@@ -131,6 +178,215 @@ namespace PManagerClient {
           default:
             input.SkipLastField();
             break;
+          case 8: {
+            Uid = input.ReadInt64();
+            break;
+          }
+          case 18: {
+            Key = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class MC_Login : pb::IMessage<MC_Login> {
+    private static readonly pb::MessageParser<MC_Login> _parser = new pb::MessageParser<MC_Login>(() => new MC_Login());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<MC_Login> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::PManagerClient.ManagerClientReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MC_Login() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MC_Login(MC_Login other) : this() {
+      ret_ = other.ret_;
+      gameIp_ = other.gameIp_;
+      gamePort_ = other.gamePort_;
+      key_ = other.key_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MC_Login Clone() {
+      return new MC_Login(this);
+    }
+
+    /// <summary>Field number for the "ret" field.</summary>
+    public const int RetFieldNumber = 1;
+    private int ret_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Ret {
+      get { return ret_; }
+      set {
+        ret_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "GameIp" field.</summary>
+    public const int GameIpFieldNumber = 2;
+    private string gameIp_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string GameIp {
+      get { return gameIp_; }
+      set {
+        gameIp_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "GamePort" field.</summary>
+    public const int GamePortFieldNumber = 3;
+    private int gamePort_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int GamePort {
+      get { return gamePort_; }
+      set {
+        gamePort_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "key" field.</summary>
+    public const int KeyFieldNumber = 4;
+    private string key_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Key {
+      get { return key_; }
+      set {
+        key_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as MC_Login);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(MC_Login other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Ret != other.Ret) return false;
+      if (GameIp != other.GameIp) return false;
+      if (GamePort != other.GamePort) return false;
+      if (Key != other.Key) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Ret != 0) hash ^= Ret.GetHashCode();
+      if (GameIp.Length != 0) hash ^= GameIp.GetHashCode();
+      if (GamePort != 0) hash ^= GamePort.GetHashCode();
+      if (Key.Length != 0) hash ^= Key.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Ret != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Ret);
+      }
+      if (GameIp.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(GameIp);
+      }
+      if (GamePort != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(GamePort);
+      }
+      if (Key.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Key);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Ret != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Ret);
+      }
+      if (GameIp.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(GameIp);
+      }
+      if (GamePort != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(GamePort);
+      }
+      if (Key.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Key);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(MC_Login other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Ret != 0) {
+        Ret = other.Ret;
+      }
+      if (other.GameIp.Length != 0) {
+        GameIp = other.GameIp;
+      }
+      if (other.GamePort != 0) {
+        GamePort = other.GamePort;
+      }
+      if (other.Key.Length != 0) {
+        Key = other.Key;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            Ret = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            GameIp = input.ReadString();
+            break;
+          }
+          case 24: {
+            GamePort = input.ReadInt32();
+            break;
+          }
+          case 34: {
+            Key = input.ReadString();
+            break;
+          }
         }
       }
     }
