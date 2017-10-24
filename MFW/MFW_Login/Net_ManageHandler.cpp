@@ -1,9 +1,11 @@
 #include "Net_ManageHandler.h"
 #include "Common_Base.pb.h"
+#include "Manager_Logic.pb.h"
 #include "log4z.h"
+#include "ServerGlobal.h"
 Net_ManageHandler::Net_ManageHandler()
 {
-
+	//注册消息处理
 }
 void Net_ManageHandler::OnRead(std::shared_ptr<NNTCPLinkNode>  session, std::string data, NNTCPNode& netNode)
 {

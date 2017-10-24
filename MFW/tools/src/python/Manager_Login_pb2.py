@@ -3,6 +3,7 @@
 
 import sys
 _b=sys.version_info[0]<3 and (lambda x:x) or (lambda x:x.encode('latin1'))
+from google.protobuf.internal import enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
@@ -21,24 +22,56 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='Manager_Login.proto',
   package='PManager_Login',
   syntax='proto3',
-  serialized_pb=_b('\n\x13Manager_Login.proto\x12\x0ePManager_Login\x1a\x11\x43ommon_Base.proto\x1a\rDB_Base.proto\"\x1a\n\x06GetCfg\x12\x10\n\x08idstring\x18\x01 \x01(\tb\x06proto3')
+  serialized_pb=_b('\n\x13Manager_Login.proto\x12\x0ePManager_Login\x1a\x11\x43ommon_Base.proto\x1a\rDB_Base.proto\"*\n\x0cLM_ClientKey\x12\x0b\n\x03Uid\x18\x01 \x01(\x03\x12\r\n\x05\x43onId\x18\x02 \x01(\x03\"D\n\x0cML_ClientKey\x12\x0b\n\x03ret\x18\x01 \x01(\x05\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\r\n\x05\x43onId\x18\x03 \x01(\x03\x12\x0b\n\x03Uid\x18\x04 \x01(\x03*3\n\x07\x45MC_CMD\x12\x10\n\x0c\x45MC_CMD_None\x10\x00\x12\x16\n\x11\x45MC_CMD_ClientKey\x10\xa1\x1f\x62\x06proto3')
   ,
   dependencies=[Common__Base__pb2.DESCRIPTOR,DB__Base__pb2.DESCRIPTOR,])
 
+_EMC_CMD = _descriptor.EnumDescriptor(
+  name='EMC_CMD',
+  full_name='PManager_Login.EMC_CMD',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='EMC_CMD_None', index=0, number=0,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='EMC_CMD_ClientKey', index=1, number=4001,
+      options=None,
+      type=None),
+  ],
+  containing_type=None,
+  options=None,
+  serialized_start=187,
+  serialized_end=238,
+)
+_sym_db.RegisterEnumDescriptor(_EMC_CMD)
+
+EMC_CMD = enum_type_wrapper.EnumTypeWrapper(_EMC_CMD)
+EMC_CMD_None = 0
+EMC_CMD_ClientKey = 4001
 
 
 
-_GETCFG = _descriptor.Descriptor(
-  name='GetCfg',
-  full_name='PManager_Login.GetCfg',
+_LM_CLIENTKEY = _descriptor.Descriptor(
+  name='LM_ClientKey',
+  full_name='PManager_Login.LM_ClientKey',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='idstring', full_name='PManager_Login.GetCfg.idstring', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      name='Uid', full_name='PManager_Login.LM_ClientKey.Uid', index=0,
+      number=1, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='ConId', full_name='PManager_Login.LM_ClientKey.ConId', index=1,
+      number=2, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -55,18 +88,79 @@ _GETCFG = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=73,
-  serialized_end=99,
+  serialized_end=115,
 )
 
-DESCRIPTOR.message_types_by_name['GetCfg'] = _GETCFG
+
+_ML_CLIENTKEY = _descriptor.Descriptor(
+  name='ML_ClientKey',
+  full_name='PManager_Login.ML_ClientKey',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='ret', full_name='PManager_Login.ML_ClientKey.ret', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='key', full_name='PManager_Login.ML_ClientKey.key', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='ConId', full_name='PManager_Login.ML_ClientKey.ConId', index=2,
+      number=3, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='Uid', full_name='PManager_Login.ML_ClientKey.Uid', index=3,
+      number=4, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=117,
+  serialized_end=185,
+)
+
+DESCRIPTOR.message_types_by_name['LM_ClientKey'] = _LM_CLIENTKEY
+DESCRIPTOR.message_types_by_name['ML_ClientKey'] = _ML_CLIENTKEY
+DESCRIPTOR.enum_types_by_name['EMC_CMD'] = _EMC_CMD
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-GetCfg = _reflection.GeneratedProtocolMessageType('GetCfg', (_message.Message,), dict(
-  DESCRIPTOR = _GETCFG,
+LM_ClientKey = _reflection.GeneratedProtocolMessageType('LM_ClientKey', (_message.Message,), dict(
+  DESCRIPTOR = _LM_CLIENTKEY,
   __module__ = 'Manager_Login_pb2'
-  # @@protoc_insertion_point(class_scope:PManager_Login.GetCfg)
+  # @@protoc_insertion_point(class_scope:PManager_Login.LM_ClientKey)
   ))
-_sym_db.RegisterMessage(GetCfg)
+_sym_db.RegisterMessage(LM_ClientKey)
+
+ML_ClientKey = _reflection.GeneratedProtocolMessageType('ML_ClientKey', (_message.Message,), dict(
+  DESCRIPTOR = _ML_CLIENTKEY,
+  __module__ = 'Manager_Login_pb2'
+  # @@protoc_insertion_point(class_scope:PManager_Login.ML_ClientKey)
+  ))
+_sym_db.RegisterMessage(ML_ClientKey)
 
 
 # @@protoc_insertion_point(module_scope)

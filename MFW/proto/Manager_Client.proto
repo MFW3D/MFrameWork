@@ -14,7 +14,23 @@ C：客户端
 
 管理服-客户端消息：6001-8000
 */
-message Point_Fb 
-{  
 
- }  
+enum EMC_CMD
+{
+    EMC_CMD_None=0;
+	EMC_CMD_Login =1;
+}
+
+message CM_Login 
+{  
+	int64 Uid=1;
+	string key=2;
+}  
+
+message MC_Login 
+{  
+	int32 ret=1;
+	string GameIp=2;
+    int32 GamePort=3;
+    string key=4;
+}  

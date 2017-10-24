@@ -15,6 +15,206 @@ public final class CommonBase {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
+   * <pre>
+   *公共传输协议id占用1-1000内的协议号
+   * </pre>
+   *
+   * Protobuf enum {@code PCommon_Base.EPublic_CMD}
+   */
+  public enum EPublic_CMD
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>EPublic_CMD_None = 0;</code>
+     */
+    EPublic_CMD_None(0),
+    /**
+     * <code>EPublic_CMD_PackTransferMsg = 1;</code>
+     */
+    EPublic_CMD_PackTransferMsg(1),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>EPublic_CMD_None = 0;</code>
+     */
+    public static final int EPublic_CMD_None_VALUE = 0;
+    /**
+     * <code>EPublic_CMD_PackTransferMsg = 1;</code>
+     */
+    public static final int EPublic_CMD_PackTransferMsg_VALUE = 1;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static EPublic_CMD valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static EPublic_CMD forNumber(int value) {
+      switch (value) {
+        case 0: return EPublic_CMD_None;
+        case 1: return EPublic_CMD_PackTransferMsg;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<EPublic_CMD>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        EPublic_CMD> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<EPublic_CMD>() {
+            public EPublic_CMD findValueByNumber(int number) {
+              return EPublic_CMD.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return PCommon_Base.CommonBase.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final EPublic_CMD[] VALUES = values();
+
+    public static EPublic_CMD valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private EPublic_CMD(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:PCommon_Base.EPublic_CMD)
+  }
+
+  /**
+   * Protobuf enum {@code PCommon_Base.EPublic_Ret}
+   */
+  public enum EPublic_Ret
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>EPublic_Ret_OK = 0;</code>
+     */
+    EPublic_Ret_OK(0),
+    /**
+     * <code>EPublic_Ret_Error = 1;</code>
+     */
+    EPublic_Ret_Error(1),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>EPublic_Ret_OK = 0;</code>
+     */
+    public static final int EPublic_Ret_OK_VALUE = 0;
+    /**
+     * <code>EPublic_Ret_Error = 1;</code>
+     */
+    public static final int EPublic_Ret_Error_VALUE = 1;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static EPublic_Ret valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static EPublic_Ret forNumber(int value) {
+      switch (value) {
+        case 0: return EPublic_Ret_OK;
+        case 1: return EPublic_Ret_Error;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<EPublic_Ret>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        EPublic_Ret> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<EPublic_Ret>() {
+            public EPublic_Ret findValueByNumber(int number) {
+              return EPublic_Ret.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return PCommon_Base.CommonBase.getDescriptor().getEnumTypes().get(1);
+    }
+
+    private static final EPublic_Ret[] VALUES = values();
+
+    public static EPublic_Ret valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private EPublic_Ret(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:PCommon_Base.EPublic_Ret)
+  }
+
+  /**
    * Protobuf enum {@code PCommon_Base.ETest}
    */
   public enum ETest
@@ -95,7 +295,7 @@ public final class CommonBase {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return PCommon_Base.CommonBase.getDescriptor().getEnumTypes().get(0);
+      return PCommon_Base.CommonBase.getDescriptor().getEnumTypes().get(2);
     }
 
     private static final ETest[] VALUES = values();
@@ -127,10 +327,19 @@ public final class CommonBase {
 
     /**
      * <pre>
+     *服务器下发的key，key不正确不处理
+     * </pre>
+     *
+     * <code>int32 key = 1;</code>
+     */
+    int getKey();
+
+    /**
+     * <pre>
      *消息id
      * </pre>
      *
-     * <code>int32 Cmd = 1;</code>
+     * <code>int32 Cmd = 2;</code>
      */
     int getCmd();
 
@@ -139,7 +348,7 @@ public final class CommonBase {
      *包编号
      * </pre>
      *
-     * <code>int32 Index = 2;</code>
+     * <code>int32 Index = 3;</code>
      */
     int getIndex();
 
@@ -148,7 +357,7 @@ public final class CommonBase {
      *包总数
      * </pre>
      *
-     * <code>int32 Count = 3;</code>
+     * <code>int32 Count = 4;</code>
      */
     int getCount();
 
@@ -157,18 +366,9 @@ public final class CommonBase {
      *数据长度
      * </pre>
      *
-     * <code>int32 DataLength = 4;</code>
+     * <code>int32 DataLength = 5;</code>
      */
     int getDataLength();
-
-    /**
-     * <pre>
-     *服务器下发的key，key不正确不处理
-     * </pre>
-     *
-     * <code>int32 key = 5;</code>
-     */
-    int getKey();
   }
   /**
    * Protobuf type {@code PCommon_Base.NetHead}
@@ -182,11 +382,11 @@ public final class CommonBase {
       super(builder);
     }
     private NetHead() {
+      key_ = 0;
       cmd_ = 0;
       index_ = 0;
       count_ = 0;
       dataLength_ = 0;
-      key_ = 0;
     }
 
     @java.lang.Override
@@ -216,27 +416,27 @@ public final class CommonBase {
             }
             case 8: {
 
-              cmd_ = input.readInt32();
+              key_ = input.readInt32();
               break;
             }
             case 16: {
 
-              index_ = input.readInt32();
+              cmd_ = input.readInt32();
               break;
             }
             case 24: {
 
-              count_ = input.readInt32();
+              index_ = input.readInt32();
               break;
             }
             case 32: {
 
-              dataLength_ = input.readInt32();
+              count_ = input.readInt32();
               break;
             }
             case 40: {
 
-              key_ = input.readInt32();
+              dataLength_ = input.readInt32();
               break;
             }
           }
@@ -262,69 +462,69 @@ public final class CommonBase {
               PCommon_Base.CommonBase.NetHead.class, PCommon_Base.CommonBase.NetHead.Builder.class);
     }
 
-    public static final int CMD_FIELD_NUMBER = 1;
-    private int cmd_;
-    /**
-     * <pre>
-     *消息id
-     * </pre>
-     *
-     * <code>int32 Cmd = 1;</code>
-     */
-    public int getCmd() {
-      return cmd_;
-    }
-
-    public static final int INDEX_FIELD_NUMBER = 2;
-    private int index_;
-    /**
-     * <pre>
-     *包编号
-     * </pre>
-     *
-     * <code>int32 Index = 2;</code>
-     */
-    public int getIndex() {
-      return index_;
-    }
-
-    public static final int COUNT_FIELD_NUMBER = 3;
-    private int count_;
-    /**
-     * <pre>
-     *包总数
-     * </pre>
-     *
-     * <code>int32 Count = 3;</code>
-     */
-    public int getCount() {
-      return count_;
-    }
-
-    public static final int DATALENGTH_FIELD_NUMBER = 4;
-    private int dataLength_;
-    /**
-     * <pre>
-     *数据长度
-     * </pre>
-     *
-     * <code>int32 DataLength = 4;</code>
-     */
-    public int getDataLength() {
-      return dataLength_;
-    }
-
-    public static final int KEY_FIELD_NUMBER = 5;
+    public static final int KEY_FIELD_NUMBER = 1;
     private int key_;
     /**
      * <pre>
      *服务器下发的key，key不正确不处理
      * </pre>
      *
-     * <code>int32 key = 5;</code>
+     * <code>int32 key = 1;</code>
      */
     public int getKey() {
       return key_;
+    }
+
+    public static final int CMD_FIELD_NUMBER = 2;
+    private int cmd_;
+    /**
+     * <pre>
+     *消息id
+     * </pre>
+     *
+     * <code>int32 Cmd = 2;</code>
+     */
+    public int getCmd() {
+      return cmd_;
+    }
+
+    public static final int INDEX_FIELD_NUMBER = 3;
+    private int index_;
+    /**
+     * <pre>
+     *包编号
+     * </pre>
+     *
+     * <code>int32 Index = 3;</code>
+     */
+    public int getIndex() {
+      return index_;
+    }
+
+    public static final int COUNT_FIELD_NUMBER = 4;
+    private int count_;
+    /**
+     * <pre>
+     *包总数
+     * </pre>
+     *
+     * <code>int32 Count = 4;</code>
+     */
+    public int getCount() {
+      return count_;
+    }
+
+    public static final int DATALENGTH_FIELD_NUMBER = 5;
+    private int dataLength_;
+    /**
+     * <pre>
+     *数据长度
+     * </pre>
+     *
+     * <code>int32 DataLength = 5;</code>
+     */
+    public int getDataLength() {
+      return dataLength_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -339,20 +539,20 @@ public final class CommonBase {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (key_ != 0) {
+        output.writeInt32(1, key_);
+      }
       if (cmd_ != 0) {
-        output.writeInt32(1, cmd_);
+        output.writeInt32(2, cmd_);
       }
       if (index_ != 0) {
-        output.writeInt32(2, index_);
+        output.writeInt32(3, index_);
       }
       if (count_ != 0) {
-        output.writeInt32(3, count_);
+        output.writeInt32(4, count_);
       }
       if (dataLength_ != 0) {
-        output.writeInt32(4, dataLength_);
-      }
-      if (key_ != 0) {
-        output.writeInt32(5, key_);
+        output.writeInt32(5, dataLength_);
       }
     }
 
@@ -361,25 +561,25 @@ public final class CommonBase {
       if (size != -1) return size;
 
       size = 0;
+      if (key_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, key_);
+      }
       if (cmd_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, cmd_);
+          .computeInt32Size(2, cmd_);
       }
       if (index_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, index_);
+          .computeInt32Size(3, index_);
       }
       if (count_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, count_);
+          .computeInt32Size(4, count_);
       }
       if (dataLength_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, dataLength_);
-      }
-      if (key_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, key_);
+          .computeInt32Size(5, dataLength_);
       }
       memoizedSize = size;
       return size;
@@ -397,6 +597,8 @@ public final class CommonBase {
       PCommon_Base.CommonBase.NetHead other = (PCommon_Base.CommonBase.NetHead) obj;
 
       boolean result = true;
+      result = result && (getKey()
+          == other.getKey());
       result = result && (getCmd()
           == other.getCmd());
       result = result && (getIndex()
@@ -405,8 +607,6 @@ public final class CommonBase {
           == other.getCount());
       result = result && (getDataLength()
           == other.getDataLength());
-      result = result && (getKey()
-          == other.getKey());
       return result;
     }
 
@@ -417,6 +617,8 @@ public final class CommonBase {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + KEY_FIELD_NUMBER;
+      hash = (53 * hash) + getKey();
       hash = (37 * hash) + CMD_FIELD_NUMBER;
       hash = (53 * hash) + getCmd();
       hash = (37 * hash) + INDEX_FIELD_NUMBER;
@@ -425,8 +627,6 @@ public final class CommonBase {
       hash = (53 * hash) + getCount();
       hash = (37 * hash) + DATALENGTH_FIELD_NUMBER;
       hash = (53 * hash) + getDataLength();
-      hash = (37 * hash) + KEY_FIELD_NUMBER;
-      hash = (53 * hash) + getKey();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -556,6 +756,8 @@ public final class CommonBase {
       }
       public Builder clear() {
         super.clear();
+        key_ = 0;
+
         cmd_ = 0;
 
         index_ = 0;
@@ -563,8 +765,6 @@ public final class CommonBase {
         count_ = 0;
 
         dataLength_ = 0;
-
-        key_ = 0;
 
         return this;
       }
@@ -588,11 +788,11 @@ public final class CommonBase {
 
       public PCommon_Base.CommonBase.NetHead buildPartial() {
         PCommon_Base.CommonBase.NetHead result = new PCommon_Base.CommonBase.NetHead(this);
+        result.key_ = key_;
         result.cmd_ = cmd_;
         result.index_ = index_;
         result.count_ = count_;
         result.dataLength_ = dataLength_;
-        result.key_ = key_;
         onBuilt();
         return result;
       }
@@ -634,6 +834,9 @@ public final class CommonBase {
 
       public Builder mergeFrom(PCommon_Base.CommonBase.NetHead other) {
         if (other == PCommon_Base.CommonBase.NetHead.getDefaultInstance()) return this;
+        if (other.getKey() != 0) {
+          setKey(other.getKey());
+        }
         if (other.getCmd() != 0) {
           setCmd(other.getCmd());
         }
@@ -645,9 +848,6 @@ public final class CommonBase {
         }
         if (other.getDataLength() != 0) {
           setDataLength(other.getDataLength());
-        }
-        if (other.getKey() != 0) {
-          setKey(other.getKey());
         }
         onChanged();
         return this;
@@ -675,13 +875,51 @@ public final class CommonBase {
         return this;
       }
 
+      private int key_ ;
+      /**
+       * <pre>
+       *服务器下发的key，key不正确不处理
+       * </pre>
+       *
+       * <code>int32 key = 1;</code>
+       */
+      public int getKey() {
+        return key_;
+      }
+      /**
+       * <pre>
+       *服务器下发的key，key不正确不处理
+       * </pre>
+       *
+       * <code>int32 key = 1;</code>
+       */
+      public Builder setKey(int value) {
+        
+        key_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *服务器下发的key，key不正确不处理
+       * </pre>
+       *
+       * <code>int32 key = 1;</code>
+       */
+      public Builder clearKey() {
+        
+        key_ = 0;
+        onChanged();
+        return this;
+      }
+
       private int cmd_ ;
       /**
        * <pre>
        *消息id
        * </pre>
        *
-       * <code>int32 Cmd = 1;</code>
+       * <code>int32 Cmd = 2;</code>
        */
       public int getCmd() {
         return cmd_;
@@ -691,7 +929,7 @@ public final class CommonBase {
        *消息id
        * </pre>
        *
-       * <code>int32 Cmd = 1;</code>
+       * <code>int32 Cmd = 2;</code>
        */
       public Builder setCmd(int value) {
         
@@ -704,7 +942,7 @@ public final class CommonBase {
        *消息id
        * </pre>
        *
-       * <code>int32 Cmd = 1;</code>
+       * <code>int32 Cmd = 2;</code>
        */
       public Builder clearCmd() {
         
@@ -719,7 +957,7 @@ public final class CommonBase {
        *包编号
        * </pre>
        *
-       * <code>int32 Index = 2;</code>
+       * <code>int32 Index = 3;</code>
        */
       public int getIndex() {
         return index_;
@@ -729,7 +967,7 @@ public final class CommonBase {
        *包编号
        * </pre>
        *
-       * <code>int32 Index = 2;</code>
+       * <code>int32 Index = 3;</code>
        */
       public Builder setIndex(int value) {
         
@@ -742,7 +980,7 @@ public final class CommonBase {
        *包编号
        * </pre>
        *
-       * <code>int32 Index = 2;</code>
+       * <code>int32 Index = 3;</code>
        */
       public Builder clearIndex() {
         
@@ -757,7 +995,7 @@ public final class CommonBase {
        *包总数
        * </pre>
        *
-       * <code>int32 Count = 3;</code>
+       * <code>int32 Count = 4;</code>
        */
       public int getCount() {
         return count_;
@@ -767,7 +1005,7 @@ public final class CommonBase {
        *包总数
        * </pre>
        *
-       * <code>int32 Count = 3;</code>
+       * <code>int32 Count = 4;</code>
        */
       public Builder setCount(int value) {
         
@@ -780,7 +1018,7 @@ public final class CommonBase {
        *包总数
        * </pre>
        *
-       * <code>int32 Count = 3;</code>
+       * <code>int32 Count = 4;</code>
        */
       public Builder clearCount() {
         
@@ -795,7 +1033,7 @@ public final class CommonBase {
        *数据长度
        * </pre>
        *
-       * <code>int32 DataLength = 4;</code>
+       * <code>int32 DataLength = 5;</code>
        */
       public int getDataLength() {
         return dataLength_;
@@ -805,7 +1043,7 @@ public final class CommonBase {
        *数据长度
        * </pre>
        *
-       * <code>int32 DataLength = 4;</code>
+       * <code>int32 DataLength = 5;</code>
        */
       public Builder setDataLength(int value) {
         
@@ -818,49 +1056,11 @@ public final class CommonBase {
        *数据长度
        * </pre>
        *
-       * <code>int32 DataLength = 4;</code>
+       * <code>int32 DataLength = 5;</code>
        */
       public Builder clearDataLength() {
         
         dataLength_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int key_ ;
-      /**
-       * <pre>
-       *服务器下发的key，key不正确不处理
-       * </pre>
-       *
-       * <code>int32 key = 5;</code>
-       */
-      public int getKey() {
-        return key_;
-      }
-      /**
-       * <pre>
-       *服务器下发的key，key不正确不处理
-       * </pre>
-       *
-       * <code>int32 key = 5;</code>
-       */
-      public Builder setKey(int value) {
-        
-        key_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       *服务器下发的key，key不正确不处理
-       * </pre>
-       *
-       * <code>int32 key = 5;</code>
-       */
-      public Builder clearKey() {
-        
-        key_ = 0;
         onChanged();
         return this;
       }
@@ -908,6 +1108,1924 @@ public final class CommonBase {
     }
 
     public PCommon_Base.CommonBase.NetHead getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface NetTransferMsgOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PCommon_Base.NetTransferMsg)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>uint64 id = 1;</code>
+     */
+    long getId();
+
+    /**
+     * <code>int32 cmd = 2;</code>
+     */
+    int getCmd();
+
+    /**
+     * <code>string data = 3;</code>
+     */
+    java.lang.String getData();
+    /**
+     * <code>string data = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getDataBytes();
+  }
+  /**
+   * <pre>
+   *网络封包传送子包
+   * </pre>
+   *
+   * Protobuf type {@code PCommon_Base.NetTransferMsg}
+   */
+  public  static final class NetTransferMsg extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:PCommon_Base.NetTransferMsg)
+      NetTransferMsgOrBuilder {
+    // Use NetTransferMsg.newBuilder() to construct.
+    private NetTransferMsg(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private NetTransferMsg() {
+      id_ = 0L;
+      cmd_ = 0;
+      data_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private NetTransferMsg(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+
+              id_ = input.readUInt64();
+              break;
+            }
+            case 16: {
+
+              cmd_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              data_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return PCommon_Base.CommonBase.internal_static_PCommon_Base_NetTransferMsg_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return PCommon_Base.CommonBase.internal_static_PCommon_Base_NetTransferMsg_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              PCommon_Base.CommonBase.NetTransferMsg.class, PCommon_Base.CommonBase.NetTransferMsg.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private long id_;
+    /**
+     * <code>uint64 id = 1;</code>
+     */
+    public long getId() {
+      return id_;
+    }
+
+    public static final int CMD_FIELD_NUMBER = 2;
+    private int cmd_;
+    /**
+     * <code>int32 cmd = 2;</code>
+     */
+    public int getCmd() {
+      return cmd_;
+    }
+
+    public static final int DATA_FIELD_NUMBER = 3;
+    private volatile java.lang.Object data_;
+    /**
+     * <code>string data = 3;</code>
+     */
+    public java.lang.String getData() {
+      java.lang.Object ref = data_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        data_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string data = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDataBytes() {
+      java.lang.Object ref = data_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        data_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (id_ != 0L) {
+        output.writeUInt64(1, id_);
+      }
+      if (cmd_ != 0) {
+        output.writeInt32(2, cmd_);
+      }
+      if (!getDataBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, data_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (id_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(1, id_);
+      }
+      if (cmd_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, cmd_);
+      }
+      if (!getDataBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, data_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof PCommon_Base.CommonBase.NetTransferMsg)) {
+        return super.equals(obj);
+      }
+      PCommon_Base.CommonBase.NetTransferMsg other = (PCommon_Base.CommonBase.NetTransferMsg) obj;
+
+      boolean result = true;
+      result = result && (getId()
+          == other.getId());
+      result = result && (getCmd()
+          == other.getCmd());
+      result = result && getData()
+          .equals(other.getData());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getId());
+      hash = (37 * hash) + CMD_FIELD_NUMBER;
+      hash = (53 * hash) + getCmd();
+      hash = (37 * hash) + DATA_FIELD_NUMBER;
+      hash = (53 * hash) + getData().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static PCommon_Base.CommonBase.NetTransferMsg parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static PCommon_Base.CommonBase.NetTransferMsg parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static PCommon_Base.CommonBase.NetTransferMsg parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static PCommon_Base.CommonBase.NetTransferMsg parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static PCommon_Base.CommonBase.NetTransferMsg parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static PCommon_Base.CommonBase.NetTransferMsg parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static PCommon_Base.CommonBase.NetTransferMsg parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static PCommon_Base.CommonBase.NetTransferMsg parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static PCommon_Base.CommonBase.NetTransferMsg parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static PCommon_Base.CommonBase.NetTransferMsg parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static PCommon_Base.CommonBase.NetTransferMsg parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static PCommon_Base.CommonBase.NetTransferMsg parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(PCommon_Base.CommonBase.NetTransferMsg prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     *网络封包传送子包
+     * </pre>
+     *
+     * Protobuf type {@code PCommon_Base.NetTransferMsg}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:PCommon_Base.NetTransferMsg)
+        PCommon_Base.CommonBase.NetTransferMsgOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return PCommon_Base.CommonBase.internal_static_PCommon_Base_NetTransferMsg_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return PCommon_Base.CommonBase.internal_static_PCommon_Base_NetTransferMsg_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                PCommon_Base.CommonBase.NetTransferMsg.class, PCommon_Base.CommonBase.NetTransferMsg.Builder.class);
+      }
+
+      // Construct using PCommon_Base.CommonBase.NetTransferMsg.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        id_ = 0L;
+
+        cmd_ = 0;
+
+        data_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return PCommon_Base.CommonBase.internal_static_PCommon_Base_NetTransferMsg_descriptor;
+      }
+
+      public PCommon_Base.CommonBase.NetTransferMsg getDefaultInstanceForType() {
+        return PCommon_Base.CommonBase.NetTransferMsg.getDefaultInstance();
+      }
+
+      public PCommon_Base.CommonBase.NetTransferMsg build() {
+        PCommon_Base.CommonBase.NetTransferMsg result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public PCommon_Base.CommonBase.NetTransferMsg buildPartial() {
+        PCommon_Base.CommonBase.NetTransferMsg result = new PCommon_Base.CommonBase.NetTransferMsg(this);
+        result.id_ = id_;
+        result.cmd_ = cmd_;
+        result.data_ = data_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof PCommon_Base.CommonBase.NetTransferMsg) {
+          return mergeFrom((PCommon_Base.CommonBase.NetTransferMsg)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(PCommon_Base.CommonBase.NetTransferMsg other) {
+        if (other == PCommon_Base.CommonBase.NetTransferMsg.getDefaultInstance()) return this;
+        if (other.getId() != 0L) {
+          setId(other.getId());
+        }
+        if (other.getCmd() != 0) {
+          setCmd(other.getCmd());
+        }
+        if (!other.getData().isEmpty()) {
+          data_ = other.data_;
+          onChanged();
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        PCommon_Base.CommonBase.NetTransferMsg parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (PCommon_Base.CommonBase.NetTransferMsg) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private long id_ ;
+      /**
+       * <code>uint64 id = 1;</code>
+       */
+      public long getId() {
+        return id_;
+      }
+      /**
+       * <code>uint64 id = 1;</code>
+       */
+      public Builder setId(long value) {
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 id = 1;</code>
+       */
+      public Builder clearId() {
+        
+        id_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int cmd_ ;
+      /**
+       * <code>int32 cmd = 2;</code>
+       */
+      public int getCmd() {
+        return cmd_;
+      }
+      /**
+       * <code>int32 cmd = 2;</code>
+       */
+      public Builder setCmd(int value) {
+        
+        cmd_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 cmd = 2;</code>
+       */
+      public Builder clearCmd() {
+        
+        cmd_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object data_ = "";
+      /**
+       * <code>string data = 3;</code>
+       */
+      public java.lang.String getData() {
+        java.lang.Object ref = data_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          data_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string data = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDataBytes() {
+        java.lang.Object ref = data_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          data_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string data = 3;</code>
+       */
+      public Builder setData(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        data_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string data = 3;</code>
+       */
+      public Builder clearData() {
+        
+        data_ = getDefaultInstance().getData();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string data = 3;</code>
+       */
+      public Builder setDataBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        data_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:PCommon_Base.NetTransferMsg)
+    }
+
+    // @@protoc_insertion_point(class_scope:PCommon_Base.NetTransferMsg)
+    private static final PCommon_Base.CommonBase.NetTransferMsg DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new PCommon_Base.CommonBase.NetTransferMsg();
+    }
+
+    public static PCommon_Base.CommonBase.NetTransferMsg getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<NetTransferMsg>
+        PARSER = new com.google.protobuf.AbstractParser<NetTransferMsg>() {
+      public NetTransferMsg parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new NetTransferMsg(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<NetTransferMsg> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NetTransferMsg> getParserForType() {
+      return PARSER;
+    }
+
+    public PCommon_Base.CommonBase.NetTransferMsg getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface NetTransferMsgsOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PCommon_Base.NetTransferMsgs)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+     */
+    java.util.List<PCommon_Base.CommonBase.NetTransferMsg> 
+        getNetTransferMsgsList();
+    /**
+     * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+     */
+    PCommon_Base.CommonBase.NetTransferMsg getNetTransferMsgs(int index);
+    /**
+     * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+     */
+    int getNetTransferMsgsCount();
+    /**
+     * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+     */
+    java.util.List<? extends PCommon_Base.CommonBase.NetTransferMsgOrBuilder> 
+        getNetTransferMsgsOrBuilderList();
+    /**
+     * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+     */
+    PCommon_Base.CommonBase.NetTransferMsgOrBuilder getNetTransferMsgsOrBuilder(
+        int index);
+  }
+  /**
+   * <pre>
+   *网络封包传送包
+   * </pre>
+   *
+   * Protobuf type {@code PCommon_Base.NetTransferMsgs}
+   */
+  public  static final class NetTransferMsgs extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:PCommon_Base.NetTransferMsgs)
+      NetTransferMsgsOrBuilder {
+    // Use NetTransferMsgs.newBuilder() to construct.
+    private NetTransferMsgs(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private NetTransferMsgs() {
+      netTransferMsgs_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private NetTransferMsgs(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                netTransferMsgs_ = new java.util.ArrayList<PCommon_Base.CommonBase.NetTransferMsg>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              netTransferMsgs_.add(
+                  input.readMessage(PCommon_Base.CommonBase.NetTransferMsg.parser(), extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          netTransferMsgs_ = java.util.Collections.unmodifiableList(netTransferMsgs_);
+        }
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return PCommon_Base.CommonBase.internal_static_PCommon_Base_NetTransferMsgs_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return PCommon_Base.CommonBase.internal_static_PCommon_Base_NetTransferMsgs_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              PCommon_Base.CommonBase.NetTransferMsgs.class, PCommon_Base.CommonBase.NetTransferMsgs.Builder.class);
+    }
+
+    public static final int NETTRANSFERMSGS_FIELD_NUMBER = 1;
+    private java.util.List<PCommon_Base.CommonBase.NetTransferMsg> netTransferMsgs_;
+    /**
+     * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+     */
+    public java.util.List<PCommon_Base.CommonBase.NetTransferMsg> getNetTransferMsgsList() {
+      return netTransferMsgs_;
+    }
+    /**
+     * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+     */
+    public java.util.List<? extends PCommon_Base.CommonBase.NetTransferMsgOrBuilder> 
+        getNetTransferMsgsOrBuilderList() {
+      return netTransferMsgs_;
+    }
+    /**
+     * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+     */
+    public int getNetTransferMsgsCount() {
+      return netTransferMsgs_.size();
+    }
+    /**
+     * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+     */
+    public PCommon_Base.CommonBase.NetTransferMsg getNetTransferMsgs(int index) {
+      return netTransferMsgs_.get(index);
+    }
+    /**
+     * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+     */
+    public PCommon_Base.CommonBase.NetTransferMsgOrBuilder getNetTransferMsgsOrBuilder(
+        int index) {
+      return netTransferMsgs_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < netTransferMsgs_.size(); i++) {
+        output.writeMessage(1, netTransferMsgs_.get(i));
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < netTransferMsgs_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, netTransferMsgs_.get(i));
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof PCommon_Base.CommonBase.NetTransferMsgs)) {
+        return super.equals(obj);
+      }
+      PCommon_Base.CommonBase.NetTransferMsgs other = (PCommon_Base.CommonBase.NetTransferMsgs) obj;
+
+      boolean result = true;
+      result = result && getNetTransferMsgsList()
+          .equals(other.getNetTransferMsgsList());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getNetTransferMsgsCount() > 0) {
+        hash = (37 * hash) + NETTRANSFERMSGS_FIELD_NUMBER;
+        hash = (53 * hash) + getNetTransferMsgsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static PCommon_Base.CommonBase.NetTransferMsgs parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static PCommon_Base.CommonBase.NetTransferMsgs parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static PCommon_Base.CommonBase.NetTransferMsgs parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static PCommon_Base.CommonBase.NetTransferMsgs parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static PCommon_Base.CommonBase.NetTransferMsgs parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static PCommon_Base.CommonBase.NetTransferMsgs parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static PCommon_Base.CommonBase.NetTransferMsgs parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static PCommon_Base.CommonBase.NetTransferMsgs parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static PCommon_Base.CommonBase.NetTransferMsgs parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static PCommon_Base.CommonBase.NetTransferMsgs parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static PCommon_Base.CommonBase.NetTransferMsgs parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static PCommon_Base.CommonBase.NetTransferMsgs parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(PCommon_Base.CommonBase.NetTransferMsgs prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     *网络封包传送包
+     * </pre>
+     *
+     * Protobuf type {@code PCommon_Base.NetTransferMsgs}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:PCommon_Base.NetTransferMsgs)
+        PCommon_Base.CommonBase.NetTransferMsgsOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return PCommon_Base.CommonBase.internal_static_PCommon_Base_NetTransferMsgs_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return PCommon_Base.CommonBase.internal_static_PCommon_Base_NetTransferMsgs_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                PCommon_Base.CommonBase.NetTransferMsgs.class, PCommon_Base.CommonBase.NetTransferMsgs.Builder.class);
+      }
+
+      // Construct using PCommon_Base.CommonBase.NetTransferMsgs.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getNetTransferMsgsFieldBuilder();
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        if (netTransferMsgsBuilder_ == null) {
+          netTransferMsgs_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          netTransferMsgsBuilder_.clear();
+        }
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return PCommon_Base.CommonBase.internal_static_PCommon_Base_NetTransferMsgs_descriptor;
+      }
+
+      public PCommon_Base.CommonBase.NetTransferMsgs getDefaultInstanceForType() {
+        return PCommon_Base.CommonBase.NetTransferMsgs.getDefaultInstance();
+      }
+
+      public PCommon_Base.CommonBase.NetTransferMsgs build() {
+        PCommon_Base.CommonBase.NetTransferMsgs result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public PCommon_Base.CommonBase.NetTransferMsgs buildPartial() {
+        PCommon_Base.CommonBase.NetTransferMsgs result = new PCommon_Base.CommonBase.NetTransferMsgs(this);
+        int from_bitField0_ = bitField0_;
+        if (netTransferMsgsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            netTransferMsgs_ = java.util.Collections.unmodifiableList(netTransferMsgs_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.netTransferMsgs_ = netTransferMsgs_;
+        } else {
+          result.netTransferMsgs_ = netTransferMsgsBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof PCommon_Base.CommonBase.NetTransferMsgs) {
+          return mergeFrom((PCommon_Base.CommonBase.NetTransferMsgs)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(PCommon_Base.CommonBase.NetTransferMsgs other) {
+        if (other == PCommon_Base.CommonBase.NetTransferMsgs.getDefaultInstance()) return this;
+        if (netTransferMsgsBuilder_ == null) {
+          if (!other.netTransferMsgs_.isEmpty()) {
+            if (netTransferMsgs_.isEmpty()) {
+              netTransferMsgs_ = other.netTransferMsgs_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureNetTransferMsgsIsMutable();
+              netTransferMsgs_.addAll(other.netTransferMsgs_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.netTransferMsgs_.isEmpty()) {
+            if (netTransferMsgsBuilder_.isEmpty()) {
+              netTransferMsgsBuilder_.dispose();
+              netTransferMsgsBuilder_ = null;
+              netTransferMsgs_ = other.netTransferMsgs_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              netTransferMsgsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getNetTransferMsgsFieldBuilder() : null;
+            } else {
+              netTransferMsgsBuilder_.addAllMessages(other.netTransferMsgs_);
+            }
+          }
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        PCommon_Base.CommonBase.NetTransferMsgs parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (PCommon_Base.CommonBase.NetTransferMsgs) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<PCommon_Base.CommonBase.NetTransferMsg> netTransferMsgs_ =
+        java.util.Collections.emptyList();
+      private void ensureNetTransferMsgsIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          netTransferMsgs_ = new java.util.ArrayList<PCommon_Base.CommonBase.NetTransferMsg>(netTransferMsgs_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          PCommon_Base.CommonBase.NetTransferMsg, PCommon_Base.CommonBase.NetTransferMsg.Builder, PCommon_Base.CommonBase.NetTransferMsgOrBuilder> netTransferMsgsBuilder_;
+
+      /**
+       * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+       */
+      public java.util.List<PCommon_Base.CommonBase.NetTransferMsg> getNetTransferMsgsList() {
+        if (netTransferMsgsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(netTransferMsgs_);
+        } else {
+          return netTransferMsgsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+       */
+      public int getNetTransferMsgsCount() {
+        if (netTransferMsgsBuilder_ == null) {
+          return netTransferMsgs_.size();
+        } else {
+          return netTransferMsgsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+       */
+      public PCommon_Base.CommonBase.NetTransferMsg getNetTransferMsgs(int index) {
+        if (netTransferMsgsBuilder_ == null) {
+          return netTransferMsgs_.get(index);
+        } else {
+          return netTransferMsgsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+       */
+      public Builder setNetTransferMsgs(
+          int index, PCommon_Base.CommonBase.NetTransferMsg value) {
+        if (netTransferMsgsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureNetTransferMsgsIsMutable();
+          netTransferMsgs_.set(index, value);
+          onChanged();
+        } else {
+          netTransferMsgsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+       */
+      public Builder setNetTransferMsgs(
+          int index, PCommon_Base.CommonBase.NetTransferMsg.Builder builderForValue) {
+        if (netTransferMsgsBuilder_ == null) {
+          ensureNetTransferMsgsIsMutable();
+          netTransferMsgs_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          netTransferMsgsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+       */
+      public Builder addNetTransferMsgs(PCommon_Base.CommonBase.NetTransferMsg value) {
+        if (netTransferMsgsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureNetTransferMsgsIsMutable();
+          netTransferMsgs_.add(value);
+          onChanged();
+        } else {
+          netTransferMsgsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+       */
+      public Builder addNetTransferMsgs(
+          int index, PCommon_Base.CommonBase.NetTransferMsg value) {
+        if (netTransferMsgsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureNetTransferMsgsIsMutable();
+          netTransferMsgs_.add(index, value);
+          onChanged();
+        } else {
+          netTransferMsgsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+       */
+      public Builder addNetTransferMsgs(
+          PCommon_Base.CommonBase.NetTransferMsg.Builder builderForValue) {
+        if (netTransferMsgsBuilder_ == null) {
+          ensureNetTransferMsgsIsMutable();
+          netTransferMsgs_.add(builderForValue.build());
+          onChanged();
+        } else {
+          netTransferMsgsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+       */
+      public Builder addNetTransferMsgs(
+          int index, PCommon_Base.CommonBase.NetTransferMsg.Builder builderForValue) {
+        if (netTransferMsgsBuilder_ == null) {
+          ensureNetTransferMsgsIsMutable();
+          netTransferMsgs_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          netTransferMsgsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+       */
+      public Builder addAllNetTransferMsgs(
+          java.lang.Iterable<? extends PCommon_Base.CommonBase.NetTransferMsg> values) {
+        if (netTransferMsgsBuilder_ == null) {
+          ensureNetTransferMsgsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, netTransferMsgs_);
+          onChanged();
+        } else {
+          netTransferMsgsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+       */
+      public Builder clearNetTransferMsgs() {
+        if (netTransferMsgsBuilder_ == null) {
+          netTransferMsgs_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          netTransferMsgsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+       */
+      public Builder removeNetTransferMsgs(int index) {
+        if (netTransferMsgsBuilder_ == null) {
+          ensureNetTransferMsgsIsMutable();
+          netTransferMsgs_.remove(index);
+          onChanged();
+        } else {
+          netTransferMsgsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+       */
+      public PCommon_Base.CommonBase.NetTransferMsg.Builder getNetTransferMsgsBuilder(
+          int index) {
+        return getNetTransferMsgsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+       */
+      public PCommon_Base.CommonBase.NetTransferMsgOrBuilder getNetTransferMsgsOrBuilder(
+          int index) {
+        if (netTransferMsgsBuilder_ == null) {
+          return netTransferMsgs_.get(index);  } else {
+          return netTransferMsgsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+       */
+      public java.util.List<? extends PCommon_Base.CommonBase.NetTransferMsgOrBuilder> 
+           getNetTransferMsgsOrBuilderList() {
+        if (netTransferMsgsBuilder_ != null) {
+          return netTransferMsgsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(netTransferMsgs_);
+        }
+      }
+      /**
+       * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+       */
+      public PCommon_Base.CommonBase.NetTransferMsg.Builder addNetTransferMsgsBuilder() {
+        return getNetTransferMsgsFieldBuilder().addBuilder(
+            PCommon_Base.CommonBase.NetTransferMsg.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+       */
+      public PCommon_Base.CommonBase.NetTransferMsg.Builder addNetTransferMsgsBuilder(
+          int index) {
+        return getNetTransferMsgsFieldBuilder().addBuilder(
+            index, PCommon_Base.CommonBase.NetTransferMsg.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .PCommon_Base.NetTransferMsg NetTransferMsgs = 1;</code>
+       */
+      public java.util.List<PCommon_Base.CommonBase.NetTransferMsg.Builder> 
+           getNetTransferMsgsBuilderList() {
+        return getNetTransferMsgsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          PCommon_Base.CommonBase.NetTransferMsg, PCommon_Base.CommonBase.NetTransferMsg.Builder, PCommon_Base.CommonBase.NetTransferMsgOrBuilder> 
+          getNetTransferMsgsFieldBuilder() {
+        if (netTransferMsgsBuilder_ == null) {
+          netTransferMsgsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              PCommon_Base.CommonBase.NetTransferMsg, PCommon_Base.CommonBase.NetTransferMsg.Builder, PCommon_Base.CommonBase.NetTransferMsgOrBuilder>(
+                  netTransferMsgs_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          netTransferMsgs_ = null;
+        }
+        return netTransferMsgsBuilder_;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:PCommon_Base.NetTransferMsgs)
+    }
+
+    // @@protoc_insertion_point(class_scope:PCommon_Base.NetTransferMsgs)
+    private static final PCommon_Base.CommonBase.NetTransferMsgs DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new PCommon_Base.CommonBase.NetTransferMsgs();
+    }
+
+    public static PCommon_Base.CommonBase.NetTransferMsgs getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<NetTransferMsgs>
+        PARSER = new com.google.protobuf.AbstractParser<NetTransferMsgs>() {
+      public NetTransferMsgs parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new NetTransferMsgs(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<NetTransferMsgs> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NetTransferMsgs> getParserForType() {
+      return PARSER;
+    }
+
+    public PCommon_Base.CommonBase.NetTransferMsgs getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface PUserInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PCommon_Base.PUserInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int64 uid = 1;</code>
+     */
+    long getUid();
+
+    /**
+     * <code>bytes nickname = 2;</code>
+     */
+    com.google.protobuf.ByteString getNickname();
+  }
+  /**
+   * <pre>
+   *玩家信息
+   * </pre>
+   *
+   * Protobuf type {@code PCommon_Base.PUserInfo}
+   */
+  public  static final class PUserInfo extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:PCommon_Base.PUserInfo)
+      PUserInfoOrBuilder {
+    // Use PUserInfo.newBuilder() to construct.
+    private PUserInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private PUserInfo() {
+      uid_ = 0L;
+      nickname_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private PUserInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+
+              uid_ = input.readInt64();
+              break;
+            }
+            case 18: {
+
+              nickname_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return PCommon_Base.CommonBase.internal_static_PCommon_Base_PUserInfo_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return PCommon_Base.CommonBase.internal_static_PCommon_Base_PUserInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              PCommon_Base.CommonBase.PUserInfo.class, PCommon_Base.CommonBase.PUserInfo.Builder.class);
+    }
+
+    public static final int UID_FIELD_NUMBER = 1;
+    private long uid_;
+    /**
+     * <code>int64 uid = 1;</code>
+     */
+    public long getUid() {
+      return uid_;
+    }
+
+    public static final int NICKNAME_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString nickname_;
+    /**
+     * <code>bytes nickname = 2;</code>
+     */
+    public com.google.protobuf.ByteString getNickname() {
+      return nickname_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (uid_ != 0L) {
+        output.writeInt64(1, uid_);
+      }
+      if (!nickname_.isEmpty()) {
+        output.writeBytes(2, nickname_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (uid_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, uid_);
+      }
+      if (!nickname_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, nickname_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof PCommon_Base.CommonBase.PUserInfo)) {
+        return super.equals(obj);
+      }
+      PCommon_Base.CommonBase.PUserInfo other = (PCommon_Base.CommonBase.PUserInfo) obj;
+
+      boolean result = true;
+      result = result && (getUid()
+          == other.getUid());
+      result = result && getNickname()
+          .equals(other.getNickname());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + UID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getUid());
+      hash = (37 * hash) + NICKNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getNickname().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static PCommon_Base.CommonBase.PUserInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static PCommon_Base.CommonBase.PUserInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static PCommon_Base.CommonBase.PUserInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static PCommon_Base.CommonBase.PUserInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static PCommon_Base.CommonBase.PUserInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static PCommon_Base.CommonBase.PUserInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static PCommon_Base.CommonBase.PUserInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static PCommon_Base.CommonBase.PUserInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static PCommon_Base.CommonBase.PUserInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static PCommon_Base.CommonBase.PUserInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static PCommon_Base.CommonBase.PUserInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static PCommon_Base.CommonBase.PUserInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(PCommon_Base.CommonBase.PUserInfo prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     *玩家信息
+     * </pre>
+     *
+     * Protobuf type {@code PCommon_Base.PUserInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:PCommon_Base.PUserInfo)
+        PCommon_Base.CommonBase.PUserInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return PCommon_Base.CommonBase.internal_static_PCommon_Base_PUserInfo_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return PCommon_Base.CommonBase.internal_static_PCommon_Base_PUserInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                PCommon_Base.CommonBase.PUserInfo.class, PCommon_Base.CommonBase.PUserInfo.Builder.class);
+      }
+
+      // Construct using PCommon_Base.CommonBase.PUserInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        uid_ = 0L;
+
+        nickname_ = com.google.protobuf.ByteString.EMPTY;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return PCommon_Base.CommonBase.internal_static_PCommon_Base_PUserInfo_descriptor;
+      }
+
+      public PCommon_Base.CommonBase.PUserInfo getDefaultInstanceForType() {
+        return PCommon_Base.CommonBase.PUserInfo.getDefaultInstance();
+      }
+
+      public PCommon_Base.CommonBase.PUserInfo build() {
+        PCommon_Base.CommonBase.PUserInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public PCommon_Base.CommonBase.PUserInfo buildPartial() {
+        PCommon_Base.CommonBase.PUserInfo result = new PCommon_Base.CommonBase.PUserInfo(this);
+        result.uid_ = uid_;
+        result.nickname_ = nickname_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof PCommon_Base.CommonBase.PUserInfo) {
+          return mergeFrom((PCommon_Base.CommonBase.PUserInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(PCommon_Base.CommonBase.PUserInfo other) {
+        if (other == PCommon_Base.CommonBase.PUserInfo.getDefaultInstance()) return this;
+        if (other.getUid() != 0L) {
+          setUid(other.getUid());
+        }
+        if (other.getNickname() != com.google.protobuf.ByteString.EMPTY) {
+          setNickname(other.getNickname());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        PCommon_Base.CommonBase.PUserInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (PCommon_Base.CommonBase.PUserInfo) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private long uid_ ;
+      /**
+       * <code>int64 uid = 1;</code>
+       */
+      public long getUid() {
+        return uid_;
+      }
+      /**
+       * <code>int64 uid = 1;</code>
+       */
+      public Builder setUid(long value) {
+        
+        uid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 uid = 1;</code>
+       */
+      public Builder clearUid() {
+        
+        uid_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString nickname_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>bytes nickname = 2;</code>
+       */
+      public com.google.protobuf.ByteString getNickname() {
+        return nickname_;
+      }
+      /**
+       * <code>bytes nickname = 2;</code>
+       */
+      public Builder setNickname(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        nickname_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bytes nickname = 2;</code>
+       */
+      public Builder clearNickname() {
+        
+        nickname_ = getDefaultInstance().getNickname();
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:PCommon_Base.PUserInfo)
+    }
+
+    // @@protoc_insertion_point(class_scope:PCommon_Base.PUserInfo)
+    private static final PCommon_Base.CommonBase.PUserInfo DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new PCommon_Base.CommonBase.PUserInfo();
+    }
+
+    public static PCommon_Base.CommonBase.PUserInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PUserInfo>
+        PARSER = new com.google.protobuf.AbstractParser<PUserInfo>() {
+      public PUserInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new PUserInfo(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<PUserInfo> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PUserInfo> getParserForType() {
+      return PARSER;
+    }
+
+    public PCommon_Base.CommonBase.PUserInfo getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1925,6 +4043,21 @@ public final class CommonBase {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_PCommon_Base_NetHead_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PCommon_Base_NetTransferMsg_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PCommon_Base_NetTransferMsg_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PCommon_Base_NetTransferMsgs_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PCommon_Base_NetTransferMsgs_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PCommon_Base_PUserInfo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PCommon_Base_PUserInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_PCommon_Base_MTest1_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -1944,11 +4077,19 @@ public final class CommonBase {
   static {
     java.lang.String[] descriptorData = {
       "\n\021Common_Base.proto\022\014PCommon_Base\"U\n\007Net" +
-      "Head\022\013\n\003Cmd\030\001 \001(\005\022\r\n\005Index\030\002 \001(\005\022\r\n\005Coun" +
-      "t\030\003 \001(\005\022\022\n\nDataLength\030\004 \001(\005\022\013\n\003key\030\005 \001(\005" +
-      "\"\036\n\006MTest1\022\t\n\001a\030\001 \001(\005\022\t\n\001b\030\002 \001(\005\"\036\n\006MTes" +
-      "t2\022\t\n\001a\030\002 \001(\005\022\t\n\001b\030\003 \001(\005*(\n\005ETest\022\t\n\005Tes" +
-      "t1\020\000\022\t\n\005Test2\020\001\022\t\n\005Test3\020\002b\006proto3"
+      "Head\022\013\n\003key\030\001 \001(\005\022\013\n\003Cmd\030\002 \001(\005\022\r\n\005Index\030" +
+      "\003 \001(\005\022\r\n\005Count\030\004 \001(\005\022\022\n\nDataLength\030\005 \001(\005" +
+      "\"7\n\016NetTransferMsg\022\n\n\002id\030\001 \001(\004\022\013\n\003cmd\030\002 " +
+      "\001(\005\022\014\n\004data\030\003 \001(\t\"H\n\017NetTransferMsgs\0225\n\017" +
+      "NetTransferMsgs\030\001 \003(\0132\034.PCommon_Base.Net" +
+      "TransferMsg\"*\n\tPUserInfo\022\013\n\003uid\030\001 \001(\003\022\020\n" +
+      "\010nickname\030\002 \001(\014\"\036\n\006MTest1\022\t\n\001a\030\001 \001(\005\022\t\n\001" +
+      "b\030\002 \001(\005\"\036\n\006MTest2\022\t\n\001a\030\002 \001(\005\022\t\n\001b\030\003 \001(\005*" +
+      "D\n\013EPublic_CMD\022\024\n\020EPublic_CMD_None\020\000\022\037\n\033",
+      "EPublic_CMD_PackTransferMsg\020\001*8\n\013EPublic" +
+      "_Ret\022\022\n\016EPublic_Ret_OK\020\000\022\025\n\021EPublic_Ret_" +
+      "Error\020\001*(\n\005ETest\022\t\n\005Test1\020\000\022\t\n\005Test2\020\001\022\t" +
+      "\n\005Test3\020\002b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1967,15 +4108,33 @@ public final class CommonBase {
     internal_static_PCommon_Base_NetHead_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PCommon_Base_NetHead_descriptor,
-        new java.lang.String[] { "Cmd", "Index", "Count", "DataLength", "Key", });
-    internal_static_PCommon_Base_MTest1_descriptor =
+        new java.lang.String[] { "Key", "Cmd", "Index", "Count", "DataLength", });
+    internal_static_PCommon_Base_NetTransferMsg_descriptor =
       getDescriptor().getMessageTypes().get(1);
+    internal_static_PCommon_Base_NetTransferMsg_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PCommon_Base_NetTransferMsg_descriptor,
+        new java.lang.String[] { "Id", "Cmd", "Data", });
+    internal_static_PCommon_Base_NetTransferMsgs_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_PCommon_Base_NetTransferMsgs_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PCommon_Base_NetTransferMsgs_descriptor,
+        new java.lang.String[] { "NetTransferMsgs", });
+    internal_static_PCommon_Base_PUserInfo_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_PCommon_Base_PUserInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PCommon_Base_PUserInfo_descriptor,
+        new java.lang.String[] { "Uid", "Nickname", });
+    internal_static_PCommon_Base_MTest1_descriptor =
+      getDescriptor().getMessageTypes().get(4);
     internal_static_PCommon_Base_MTest1_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PCommon_Base_MTest1_descriptor,
         new java.lang.String[] { "A", "B", });
     internal_static_PCommon_Base_MTest2_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_PCommon_Base_MTest2_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PCommon_Base_MTest2_descriptor,

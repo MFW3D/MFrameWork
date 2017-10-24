@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="maintest.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -45,13 +42,13 @@
     <ClCompile Include="Que_LoginHandler.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Server_KeyManager.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="LogicServerMgr.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="MangerPlayerInfo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientsKeyMgr.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -80,9 +77,6 @@
     <ClInclude Include="Que_LoginHandler.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Server_KeyManager.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="LogicServerMgr.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -90,6 +84,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="ManagerGlobal.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientsKeyMgr.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

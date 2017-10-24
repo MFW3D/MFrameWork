@@ -14,22 +14,151 @@ public final class DBLogin {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface Point_FbOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:PDB_Login.Point_Fb)
+  /**
+   * <pre>
+   *数据服务器到登录服务器的消息命令定义
+   * </pre>
+   *
+   * Protobuf enum {@code PDB_Login.EDL_CMD}
+   */
+  public enum EDL_CMD
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>EDL_CMD_None = 0;</code>
+     */
+    EDL_CMD_None(0),
+    /**
+     * <code>EDL_CMD_UserCheck = 2001;</code>
+     */
+    EDL_CMD_UserCheck(2001),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>EDL_CMD_None = 0;</code>
+     */
+    public static final int EDL_CMD_None_VALUE = 0;
+    /**
+     * <code>EDL_CMD_UserCheck = 2001;</code>
+     */
+    public static final int EDL_CMD_UserCheck_VALUE = 2001;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static EDL_CMD valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static EDL_CMD forNumber(int value) {
+      switch (value) {
+        case 0: return EDL_CMD_None;
+        case 2001: return EDL_CMD_UserCheck;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<EDL_CMD>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        EDL_CMD> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<EDL_CMD>() {
+            public EDL_CMD findValueByNumber(int number) {
+              return EDL_CMD.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return PDB_Login.DBLogin.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final EDL_CMD[] VALUES = values();
+
+    public static EDL_CMD valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private EDL_CMD(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:PDB_Login.EDL_CMD)
+  }
+
+  public interface LD_UserCheckOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PDB_Login.LD_UserCheck)
       com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     *网络连接id
+     * </pre>
+     *
+     * <code>int64 ConId = 1;</code>
+     */
+    long getConId();
+
+    /**
+     * <code>.PLogin_Client.CL_Login loginMsg = 2;</code>
+     */
+    boolean hasLoginMsg();
+    /**
+     * <code>.PLogin_Client.CL_Login loginMsg = 2;</code>
+     */
+    PLogin_Client.LoginClient.CL_Login getLoginMsg();
+    /**
+     * <code>.PLogin_Client.CL_Login loginMsg = 2;</code>
+     */
+    PLogin_Client.LoginClient.CL_LoginOrBuilder getLoginMsgOrBuilder();
   }
   /**
-   * Protobuf type {@code PDB_Login.Point_Fb}
+   * <pre>
+   *玩家登录消息验证获取信息
+   * </pre>
+   *
+   * Protobuf type {@code PDB_Login.LD_UserCheck}
    */
-  public  static final class Point_Fb extends
+  public  static final class LD_UserCheck extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:PDB_Login.Point_Fb)
-      Point_FbOrBuilder {
-    // Use Point_Fb.newBuilder() to construct.
-    private Point_Fb(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      // @@protoc_insertion_point(message_implements:PDB_Login.LD_UserCheck)
+      LD_UserCheckOrBuilder {
+    // Use LD_UserCheck.newBuilder() to construct.
+    private LD_UserCheck(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Point_Fb() {
+    private LD_UserCheck() {
+      conId_ = 0L;
     }
 
     @java.lang.Override
@@ -37,11 +166,12 @@ public final class DBLogin {
     getUnknownFields() {
       return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
-    private Point_Fb(
+    private LD_UserCheck(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      int mutable_bitField0_ = 0;
       try {
         boolean done = false;
         while (!done) {
@@ -54,6 +184,24 @@ public final class DBLogin {
               if (!input.skipField(tag)) {
                 done = true;
               }
+              break;
+            }
+            case 8: {
+
+              conId_ = input.readInt64();
+              break;
+            }
+            case 18: {
+              PLogin_Client.LoginClient.CL_Login.Builder subBuilder = null;
+              if (loginMsg_ != null) {
+                subBuilder = loginMsg_.toBuilder();
+              }
+              loginMsg_ = input.readMessage(PLogin_Client.LoginClient.CL_Login.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(loginMsg_);
+                loginMsg_ = subBuilder.buildPartial();
+              }
+
               break;
             }
           }
@@ -69,14 +217,48 @@ public final class DBLogin {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return PDB_Login.DBLogin.internal_static_PDB_Login_Point_Fb_descriptor;
+      return PDB_Login.DBLogin.internal_static_PDB_Login_LD_UserCheck_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return PDB_Login.DBLogin.internal_static_PDB_Login_Point_Fb_fieldAccessorTable
+      return PDB_Login.DBLogin.internal_static_PDB_Login_LD_UserCheck_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              PDB_Login.DBLogin.Point_Fb.class, PDB_Login.DBLogin.Point_Fb.Builder.class);
+              PDB_Login.DBLogin.LD_UserCheck.class, PDB_Login.DBLogin.LD_UserCheck.Builder.class);
+    }
+
+    public static final int CONID_FIELD_NUMBER = 1;
+    private long conId_;
+    /**
+     * <pre>
+     *网络连接id
+     * </pre>
+     *
+     * <code>int64 ConId = 1;</code>
+     */
+    public long getConId() {
+      return conId_;
+    }
+
+    public static final int LOGINMSG_FIELD_NUMBER = 2;
+    private PLogin_Client.LoginClient.CL_Login loginMsg_;
+    /**
+     * <code>.PLogin_Client.CL_Login loginMsg = 2;</code>
+     */
+    public boolean hasLoginMsg() {
+      return loginMsg_ != null;
+    }
+    /**
+     * <code>.PLogin_Client.CL_Login loginMsg = 2;</code>
+     */
+    public PLogin_Client.LoginClient.CL_Login getLoginMsg() {
+      return loginMsg_ == null ? PLogin_Client.LoginClient.CL_Login.getDefaultInstance() : loginMsg_;
+    }
+    /**
+     * <code>.PLogin_Client.CL_Login loginMsg = 2;</code>
+     */
+    public PLogin_Client.LoginClient.CL_LoginOrBuilder getLoginMsgOrBuilder() {
+      return getLoginMsg();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -91,6 +273,12 @@ public final class DBLogin {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (conId_ != 0L) {
+        output.writeInt64(1, conId_);
+      }
+      if (loginMsg_ != null) {
+        output.writeMessage(2, getLoginMsg());
+      }
     }
 
     public int getSerializedSize() {
@@ -98,6 +286,14 @@ public final class DBLogin {
       if (size != -1) return size;
 
       size = 0;
+      if (conId_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, conId_);
+      }
+      if (loginMsg_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getLoginMsg());
+      }
       memoizedSize = size;
       return size;
     }
@@ -108,12 +304,19 @@ public final class DBLogin {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof PDB_Login.DBLogin.Point_Fb)) {
+      if (!(obj instanceof PDB_Login.DBLogin.LD_UserCheck)) {
         return super.equals(obj);
       }
-      PDB_Login.DBLogin.Point_Fb other = (PDB_Login.DBLogin.Point_Fb) obj;
+      PDB_Login.DBLogin.LD_UserCheck other = (PDB_Login.DBLogin.LD_UserCheck) obj;
 
       boolean result = true;
+      result = result && (getConId()
+          == other.getConId());
+      result = result && (hasLoginMsg() == other.hasLoginMsg());
+      if (hasLoginMsg()) {
+        result = result && getLoginMsg()
+            .equals(other.getLoginMsg());
+      }
       return result;
     }
 
@@ -124,74 +327,81 @@ public final class DBLogin {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + CONID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getConId());
+      if (hasLoginMsg()) {
+        hash = (37 * hash) + LOGINMSG_FIELD_NUMBER;
+        hash = (53 * hash) + getLoginMsg().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static PDB_Login.DBLogin.Point_Fb parseFrom(
+    public static PDB_Login.DBLogin.LD_UserCheck parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static PDB_Login.DBLogin.Point_Fb parseFrom(
+    public static PDB_Login.DBLogin.LD_UserCheck parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static PDB_Login.DBLogin.Point_Fb parseFrom(
+    public static PDB_Login.DBLogin.LD_UserCheck parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static PDB_Login.DBLogin.Point_Fb parseFrom(
+    public static PDB_Login.DBLogin.LD_UserCheck parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static PDB_Login.DBLogin.Point_Fb parseFrom(byte[] data)
+    public static PDB_Login.DBLogin.LD_UserCheck parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static PDB_Login.DBLogin.Point_Fb parseFrom(
+    public static PDB_Login.DBLogin.LD_UserCheck parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static PDB_Login.DBLogin.Point_Fb parseFrom(java.io.InputStream input)
+    public static PDB_Login.DBLogin.LD_UserCheck parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static PDB_Login.DBLogin.Point_Fb parseFrom(
+    public static PDB_Login.DBLogin.LD_UserCheck parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static PDB_Login.DBLogin.Point_Fb parseDelimitedFrom(java.io.InputStream input)
+    public static PDB_Login.DBLogin.LD_UserCheck parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static PDB_Login.DBLogin.Point_Fb parseDelimitedFrom(
+    public static PDB_Login.DBLogin.LD_UserCheck parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static PDB_Login.DBLogin.Point_Fb parseFrom(
+    public static PDB_Login.DBLogin.LD_UserCheck parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static PDB_Login.DBLogin.Point_Fb parseFrom(
+    public static PDB_Login.DBLogin.LD_UserCheck parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -203,7 +413,7 @@ public final class DBLogin {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(PDB_Login.DBLogin.Point_Fb prototype) {
+    public static Builder newBuilder(PDB_Login.DBLogin.LD_UserCheck prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -218,25 +428,29 @@ public final class DBLogin {
       return builder;
     }
     /**
-     * Protobuf type {@code PDB_Login.Point_Fb}
+     * <pre>
+     *玩家登录消息验证获取信息
+     * </pre>
+     *
+     * Protobuf type {@code PDB_Login.LD_UserCheck}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:PDB_Login.Point_Fb)
-        PDB_Login.DBLogin.Point_FbOrBuilder {
+        // @@protoc_insertion_point(builder_implements:PDB_Login.LD_UserCheck)
+        PDB_Login.DBLogin.LD_UserCheckOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return PDB_Login.DBLogin.internal_static_PDB_Login_Point_Fb_descriptor;
+        return PDB_Login.DBLogin.internal_static_PDB_Login_LD_UserCheck_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return PDB_Login.DBLogin.internal_static_PDB_Login_Point_Fb_fieldAccessorTable
+        return PDB_Login.DBLogin.internal_static_PDB_Login_LD_UserCheck_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                PDB_Login.DBLogin.Point_Fb.class, PDB_Login.DBLogin.Point_Fb.Builder.class);
+                PDB_Login.DBLogin.LD_UserCheck.class, PDB_Login.DBLogin.LD_UserCheck.Builder.class);
       }
 
-      // Construct using PDB_Login.DBLogin.Point_Fb.newBuilder()
+      // Construct using PDB_Login.DBLogin.LD_UserCheck.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -253,28 +467,42 @@ public final class DBLogin {
       }
       public Builder clear() {
         super.clear();
+        conId_ = 0L;
+
+        if (loginMsgBuilder_ == null) {
+          loginMsg_ = null;
+        } else {
+          loginMsg_ = null;
+          loginMsgBuilder_ = null;
+        }
         return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return PDB_Login.DBLogin.internal_static_PDB_Login_Point_Fb_descriptor;
+        return PDB_Login.DBLogin.internal_static_PDB_Login_LD_UserCheck_descriptor;
       }
 
-      public PDB_Login.DBLogin.Point_Fb getDefaultInstanceForType() {
-        return PDB_Login.DBLogin.Point_Fb.getDefaultInstance();
+      public PDB_Login.DBLogin.LD_UserCheck getDefaultInstanceForType() {
+        return PDB_Login.DBLogin.LD_UserCheck.getDefaultInstance();
       }
 
-      public PDB_Login.DBLogin.Point_Fb build() {
-        PDB_Login.DBLogin.Point_Fb result = buildPartial();
+      public PDB_Login.DBLogin.LD_UserCheck build() {
+        PDB_Login.DBLogin.LD_UserCheck result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public PDB_Login.DBLogin.Point_Fb buildPartial() {
-        PDB_Login.DBLogin.Point_Fb result = new PDB_Login.DBLogin.Point_Fb(this);
+      public PDB_Login.DBLogin.LD_UserCheck buildPartial() {
+        PDB_Login.DBLogin.LD_UserCheck result = new PDB_Login.DBLogin.LD_UserCheck(this);
+        result.conId_ = conId_;
+        if (loginMsgBuilder_ == null) {
+          result.loginMsg_ = loginMsg_;
+        } else {
+          result.loginMsg_ = loginMsgBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -306,16 +534,22 @@ public final class DBLogin {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof PDB_Login.DBLogin.Point_Fb) {
-          return mergeFrom((PDB_Login.DBLogin.Point_Fb)other);
+        if (other instanceof PDB_Login.DBLogin.LD_UserCheck) {
+          return mergeFrom((PDB_Login.DBLogin.LD_UserCheck)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(PDB_Login.DBLogin.Point_Fb other) {
-        if (other == PDB_Login.DBLogin.Point_Fb.getDefaultInstance()) return this;
+      public Builder mergeFrom(PDB_Login.DBLogin.LD_UserCheck other) {
+        if (other == PDB_Login.DBLogin.LD_UserCheck.getDefaultInstance()) return this;
+        if (other.getConId() != 0L) {
+          setConId(other.getConId());
+        }
+        if (other.hasLoginMsg()) {
+          mergeLoginMsg(other.getLoginMsg());
+        }
         onChanged();
         return this;
       }
@@ -328,11 +562,11 @@ public final class DBLogin {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        PDB_Login.DBLogin.Point_Fb parsedMessage = null;
+        PDB_Login.DBLogin.LD_UserCheck parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (PDB_Login.DBLogin.Point_Fb) e.getUnfinishedMessage();
+          parsedMessage = (PDB_Login.DBLogin.LD_UserCheck) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -340,6 +574,161 @@ public final class DBLogin {
           }
         }
         return this;
+      }
+
+      private long conId_ ;
+      /**
+       * <pre>
+       *网络连接id
+       * </pre>
+       *
+       * <code>int64 ConId = 1;</code>
+       */
+      public long getConId() {
+        return conId_;
+      }
+      /**
+       * <pre>
+       *网络连接id
+       * </pre>
+       *
+       * <code>int64 ConId = 1;</code>
+       */
+      public Builder setConId(long value) {
+        
+        conId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *网络连接id
+       * </pre>
+       *
+       * <code>int64 ConId = 1;</code>
+       */
+      public Builder clearConId() {
+        
+        conId_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private PLogin_Client.LoginClient.CL_Login loginMsg_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          PLogin_Client.LoginClient.CL_Login, PLogin_Client.LoginClient.CL_Login.Builder, PLogin_Client.LoginClient.CL_LoginOrBuilder> loginMsgBuilder_;
+      /**
+       * <code>.PLogin_Client.CL_Login loginMsg = 2;</code>
+       */
+      public boolean hasLoginMsg() {
+        return loginMsgBuilder_ != null || loginMsg_ != null;
+      }
+      /**
+       * <code>.PLogin_Client.CL_Login loginMsg = 2;</code>
+       */
+      public PLogin_Client.LoginClient.CL_Login getLoginMsg() {
+        if (loginMsgBuilder_ == null) {
+          return loginMsg_ == null ? PLogin_Client.LoginClient.CL_Login.getDefaultInstance() : loginMsg_;
+        } else {
+          return loginMsgBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.PLogin_Client.CL_Login loginMsg = 2;</code>
+       */
+      public Builder setLoginMsg(PLogin_Client.LoginClient.CL_Login value) {
+        if (loginMsgBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          loginMsg_ = value;
+          onChanged();
+        } else {
+          loginMsgBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.PLogin_Client.CL_Login loginMsg = 2;</code>
+       */
+      public Builder setLoginMsg(
+          PLogin_Client.LoginClient.CL_Login.Builder builderForValue) {
+        if (loginMsgBuilder_ == null) {
+          loginMsg_ = builderForValue.build();
+          onChanged();
+        } else {
+          loginMsgBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.PLogin_Client.CL_Login loginMsg = 2;</code>
+       */
+      public Builder mergeLoginMsg(PLogin_Client.LoginClient.CL_Login value) {
+        if (loginMsgBuilder_ == null) {
+          if (loginMsg_ != null) {
+            loginMsg_ =
+              PLogin_Client.LoginClient.CL_Login.newBuilder(loginMsg_).mergeFrom(value).buildPartial();
+          } else {
+            loginMsg_ = value;
+          }
+          onChanged();
+        } else {
+          loginMsgBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.PLogin_Client.CL_Login loginMsg = 2;</code>
+       */
+      public Builder clearLoginMsg() {
+        if (loginMsgBuilder_ == null) {
+          loginMsg_ = null;
+          onChanged();
+        } else {
+          loginMsg_ = null;
+          loginMsgBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.PLogin_Client.CL_Login loginMsg = 2;</code>
+       */
+      public PLogin_Client.LoginClient.CL_Login.Builder getLoginMsgBuilder() {
+        
+        onChanged();
+        return getLoginMsgFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.PLogin_Client.CL_Login loginMsg = 2;</code>
+       */
+      public PLogin_Client.LoginClient.CL_LoginOrBuilder getLoginMsgOrBuilder() {
+        if (loginMsgBuilder_ != null) {
+          return loginMsgBuilder_.getMessageOrBuilder();
+        } else {
+          return loginMsg_ == null ?
+              PLogin_Client.LoginClient.CL_Login.getDefaultInstance() : loginMsg_;
+        }
+      }
+      /**
+       * <code>.PLogin_Client.CL_Login loginMsg = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          PLogin_Client.LoginClient.CL_Login, PLogin_Client.LoginClient.CL_Login.Builder, PLogin_Client.LoginClient.CL_LoginOrBuilder> 
+          getLoginMsgFieldBuilder() {
+        if (loginMsgBuilder_ == null) {
+          loginMsgBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              PLogin_Client.LoginClient.CL_Login, PLogin_Client.LoginClient.CL_Login.Builder, PLogin_Client.LoginClient.CL_LoginOrBuilder>(
+                  getLoginMsg(),
+                  getParentForChildren(),
+                  isClean());
+          loginMsg_ = null;
+        }
+        return loginMsgBuilder_;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -352,49 +741,966 @@ public final class DBLogin {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:PDB_Login.Point_Fb)
+      // @@protoc_insertion_point(builder_scope:PDB_Login.LD_UserCheck)
     }
 
-    // @@protoc_insertion_point(class_scope:PDB_Login.Point_Fb)
-    private static final PDB_Login.DBLogin.Point_Fb DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:PDB_Login.LD_UserCheck)
+    private static final PDB_Login.DBLogin.LD_UserCheck DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new PDB_Login.DBLogin.Point_Fb();
+      DEFAULT_INSTANCE = new PDB_Login.DBLogin.LD_UserCheck();
     }
 
-    public static PDB_Login.DBLogin.Point_Fb getDefaultInstance() {
+    public static PDB_Login.DBLogin.LD_UserCheck getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Point_Fb>
-        PARSER = new com.google.protobuf.AbstractParser<Point_Fb>() {
-      public Point_Fb parsePartialFrom(
+    private static final com.google.protobuf.Parser<LD_UserCheck>
+        PARSER = new com.google.protobuf.AbstractParser<LD_UserCheck>() {
+      public LD_UserCheck parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new Point_Fb(input, extensionRegistry);
+          return new LD_UserCheck(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Point_Fb> parser() {
+    public static com.google.protobuf.Parser<LD_UserCheck> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Point_Fb> getParserForType() {
+    public com.google.protobuf.Parser<LD_UserCheck> getParserForType() {
       return PARSER;
     }
 
-    public PDB_Login.DBLogin.Point_Fb getDefaultInstanceForType() {
+    public PDB_Login.DBLogin.LD_UserCheck getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface DL_UserCheckOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PDB_Login.DL_UserCheck)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 ret = 1;</code>
+     */
+    int getRet();
+
+    /**
+     * <pre>
+     *网络连接id
+     * </pre>
+     *
+     * <code>int64 ConId = 2;</code>
+     */
+    long getConId();
+
+    /**
+     * <code>.PLogin_Client.CL_Login loginMsg = 3;</code>
+     */
+    boolean hasLoginMsg();
+    /**
+     * <code>.PLogin_Client.CL_Login loginMsg = 3;</code>
+     */
+    PLogin_Client.LoginClient.CL_Login getLoginMsg();
+    /**
+     * <code>.PLogin_Client.CL_Login loginMsg = 3;</code>
+     */
+    PLogin_Client.LoginClient.CL_LoginOrBuilder getLoginMsgOrBuilder();
+
+    /**
+     * <code>.PDB_Base.DBAccount dBAccount = 4;</code>
+     */
+    boolean hasDBAccount();
+    /**
+     * <code>.PDB_Base.DBAccount dBAccount = 4;</code>
+     */
+    PDB_Base.DBBase.DBAccount getDBAccount();
+    /**
+     * <code>.PDB_Base.DBAccount dBAccount = 4;</code>
+     */
+    PDB_Base.DBBase.DBAccountOrBuilder getDBAccountOrBuilder();
+  }
+  /**
+   * Protobuf type {@code PDB_Login.DL_UserCheck}
+   */
+  public  static final class DL_UserCheck extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:PDB_Login.DL_UserCheck)
+      DL_UserCheckOrBuilder {
+    // Use DL_UserCheck.newBuilder() to construct.
+    private DL_UserCheck(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private DL_UserCheck() {
+      ret_ = 0;
+      conId_ = 0L;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private DL_UserCheck(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+
+              ret_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              conId_ = input.readInt64();
+              break;
+            }
+            case 26: {
+              PLogin_Client.LoginClient.CL_Login.Builder subBuilder = null;
+              if (loginMsg_ != null) {
+                subBuilder = loginMsg_.toBuilder();
+              }
+              loginMsg_ = input.readMessage(PLogin_Client.LoginClient.CL_Login.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(loginMsg_);
+                loginMsg_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 34: {
+              PDB_Base.DBBase.DBAccount.Builder subBuilder = null;
+              if (dBAccount_ != null) {
+                subBuilder = dBAccount_.toBuilder();
+              }
+              dBAccount_ = input.readMessage(PDB_Base.DBBase.DBAccount.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(dBAccount_);
+                dBAccount_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return PDB_Login.DBLogin.internal_static_PDB_Login_DL_UserCheck_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return PDB_Login.DBLogin.internal_static_PDB_Login_DL_UserCheck_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              PDB_Login.DBLogin.DL_UserCheck.class, PDB_Login.DBLogin.DL_UserCheck.Builder.class);
+    }
+
+    public static final int RET_FIELD_NUMBER = 1;
+    private int ret_;
+    /**
+     * <code>int32 ret = 1;</code>
+     */
+    public int getRet() {
+      return ret_;
+    }
+
+    public static final int CONID_FIELD_NUMBER = 2;
+    private long conId_;
+    /**
+     * <pre>
+     *网络连接id
+     * </pre>
+     *
+     * <code>int64 ConId = 2;</code>
+     */
+    public long getConId() {
+      return conId_;
+    }
+
+    public static final int LOGINMSG_FIELD_NUMBER = 3;
+    private PLogin_Client.LoginClient.CL_Login loginMsg_;
+    /**
+     * <code>.PLogin_Client.CL_Login loginMsg = 3;</code>
+     */
+    public boolean hasLoginMsg() {
+      return loginMsg_ != null;
+    }
+    /**
+     * <code>.PLogin_Client.CL_Login loginMsg = 3;</code>
+     */
+    public PLogin_Client.LoginClient.CL_Login getLoginMsg() {
+      return loginMsg_ == null ? PLogin_Client.LoginClient.CL_Login.getDefaultInstance() : loginMsg_;
+    }
+    /**
+     * <code>.PLogin_Client.CL_Login loginMsg = 3;</code>
+     */
+    public PLogin_Client.LoginClient.CL_LoginOrBuilder getLoginMsgOrBuilder() {
+      return getLoginMsg();
+    }
+
+    public static final int DBACCOUNT_FIELD_NUMBER = 4;
+    private PDB_Base.DBBase.DBAccount dBAccount_;
+    /**
+     * <code>.PDB_Base.DBAccount dBAccount = 4;</code>
+     */
+    public boolean hasDBAccount() {
+      return dBAccount_ != null;
+    }
+    /**
+     * <code>.PDB_Base.DBAccount dBAccount = 4;</code>
+     */
+    public PDB_Base.DBBase.DBAccount getDBAccount() {
+      return dBAccount_ == null ? PDB_Base.DBBase.DBAccount.getDefaultInstance() : dBAccount_;
+    }
+    /**
+     * <code>.PDB_Base.DBAccount dBAccount = 4;</code>
+     */
+    public PDB_Base.DBBase.DBAccountOrBuilder getDBAccountOrBuilder() {
+      return getDBAccount();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (ret_ != 0) {
+        output.writeInt32(1, ret_);
+      }
+      if (conId_ != 0L) {
+        output.writeInt64(2, conId_);
+      }
+      if (loginMsg_ != null) {
+        output.writeMessage(3, getLoginMsg());
+      }
+      if (dBAccount_ != null) {
+        output.writeMessage(4, getDBAccount());
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (ret_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, ret_);
+      }
+      if (conId_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, conId_);
+      }
+      if (loginMsg_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getLoginMsg());
+      }
+      if (dBAccount_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getDBAccount());
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof PDB_Login.DBLogin.DL_UserCheck)) {
+        return super.equals(obj);
+      }
+      PDB_Login.DBLogin.DL_UserCheck other = (PDB_Login.DBLogin.DL_UserCheck) obj;
+
+      boolean result = true;
+      result = result && (getRet()
+          == other.getRet());
+      result = result && (getConId()
+          == other.getConId());
+      result = result && (hasLoginMsg() == other.hasLoginMsg());
+      if (hasLoginMsg()) {
+        result = result && getLoginMsg()
+            .equals(other.getLoginMsg());
+      }
+      result = result && (hasDBAccount() == other.hasDBAccount());
+      if (hasDBAccount()) {
+        result = result && getDBAccount()
+            .equals(other.getDBAccount());
+      }
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + RET_FIELD_NUMBER;
+      hash = (53 * hash) + getRet();
+      hash = (37 * hash) + CONID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getConId());
+      if (hasLoginMsg()) {
+        hash = (37 * hash) + LOGINMSG_FIELD_NUMBER;
+        hash = (53 * hash) + getLoginMsg().hashCode();
+      }
+      if (hasDBAccount()) {
+        hash = (37 * hash) + DBACCOUNT_FIELD_NUMBER;
+        hash = (53 * hash) + getDBAccount().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static PDB_Login.DBLogin.DL_UserCheck parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static PDB_Login.DBLogin.DL_UserCheck parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static PDB_Login.DBLogin.DL_UserCheck parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static PDB_Login.DBLogin.DL_UserCheck parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static PDB_Login.DBLogin.DL_UserCheck parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static PDB_Login.DBLogin.DL_UserCheck parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static PDB_Login.DBLogin.DL_UserCheck parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static PDB_Login.DBLogin.DL_UserCheck parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static PDB_Login.DBLogin.DL_UserCheck parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static PDB_Login.DBLogin.DL_UserCheck parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static PDB_Login.DBLogin.DL_UserCheck parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static PDB_Login.DBLogin.DL_UserCheck parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(PDB_Login.DBLogin.DL_UserCheck prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code PDB_Login.DL_UserCheck}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:PDB_Login.DL_UserCheck)
+        PDB_Login.DBLogin.DL_UserCheckOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return PDB_Login.DBLogin.internal_static_PDB_Login_DL_UserCheck_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return PDB_Login.DBLogin.internal_static_PDB_Login_DL_UserCheck_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                PDB_Login.DBLogin.DL_UserCheck.class, PDB_Login.DBLogin.DL_UserCheck.Builder.class);
+      }
+
+      // Construct using PDB_Login.DBLogin.DL_UserCheck.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        ret_ = 0;
+
+        conId_ = 0L;
+
+        if (loginMsgBuilder_ == null) {
+          loginMsg_ = null;
+        } else {
+          loginMsg_ = null;
+          loginMsgBuilder_ = null;
+        }
+        if (dBAccountBuilder_ == null) {
+          dBAccount_ = null;
+        } else {
+          dBAccount_ = null;
+          dBAccountBuilder_ = null;
+        }
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return PDB_Login.DBLogin.internal_static_PDB_Login_DL_UserCheck_descriptor;
+      }
+
+      public PDB_Login.DBLogin.DL_UserCheck getDefaultInstanceForType() {
+        return PDB_Login.DBLogin.DL_UserCheck.getDefaultInstance();
+      }
+
+      public PDB_Login.DBLogin.DL_UserCheck build() {
+        PDB_Login.DBLogin.DL_UserCheck result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public PDB_Login.DBLogin.DL_UserCheck buildPartial() {
+        PDB_Login.DBLogin.DL_UserCheck result = new PDB_Login.DBLogin.DL_UserCheck(this);
+        result.ret_ = ret_;
+        result.conId_ = conId_;
+        if (loginMsgBuilder_ == null) {
+          result.loginMsg_ = loginMsg_;
+        } else {
+          result.loginMsg_ = loginMsgBuilder_.build();
+        }
+        if (dBAccountBuilder_ == null) {
+          result.dBAccount_ = dBAccount_;
+        } else {
+          result.dBAccount_ = dBAccountBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof PDB_Login.DBLogin.DL_UserCheck) {
+          return mergeFrom((PDB_Login.DBLogin.DL_UserCheck)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(PDB_Login.DBLogin.DL_UserCheck other) {
+        if (other == PDB_Login.DBLogin.DL_UserCheck.getDefaultInstance()) return this;
+        if (other.getRet() != 0) {
+          setRet(other.getRet());
+        }
+        if (other.getConId() != 0L) {
+          setConId(other.getConId());
+        }
+        if (other.hasLoginMsg()) {
+          mergeLoginMsg(other.getLoginMsg());
+        }
+        if (other.hasDBAccount()) {
+          mergeDBAccount(other.getDBAccount());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        PDB_Login.DBLogin.DL_UserCheck parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (PDB_Login.DBLogin.DL_UserCheck) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int ret_ ;
+      /**
+       * <code>int32 ret = 1;</code>
+       */
+      public int getRet() {
+        return ret_;
+      }
+      /**
+       * <code>int32 ret = 1;</code>
+       */
+      public Builder setRet(int value) {
+        
+        ret_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 ret = 1;</code>
+       */
+      public Builder clearRet() {
+        
+        ret_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long conId_ ;
+      /**
+       * <pre>
+       *网络连接id
+       * </pre>
+       *
+       * <code>int64 ConId = 2;</code>
+       */
+      public long getConId() {
+        return conId_;
+      }
+      /**
+       * <pre>
+       *网络连接id
+       * </pre>
+       *
+       * <code>int64 ConId = 2;</code>
+       */
+      public Builder setConId(long value) {
+        
+        conId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *网络连接id
+       * </pre>
+       *
+       * <code>int64 ConId = 2;</code>
+       */
+      public Builder clearConId() {
+        
+        conId_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private PLogin_Client.LoginClient.CL_Login loginMsg_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          PLogin_Client.LoginClient.CL_Login, PLogin_Client.LoginClient.CL_Login.Builder, PLogin_Client.LoginClient.CL_LoginOrBuilder> loginMsgBuilder_;
+      /**
+       * <code>.PLogin_Client.CL_Login loginMsg = 3;</code>
+       */
+      public boolean hasLoginMsg() {
+        return loginMsgBuilder_ != null || loginMsg_ != null;
+      }
+      /**
+       * <code>.PLogin_Client.CL_Login loginMsg = 3;</code>
+       */
+      public PLogin_Client.LoginClient.CL_Login getLoginMsg() {
+        if (loginMsgBuilder_ == null) {
+          return loginMsg_ == null ? PLogin_Client.LoginClient.CL_Login.getDefaultInstance() : loginMsg_;
+        } else {
+          return loginMsgBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.PLogin_Client.CL_Login loginMsg = 3;</code>
+       */
+      public Builder setLoginMsg(PLogin_Client.LoginClient.CL_Login value) {
+        if (loginMsgBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          loginMsg_ = value;
+          onChanged();
+        } else {
+          loginMsgBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.PLogin_Client.CL_Login loginMsg = 3;</code>
+       */
+      public Builder setLoginMsg(
+          PLogin_Client.LoginClient.CL_Login.Builder builderForValue) {
+        if (loginMsgBuilder_ == null) {
+          loginMsg_ = builderForValue.build();
+          onChanged();
+        } else {
+          loginMsgBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.PLogin_Client.CL_Login loginMsg = 3;</code>
+       */
+      public Builder mergeLoginMsg(PLogin_Client.LoginClient.CL_Login value) {
+        if (loginMsgBuilder_ == null) {
+          if (loginMsg_ != null) {
+            loginMsg_ =
+              PLogin_Client.LoginClient.CL_Login.newBuilder(loginMsg_).mergeFrom(value).buildPartial();
+          } else {
+            loginMsg_ = value;
+          }
+          onChanged();
+        } else {
+          loginMsgBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.PLogin_Client.CL_Login loginMsg = 3;</code>
+       */
+      public Builder clearLoginMsg() {
+        if (loginMsgBuilder_ == null) {
+          loginMsg_ = null;
+          onChanged();
+        } else {
+          loginMsg_ = null;
+          loginMsgBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.PLogin_Client.CL_Login loginMsg = 3;</code>
+       */
+      public PLogin_Client.LoginClient.CL_Login.Builder getLoginMsgBuilder() {
+        
+        onChanged();
+        return getLoginMsgFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.PLogin_Client.CL_Login loginMsg = 3;</code>
+       */
+      public PLogin_Client.LoginClient.CL_LoginOrBuilder getLoginMsgOrBuilder() {
+        if (loginMsgBuilder_ != null) {
+          return loginMsgBuilder_.getMessageOrBuilder();
+        } else {
+          return loginMsg_ == null ?
+              PLogin_Client.LoginClient.CL_Login.getDefaultInstance() : loginMsg_;
+        }
+      }
+      /**
+       * <code>.PLogin_Client.CL_Login loginMsg = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          PLogin_Client.LoginClient.CL_Login, PLogin_Client.LoginClient.CL_Login.Builder, PLogin_Client.LoginClient.CL_LoginOrBuilder> 
+          getLoginMsgFieldBuilder() {
+        if (loginMsgBuilder_ == null) {
+          loginMsgBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              PLogin_Client.LoginClient.CL_Login, PLogin_Client.LoginClient.CL_Login.Builder, PLogin_Client.LoginClient.CL_LoginOrBuilder>(
+                  getLoginMsg(),
+                  getParentForChildren(),
+                  isClean());
+          loginMsg_ = null;
+        }
+        return loginMsgBuilder_;
+      }
+
+      private PDB_Base.DBBase.DBAccount dBAccount_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          PDB_Base.DBBase.DBAccount, PDB_Base.DBBase.DBAccount.Builder, PDB_Base.DBBase.DBAccountOrBuilder> dBAccountBuilder_;
+      /**
+       * <code>.PDB_Base.DBAccount dBAccount = 4;</code>
+       */
+      public boolean hasDBAccount() {
+        return dBAccountBuilder_ != null || dBAccount_ != null;
+      }
+      /**
+       * <code>.PDB_Base.DBAccount dBAccount = 4;</code>
+       */
+      public PDB_Base.DBBase.DBAccount getDBAccount() {
+        if (dBAccountBuilder_ == null) {
+          return dBAccount_ == null ? PDB_Base.DBBase.DBAccount.getDefaultInstance() : dBAccount_;
+        } else {
+          return dBAccountBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.PDB_Base.DBAccount dBAccount = 4;</code>
+       */
+      public Builder setDBAccount(PDB_Base.DBBase.DBAccount value) {
+        if (dBAccountBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          dBAccount_ = value;
+          onChanged();
+        } else {
+          dBAccountBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.PDB_Base.DBAccount dBAccount = 4;</code>
+       */
+      public Builder setDBAccount(
+          PDB_Base.DBBase.DBAccount.Builder builderForValue) {
+        if (dBAccountBuilder_ == null) {
+          dBAccount_ = builderForValue.build();
+          onChanged();
+        } else {
+          dBAccountBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.PDB_Base.DBAccount dBAccount = 4;</code>
+       */
+      public Builder mergeDBAccount(PDB_Base.DBBase.DBAccount value) {
+        if (dBAccountBuilder_ == null) {
+          if (dBAccount_ != null) {
+            dBAccount_ =
+              PDB_Base.DBBase.DBAccount.newBuilder(dBAccount_).mergeFrom(value).buildPartial();
+          } else {
+            dBAccount_ = value;
+          }
+          onChanged();
+        } else {
+          dBAccountBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.PDB_Base.DBAccount dBAccount = 4;</code>
+       */
+      public Builder clearDBAccount() {
+        if (dBAccountBuilder_ == null) {
+          dBAccount_ = null;
+          onChanged();
+        } else {
+          dBAccount_ = null;
+          dBAccountBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.PDB_Base.DBAccount dBAccount = 4;</code>
+       */
+      public PDB_Base.DBBase.DBAccount.Builder getDBAccountBuilder() {
+        
+        onChanged();
+        return getDBAccountFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.PDB_Base.DBAccount dBAccount = 4;</code>
+       */
+      public PDB_Base.DBBase.DBAccountOrBuilder getDBAccountOrBuilder() {
+        if (dBAccountBuilder_ != null) {
+          return dBAccountBuilder_.getMessageOrBuilder();
+        } else {
+          return dBAccount_ == null ?
+              PDB_Base.DBBase.DBAccount.getDefaultInstance() : dBAccount_;
+        }
+      }
+      /**
+       * <code>.PDB_Base.DBAccount dBAccount = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          PDB_Base.DBBase.DBAccount, PDB_Base.DBBase.DBAccount.Builder, PDB_Base.DBBase.DBAccountOrBuilder> 
+          getDBAccountFieldBuilder() {
+        if (dBAccountBuilder_ == null) {
+          dBAccountBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              PDB_Base.DBBase.DBAccount, PDB_Base.DBBase.DBAccount.Builder, PDB_Base.DBBase.DBAccountOrBuilder>(
+                  getDBAccount(),
+                  getParentForChildren(),
+                  isClean());
+          dBAccount_ = null;
+        }
+        return dBAccountBuilder_;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:PDB_Login.DL_UserCheck)
+    }
+
+    // @@protoc_insertion_point(class_scope:PDB_Login.DL_UserCheck)
+    private static final PDB_Login.DBLogin.DL_UserCheck DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new PDB_Login.DBLogin.DL_UserCheck();
+    }
+
+    public static PDB_Login.DBLogin.DL_UserCheck getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DL_UserCheck>
+        PARSER = new com.google.protobuf.AbstractParser<DL_UserCheck>() {
+      public DL_UserCheck parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new DL_UserCheck(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<DL_UserCheck> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DL_UserCheck> getParserForType() {
+      return PARSER;
+    }
+
+    public PDB_Login.DBLogin.DL_UserCheck getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_PDB_Login_Point_Fb_descriptor;
+    internal_static_PDB_Login_LD_UserCheck_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_PDB_Login_Point_Fb_fieldAccessorTable;
+      internal_static_PDB_Login_LD_UserCheck_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PDB_Login_DL_UserCheck_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PDB_Login_DL_UserCheck_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -404,9 +1710,15 @@ public final class DBLogin {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016DB_Login.proto\022\tPDB_Login\032\021Common_Base" +
-      ".proto\032\rDB_Base.proto\"\n\n\010Point_Fbb\006proto" +
-      "3"
+      "\n\016DB_Login.proto\022\tPDB_Login\032\rDB_Base.pro" +
+      "to\032\022Login_Client.proto\"H\n\014LD_UserCheck\022\r" +
+      "\n\005ConId\030\001 \001(\003\022)\n\010loginMsg\030\002 \001(\0132\027.PLogin" +
+      "_Client.CL_Login\"}\n\014DL_UserCheck\022\013\n\003ret\030" +
+      "\001 \001(\005\022\r\n\005ConId\030\002 \001(\003\022)\n\010loginMsg\030\003 \001(\0132\027" +
+      ".PLogin_Client.CL_Login\022&\n\tdBAccount\030\004 \001" +
+      "(\0132\023.PDB_Base.DBAccount*3\n\007EDL_CMD\022\020\n\014ED" +
+      "L_CMD_None\020\000\022\026\n\021EDL_CMD_UserCheck\020\321\017b\006pr" +
+      "oto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -419,17 +1731,23 @@ public final class DBLogin {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          PCommon_Base.CommonBase.getDescriptor(),
           PDB_Base.DBBase.getDescriptor(),
+          PLogin_Client.LoginClient.getDescriptor(),
         }, assigner);
-    internal_static_PDB_Login_Point_Fb_descriptor =
+    internal_static_PDB_Login_LD_UserCheck_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_PDB_Login_Point_Fb_fieldAccessorTable = new
+    internal_static_PDB_Login_LD_UserCheck_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_PDB_Login_Point_Fb_descriptor,
-        new java.lang.String[] { });
-    PCommon_Base.CommonBase.getDescriptor();
+        internal_static_PDB_Login_LD_UserCheck_descriptor,
+        new java.lang.String[] { "ConId", "LoginMsg", });
+    internal_static_PDB_Login_DL_UserCheck_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_PDB_Login_DL_UserCheck_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PDB_Login_DL_UserCheck_descriptor,
+        new java.lang.String[] { "Ret", "ConId", "LoginMsg", "DBAccount", });
     PDB_Base.DBBase.getDescriptor();
+    PLogin_Client.LoginClient.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

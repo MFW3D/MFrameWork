@@ -3,6 +3,7 @@
 
 import sys
 _b=sys.version_info[0]<3 and (lambda x:x) or (lambda x:x.encode('latin1'))
+from google.protobuf.internal import enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
@@ -13,28 +14,67 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import Common_Base_pb2 as Common__Base__pb2
 import DB_Base_pb2 as DB__Base__pb2
+import Login_Client_pb2 as Login__Client__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='DB_Login.proto',
   package='PDB_Login',
   syntax='proto3',
-  serialized_pb=_b('\n\x0e\x44\x42_Login.proto\x12\tPDB_Login\x1a\x11\x43ommon_Base.proto\x1a\rDB_Base.proto\"\n\n\x08Point_Fbb\x06proto3')
+  serialized_pb=_b('\n\x0e\x44\x42_Login.proto\x12\tPDB_Login\x1a\rDB_Base.proto\x1a\x12Login_Client.proto\"H\n\x0cLD_UserCheck\x12\r\n\x05\x43onId\x18\x01 \x01(\x03\x12)\n\x08loginMsg\x18\x02 \x01(\x0b\x32\x17.PLogin_Client.CL_Login\"}\n\x0c\x44L_UserCheck\x12\x0b\n\x03ret\x18\x01 \x01(\x05\x12\r\n\x05\x43onId\x18\x02 \x01(\x03\x12)\n\x08loginMsg\x18\x03 \x01(\x0b\x32\x17.PLogin_Client.CL_Login\x12&\n\tdBAccount\x18\x04 \x01(\x0b\x32\x13.PDB_Base.DBAccount*3\n\x07\x45\x44L_CMD\x12\x10\n\x0c\x45\x44L_CMD_None\x10\x00\x12\x16\n\x11\x45\x44L_CMD_UserCheck\x10\xd1\x0f\x62\x06proto3')
   ,
-  dependencies=[Common__Base__pb2.DESCRIPTOR,DB__Base__pb2.DESCRIPTOR,])
+  dependencies=[DB__Base__pb2.DESCRIPTOR,Login__Client__pb2.DESCRIPTOR,])
+
+_EDL_CMD = _descriptor.EnumDescriptor(
+  name='EDL_CMD',
+  full_name='PDB_Login.EDL_CMD',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='EDL_CMD_None', index=0, number=0,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='EDL_CMD_UserCheck', index=1, number=2001,
+      options=None,
+      type=None),
+  ],
+  containing_type=None,
+  options=None,
+  serialized_start=265,
+  serialized_end=316,
+)
+_sym_db.RegisterEnumDescriptor(_EDL_CMD)
+
+EDL_CMD = enum_type_wrapper.EnumTypeWrapper(_EDL_CMD)
+EDL_CMD_None = 0
+EDL_CMD_UserCheck = 2001
 
 
 
-
-_POINT_FB = _descriptor.Descriptor(
-  name='Point_Fb',
-  full_name='PDB_Login.Point_Fb',
+_LD_USERCHECK = _descriptor.Descriptor(
+  name='LD_UserCheck',
+  full_name='PDB_Login.LD_UserCheck',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
+    _descriptor.FieldDescriptor(
+      name='ConId', full_name='PDB_Login.LD_UserCheck.ConId', index=0,
+      number=1, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='loginMsg', full_name='PDB_Login.LD_UserCheck.loginMsg', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -47,19 +87,83 @@ _POINT_FB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=63,
-  serialized_end=73,
+  serialized_start=64,
+  serialized_end=136,
 )
 
-DESCRIPTOR.message_types_by_name['Point_Fb'] = _POINT_FB
+
+_DL_USERCHECK = _descriptor.Descriptor(
+  name='DL_UserCheck',
+  full_name='PDB_Login.DL_UserCheck',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='ret', full_name='PDB_Login.DL_UserCheck.ret', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='ConId', full_name='PDB_Login.DL_UserCheck.ConId', index=1,
+      number=2, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='loginMsg', full_name='PDB_Login.DL_UserCheck.loginMsg', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='dBAccount', full_name='PDB_Login.DL_UserCheck.dBAccount', index=3,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=138,
+  serialized_end=263,
+)
+
+_LD_USERCHECK.fields_by_name['loginMsg'].message_type = Login__Client__pb2._CL_LOGIN
+_DL_USERCHECK.fields_by_name['loginMsg'].message_type = Login__Client__pb2._CL_LOGIN
+_DL_USERCHECK.fields_by_name['dBAccount'].message_type = DB__Base__pb2._DBACCOUNT
+DESCRIPTOR.message_types_by_name['LD_UserCheck'] = _LD_USERCHECK
+DESCRIPTOR.message_types_by_name['DL_UserCheck'] = _DL_USERCHECK
+DESCRIPTOR.enum_types_by_name['EDL_CMD'] = _EDL_CMD
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-Point_Fb = _reflection.GeneratedProtocolMessageType('Point_Fb', (_message.Message,), dict(
-  DESCRIPTOR = _POINT_FB,
+LD_UserCheck = _reflection.GeneratedProtocolMessageType('LD_UserCheck', (_message.Message,), dict(
+  DESCRIPTOR = _LD_USERCHECK,
   __module__ = 'DB_Login_pb2'
-  # @@protoc_insertion_point(class_scope:PDB_Login.Point_Fb)
+  # @@protoc_insertion_point(class_scope:PDB_Login.LD_UserCheck)
   ))
-_sym_db.RegisterMessage(Point_Fb)
+_sym_db.RegisterMessage(LD_UserCheck)
+
+DL_UserCheck = _reflection.GeneratedProtocolMessageType('DL_UserCheck', (_message.Message,), dict(
+  DESCRIPTOR = _DL_USERCHECK,
+  __module__ = 'DB_Login_pb2'
+  # @@protoc_insertion_point(class_scope:PDB_Login.DL_UserCheck)
+  ))
+_sym_db.RegisterMessage(DL_UserCheck)
 
 
 # @@protoc_insertion_point(module_scope)

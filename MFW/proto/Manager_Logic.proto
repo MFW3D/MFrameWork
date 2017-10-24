@@ -14,6 +14,37 @@ C：客户端
 
 管理服-逻辑服消息：5001-6000
 */
-message Point_Fb 
+
+enum EMG_CMD
+{
+	EMG_CMD_None=0;
+	EMG_CMD_Register=1;			//游戏服务器在管理服务器注册
+	EMG_CMD_ClientKey=2;			//玩家登录成功分服
+}
+
+message GM_Register 
 {  
- }  
+	string Key=1;				//游戏服务器验证key
+}  
+message MG_Register				//返回结果
+{  
+	int32 ret=1;
+}  
+
+
+message MG_ClientKey
+{  
+  int64 Uid=1;
+  int64 ConId=2;		//网络连接id
+  string key=3;			//玩家获取的登录key
+}  
+
+message GM_ClientKey
+{
+  int32 ret=1;
+  int64 ConId=2;		//网络连接id
+  int64 Uid=3;
+  string key=4;			//玩家获取的登录key
+  string Ip=5;
+  int32 Port=6;
+}

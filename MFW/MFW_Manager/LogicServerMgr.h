@@ -6,6 +6,7 @@
 #include <thread>
 #include "MangerPlayerInfo.h"
 #include "ManagerGlobal.h"
+#include "NNTCPServerMgr.h"
 /*
 用途：逻辑服务器管理类
 	1、保存当前逻辑服务器在线人数
@@ -24,6 +25,8 @@ public:
 	int Port = 0;
 	unsigned long long ServerId = 0;
 	std::map<long long, std::shared_ptr<MangerPlayerInfo>> MangerPlayerInfos;//玩家状态
+	std::shared_ptr<NNTCPLinkNode> session=nullptr;	//对应的网络服务器
+	NNTCPNode* netNode;								//对应的网络连接
 };
 
 

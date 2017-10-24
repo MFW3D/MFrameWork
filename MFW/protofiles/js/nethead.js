@@ -57,11 +57,11 @@ proto.PCommon_Base.NetHead.prototype.toObject = function(opt_includeInstance) {
  */
 proto.PCommon_Base.NetHead.toObject = function(includeInstance, msg) {
   var f, obj = {
-    cmd: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    index: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    count: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    datalength: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    key: jspb.Message.getFieldWithDefault(msg, 5, 0)
+    key: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    cmd: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    index: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    count: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    datalength: jspb.Message.getFieldWithDefault(msg, 5, 0)
   };
 
   if (includeInstance) {
@@ -100,23 +100,23 @@ proto.PCommon_Base.NetHead.deserializeBinaryFromReader = function(msg, reader) {
     switch (field) {
     case 1:
       var value = /** @type {number} */ (reader.readInt32());
-      msg.setCmd(value);
+      msg.setKey(value);
       break;
     case 2:
       var value = /** @type {number} */ (reader.readInt32());
-      msg.setIndex(value);
+      msg.setCmd(value);
       break;
     case 3:
       var value = /** @type {number} */ (reader.readInt32());
-      msg.setCount(value);
+      msg.setIndex(value);
       break;
     case 4:
       var value = /** @type {number} */ (reader.readInt32());
-      msg.setDatalength(value);
+      msg.setCount(value);
       break;
     case 5:
       var value = /** @type {number} */ (reader.readInt32());
-      msg.setKey(value);
+      msg.setDatalength(value);
       break;
     default:
       reader.skipField();
@@ -146,35 +146,35 @@ proto.PCommon_Base.NetHead.prototype.serializeBinary = function() {
  */
 proto.PCommon_Base.NetHead.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getCmd();
+  f = message.getKey();
   if (f !== 0) {
     writer.writeInt32(
       1,
       f
     );
   }
-  f = message.getIndex();
+  f = message.getCmd();
   if (f !== 0) {
     writer.writeInt32(
       2,
       f
     );
   }
-  f = message.getCount();
+  f = message.getIndex();
   if (f !== 0) {
     writer.writeInt32(
       3,
       f
     );
   }
-  f = message.getDatalength();
+  f = message.getCount();
   if (f !== 0) {
     writer.writeInt32(
       4,
       f
     );
   }
-  f = message.getKey();
+  f = message.getDatalength();
   if (f !== 0) {
     writer.writeInt32(
       5,
@@ -185,76 +185,76 @@ proto.PCommon_Base.NetHead.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional int32 Cmd = 1;
+ * optional int32 key = 1;
  * @return {number}
  */
-proto.PCommon_Base.NetHead.prototype.getCmd = function() {
+proto.PCommon_Base.NetHead.prototype.getKey = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /** @param {number} value */
-proto.PCommon_Base.NetHead.prototype.setCmd = function(value) {
+proto.PCommon_Base.NetHead.prototype.setKey = function(value) {
   jspb.Message.setField(this, 1, value);
 };
 
 
 /**
- * optional int32 Index = 2;
+ * optional int32 Cmd = 2;
  * @return {number}
  */
-proto.PCommon_Base.NetHead.prototype.getIndex = function() {
+proto.PCommon_Base.NetHead.prototype.getCmd = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /** @param {number} value */
-proto.PCommon_Base.NetHead.prototype.setIndex = function(value) {
+proto.PCommon_Base.NetHead.prototype.setCmd = function(value) {
   jspb.Message.setField(this, 2, value);
 };
 
 
 /**
- * optional int32 Count = 3;
+ * optional int32 Index = 3;
  * @return {number}
  */
-proto.PCommon_Base.NetHead.prototype.getCount = function() {
+proto.PCommon_Base.NetHead.prototype.getIndex = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
 /** @param {number} value */
-proto.PCommon_Base.NetHead.prototype.setCount = function(value) {
+proto.PCommon_Base.NetHead.prototype.setIndex = function(value) {
   jspb.Message.setField(this, 3, value);
 };
 
 
 /**
- * optional int32 DataLength = 4;
+ * optional int32 Count = 4;
  * @return {number}
  */
-proto.PCommon_Base.NetHead.prototype.getDatalength = function() {
+proto.PCommon_Base.NetHead.prototype.getCount = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
 /** @param {number} value */
-proto.PCommon_Base.NetHead.prototype.setDatalength = function(value) {
+proto.PCommon_Base.NetHead.prototype.setCount = function(value) {
   jspb.Message.setField(this, 4, value);
 };
 
 
 /**
- * optional int32 key = 5;
+ * optional int32 DataLength = 5;
  * @return {number}
  */
-proto.PCommon_Base.NetHead.prototype.getKey = function() {
+proto.PCommon_Base.NetHead.prototype.getDatalength = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
 };
 
 
 /** @param {number} value */
-proto.PCommon_Base.NetHead.prototype.setKey = function(value) {
+proto.PCommon_Base.NetHead.prototype.setDatalength = function(value) {
   jspb.Message.setField(this, 5, value);
 };
 

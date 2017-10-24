@@ -2,6 +2,7 @@
 using Google.Protobuf;
 using PCommonBase;
 using PLoginClient;
+using PManagerClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,8 +18,16 @@ namespace ClientTest
 {
     public partial class Form1 : Form
     {
+        enum ServerState
+        {
+            LoginServer=0,
+            ManagerServer=1,
+            GameServer=2
+        }
+        ServerState state = ServerState.LoginServer;
         //TCPClient tcpClient ;
         TCPHelper net = new TCPHelper();
+
         public Form1()
         {
             InitializeComponent();
@@ -45,26 +54,50 @@ namespace ClientTest
 
         private void Net_OnReceived(System.IO.Stream data)
         {
+            if (state == ServerState.LoginServer)
+            {
+                int headl = data.ReadByte();
+                byte[] head = new byte[headl];
+                data.Read(head, 0, headl);
+                NetHead netHead = NetHead.Parser.ParseFrom(head);
+                byte[] dataArea = new byte[netHead.DataLength];
+                data.Read(dataArea, 0, netHead.DataLength);
 
-            int headl =data.ReadByte();
-            byte[] head = new byte[headl];
-            data.Read(head,0, headl);
-            NetHead netHead = NetHead.Parser.ParseFrom(head);
-            byte[] dataArea = new byte[netHead.DataLength];
-            data.Read(dataArea, 0, netHead.DataLength);
-
-            LC_Login lc_login = LC_Login.Parser.ParseFrom(dataArea);
-            this.BeginInvoke(new LoginOk((LC_Login lgonInfo) => {
-                m_data.Text = "登录成功";
-                m_managerIp.Text = lgonInfo.ManagerIp;
-                m_managerport.Text = lgonInfo.ManagerPort.ToString();
-                m_Managerkey.Text = lgonInfo.Key;
+                LC_Login lc_login = LC_Login.Parser.ParseFrom(dataArea);
+                this.BeginInvoke(new LoginOk((LC_Login lgonInfo) =>
+                {
+                    m_data.Text = "登录成功";
+                    m_managerIp.Text = lgonInfo.ManagerIp;
+                    m_managerport.Text = lgonInfo.ManagerPort.ToString();
+                    m_Managerkey.Text = lgonInfo.Key;
+                    m_uidlabal.Text=lc_login.Uid.ToString();
+                }
+                ), lc_login);
             }
-            ), lc_login);
+            else if (state == ServerState.ManagerServer)
+            {
+                int headl = data.ReadByte();
+                byte[] head = new byte[headl];
+                data.Read(head, 0, headl);
+                NetHead netHead = NetHead.Parser.ParseFrom(head);
+                byte[] dataArea = new byte[netHead.DataLength];
+                data.Read(dataArea, 0, netHead.DataLength);
+
+                MC_Login lc_login = MC_Login.Parser.ParseFrom(dataArea);
+                this.BeginInvoke(new LoginMOk((MC_Login lgonInfo) =>
+                {
+                    m_data.Text = "登录成功";
+                    m_gameserverip.Text = lgonInfo.GameIp;
+                    m_gameserverPort.Text = lgonInfo.GamePort.ToString();
+                    m_gameserverkey.Text = lgonInfo.Key;
+                }
+                ), lc_login);
+            }
 
         }
         delegate void InV(string data);
         delegate void LoginOk(LC_Login data);
+        delegate void LoginMOk(MC_Login data);
         private void Net_OnConnected()
         {
             string data = "connected";
@@ -92,6 +125,39 @@ namespace ClientTest
                 memoryStream.Write(bytes, 0, bytes.Length);
                 net.Send(memoryStream.ToArray());
             }
+        }
+
+        private void m_managerLogion_Click(object sender, EventArgs e)
+        {
+            NetHead netHead = new NetHead();
+            netHead.Cmd = (int)EMC_CMD.Login;
+            netHead.Count = 1;
+            netHead.Index = 1;
+            CM_Login login = new CM_Login();
+            login.Uid = Convert.ToInt64(m_uidlabal.Text);
+            login.Key = m_Managerkey.Text;
+
+            byte[] bytes = login.ToByteArray();
+            netHead.DataLength = bytes.Length;
+            byte[] headByts = netHead.ToByteArray();
+            using (var memoryStream = new MemoryStream())
+            {
+                int headleng = headByts.Length;
+                char headChar = (char)headleng;
+                memoryStream.WriteByte((byte)headChar);
+                memoryStream.Write(headByts, 0, headByts.Length);
+                memoryStream.Write(bytes, 0, bytes.Length);
+                net.Send(memoryStream.ToArray());
+            }
+        }
+
+        private void m_managerServer_Click(object sender, EventArgs e)
+        {
+            net.StopClient();
+            state = ServerState.ManagerServer;
+            net.Connect(m_managerIp.Text, Convert.ToInt32(m_managerport.Text));
+            net.OnConnected += Net_OnConnected;
+            net.OnReceived += Net_OnReceived;
         }
     }
 }

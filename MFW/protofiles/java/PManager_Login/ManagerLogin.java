@@ -14,33 +14,148 @@ public final class ManagerLogin {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface GetCfgOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:PManager_Login.GetCfg)
+  /**
+   * <pre>
+   *协议规则前两个字母代表消息流向
+   *D:数据服务器
+   *M：管理服务器
+   *L：登录服务器
+   *G：逻辑服务器
+   *C：客户端
+   *后面更协议的名字
+   *命令枚举以服务器前客户端后的命名_CMD,一对协议对应一个消息id，推送协议占一个消息id
+   *管理服-登录服消息：4001-5000
+   * </pre>
+   *
+   * Protobuf enum {@code PManager_Login.EMC_CMD}
+   */
+  public enum EMC_CMD
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>EMC_CMD_None = 0;</code>
+     */
+    EMC_CMD_None(0),
+    /**
+     * <code>EMC_CMD_ClientKey = 4001;</code>
+     */
+    EMC_CMD_ClientKey(4001),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>EMC_CMD_None = 0;</code>
+     */
+    public static final int EMC_CMD_None_VALUE = 0;
+    /**
+     * <code>EMC_CMD_ClientKey = 4001;</code>
+     */
+    public static final int EMC_CMD_ClientKey_VALUE = 4001;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static EMC_CMD valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static EMC_CMD forNumber(int value) {
+      switch (value) {
+        case 0: return EMC_CMD_None;
+        case 4001: return EMC_CMD_ClientKey;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<EMC_CMD>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        EMC_CMD> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<EMC_CMD>() {
+            public EMC_CMD findValueByNumber(int number) {
+              return EMC_CMD.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return PManager_Login.ManagerLogin.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final EMC_CMD[] VALUES = values();
+
+    public static EMC_CMD valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private EMC_CMD(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:PManager_Login.EMC_CMD)
+  }
+
+  public interface LM_ClientKeyOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PManager_Login.LM_ClientKey)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string idstring = 1;</code>
+     * <code>int64 Uid = 1;</code>
      */
-    java.lang.String getIdstring();
+    long getUid();
+
     /**
-     * <code>string idstring = 1;</code>
+     * <pre>
+     *网络连接id
+     * </pre>
+     *
+     * <code>int64 ConId = 2;</code>
      */
-    com.google.protobuf.ByteString
-        getIdstringBytes();
+    long getConId();
   }
   /**
-   * Protobuf type {@code PManager_Login.GetCfg}
+   * Protobuf type {@code PManager_Login.LM_ClientKey}
    */
-  public  static final class GetCfg extends
+  public  static final class LM_ClientKey extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:PManager_Login.GetCfg)
-      GetCfgOrBuilder {
-    // Use GetCfg.newBuilder() to construct.
-    private GetCfg(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      // @@protoc_insertion_point(message_implements:PManager_Login.LM_ClientKey)
+      LM_ClientKeyOrBuilder {
+    // Use LM_ClientKey.newBuilder() to construct.
+    private LM_ClientKey(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private GetCfg() {
-      idstring_ = "";
+    private LM_ClientKey() {
+      uid_ = 0L;
+      conId_ = 0L;
     }
 
     @java.lang.Override
@@ -48,7 +163,7 @@ public final class ManagerLogin {
     getUnknownFields() {
       return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
-    private GetCfg(
+    private LM_ClientKey(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -68,10 +183,14 @@ public final class ManagerLogin {
               }
               break;
             }
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 8: {
 
-              idstring_ = s;
+              uid_ = input.readInt64();
+              break;
+            }
+            case 16: {
+
+              conId_ = input.readInt64();
               break;
             }
           }
@@ -87,48 +206,36 @@ public final class ManagerLogin {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return PManager_Login.ManagerLogin.internal_static_PManager_Login_GetCfg_descriptor;
+      return PManager_Login.ManagerLogin.internal_static_PManager_Login_LM_ClientKey_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return PManager_Login.ManagerLogin.internal_static_PManager_Login_GetCfg_fieldAccessorTable
+      return PManager_Login.ManagerLogin.internal_static_PManager_Login_LM_ClientKey_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              PManager_Login.ManagerLogin.GetCfg.class, PManager_Login.ManagerLogin.GetCfg.Builder.class);
+              PManager_Login.ManagerLogin.LM_ClientKey.class, PManager_Login.ManagerLogin.LM_ClientKey.Builder.class);
     }
 
-    public static final int IDSTRING_FIELD_NUMBER = 1;
-    private volatile java.lang.Object idstring_;
+    public static final int UID_FIELD_NUMBER = 1;
+    private long uid_;
     /**
-     * <code>string idstring = 1;</code>
+     * <code>int64 Uid = 1;</code>
      */
-    public java.lang.String getIdstring() {
-      java.lang.Object ref = idstring_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        idstring_ = s;
-        return s;
-      }
+    public long getUid() {
+      return uid_;
     }
+
+    public static final int CONID_FIELD_NUMBER = 2;
+    private long conId_;
     /**
-     * <code>string idstring = 1;</code>
+     * <pre>
+     *网络连接id
+     * </pre>
+     *
+     * <code>int64 ConId = 2;</code>
      */
-    public com.google.protobuf.ByteString
-        getIdstringBytes() {
-      java.lang.Object ref = idstring_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        idstring_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public long getConId() {
+      return conId_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -143,8 +250,11 @@ public final class ManagerLogin {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getIdstringBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, idstring_);
+      if (uid_ != 0L) {
+        output.writeInt64(1, uid_);
+      }
+      if (conId_ != 0L) {
+        output.writeInt64(2, conId_);
       }
     }
 
@@ -153,8 +263,13 @@ public final class ManagerLogin {
       if (size != -1) return size;
 
       size = 0;
-      if (!getIdstringBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, idstring_);
+      if (uid_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, uid_);
+      }
+      if (conId_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, conId_);
       }
       memoizedSize = size;
       return size;
@@ -166,14 +281,16 @@ public final class ManagerLogin {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof PManager_Login.ManagerLogin.GetCfg)) {
+      if (!(obj instanceof PManager_Login.ManagerLogin.LM_ClientKey)) {
         return super.equals(obj);
       }
-      PManager_Login.ManagerLogin.GetCfg other = (PManager_Login.ManagerLogin.GetCfg) obj;
+      PManager_Login.ManagerLogin.LM_ClientKey other = (PManager_Login.ManagerLogin.LM_ClientKey) obj;
 
       boolean result = true;
-      result = result && getIdstring()
-          .equals(other.getIdstring());
+      result = result && (getUid()
+          == other.getUid());
+      result = result && (getConId()
+          == other.getConId());
       return result;
     }
 
@@ -184,76 +301,80 @@ public final class ManagerLogin {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + IDSTRING_FIELD_NUMBER;
-      hash = (53 * hash) + getIdstring().hashCode();
+      hash = (37 * hash) + UID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getUid());
+      hash = (37 * hash) + CONID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getConId());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static PManager_Login.ManagerLogin.GetCfg parseFrom(
+    public static PManager_Login.ManagerLogin.LM_ClientKey parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static PManager_Login.ManagerLogin.GetCfg parseFrom(
+    public static PManager_Login.ManagerLogin.LM_ClientKey parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static PManager_Login.ManagerLogin.GetCfg parseFrom(
+    public static PManager_Login.ManagerLogin.LM_ClientKey parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static PManager_Login.ManagerLogin.GetCfg parseFrom(
+    public static PManager_Login.ManagerLogin.LM_ClientKey parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static PManager_Login.ManagerLogin.GetCfg parseFrom(byte[] data)
+    public static PManager_Login.ManagerLogin.LM_ClientKey parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static PManager_Login.ManagerLogin.GetCfg parseFrom(
+    public static PManager_Login.ManagerLogin.LM_ClientKey parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static PManager_Login.ManagerLogin.GetCfg parseFrom(java.io.InputStream input)
+    public static PManager_Login.ManagerLogin.LM_ClientKey parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static PManager_Login.ManagerLogin.GetCfg parseFrom(
+    public static PManager_Login.ManagerLogin.LM_ClientKey parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static PManager_Login.ManagerLogin.GetCfg parseDelimitedFrom(java.io.InputStream input)
+    public static PManager_Login.ManagerLogin.LM_ClientKey parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static PManager_Login.ManagerLogin.GetCfg parseDelimitedFrom(
+    public static PManager_Login.ManagerLogin.LM_ClientKey parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static PManager_Login.ManagerLogin.GetCfg parseFrom(
+    public static PManager_Login.ManagerLogin.LM_ClientKey parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static PManager_Login.ManagerLogin.GetCfg parseFrom(
+    public static PManager_Login.ManagerLogin.LM_ClientKey parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -265,7 +386,7 @@ public final class ManagerLogin {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(PManager_Login.ManagerLogin.GetCfg prototype) {
+    public static Builder newBuilder(PManager_Login.ManagerLogin.LM_ClientKey prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -280,25 +401,25 @@ public final class ManagerLogin {
       return builder;
     }
     /**
-     * Protobuf type {@code PManager_Login.GetCfg}
+     * Protobuf type {@code PManager_Login.LM_ClientKey}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:PManager_Login.GetCfg)
-        PManager_Login.ManagerLogin.GetCfgOrBuilder {
+        // @@protoc_insertion_point(builder_implements:PManager_Login.LM_ClientKey)
+        PManager_Login.ManagerLogin.LM_ClientKeyOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return PManager_Login.ManagerLogin.internal_static_PManager_Login_GetCfg_descriptor;
+        return PManager_Login.ManagerLogin.internal_static_PManager_Login_LM_ClientKey_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return PManager_Login.ManagerLogin.internal_static_PManager_Login_GetCfg_fieldAccessorTable
+        return PManager_Login.ManagerLogin.internal_static_PManager_Login_LM_ClientKey_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                PManager_Login.ManagerLogin.GetCfg.class, PManager_Login.ManagerLogin.GetCfg.Builder.class);
+                PManager_Login.ManagerLogin.LM_ClientKey.class, PManager_Login.ManagerLogin.LM_ClientKey.Builder.class);
       }
 
-      // Construct using PManager_Login.ManagerLogin.GetCfg.newBuilder()
+      // Construct using PManager_Login.ManagerLogin.LM_ClientKey.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -315,31 +436,34 @@ public final class ManagerLogin {
       }
       public Builder clear() {
         super.clear();
-        idstring_ = "";
+        uid_ = 0L;
+
+        conId_ = 0L;
 
         return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return PManager_Login.ManagerLogin.internal_static_PManager_Login_GetCfg_descriptor;
+        return PManager_Login.ManagerLogin.internal_static_PManager_Login_LM_ClientKey_descriptor;
       }
 
-      public PManager_Login.ManagerLogin.GetCfg getDefaultInstanceForType() {
-        return PManager_Login.ManagerLogin.GetCfg.getDefaultInstance();
+      public PManager_Login.ManagerLogin.LM_ClientKey getDefaultInstanceForType() {
+        return PManager_Login.ManagerLogin.LM_ClientKey.getDefaultInstance();
       }
 
-      public PManager_Login.ManagerLogin.GetCfg build() {
-        PManager_Login.ManagerLogin.GetCfg result = buildPartial();
+      public PManager_Login.ManagerLogin.LM_ClientKey build() {
+        PManager_Login.ManagerLogin.LM_ClientKey result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public PManager_Login.ManagerLogin.GetCfg buildPartial() {
-        PManager_Login.ManagerLogin.GetCfg result = new PManager_Login.ManagerLogin.GetCfg(this);
-        result.idstring_ = idstring_;
+      public PManager_Login.ManagerLogin.LM_ClientKey buildPartial() {
+        PManager_Login.ManagerLogin.LM_ClientKey result = new PManager_Login.ManagerLogin.LM_ClientKey(this);
+        result.uid_ = uid_;
+        result.conId_ = conId_;
         onBuilt();
         return result;
       }
@@ -371,19 +495,21 @@ public final class ManagerLogin {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof PManager_Login.ManagerLogin.GetCfg) {
-          return mergeFrom((PManager_Login.ManagerLogin.GetCfg)other);
+        if (other instanceof PManager_Login.ManagerLogin.LM_ClientKey) {
+          return mergeFrom((PManager_Login.ManagerLogin.LM_ClientKey)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(PManager_Login.ManagerLogin.GetCfg other) {
-        if (other == PManager_Login.ManagerLogin.GetCfg.getDefaultInstance()) return this;
-        if (!other.getIdstring().isEmpty()) {
-          idstring_ = other.idstring_;
-          onChanged();
+      public Builder mergeFrom(PManager_Login.ManagerLogin.LM_ClientKey other) {
+        if (other == PManager_Login.ManagerLogin.LM_ClientKey.getDefaultInstance()) return this;
+        if (other.getUid() != 0L) {
+          setUid(other.getUid());
+        }
+        if (other.getConId() != 0L) {
+          setConId(other.getConId());
         }
         onChanged();
         return this;
@@ -397,11 +523,11 @@ public final class ManagerLogin {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        PManager_Login.ManagerLogin.GetCfg parsedMessage = null;
+        PManager_Login.ManagerLogin.LM_ClientKey parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (PManager_Login.ManagerLogin.GetCfg) e.getUnfinishedMessage();
+          parsedMessage = (PManager_Login.ManagerLogin.LM_ClientKey) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -411,71 +537,66 @@ public final class ManagerLogin {
         return this;
       }
 
-      private java.lang.Object idstring_ = "";
+      private long uid_ ;
       /**
-       * <code>string idstring = 1;</code>
+       * <code>int64 Uid = 1;</code>
        */
-      public java.lang.String getIdstring() {
-        java.lang.Object ref = idstring_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          idstring_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public long getUid() {
+        return uid_;
       }
       /**
-       * <code>string idstring = 1;</code>
+       * <code>int64 Uid = 1;</code>
        */
-      public com.google.protobuf.ByteString
-          getIdstringBytes() {
-        java.lang.Object ref = idstring_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          idstring_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string idstring = 1;</code>
-       */
-      public Builder setIdstring(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        idstring_ = value;
+      public Builder setUid(long value) {
+        
+        uid_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string idstring = 1;</code>
+       * <code>int64 Uid = 1;</code>
        */
-      public Builder clearIdstring() {
+      public Builder clearUid() {
         
-        idstring_ = getDefaultInstance().getIdstring();
+        uid_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long conId_ ;
+      /**
+       * <pre>
+       *网络连接id
+       * </pre>
+       *
+       * <code>int64 ConId = 2;</code>
+       */
+      public long getConId() {
+        return conId_;
+      }
+      /**
+       * <pre>
+       *网络连接id
+       * </pre>
+       *
+       * <code>int64 ConId = 2;</code>
+       */
+      public Builder setConId(long value) {
+        
+        conId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string idstring = 1;</code>
+       * <pre>
+       *网络连接id
+       * </pre>
+       *
+       * <code>int64 ConId = 2;</code>
        */
-      public Builder setIdstringBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+      public Builder clearConId() {
         
-        idstring_ = value;
+        conId_ = 0L;
         onChanged();
         return this;
       }
@@ -490,49 +611,815 @@ public final class ManagerLogin {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:PManager_Login.GetCfg)
+      // @@protoc_insertion_point(builder_scope:PManager_Login.LM_ClientKey)
     }
 
-    // @@protoc_insertion_point(class_scope:PManager_Login.GetCfg)
-    private static final PManager_Login.ManagerLogin.GetCfg DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:PManager_Login.LM_ClientKey)
+    private static final PManager_Login.ManagerLogin.LM_ClientKey DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new PManager_Login.ManagerLogin.GetCfg();
+      DEFAULT_INSTANCE = new PManager_Login.ManagerLogin.LM_ClientKey();
     }
 
-    public static PManager_Login.ManagerLogin.GetCfg getDefaultInstance() {
+    public static PManager_Login.ManagerLogin.LM_ClientKey getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<GetCfg>
-        PARSER = new com.google.protobuf.AbstractParser<GetCfg>() {
-      public GetCfg parsePartialFrom(
+    private static final com.google.protobuf.Parser<LM_ClientKey>
+        PARSER = new com.google.protobuf.AbstractParser<LM_ClientKey>() {
+      public LM_ClientKey parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new GetCfg(input, extensionRegistry);
+          return new LM_ClientKey(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<GetCfg> parser() {
+    public static com.google.protobuf.Parser<LM_ClientKey> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<GetCfg> getParserForType() {
+    public com.google.protobuf.Parser<LM_ClientKey> getParserForType() {
       return PARSER;
     }
 
-    public PManager_Login.ManagerLogin.GetCfg getDefaultInstanceForType() {
+    public PManager_Login.ManagerLogin.LM_ClientKey getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ML_ClientKeyOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PManager_Login.ML_ClientKey)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 ret = 1;</code>
+     */
+    int getRet();
+
+    /**
+     * <pre>
+     *玩家获取的登录key
+     * </pre>
+     *
+     * <code>string key = 2;</code>
+     */
+    java.lang.String getKey();
+    /**
+     * <pre>
+     *玩家获取的登录key
+     * </pre>
+     *
+     * <code>string key = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getKeyBytes();
+
+    /**
+     * <pre>
+     *网络连接id
+     * </pre>
+     *
+     * <code>int64 ConId = 3;</code>
+     */
+    long getConId();
+
+    /**
+     * <code>int64 Uid = 4;</code>
+     */
+    long getUid();
+  }
+  /**
+   * Protobuf type {@code PManager_Login.ML_ClientKey}
+   */
+  public  static final class ML_ClientKey extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:PManager_Login.ML_ClientKey)
+      ML_ClientKeyOrBuilder {
+    // Use ML_ClientKey.newBuilder() to construct.
+    private ML_ClientKey(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ML_ClientKey() {
+      ret_ = 0;
+      key_ = "";
+      conId_ = 0L;
+      uid_ = 0L;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private ML_ClientKey(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+
+              ret_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              key_ = s;
+              break;
+            }
+            case 24: {
+
+              conId_ = input.readInt64();
+              break;
+            }
+            case 32: {
+
+              uid_ = input.readInt64();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return PManager_Login.ManagerLogin.internal_static_PManager_Login_ML_ClientKey_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return PManager_Login.ManagerLogin.internal_static_PManager_Login_ML_ClientKey_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              PManager_Login.ManagerLogin.ML_ClientKey.class, PManager_Login.ManagerLogin.ML_ClientKey.Builder.class);
+    }
+
+    public static final int RET_FIELD_NUMBER = 1;
+    private int ret_;
+    /**
+     * <code>int32 ret = 1;</code>
+     */
+    public int getRet() {
+      return ret_;
+    }
+
+    public static final int KEY_FIELD_NUMBER = 2;
+    private volatile java.lang.Object key_;
+    /**
+     * <pre>
+     *玩家获取的登录key
+     * </pre>
+     *
+     * <code>string key = 2;</code>
+     */
+    public java.lang.String getKey() {
+      java.lang.Object ref = key_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        key_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     *玩家获取的登录key
+     * </pre>
+     *
+     * <code>string key = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getKeyBytes() {
+      java.lang.Object ref = key_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        key_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CONID_FIELD_NUMBER = 3;
+    private long conId_;
+    /**
+     * <pre>
+     *网络连接id
+     * </pre>
+     *
+     * <code>int64 ConId = 3;</code>
+     */
+    public long getConId() {
+      return conId_;
+    }
+
+    public static final int UID_FIELD_NUMBER = 4;
+    private long uid_;
+    /**
+     * <code>int64 Uid = 4;</code>
+     */
+    public long getUid() {
+      return uid_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (ret_ != 0) {
+        output.writeInt32(1, ret_);
+      }
+      if (!getKeyBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, key_);
+      }
+      if (conId_ != 0L) {
+        output.writeInt64(3, conId_);
+      }
+      if (uid_ != 0L) {
+        output.writeInt64(4, uid_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (ret_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, ret_);
+      }
+      if (!getKeyBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, key_);
+      }
+      if (conId_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, conId_);
+      }
+      if (uid_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, uid_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof PManager_Login.ManagerLogin.ML_ClientKey)) {
+        return super.equals(obj);
+      }
+      PManager_Login.ManagerLogin.ML_ClientKey other = (PManager_Login.ManagerLogin.ML_ClientKey) obj;
+
+      boolean result = true;
+      result = result && (getRet()
+          == other.getRet());
+      result = result && getKey()
+          .equals(other.getKey());
+      result = result && (getConId()
+          == other.getConId());
+      result = result && (getUid()
+          == other.getUid());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + RET_FIELD_NUMBER;
+      hash = (53 * hash) + getRet();
+      hash = (37 * hash) + KEY_FIELD_NUMBER;
+      hash = (53 * hash) + getKey().hashCode();
+      hash = (37 * hash) + CONID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getConId());
+      hash = (37 * hash) + UID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getUid());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static PManager_Login.ManagerLogin.ML_ClientKey parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static PManager_Login.ManagerLogin.ML_ClientKey parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static PManager_Login.ManagerLogin.ML_ClientKey parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static PManager_Login.ManagerLogin.ML_ClientKey parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static PManager_Login.ManagerLogin.ML_ClientKey parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static PManager_Login.ManagerLogin.ML_ClientKey parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static PManager_Login.ManagerLogin.ML_ClientKey parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static PManager_Login.ManagerLogin.ML_ClientKey parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static PManager_Login.ManagerLogin.ML_ClientKey parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static PManager_Login.ManagerLogin.ML_ClientKey parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static PManager_Login.ManagerLogin.ML_ClientKey parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static PManager_Login.ManagerLogin.ML_ClientKey parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(PManager_Login.ManagerLogin.ML_ClientKey prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code PManager_Login.ML_ClientKey}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:PManager_Login.ML_ClientKey)
+        PManager_Login.ManagerLogin.ML_ClientKeyOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return PManager_Login.ManagerLogin.internal_static_PManager_Login_ML_ClientKey_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return PManager_Login.ManagerLogin.internal_static_PManager_Login_ML_ClientKey_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                PManager_Login.ManagerLogin.ML_ClientKey.class, PManager_Login.ManagerLogin.ML_ClientKey.Builder.class);
+      }
+
+      // Construct using PManager_Login.ManagerLogin.ML_ClientKey.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        ret_ = 0;
+
+        key_ = "";
+
+        conId_ = 0L;
+
+        uid_ = 0L;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return PManager_Login.ManagerLogin.internal_static_PManager_Login_ML_ClientKey_descriptor;
+      }
+
+      public PManager_Login.ManagerLogin.ML_ClientKey getDefaultInstanceForType() {
+        return PManager_Login.ManagerLogin.ML_ClientKey.getDefaultInstance();
+      }
+
+      public PManager_Login.ManagerLogin.ML_ClientKey build() {
+        PManager_Login.ManagerLogin.ML_ClientKey result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public PManager_Login.ManagerLogin.ML_ClientKey buildPartial() {
+        PManager_Login.ManagerLogin.ML_ClientKey result = new PManager_Login.ManagerLogin.ML_ClientKey(this);
+        result.ret_ = ret_;
+        result.key_ = key_;
+        result.conId_ = conId_;
+        result.uid_ = uid_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof PManager_Login.ManagerLogin.ML_ClientKey) {
+          return mergeFrom((PManager_Login.ManagerLogin.ML_ClientKey)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(PManager_Login.ManagerLogin.ML_ClientKey other) {
+        if (other == PManager_Login.ManagerLogin.ML_ClientKey.getDefaultInstance()) return this;
+        if (other.getRet() != 0) {
+          setRet(other.getRet());
+        }
+        if (!other.getKey().isEmpty()) {
+          key_ = other.key_;
+          onChanged();
+        }
+        if (other.getConId() != 0L) {
+          setConId(other.getConId());
+        }
+        if (other.getUid() != 0L) {
+          setUid(other.getUid());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        PManager_Login.ManagerLogin.ML_ClientKey parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (PManager_Login.ManagerLogin.ML_ClientKey) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int ret_ ;
+      /**
+       * <code>int32 ret = 1;</code>
+       */
+      public int getRet() {
+        return ret_;
+      }
+      /**
+       * <code>int32 ret = 1;</code>
+       */
+      public Builder setRet(int value) {
+        
+        ret_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 ret = 1;</code>
+       */
+      public Builder clearRet() {
+        
+        ret_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object key_ = "";
+      /**
+       * <pre>
+       *玩家获取的登录key
+       * </pre>
+       *
+       * <code>string key = 2;</code>
+       */
+      public java.lang.String getKey() {
+        java.lang.Object ref = key_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          key_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       *玩家获取的登录key
+       * </pre>
+       *
+       * <code>string key = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getKeyBytes() {
+        java.lang.Object ref = key_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          key_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       *玩家获取的登录key
+       * </pre>
+       *
+       * <code>string key = 2;</code>
+       */
+      public Builder setKey(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        key_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *玩家获取的登录key
+       * </pre>
+       *
+       * <code>string key = 2;</code>
+       */
+      public Builder clearKey() {
+        
+        key_ = getDefaultInstance().getKey();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *玩家获取的登录key
+       * </pre>
+       *
+       * <code>string key = 2;</code>
+       */
+      public Builder setKeyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        key_ = value;
+        onChanged();
+        return this;
+      }
+
+      private long conId_ ;
+      /**
+       * <pre>
+       *网络连接id
+       * </pre>
+       *
+       * <code>int64 ConId = 3;</code>
+       */
+      public long getConId() {
+        return conId_;
+      }
+      /**
+       * <pre>
+       *网络连接id
+       * </pre>
+       *
+       * <code>int64 ConId = 3;</code>
+       */
+      public Builder setConId(long value) {
+        
+        conId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *网络连接id
+       * </pre>
+       *
+       * <code>int64 ConId = 3;</code>
+       */
+      public Builder clearConId() {
+        
+        conId_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long uid_ ;
+      /**
+       * <code>int64 Uid = 4;</code>
+       */
+      public long getUid() {
+        return uid_;
+      }
+      /**
+       * <code>int64 Uid = 4;</code>
+       */
+      public Builder setUid(long value) {
+        
+        uid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 Uid = 4;</code>
+       */
+      public Builder clearUid() {
+        
+        uid_ = 0L;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:PManager_Login.ML_ClientKey)
+    }
+
+    // @@protoc_insertion_point(class_scope:PManager_Login.ML_ClientKey)
+    private static final PManager_Login.ManagerLogin.ML_ClientKey DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new PManager_Login.ManagerLogin.ML_ClientKey();
+    }
+
+    public static PManager_Login.ManagerLogin.ML_ClientKey getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ML_ClientKey>
+        PARSER = new com.google.protobuf.AbstractParser<ML_ClientKey>() {
+      public ML_ClientKey parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new ML_ClientKey(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ML_ClientKey> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ML_ClientKey> getParserForType() {
+      return PARSER;
+    }
+
+    public PManager_Login.ManagerLogin.ML_ClientKey getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_PManager_Login_GetCfg_descriptor;
+    internal_static_PManager_Login_LM_ClientKey_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_PManager_Login_GetCfg_fieldAccessorTable;
+      internal_static_PManager_Login_LM_ClientKey_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PManager_Login_ML_ClientKey_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PManager_Login_ML_ClientKey_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -543,8 +1430,12 @@ public final class ManagerLogin {
   static {
     java.lang.String[] descriptorData = {
       "\n\023Manager_Login.proto\022\016PManager_Login\032\021C" +
-      "ommon_Base.proto\032\rDB_Base.proto\"\032\n\006GetCf" +
-      "g\022\020\n\010idstring\030\001 \001(\tb\006proto3"
+      "ommon_Base.proto\032\rDB_Base.proto\"*\n\014LM_Cl" +
+      "ientKey\022\013\n\003Uid\030\001 \001(\003\022\r\n\005ConId\030\002 \001(\003\"D\n\014M" +
+      "L_ClientKey\022\013\n\003ret\030\001 \001(\005\022\013\n\003key\030\002 \001(\t\022\r\n" +
+      "\005ConId\030\003 \001(\003\022\013\n\003Uid\030\004 \001(\003*3\n\007EMC_CMD\022\020\n\014" +
+      "EMC_CMD_None\020\000\022\026\n\021EMC_CMD_ClientKey\020\241\037b\006" +
+      "proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -560,12 +1451,18 @@ public final class ManagerLogin {
           PCommon_Base.CommonBase.getDescriptor(),
           PDB_Base.DBBase.getDescriptor(),
         }, assigner);
-    internal_static_PManager_Login_GetCfg_descriptor =
+    internal_static_PManager_Login_LM_ClientKey_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_PManager_Login_GetCfg_fieldAccessorTable = new
+    internal_static_PManager_Login_LM_ClientKey_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_PManager_Login_GetCfg_descriptor,
-        new java.lang.String[] { "Idstring", });
+        internal_static_PManager_Login_LM_ClientKey_descriptor,
+        new java.lang.String[] { "Uid", "ConId", });
+    internal_static_PManager_Login_ML_ClientKey_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_PManager_Login_ML_ClientKey_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PManager_Login_ML_ClientKey_descriptor,
+        new java.lang.String[] { "Ret", "Key", "ConId", "Uid", });
     PCommon_Base.CommonBase.getDescriptor();
     PDB_Base.DBBase.getDescriptor();
   }

@@ -1,7 +1,7 @@
 #include "Que_LoginHandler.h"
 #include "Manager_Login.pb.h"
 #include "Chess_Global.h"
-#include "Server_KeyManager.h"
+#include "ClientsKeyMgr.h"
 
 void Que_LoginHandler::Init(std::shared_ptr<RedisQueue>& tque, std::shared_ptr<RedisQueue>& fque)
 {
@@ -23,8 +23,8 @@ void Que_LoginHandler::OnClientKey(std::string& data)
 		return;
 	}
 	//制作token并返回
-	std::string token = Server_KeyManager::GetInstance()->GetKey(lm_ClientKey.conid());
-	Server_KeyManager::GetInstance()->SetClientsTokens(lm_ClientKey.uid(), token);
+	std::string token = ClientsKeyMgr::GetInstance()->GetKey(lm_ClientKey.conid());
+	ClientsKeyMgr::GetInstance()->SetClientsTokens(lm_ClientKey.uid(), token);
 
 	PManager_Login::ML_ClientKey ml_ClientKey;
 	ml_ClientKey.set_conid(lm_ClientKey.conid());

@@ -3,6 +3,7 @@
 
 import sys
 _b=sys.version_info[0]<3 and (lambda x:x) or (lambda x:x.encode('latin1'))
+from google.protobuf.internal import enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
@@ -21,20 +22,64 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='Login_Client.proto',
   package='PLogin_Client',
   syntax='proto3',
-  serialized_pb=_b('\n\x12Login_Client.proto\x12\rPLogin_Client\x1a\x11\x43ommon_Base.proto\x1a\rDB_Base.proto\"\n\n\x08Point_Fbb\x06proto3')
+  serialized_pb=_b('\n\x12Login_Client.proto\x12\rPLogin_Client\x1a\x11\x43ommon_Base.proto\x1a\rDB_Base.proto\"$\n\x08\x43L_Login\x12\x0b\n\x03\x61\x63\x63\x18\x01 \x01(\t\x12\x0b\n\x03pwd\x18\x02 \x01(\t\"Y\n\x08LC_Login\x12\x0b\n\x03ret\x18\x01 \x01(\x05\x12\x11\n\tManagerIp\x18\x02 \x01(\t\x12\x13\n\x0bManagerPort\x18\x03 \x01(\x05\x12\x0b\n\x03Uid\x18\x04 \x01(\x03\x12\x0b\n\x03key\x18\x05 \x01(\t*D\n\x07\x45LC_CMD\x12\x10\n\x0c\x45LC_CMD_None\x10\x00\x12\x11\n\rELC_CMD_Login\x10\x01\x12\x14\n\x10\x45LC_CMD_Register\x10\x02\x62\x06proto3')
   ,
   dependencies=[Common__Base__pb2.DESCRIPTOR,DB__Base__pb2.DESCRIPTOR,])
 
+_ELC_CMD = _descriptor.EnumDescriptor(
+  name='ELC_CMD',
+  full_name='PLogin_Client.ELC_CMD',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='ELC_CMD_None', index=0, number=0,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='ELC_CMD_Login', index=1, number=1,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='ELC_CMD_Register', index=2, number=2,
+      options=None,
+      type=None),
+  ],
+  containing_type=None,
+  options=None,
+  serialized_start=200,
+  serialized_end=268,
+)
+_sym_db.RegisterEnumDescriptor(_ELC_CMD)
+
+ELC_CMD = enum_type_wrapper.EnumTypeWrapper(_ELC_CMD)
+ELC_CMD_None = 0
+ELC_CMD_Login = 1
+ELC_CMD_Register = 2
 
 
 
-_POINT_FB = _descriptor.Descriptor(
-  name='Point_Fb',
-  full_name='PLogin_Client.Point_Fb',
+_CL_LOGIN = _descriptor.Descriptor(
+  name='CL_Login',
+  full_name='PLogin_Client.CL_Login',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
+    _descriptor.FieldDescriptor(
+      name='acc', full_name='PLogin_Client.CL_Login.acc', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='pwd', full_name='PLogin_Client.CL_Login.pwd', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -48,18 +93,86 @@ _POINT_FB = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=71,
-  serialized_end=81,
+  serialized_end=107,
 )
 
-DESCRIPTOR.message_types_by_name['Point_Fb'] = _POINT_FB
+
+_LC_LOGIN = _descriptor.Descriptor(
+  name='LC_Login',
+  full_name='PLogin_Client.LC_Login',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='ret', full_name='PLogin_Client.LC_Login.ret', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='ManagerIp', full_name='PLogin_Client.LC_Login.ManagerIp', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='ManagerPort', full_name='PLogin_Client.LC_Login.ManagerPort', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='Uid', full_name='PLogin_Client.LC_Login.Uid', index=3,
+      number=4, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='key', full_name='PLogin_Client.LC_Login.key', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=109,
+  serialized_end=198,
+)
+
+DESCRIPTOR.message_types_by_name['CL_Login'] = _CL_LOGIN
+DESCRIPTOR.message_types_by_name['LC_Login'] = _LC_LOGIN
+DESCRIPTOR.enum_types_by_name['ELC_CMD'] = _ELC_CMD
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-Point_Fb = _reflection.GeneratedProtocolMessageType('Point_Fb', (_message.Message,), dict(
-  DESCRIPTOR = _POINT_FB,
+CL_Login = _reflection.GeneratedProtocolMessageType('CL_Login', (_message.Message,), dict(
+  DESCRIPTOR = _CL_LOGIN,
   __module__ = 'Login_Client_pb2'
-  # @@protoc_insertion_point(class_scope:PLogin_Client.Point_Fb)
+  # @@protoc_insertion_point(class_scope:PLogin_Client.CL_Login)
   ))
-_sym_db.RegisterMessage(Point_Fb)
+_sym_db.RegisterMessage(CL_Login)
+
+LC_Login = _reflection.GeneratedProtocolMessageType('LC_Login', (_message.Message,), dict(
+  DESCRIPTOR = _LC_LOGIN,
+  __module__ = 'Login_Client_pb2'
+  # @@protoc_insertion_point(class_scope:PLogin_Client.LC_Login)
+  ))
+_sym_db.RegisterMessage(LC_Login)
 
 
 # @@protoc_insertion_point(module_scope)

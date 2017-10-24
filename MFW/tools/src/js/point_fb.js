@@ -5,7 +5,7 @@
  */
 // GENERATED CODE -- DO NOT EDIT!
 
-goog.provide('proto.PManager_Logic.Point_Fb');
+goog.provide('proto.PManager_Client.Point_Fb');
 
 goog.require('jspb.Message');
 goog.require('jspb.BinaryReader');
@@ -22,12 +22,12 @@ goog.require('jspb.BinaryWriter');
  * @extends {jspb.Message}
  * @constructor
  */
-proto.PManager_Logic.Point_Fb = function(opt_data) {
+proto.PManager_Client.Point_Fb = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.PManager_Logic.Point_Fb, jspb.Message);
+goog.inherits(proto.PManager_Client.Point_Fb, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.PManager_Logic.Point_Fb.displayName = 'proto.PManager_Logic.Point_Fb';
+  proto.PManager_Client.Point_Fb.displayName = 'proto.PManager_Client.Point_Fb';
 }
 
 
@@ -42,8 +42,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.PManager_Logic.Point_Fb.prototype.toObject = function(opt_includeInstance) {
-  return proto.PManager_Logic.Point_Fb.toObject(opt_includeInstance, this);
+proto.PManager_Client.Point_Fb.prototype.toObject = function(opt_includeInstance) {
+  return proto.PManager_Client.Point_Fb.toObject(opt_includeInstance, this);
 };
 
 
@@ -52,10 +52,10 @@ proto.PManager_Logic.Point_Fb.prototype.toObject = function(opt_includeInstance)
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.PManager_Logic.Point_Fb} msg The msg instance to transform.
+ * @param {!proto.PManager_Client.Point_Fb} msg The msg instance to transform.
  * @return {!Object}
  */
-proto.PManager_Logic.Point_Fb.toObject = function(includeInstance, msg) {
+proto.PManager_Client.Point_Fb.toObject = function(includeInstance, msg) {
   var f, obj = {
 
   };
@@ -71,23 +71,23 @@ proto.PManager_Logic.Point_Fb.toObject = function(includeInstance, msg) {
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.PManager_Logic.Point_Fb}
+ * @return {!proto.PManager_Client.Point_Fb}
  */
-proto.PManager_Logic.Point_Fb.deserializeBinary = function(bytes) {
+proto.PManager_Client.Point_Fb.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.PManager_Logic.Point_Fb;
-  return proto.PManager_Logic.Point_Fb.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.PManager_Client.Point_Fb;
+  return proto.PManager_Client.Point_Fb.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.PManager_Logic.Point_Fb} msg The message object to deserialize into.
+ * @param {!proto.PManager_Client.Point_Fb} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.PManager_Logic.Point_Fb}
+ * @return {!proto.PManager_Client.Point_Fb}
  */
-proto.PManager_Logic.Point_Fb.deserializeBinaryFromReader = function(msg, reader) {
+proto.PManager_Client.Point_Fb.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -107,9 +107,9 @@ proto.PManager_Logic.Point_Fb.deserializeBinaryFromReader = function(msg, reader
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.PManager_Logic.Point_Fb.prototype.serializeBinary = function() {
+proto.PManager_Client.Point_Fb.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.PManager_Logic.Point_Fb.serializeBinaryToWriter(this, writer);
+  proto.PManager_Client.Point_Fb.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -117,10 +117,10 @@ proto.PManager_Logic.Point_Fb.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.PManager_Logic.Point_Fb} message
+ * @param {!proto.PManager_Client.Point_Fb} message
  * @param {!jspb.BinaryWriter} writer
  */
-proto.PManager_Logic.Point_Fb.serializeBinaryToWriter = function(message, writer) {
+proto.PManager_Client.Point_Fb.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
 };
 
