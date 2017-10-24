@@ -151,6 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="LogicServerMgr.cpp" />
+    <ClCompile Include="MangerPlayerInfo.cpp" />
     <ClCompile Include="Server_KeyManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="maintest.cpp" />
@@ -164,6 +166,9 @@
     <ClCompile Include="ServerCenterMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="LogicServerMgr.h" />
+    <ClInclude Include="ManagerGlobal.h" />
+    <ClInclude Include="MangerPlayerInfo.h" />
     <ClInclude Include="Server_KeyManager.h" />
     <ClInclude Include="Net_ClientHandler.h" />
     <ClInclude Include="Net_DBHandler.h" />

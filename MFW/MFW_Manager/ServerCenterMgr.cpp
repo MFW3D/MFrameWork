@@ -7,7 +7,7 @@
 #include "Net_ClientHandler.h"
 #include "ServerGlobal.h"
 #include "log4z.h"
-
+#include "ManagerGlobal.h"
 #if _WIN32
 #else
 #include <unistd.h>
@@ -36,6 +36,10 @@ void ServerCenterMgr::Init()
 	Que_LoginHandler::GetInstance()->Init(mRedisQueueTLogin,mRedisQueueFLogin);
 	//Que_LogicHandler::GetInstance()->Init(mRedisQueueTLogic,mRedisQueueFLogic);
 	Que_DBHandler::GetInstance()->Init(mRedisQueueTDB,mRedisQueueFDB);
+
+	//初始化操作
+	ManagerGlobal::GetInstance()->mMainTimerMgr.Run();
+	LogicServerMgr::GetInstance()->Init();
 }
 void ServerCenterMgr::Start()
 {
@@ -116,14 +120,16 @@ void ServerCenterMgr::Start()
 	}));
 	//启动定时管理器
 	LOGI("启动网络完成");
-	mMainTimerMgr.Run();
 	while (true)
 	{
-		mMainTimerMgr.Process();
+		ManagerGlobal::GetInstance()->mMainTimerMgr.Process();
 		//系统轮询处理
 		Que_LoginHandler::GetInstance()->Process();
 		//Que_LogicHandler::GetInstance()->Process();
 		Que_DBHandler::GetInstance()->Process();
+
+		//大循环执行
+		LogicServerMgr::GetInstance()->Process();
 #if _WIN32
 		Sleep(1);
 #else

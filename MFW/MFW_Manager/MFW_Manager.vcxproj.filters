@@ -48,6 +48,12 @@
     <ClCompile Include="Server_KeyManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="LogicServerMgr.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MangerPlayerInfo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ServerCenterMgr.h">
@@ -75,6 +81,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Server_KeyManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LogicServerMgr.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MangerPlayerInfo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ManagerGlobal.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

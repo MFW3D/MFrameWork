@@ -6,6 +6,8 @@
 #include "Que_DBHandler.h"
 #include "Que_LogicHandler.h"
 #include "Que_LoginHandler.h"
+#include "LogicServerMgr.h"
+
 /*
 管理服务器的服务器中心类
 用于：初始化系统配置、启动系统网络、等待服务器连接、为客户端分配服务器、
@@ -27,7 +29,6 @@ public:
 	std::shared_ptr<RedisQueue> mRedisQueueFLogic;
 	std::shared_ptr<RedisQueue> mRedisQueueTLogic;
 
-	TimerMgr mMainTimerMgr;
 
 	void Init();
 	void Start();
