@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "MFW3D_SceneBase.h"
+#include "3D/Render/MFW3D_SceneBase.h"
 #include "MaterialControls.h"
 #include "OgreBillboard.h"
 #define TERRAIN_PAGE_MIN_X 0

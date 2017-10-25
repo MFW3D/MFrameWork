@@ -7,7 +7,7 @@
 
 #include "Scene_Level2.h"
 #include "Scene_Level1.h"
-#include "MFW3D_SceneMgr.h"
+#include "3D/Render/MFW3D_SceneMgr.h"
 // CChildView window
 
 class CChildView : public CWnd

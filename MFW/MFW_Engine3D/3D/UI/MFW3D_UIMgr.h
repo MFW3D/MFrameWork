@@ -10,7 +10,7 @@
 #include "OgreRoot.h"
 #include "OgreCamera.h"
 #include "OgreRenderWindow.h"
-#include "MFW3D_Input.h"
+#include "../../Input/MFW3D_Input.h"
 #include <iomanip>
 namespace MFW3D
 {

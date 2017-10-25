@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Data">
       <UniqueIdentifier>{6106a1ea-e110-4b1f-9d9b-a165421a7b79}</UniqueIdentifier>
     </Filter>
@@ -14,20 +10,8 @@
     <Filter Include="Physics">
       <UniqueIdentifier>{4cbc962e-839c-44a6-96b5-d75d85ec1510}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Tools">
-      <UniqueIdentifier>{9bf03924-5baa-4be6-a31e-acadf457db6d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Render">
-      <UniqueIdentifier>{101f9082-73c9-4b72-b537-9ec4f2389d54}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Network">
       <UniqueIdentifier>{71e238e0-34a7-477b-8da8-8a130a236c4e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="VR">
-      <UniqueIdentifier>{3da3f857-552c-4f39-864b-585457795dc4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UI">
-      <UniqueIdentifier>{65cee268-d21d-42ba-88f7-ac6364416b48}</UniqueIdentifier>
     </Filter>
     <Filter Include="3D">
       <UniqueIdentifier>{5b70f63b-ae8a-470c-ab0a-0e0071507858}</UniqueIdentifier>
@@ -37,9 +21,6 @@
     </Filter>
     <Filter Include="Scripts">
       <UniqueIdentifier>{c02fa07a-71eb-43e0-a3e8-09e5c473144f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Shader">
-      <UniqueIdentifier>{3cabf737-499c-4d4d-866f-44d497e44008}</UniqueIdentifier>
     </Filter>
     <Filter Include="3D\Animation">
       <UniqueIdentifier>{a42e8a7a-5c9b-4edb-901e-6d5867b43fea}</UniqueIdentifier>
@@ -59,129 +40,162 @@
     <Filter Include="3D\Models">
       <UniqueIdentifier>{007dd571-896c-409f-81c7-467086dddad0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Audio">
+    <Filter Include="3D\UI">
+      <UniqueIdentifier>{65cee268-d21d-42ba-88f7-ac6364416b48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3D\Audio">
       <UniqueIdentifier>{ed3737d1-16fb-4608-bbc1-d8c0f73e8542}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Geo">
+    <Filter Include="3D\VR">
+      <UniqueIdentifier>{3da3f857-552c-4f39-864b-585457795dc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3D\Tools">
+      <UniqueIdentifier>{9bf03924-5baa-4be6-a31e-acadf457db6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3D\Shader">
+      <UniqueIdentifier>{3cabf737-499c-4d4d-866f-44d497e44008}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Geo">
       <UniqueIdentifier>{8a7538f2-b214-4ce7-9049-f06fce3f5005}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\DB">
+      <UniqueIdentifier>{c51641f5-cb7f-464d-b2fa-e169968beef2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Layer">
+      <UniqueIdentifier>{ed7ddb18-b930-4348-a8b6-3f153d232b62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Scene">
+      <UniqueIdentifier>{86da0460-29aa-46ec-ba95-dde03e519d7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\World">
+      <UniqueIdentifier>{6ba7a06b-3b80-4685-9775-3abc2dd10798}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2D\UI">
+      <UniqueIdentifier>{46e85589-db40-4b35-84ef-b77e2a285bf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3D\Terrain">
+      <UniqueIdentifier>{29d25716-bab9-481c-974e-e0bcaa028f03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3D\Render">
+      <UniqueIdentifier>{5209b0c4-346a-4f56-a3dc-b2c99a2df8ac}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MFW3D_ViveVR.cpp">
-      <Filter>VR</Filter>
+    <ClCompile Include="Data\Geo\MFWGeo_Datas.cpp">
+      <Filter>Data\Geo</Filter>
     </ClCompile>
-    <ClCompile Include="MFW3D_UIMgr.cpp">
-      <Filter>UI</Filter>
+    <ClCompile Include="Data\Geo\MFWGeo_Earth.cpp">
+      <Filter>Data\Geo</Filter>
     </ClCompile>
-    <ClCompile Include="MFW3D_MgrContext.cpp">
-      <Filter>3D</Filter>
+    <ClCompile Include="Data\Geo\MFWGeo_Moon.cpp">
+      <Filter>Data\Geo</Filter>
     </ClCompile>
-    <ClCompile Include="MFW3D_AdRender.cpp">
-      <Filter>3D</Filter>
+    <ClCompile Include="Data\Geo\MFWGeo_Planet.cpp">
+      <Filter>Data\Geo</Filter>
     </ClCompile>
-    <ClCompile Include="DotSceneLoader.cpp">
-      <Filter>3D</Filter>
+    <ClCompile Include="Data\Geo\MFWGeo_ProjTrans.cpp">
+      <Filter>Data\Geo</Filter>
     </ClCompile>
-    <ClCompile Include="MFW3D_Base.cpp">
-      <Filter>3D</Filter>
+    <ClCompile Include="3D\UI\MFW3D_UIMgr.cpp">
+      <Filter>3D\UI</Filter>
     </ClCompile>
-    <ClCompile Include="MFW3D_SceneBase.cpp">
-      <Filter>3D</Filter>
+    <ClCompile Include="3D\Tools\MFW3D_CameraController.cpp">
+      <Filter>3D\Tools</Filter>
     </ClCompile>
-    <ClCompile Include="MFW3D_SceneMgr.cpp">
-      <Filter>3D</Filter>
+    <ClCompile Include="Data\Scene\DotSceneLoader.cpp">
+      <Filter>Data\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="MFW3D_SGTRListener.cpp">
-      <Filter>3D</Filter>
-    </ClCompile>
-    <ClCompile Include="MFW3D_InputMgr.cpp">
+    <ClCompile Include="Input\MFW3D_InputMgr.cpp">
       <Filter>Input</Filter>
     </ClCompile>
-    <ClCompile Include="MFW3D_CameraController.cpp">
-      <Filter>Tools</Filter>
+    <ClCompile Include="3D\VR\MFW3D_ViveVR.cpp">
+      <Filter>3D\VR</Filter>
     </ClCompile>
-    <ClCompile Include="MFW3D_NetHandler.cpp">
+    <ClCompile Include="Network\MFW3D_NetHandler.cpp">
       <Filter>Network</Filter>
     </ClCompile>
-    <ClCompile Include="MFW3D_NetMgr.cpp">
+    <ClCompile Include="Network\MFW3D_NetMgr.cpp">
       <Filter>Network</Filter>
     </ClCompile>
-    <ClCompile Include="MFWGeo_ProjTrans.cpp">
-      <Filter>Geo</Filter>
+    <ClCompile Include="3D\Render\MFW3D_AdRender.cpp">
+      <Filter>3D\Render</Filter>
     </ClCompile>
-    <ClCompile Include="MFWGeo_Planet.cpp">
-      <Filter>Geo</Filter>
+    <ClCompile Include="3D\Render\MFW3D_Base.cpp">
+      <Filter>3D\Render</Filter>
     </ClCompile>
-    <ClCompile Include="MFWGeo_Earth.cpp">
-      <Filter>Geo</Filter>
+    <ClCompile Include="3D\Render\MFW3D_MgrContext.cpp">
+      <Filter>3D\Render</Filter>
     </ClCompile>
-    <ClCompile Include="MFWGeo_Moon.cpp">
-      <Filter>Geo</Filter>
+    <ClCompile Include="3D\Render\MFW3D_SceneBase.cpp">
+      <Filter>3D\Render</Filter>
     </ClCompile>
-    <ClCompile Include="MFWGeo_Datas.cpp">
-      <Filter>Geo</Filter>
+    <ClCompile Include="3D\Render\MFW3D_SceneMgr.cpp">
+      <Filter>3D\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="3D\Render\MFW3D_SGTRListener.cpp">
+      <Filter>3D\Render</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MFW3D_ViveVR.h">
-      <Filter>VR</Filter>
+    <ClInclude Include="Data\Geo\MFWGeo_Datas.h">
+      <Filter>Data\Geo</Filter>
     </ClInclude>
-    <ClInclude Include="MFW3D_UIMgr.h">
-      <Filter>UI</Filter>
+    <ClInclude Include="Data\Geo\MFWGeo_Earth.h">
+      <Filter>Data\Geo</Filter>
     </ClInclude>
-    <ClInclude Include="DotSceneLoader.h">
-      <Filter>3D</Filter>
+    <ClInclude Include="Data\Geo\MFWGeo_Moon.h">
+      <Filter>Data\Geo</Filter>
     </ClInclude>
-    <ClInclude Include="MFW3D_AdRender.h">
-      <Filter>3D</Filter>
+    <ClInclude Include="Data\Geo\MFWGeo_Planet.h">
+      <Filter>Data\Geo</Filter>
     </ClInclude>
-    <ClInclude Include="MFW3D_Base.h">
-      <Filter>3D</Filter>
+    <ClInclude Include="Data\Geo\MFWGeo_ProjTrans.h">
+      <Filter>Data\Geo</Filter>
     </ClInclude>
-    <ClInclude Include="MFW3D_MgrContext.h">
-      <Filter>3D</Filter>
+    <ClInclude Include="3D\UI\MFW3D_UIMgr.h">
+      <Filter>3D\UI</Filter>
     </ClInclude>
-    <ClInclude Include="MFW3D_SceneBase.h">
-      <Filter>3D</Filter>
+    <ClInclude Include="3D\Tools\MFW3D_CameraController.h">
+      <Filter>3D\Tools</Filter>
     </ClInclude>
-    <ClInclude Include="MFW3D_SceneMgr.h">
-      <Filter>3D</Filter>
+    <ClInclude Include="Data\Scene\DotSceneLoader.h">
+      <Filter>Data\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="MFW3D_SGTRListener.h">
-      <Filter>3D</Filter>
+    <ClInclude Include="Data\Scene\rapidxml.hpp">
+      <Filter>Data\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="rapidxml.hpp">
-      <Filter>3D</Filter>
-    </ClInclude>
-    <ClInclude Include="MFW3D_InputMgr.h">
+    <ClInclude Include="Input\MFW3D_Input.h">
       <Filter>Input</Filter>
     </ClInclude>
-    <ClInclude Include="MFW3D_Input.h">
+    <ClInclude Include="Input\MFW3D_InputMgr.h">
       <Filter>Input</Filter>
     </ClInclude>
-    <ClInclude Include="MFW3D_CameraController.h">
-      <Filter>Tools</Filter>
+    <ClInclude Include="3D\VR\MFW3D_ViveVR.h">
+      <Filter>3D\VR</Filter>
     </ClInclude>
-    <ClInclude Include="MFW3D_NetHandler.h">
+    <ClInclude Include="Network\MFW3D_NetHandler.h">
       <Filter>Network</Filter>
     </ClInclude>
-    <ClInclude Include="MFW3D_NetMgr.h">
+    <ClInclude Include="Network\MFW3D_NetMgr.h">
       <Filter>Network</Filter>
     </ClInclude>
-    <ClInclude Include="MFWGeo_ProjTrans.h">
-      <Filter>Geo</Filter>
+    <ClInclude Include="3D\Render\MFW3D_AdRender.h">
+      <Filter>3D\Render</Filter>
     </ClInclude>
-    <ClInclude Include="MFWGeo_Planet.h">
-      <Filter>Geo</Filter>
+    <ClInclude Include="3D\Render\MFW3D_Base.h">
+      <Filter>3D\Render</Filter>
     </ClInclude>
-    <ClInclude Include="MFWGeo_Earth.h">
-      <Filter>Geo</Filter>
+    <ClInclude Include="3D\Render\MFW3D_MgrContext.h">
+      <Filter>3D\Render</Filter>
     </ClInclude>
-    <ClInclude Include="MFWGeo_Moon.h">
-      <Filter>Geo</Filter>
+    <ClInclude Include="3D\Render\MFW3D_SceneBase.h">
+      <Filter>3D\Render</Filter>
     </ClInclude>
-    <ClInclude Include="MFWGeo_Datas.h">
-      <Filter>Geo</Filter>
+    <ClInclude Include="3D\Render\MFW3D_SceneMgr.h">
+      <Filter>3D\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="3D\Render\MFW3D_SGTRListener.h">
+      <Filter>3D\Render</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

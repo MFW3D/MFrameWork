@@ -1,5 +1,5 @@
 ﻿#include "MFW3D_SceneMgr.h"
-#include "MFW3D_InputMgr.h"
+#include "../../Input/MFW3D_InputMgr.h"
 
 namespace MFW3D
 {

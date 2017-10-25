@@ -1,5 +1,5 @@
 #pragma once
-#include "MFW3D_SceneBase.h"
+#include "3D/Render/MFW3D_SceneBase.h"
 
 
 class Scene_Level1 :public MFW3D::MFW3D_SceneBase

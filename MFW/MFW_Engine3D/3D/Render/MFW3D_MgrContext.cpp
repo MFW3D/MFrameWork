@@ -8,7 +8,7 @@
 #include "OgreOverlaySystem.h"
 #include "OgreDataStream.h"
 #include "OgreConfigDialog.h"
-#include "MFW3D_InputMgr.h"
+#include "../../Input/MFW3D_InputMgr.h"
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_ANDROID
 #include "OgreArchiveManager.h"

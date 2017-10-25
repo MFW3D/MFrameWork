@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "MFW3D_SceneBase.h"
+#include "3D/Render/MFW3D_SceneBase.h"
 #include "Hydrax.h"
 #include "Perlin.h"
 #include "ProjectedGrid.h"

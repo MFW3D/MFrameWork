@@ -8,7 +8,7 @@
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
-#include "MFW3D_InputMgr.h"
+#include "Input/MFW3D_InputMgr.h"
 
 // CChildView
 

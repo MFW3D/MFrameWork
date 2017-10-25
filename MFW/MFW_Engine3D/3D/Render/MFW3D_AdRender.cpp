@@ -1,7 +1,7 @@
 ﻿#include "MFW3D_AdRender.h"
 #include <OgreTextureManager.h>
 #include <OgreMaterialManager.h>
-#include "MFW3D_UIMgr.h"
+#include "../UI/MFW3D_UIMgr.h"
 
 namespace MFW3D {
 	MFW3D_AdRender::MFW3D_AdRender(MFW3D_UIMgr* trayMgr, Ogre::Camera* cam)

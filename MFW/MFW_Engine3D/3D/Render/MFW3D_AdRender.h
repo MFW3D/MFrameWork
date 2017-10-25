@@ -1,9 +1,9 @@
 ﻿#pragma once
-#include "MFW3D_Input.h"
+#include "../../Input/MFW3D_Input.h"
 #ifdef OGRE_BUILD_COMPONENT_RTSHADERSYSTEM
 #include <OgreRTShaderSystem.h>
 #endif
-#include "MFWGeo_ProjTrans.h"
+#include "../../Data/Geo/MFWGeo_ProjTrans.h"
 
 namespace MFW3D {
 class MFW3D_UIMgr;

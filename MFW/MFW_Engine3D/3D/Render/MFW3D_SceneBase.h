@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "MFW3D_Base.h"
-#include "MFW3D_UIMgr.h"
-#include "MFW3D_CameraController.h"
+#include "../UI/MFW3D_UIMgr.h"
+#include "../tools/MFW3D_CameraController.h"
 #include "MFW3D_AdRender.h"
 #include "Ogre.h"
 /*
