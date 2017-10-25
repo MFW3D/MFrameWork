@@ -85,6 +85,15 @@
     <Filter Include="Data\Scene\Loader">
       <UniqueIdentifier>{a2d67480-1d0c-4515-81d8-e30762eff171}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Analysis">
+      <UniqueIdentifier>{2d9ed65b-e28a-4513-95c0-b6c822ab7208}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Analysis\2D">
+      <UniqueIdentifier>{964f66e1-06e9-455c-a122-b6cdbef1d42d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Analysis\3D">
+      <UniqueIdentifier>{eb8a0cd6-c9f6-453f-bfc0-365c31cddb1c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Data\Geo\MFWGeo_Datas.cpp">
