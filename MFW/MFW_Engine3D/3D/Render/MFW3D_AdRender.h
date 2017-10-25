@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../../Input/MFW3D_Input.h"
+#include "../Input/MFW3D_Input.h"
 #ifdef OGRE_BUILD_COMPONENT_RTSHADERSYSTEM
 #include <OgreRTShaderSystem.h>
 #endif

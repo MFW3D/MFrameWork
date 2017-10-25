@@ -4,7 +4,7 @@
 #include "OgreCamera.h"
 #include "OgreSceneNode.h"
 #include "OgreFrameListener.h"
-#include "../../Input/MFW3D_Input.h"
+#include "../Input/MFW3D_Input.h"
 /*
 相机控制
 */

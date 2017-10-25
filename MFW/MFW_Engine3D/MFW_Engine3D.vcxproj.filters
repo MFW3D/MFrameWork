@@ -16,9 +16,6 @@
     <Filter Include="3D">
       <UniqueIdentifier>{5b70f63b-ae8a-470c-ab0a-0e0071507858}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Input">
-      <UniqueIdentifier>{cc77d09f-398d-4847-801c-0a427c6d722f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scripts">
       <UniqueIdentifier>{c02fa07a-71eb-43e0-a3e8-09e5c473144f}</UniqueIdentifier>
     </Filter>
@@ -55,29 +52,38 @@
     <Filter Include="3D\Shader">
       <UniqueIdentifier>{3cabf737-499c-4d4d-866f-44d497e44008}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data\Geo">
-      <UniqueIdentifier>{8a7538f2-b214-4ce7-9049-f06fce3f5005}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Data\DB">
       <UniqueIdentifier>{c51641f5-cb7f-464d-b2fa-e169968beef2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data\Layer">
-      <UniqueIdentifier>{ed7ddb18-b930-4348-a8b6-3f153d232b62}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Data\Scene">
       <UniqueIdentifier>{86da0460-29aa-46ec-ba95-dde03e519d7d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Data\World">
-      <UniqueIdentifier>{6ba7a06b-3b80-4685-9775-3abc2dd10798}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="2D\UI">
-      <UniqueIdentifier>{46e85589-db40-4b35-84ef-b77e2a285bf6}</UniqueIdentifier>
     </Filter>
     <Filter Include="3D\Terrain">
       <UniqueIdentifier>{29d25716-bab9-481c-974e-e0bcaa028f03}</UniqueIdentifier>
     </Filter>
     <Filter Include="3D\Render">
       <UniqueIdentifier>{5209b0c4-346a-4f56-a3dc-b2c99a2df8ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3D\Base">
+      <UniqueIdentifier>{653b26f5-a703-45cb-b947-e37dbe9e9528}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3D\Input">
+      <UniqueIdentifier>{cc77d09f-398d-4847-801c-0a427c6d722f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2D\Base">
+      <UniqueIdentifier>{46e85589-db40-4b35-84ef-b77e2a285bf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Geo">
+      <UniqueIdentifier>{8a7538f2-b214-4ce7-9049-f06fce3f5005}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Scene\Layer">
+      <UniqueIdentifier>{ed7ddb18-b930-4348-a8b6-3f153d232b62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Scene\World">
+      <UniqueIdentifier>{6ba7a06b-3b80-4685-9775-3abc2dd10798}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Scene\Loader">
+      <UniqueIdentifier>{a2d67480-1d0c-4515-81d8-e30762eff171}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -101,12 +107,6 @@
     </ClCompile>
     <ClCompile Include="3D\Tools\MFW3D_CameraController.cpp">
       <Filter>3D\Tools</Filter>
-    </ClCompile>
-    <ClCompile Include="Data\Scene\DotSceneLoader.cpp">
-      <Filter>Data\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Input\MFW3D_InputMgr.cpp">
-      <Filter>Input</Filter>
     </ClCompile>
     <ClCompile Include="3D\VR\MFW3D_ViveVR.cpp">
       <Filter>3D\VR</Filter>
@@ -135,6 +135,60 @@
     <ClCompile Include="3D\Render\MFW3D_SGTRListener.cpp">
       <Filter>3D\Render</Filter>
     </ClCompile>
+    <ClCompile Include="3D\Input\MFW3D_InputMgr.cpp">
+      <Filter>3D\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="2D\Base\MFW2D_Object.cpp">
+      <Filter>2D\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="3D\Base\MFW3D_Object.cpp">
+      <Filter>3D\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="3D\Animation\MFW3D_Animation.cpp">
+      <Filter>3D\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="3D\Audio\MFW3D_Audio.cpp">
+      <Filter>3D\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="3D\Effect\MFW3D_Effect.cpp">
+      <Filter>3D\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="3D\Light\MFW3D_Light.cpp">
+      <Filter>3D\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="3D\Models\MFW3D_ModelBase.cpp">
+      <Filter>3D\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="3D\Terrain\MFW3D_Terrain.cpp">
+      <Filter>3D\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="3D\Particle\MFW3D_Particle.cpp">
+      <Filter>3D\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="3D\Shader\MFW3D_ShaderEngine.cpp">
+      <Filter>3D\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="3D\Vedio\MFW3D_Vedio.cpp">
+      <Filter>3D\Vedio</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\MFWPhysics_Base.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Scripts\MFWScripts_Python.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\DB\MFWDB_Base.cpp">
+      <Filter>Data\DB</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Scene\Layer\MFWScene_Layer.cpp">
+      <Filter>Data\Scene\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Scene\World\MFWScene_World.cpp">
+      <Filter>Data\Scene\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Scene\Loader\DotSceneLoader.cpp">
+      <Filter>Data\Scene\Loader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Data\Geo\MFWGeo_Datas.h">
@@ -157,18 +211,6 @@
     </ClInclude>
     <ClInclude Include="3D\Tools\MFW3D_CameraController.h">
       <Filter>3D\Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="Data\Scene\DotSceneLoader.h">
-      <Filter>Data\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Data\Scene\rapidxml.hpp">
-      <Filter>Data\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Input\MFW3D_Input.h">
-      <Filter>Input</Filter>
-    </ClInclude>
-    <ClInclude Include="Input\MFW3D_InputMgr.h">
-      <Filter>Input</Filter>
     </ClInclude>
     <ClInclude Include="3D\VR\MFW3D_ViveVR.h">
       <Filter>3D\VR</Filter>
@@ -196,6 +238,66 @@
     </ClInclude>
     <ClInclude Include="3D\Render\MFW3D_SGTRListener.h">
       <Filter>3D\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="3D\Input\MFW3D_InputMgr.h">
+      <Filter>3D\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="3D\Input\MFW3D_Input.h">
+      <Filter>3D\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="2D\Base\MFW2D_Object.h">
+      <Filter>2D\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="3D\Base\MFW3D_Object.h">
+      <Filter>3D\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="3D\Animation\MFW3D_Animation.h">
+      <Filter>3D\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="3D\Audio\MFW3D_Audio.h">
+      <Filter>3D\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="3D\Effect\MFW3D_Effect.h">
+      <Filter>3D\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="3D\Light\MFW3D_Light.h">
+      <Filter>3D\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="3D\Models\MFW3D_ModelBase.h">
+      <Filter>3D\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="3D\Terrain\MFW3D_Terrain.h">
+      <Filter>3D\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="3D\Particle\MFW3D_Particle.h">
+      <Filter>3D\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="3D\Shader\MFW3D_ShaderEngine.h">
+      <Filter>3D\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="3D\Vedio\MFW3D_Vedio.h">
+      <Filter>3D\Vedio</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\MFWPhysics_Base.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripts\MFWScripts_Python.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\DB\MFWDB_Base.h">
+      <Filter>Data\DB</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Scene\Layer\MFWScene_Layer.h">
+      <Filter>Data\Scene\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Scene\World\MFWScene_World.h">
+      <Filter>Data\Scene\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Scene\Loader\DotSceneLoader.h">
+      <Filter>Data\Scene\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Scene\Loader\rapidxml.hpp">
+      <Filter>Data\Scene\Loader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

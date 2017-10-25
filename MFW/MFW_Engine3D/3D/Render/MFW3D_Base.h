@@ -4,7 +4,7 @@
 #include "OgreOverlaySystem.h"
 #include "OgreResourceManager.h"
 #include "OgreFileSystemLayer.h"
-#include "../../Input/MFW3D_Input.h"
+#include "../Input/MFW3D_Input.h"
 #ifdef INCLUDE_RTSHADER_SYSTEM
 #   include "OgreRTShaderSystem.h"
 #endif //INCLUDE_RTSHADER_SYSTEM

@@ -32,7 +32,7 @@ namespace Ogre {
 #include <android/input.h>
 #endif
 
-#include "../../Input/MFW3D_Input.h"
+#include "../Input/MFW3D_Input.h"
 #include "OgreWindowEventUtilities.h"
 
 namespace MFW3D
