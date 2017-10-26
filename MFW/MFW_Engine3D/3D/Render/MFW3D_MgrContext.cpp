@@ -39,10 +39,6 @@ namespace MFW3D {
 		mAWindow = NULL;
 #endif
 
-#ifdef OGRE_BUILD_COMPONENT_RTSHADERSYSTEM
-		mMaterialMgrListener = NULL;
-		mShaderGenerator = NULL;
-#endif
 	}
 
 	MFW3D_MgrContext::~MFW3D_MgrContext()
@@ -68,7 +64,6 @@ namespace MFW3D {
 		// Clear event times
 		Ogre::Root::getSingleton().clearEventTimes();
 #else
-
 #if OGRE_PLATFORM == OGRE_PLATFORM_NACL
 		mNextRenderer = mRoot->getAvailableRenderers()[0]->getName();
 #else
@@ -89,8 +84,9 @@ namespace MFW3D {
 #endif
 
 #if OGRE_PLATFORM != OGRE_PLATFORM_ANDROID
-		// if the context was reconfigured, set requested renderer
-		if (!mFirstRun) mRoot->setRenderSystem(mRoot->getRenderSystemByName(mNextRenderer));
+		// 如果是第一次运行加载配置
+		if (!mFirstRun) 
+			mRoot->setRenderSystem(mRoot->getRenderSystemByName(mNextRenderer));
 #endif
 #endif
 	}
@@ -112,47 +108,18 @@ namespace MFW3D {
 #endif
 	}
 
-	bool MFW3D_MgrContext::initialiseRTShaderSystem()
-	{
-#ifdef OGRE_BUILD_COMPONENT_RTSHADERSYSTEM
-		if (Ogre::RTShader::ShaderGenerator::initialize())
-		{
-			mShaderGenerator = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
-
-#if OGRE_PLATFORM != OGRE_PLATFORM_NACL && OGRE_PLATFORM != OGRE_PLATFORM_WINRT
-			// Core shader libs not found -> shader generating will fail.
-			if (mRTShaderLibPath.empty())
-				return false;
-#endif
-
-			// Create and register the material manager listener if it doesn't exist yet.
-			if (!mMaterialMgrListener) {
-				mMaterialMgrListener = new MFW3D_SGTRListener(mShaderGenerator);
-				Ogre::MaterialManager::getSingleton().addListener(mMaterialMgrListener);
-			}
-		}
-
-		return true;
-#else
-		return false;
-#endif
-	}
-
 	void MFW3D_MgrContext::setRTSSWriteShadersToDisk(bool write)
 	{
 #ifdef OGRE_BUILD_COMPONENT_RTSHADERSYSTEM
 		if (!write) {
-			mShaderGenerator->setShaderCachePath("");
 			return;
 		}
 
-		// Set shader cache path.
 #if OGRE_PLATFORM == OGRE_PLATFORM_APPLE_IOS
 		mShaderGenerator->setShaderCachePath(Ogre::macCachePath());
 #elif OGRE_PLATFORM == OGRE_PLATFORM_APPLE
 		mShaderGenerator->setShaderCachePath(Ogre::macCachePath() + "/org.ogre3d.RTShaderCache");
 #else
-		mShaderGenerator->setShaderCachePath(mRTShaderLibPath + "/cache/");
 #endif
 #endif
 	}
@@ -165,30 +132,12 @@ namespace MFW3D {
 
 		// Restore default scheme.
 		Ogre::MaterialManager::getSingleton().setActiveScheme(Ogre::MaterialManager::DEFAULT_SCHEME_NAME);
-
-		// Unregister the material manager listener.
-		if (mMaterialMgrListener != NULL)
-		{
-			Ogre::MaterialManager::getSingleton().removeListener(mMaterialMgrListener);
-			delete mMaterialMgrListener;
-			mMaterialMgrListener = NULL;
-		}
-
-		// Destroy RTShader system.
-		if (mShaderGenerator != NULL)
-		{
-			Ogre::RTShader::ShaderGenerator::destroy();
-			mShaderGenerator = NULL;
-		}
 #endif
 	}
 
 	void MFW3D_MgrContext::setup()
 	{
 		locateResources();
-#ifdef OGRE_BUILD_COMPONENT_RTSHADERSYSTEM
-		initialiseRTShaderSystem();
-#endif
 		loadResources();
 		mRoot->addFrameListener(this);
 #if OGRE_PLATFORM != OGRE_PLATFORM_ANDROID
@@ -213,47 +162,9 @@ namespace MFW3D {
 		mOverlaySystem = OGRE_NEW Ogre::OverlaySystem();
 	}
 
-
-	void MFW3D_MgrContext::createDummyScene()
-	{
-		mWindow->removeAllViewports();
-		Ogre::SceneManager* sm = mRoot->createSceneManager(Ogre::ST_GENERIC, "DummyScene");
-		sm->addRenderQueueListener(mOverlaySystem);
-		Ogre::Camera* cam = sm->createCamera("DummyCamera");
-		mWindow->addViewport(cam);
-#ifdef OGRE_BUILD_COMPONENT_RTSHADERSYSTEM
-		// Initialize shader generator.
-		// Must be before resource loading in order to allow parsing extended material attributes.
-		if (!initialiseRTShaderSystem())
-		{
-			OGRE_EXCEPT(Ogre::Exception::ERR_FILE_NOT_FOUND,
-				"Shader Generator Initialization failed - Core shader libs path not found",
-				"ApplicationContext::createDummyScene");
-		}
-
-		mShaderGenerator->addSceneManager(sm);
-#endif // OGRE_BUILD_COMPONENT_RTSHADERSYSTEM
-	}
-
-	void MFW3D_MgrContext::destroyDummyScene()
-	{
-		if (!mRoot->hasSceneManager("DummyScene"))
-			return;
-
-		Ogre::SceneManager*  dummyScene = mRoot->getSceneManager("DummyScene");
-#ifdef OGRE_BUILD_COMPONENT_RTSHADERSYSTEM
-		mShaderGenerator->removeSceneManager(dummyScene);
-#endif
-		dummyScene->removeRenderQueueListener(mOverlaySystem);
-		mWindow->removeAllViewports();
-		mRoot->destroySceneManager(dummyScene);
-	}
-
 	void MFW3D_MgrContext::enableShaderCache() const
 	{
 		Ogre::GpuProgramManager::getSingleton().setSaveMicrocodesToCache(true);
-
-		// Load for a package version of the shaders.
 		Ogre::String path = mFSLayer->getWritablePath(SHADER_CACHE_FILENAME);
 		std::fstream inFile(path.c_str(), std::ios::binary);
 		if (inFile.is_open())
@@ -268,7 +179,7 @@ namespace MFW3D {
 	{
 		return true;
 	}
-	//使用内部创建窗体
+	
 	Ogre::RenderWindow *MFW3D_MgrContext::createWindow()
 	{
 		mRoot->initialise(false, mAppName);
@@ -305,7 +216,6 @@ namespace MFW3D {
 		return mWindow;
 #endif
 	}
-	//使用外部窗体
 	Ogre::RenderWindow * MFW3D_MgrContext::createWindow(HWND m_hWnd, int width, int height)
 	{
 		mRoot->initialise(false, mAppName);//禁止ogre创建新的渲染窗口，而使用MFC的窗口

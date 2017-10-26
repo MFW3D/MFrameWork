@@ -126,9 +126,6 @@
     <ClCompile Include="Network\MFW3D_NetMgr.cpp">
       <Filter>Network</Filter>
     </ClCompile>
-    <ClCompile Include="3D\Render\MFW3D_AdRender.cpp">
-      <Filter>3D\Render</Filter>
-    </ClCompile>
     <ClCompile Include="3D\Render\MFW3D_Base.cpp">
       <Filter>3D\Render</Filter>
     </ClCompile>
@@ -139,9 +136,6 @@
       <Filter>3D\Render</Filter>
     </ClCompile>
     <ClCompile Include="3D\Render\MFW3D_SceneMgr.cpp">
-      <Filter>3D\Render</Filter>
-    </ClCompile>
-    <ClCompile Include="3D\Render\MFW3D_SGTRListener.cpp">
       <Filter>3D\Render</Filter>
     </ClCompile>
     <ClCompile Include="3D\Input\MFW3D_InputMgr.cpp">
@@ -198,6 +192,12 @@
     <ClCompile Include="Data\Scene\Loader\DotSceneLoader.cpp">
       <Filter>Data\Scene\Loader</Filter>
     </ClCompile>
+    <ClCompile Include="3D\Tools\MFW3D_SGTRListener.cpp">
+      <Filter>3D\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="3D\Tools\MFW3D_AdRender.cpp">
+      <Filter>3D\Tools</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Data\Geo\MFWGeo_Datas.h">
@@ -230,9 +230,6 @@
     <ClInclude Include="Network\MFW3D_NetMgr.h">
       <Filter>Network</Filter>
     </ClInclude>
-    <ClInclude Include="3D\Render\MFW3D_AdRender.h">
-      <Filter>3D\Render</Filter>
-    </ClInclude>
     <ClInclude Include="3D\Render\MFW3D_Base.h">
       <Filter>3D\Render</Filter>
     </ClInclude>
@@ -243,9 +240,6 @@
       <Filter>3D\Render</Filter>
     </ClInclude>
     <ClInclude Include="3D\Render\MFW3D_SceneMgr.h">
-      <Filter>3D\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="3D\Render\MFW3D_SGTRListener.h">
       <Filter>3D\Render</Filter>
     </ClInclude>
     <ClInclude Include="3D\Input\MFW3D_InputMgr.h">
@@ -307,6 +301,12 @@
     </ClInclude>
     <ClInclude Include="Data\Scene\Loader\rapidxml.hpp">
       <Filter>Data\Scene\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="3D\Tools\MFW3D_SGTRListener.h">
+      <Filter>3D\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="3D\Tools\MFW3D_AdRender.h">
+      <Filter>3D\Tools</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

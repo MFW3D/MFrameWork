@@ -75,15 +75,15 @@ namespace MFW3D
 		virtual void setupContent();
 		virtual void cleanupContent();
 		virtual void unloadResources();
-        Ogre::Root* mRoot;                // OGRE的根节点
-        Ogre::OverlaySystem* mOverlaySystem; // UI系统
-        Ogre::RenderWindow* mWindow;      // 内容渲染窗口
-        Ogre::FileSystemLayer* mFSLayer;          // 文件系统抽象层
-        Ogre::SceneManager* mSceneMgr;    // 这个例子的场景管理器
-        Ogre::NameValuePairList mInfo;    // 自定义信息
-        bool mDone;                       //标记场景结束
-        bool mResourcesLoaded;    // 资源是否加载
-        bool mContentSetup;       // 场景是否创建
+        Ogre::Root* mRoot;						// OGRE的根节点
+        Ogre::OverlaySystem* mOverlaySystem;	// UI系统
+        Ogre::RenderWindow* mWindow;			// 内容渲染窗口
+        Ogre::FileSystemLayer* mFSLayer;        // 文件系统抽象层
+        Ogre::SceneManager* mSceneMgr;			// 这个例子的场景管理器
+        Ogre::NameValuePairList mInfo;			// 自定义信息
+        bool mDone;								// 标记场景结束
+        bool mResourcesLoaded;					// 资源是否加载
+        bool mContentSetup;						// 场景是否创建
 #ifdef INCLUDE_RTSHADER_SYSTEM
 		Ogre::RTShader::ShaderGenerator*            mShaderGenerator;           // The Shader generator instance.
 	public:

@@ -60,16 +60,15 @@ namespace MFW3D
         Widget();
         virtual ~Widget() {}
         void cleanup();
-        //递归的删除控件刻下面的所有子控件
-        static void nukeOverlayElement(Ogre::OverlayElement* element);
-		//检查光标是否在控件上面
-        static bool isCursorOver(Ogre::OverlayElement* element, const Ogre::Vector2& cursorPos, Ogre::Real voidBorder = 0);
-		//光标在控件上的位移
-        static Ogre::Vector2 cursorOffset(Ogre::OverlayElement* element, const Ogre::Vector2& cursorPos);
-		//获取秒数文字的宽度
-        static Ogre::Real getCaptionWidth(const Ogre::DisplayString& caption, Ogre::TextAreaOverlayElement* area);
-		//截取文字来适应宽度
-        static void fitCaptionToArea(const Ogre::DisplayString& caption, Ogre::TextAreaOverlayElement* area, Ogre::Real maxWidth);
+        static void nukeOverlayElement(Ogre::OverlayElement* element);//递归的删除控件刻下面的所有子控件
+        static bool isCursorOver(Ogre::OverlayElement* element, 
+			const Ogre::Vector2& cursorPos, Ogre::Real voidBorder = 0);//检查光标是否在控件上面
+        static Ogre::Vector2 cursorOffset(Ogre::OverlayElement* element,
+			const Ogre::Vector2& cursorPos);//光标在控件上的位移
+        static Ogre::Real getCaptionWidth(const Ogre::DisplayString& caption,
+			Ogre::TextAreaOverlayElement* area);//获取秒数文字的宽度
+        static void fitCaptionToArea(const Ogre::DisplayString& caption, 
+			Ogre::TextAreaOverlayElement* area, Ogre::Real maxWidth);//截取文字来适应宽度
         Ogre::OverlayElement* getOverlayElement()
         {
             return mElement;
@@ -661,39 +660,39 @@ namespace MFW3D
         bool mouseMoved(const MouseMotionEvent& evt);
     protected:
         void setExpandedMenu(SelectMenu* m);
-        Ogre::String mName;                   // name of this tray system
-        Ogre::RenderWindow* mWindow;          // render window
-        Ogre::Overlay* mBackdropLayer;        // backdrop layer
-        Ogre::Overlay* mTraysLayer;           // widget layer
-        Ogre::Overlay* mPriorityLayer;        // top priority layer
-        Ogre::Overlay* mCursorLayer;          // cursor layer
-        Ogre::OverlayContainer* mBackdrop;    // backdrop
-        Ogre::OverlayContainer* mTrays[10];   // widget trays
-        WidgetList mWidgets[10];              // widgets
-        WidgetList mWidgetDeathRow;           // widget queue for deletion
-        Ogre::OverlayContainer* mCursor;      // cursor
-        MFW3D_UIListener* mListener;           // tray listener
-        Ogre::Real mWidgetPadding;            // widget padding
-        Ogre::Real mWidgetSpacing;            // widget spacing
-        Ogre::Real mTrayPadding;              // tray padding
-        bool mTrayDrag;                       // a mouse press was initiated on a tray
-        SelectMenu* mExpandedMenu;            // top priority expanded menu widget
-        TextBox* mDialog;                     // top priority dialog widget
-        Ogre::OverlayContainer* mDialogShade; // top priority dialog shade
-        Button* mOk;                          // top priority OK button
-        Button* mYes;                         // top priority Yes button
-        Button* mNo;                          // top priority No button
-        bool mCursorWasVisible;               // cursor state before showing dialog
-        Label* mFpsLabel;                     // FPS label
-        ParamsPanel* mStatsPanel;             // frame stats panel
+        Ogre::String mName;                   // UI见面的名字
+        Ogre::RenderWindow* mWindow;          // 渲染窗口
+        Ogre::Overlay* mBackdropLayer;        // 背景层
+        Ogre::Overlay* mTraysLayer;           // 控件层
+        Ogre::Overlay* mPriorityLayer;        // 最优先的层
+        Ogre::Overlay* mCursorLayer;          // 光标层
+        Ogre::OverlayContainer* mBackdrop;    // 背景
+        Ogre::OverlayContainer* mTrays[10];   // 空间 UI
+        WidgetList mWidgets[10];              // 控件
+        WidgetList mWidgetDeathRow;           // 控件探测队列
+        Ogre::OverlayContainer* mCursor;      // 光标
+        MFW3D_UIListener* mListener;          // UI监听
+        Ogre::Real mWidgetPadding;            // 部件填充
+        Ogre::Real mWidgetSpacing;            // 控件间距
+        Ogre::Real mTrayPadding;              // UI填充
+        bool mTrayDrag;                       // 鼠标是否初始化
+        SelectMenu* mExpandedMenu;            // 优先级最高的菜单控件
+        TextBox* mDialog;                     // 优先级最高的对话框控件
+        Ogre::OverlayContainer* mDialogShade; // 优先级最高的对话框遮罩
+        Button* mOk;                          // 优先级最高的OK按钮
+        Button* mYes;                         // 优先级最高的Yes按钮
+        Button* mNo;                          // 优先级最高的No按钮
+        bool mCursorWasVisible;               // 在现实对话框时候的光标状态
+        Label* mFpsLabel;                     // FPS 文本
+        ParamsPanel* mStatsPanel;             // frame 面板
         DecorWidget* mLogo;                   // logo
-        ProgressBar* mLoadBar;                // loading bar
-        Ogre::Real mGroupInitProportion;      // proportion of load job assigned to initialising one resource group
-        Ogre::Real mGroupLoadProportion;      // proportion of load job assigned to loading one resource group
-        Ogre::Real mLoadInc;                  // loading increment
-        Ogre::GuiHorizontalAlignment mTrayWidgetAlign[10];   // tray widget alignments
-        Ogre::Timer* mTimer;                  // Root::getSingleton().getTimer()
-        unsigned long mLastStatUpdateTime;    // The last time the stat text were updated
+        ProgressBar* mLoadBar;                // 加载进度条
+        Ogre::Real mGroupInitProportion;      // 初始化资源所用的进度
+        Ogre::Real mGroupLoadProportion;      // 加载资源的进度
+        Ogre::Real mLoadInc;                  // 加载的增长
+        Ogre::GuiHorizontalAlignment mTrayWidgetAlign[10];   // 控件的停靠
+        Ogre::Timer* mTimer;                  // 
+        unsigned long mLastStatUpdateTime;    // 最后一次更新状态文本的时间
 
     };
 }

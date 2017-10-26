@@ -7,10 +7,6 @@
 #include "OgreFileSystemLayer.h"
 #include "OgreFrameListener.h"
 
-#ifdef OGRE_BUILD_COMPONENT_RTSHADERSYSTEM
-#include "MFW3D_SGTRListener.h"
-#endif 
-
 
 namespace Ogre {
 	class OverlaySystem;
@@ -48,7 +44,6 @@ namespace MFW3D
 		{
 			return mWindow;
 		}
-
 		Ogre::Root* getRoot() const {
 			return mRoot;
 		}
@@ -75,25 +70,15 @@ namespace MFW3D
 		virtual void windowClosed(Ogre::RenderWindow* rw) {}
 		virtual void windowFocusChange(Ogre::RenderWindow* rw) {}
 
-		bool initialiseRTShaderSystem();
 		void setRTSSWriteShadersToDisk(bool write);
 		void destroyRTShaderSystem();
-		//设置内容
-		virtual void setup();
-		//创建ogre根节点
-		virtual void createRoot();
-		//设置资源的加载路径，默认为配置的路径，也可以自己定义
-		virtual void locateResources();
+		virtual void setup();//设置内容
+		virtual void createRoot();//创建ogre根节点
+		virtual void locateResources();//设置资源的加载路径，默认为配置的路径，也可以自己定义
 		virtual void loadResources();
 		virtual void reconfigure(const Ogre::String& renderer, Ogre::NameValuePairList& options);
-		//关闭
 		virtual void shutdown();
-		//转发窗口事件
-		bool pollEvents();
-		//创建样品场景
-		void createDummyScene();
-		//销毁样品场景
-		void destroyDummyScene();
+		bool pollEvents();//转发窗口事件
 		void enableShaderCache() const;
 	protected:
 		//创建一个窗口，必须是sdl的否则sdl无法接收到消息事件
@@ -111,20 +96,18 @@ namespace MFW3D
 #if (OGRE_THREAD_PROVIDER == 3) && (OGRE_NO_TBB_SCHEDULER == 1)
 		tbb::task_scheduler_init mTaskScheduler;
 #endif
-		Ogre::OverlaySystem* mOverlaySystem;  // Overlay system
-		Ogre::FileSystemLayer* mFSLayer; // File system abstraction layer
+		Ogre::OverlaySystem* mOverlaySystem;		//界面层元素
+		Ogre::FileSystemLayer* mFSLayer;			
 		bool mGrabInput;
 		bool mFirstRun;
-		Ogre::String mNextRenderer;     // name of renderer used for next run
+		Ogre::String mNextRenderer;					
 		Ogre::String mAppName;
-		Ogre::NameValuePairList mLastSampleState;     // state of last sample
-		Ogre::RenderWindow* mWindow;    // render window
+		Ogre::NameValuePairList mLastSceneState;   
+		Ogre::RenderWindow* mWindow;				
 #ifdef OGRE_BUILD_COMPONENT_RTSHADERSYSTEM
-		Ogre::RTShader::ShaderGenerator*       mShaderGenerator; // The Shader generator instance.
-		MFW3D_SGTRListener*       mMaterialMgrListener; // Shader generator material manager listener.
 		Ogre::String                           mRTShaderLibPath;
 #endif // INCLUDE_RTSHADER_SYSTEM
 	protected:
-		Ogre::Root* mRoot;              // OGRE root
+		Ogre::Root* mRoot;              
 	};
 }

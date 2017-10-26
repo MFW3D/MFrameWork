@@ -15,7 +15,6 @@ namespace MFW3D
 		mCamera = 0;
 		mCameraNode = 0;
 		mViewport = 0;
-		mControls = 0;
 		mCursorWasVisible = false;
 		mDragLook = false;
 	}
@@ -46,7 +45,6 @@ namespace MFW3D
 	 bool MFW3D_SceneBase::frameRenderingQueued(const Ogre::FrameEvent& evt)
 	{
 		mUIMgr->frameRendered(evt);
-		mControls->frameRendered(evt);
 		if (!mUIMgr->isDialogVisible())
 		{
 			mCameraMan->frameRendered(evt);  
@@ -60,27 +58,11 @@ namespace MFW3D
 	 bool MFW3D_SceneBase::keyPressed(const MFW3D::KeyboardEvent& evt)
 	{
 		int key = evt.keysym.sym;
-		if (key == 'h' || key == SDLK_F1)  
-		{
-			if (!mUIMgr->isDialogVisible() && mInfo["Help"] != "") mUIMgr->showOkDialog("Help", mInfo["Help"]);
-			else mUIMgr->closeDialog();
-		}
-		if (mUIMgr->isDialogVisible()) return true;   // don't process any more keys if dialog is up
 		if (key == SDLK_F6)   // take a screenshot
 		{
 			mWindow->writeContentsToTimestampedFile("screenshot", ".png");
 		}
-#if OGRE_PROFILING
-		// Toggle visibility of profiler window
-		else if (key == 'p')
-		{
-			Ogre::Profiler* prof = Ogre::Profiler::getSingletonPtr();
-			if (prof)
-				prof->setEnabled(!prof->getEnabled());
-		}
-#endif // OGRE_PROFILING
 		else {
-			mControls->keyPressed(evt);
 		}
 		mCameraMan->keyPressed(evt);
 		return true;
@@ -168,7 +150,6 @@ namespace MFW3D
 		mUIMgr->showFrameStats(TL_BOTTOMLEFT);
 		mUIMgr->showLogo(TL_BOTTOMRIGHT);
 		mUIMgr->hideCursor();
-		mControls = new MFW3D::MFW3D_AdRender(mUIMgr, mCamera);
 		setupContent();
 		mContentSetup = true;
 		mDone = false;
@@ -176,7 +157,6 @@ namespace MFW3D
 	 void MFW3D_SceneBase::_shutdown()
 	{
 		MFW3D_Base::_shutdown();
-		delete mControls;
 		delete mUIMgr;
 		delete mCameraMan;
 		Ogre::MaterialManager::getSingleton().setDefaultTextureFiltering(Ogre::TFO_BILINEAR);
@@ -200,13 +180,11 @@ namespace MFW3D
 		if (enabled)
 		{
 			mCameraMan->setStyle(MFW3D::CS_MANUAL);
-			//mTrayMgr->showCursor();
 			mDragLook = true;
 		}
 		else
 		{
 			mCameraMan->setStyle(MFW3D::CS_FREELOOK);
-			//mTrayMgr->hideCursor();
 			mDragLook = false;
 		}
 	}

@@ -2,7 +2,6 @@
 #include "MFW3D_Base.h"
 #include "../UI/MFW3D_UIMgr.h"
 #include "../tools/MFW3D_CameraController.h"
-#include "MFW3D_AdRender.h"
 #include "Ogre.h"
 /*
 场景的基本控制，和相机的设置，以及对鼠标键盘窗体事件的监控
@@ -43,7 +42,6 @@ namespace MFW3D
         Ogre::SceneNode* mCameraNode;       // 相机节点
 		MFW3D::MFW3D_UIMgr* mUIMgr;           // tray管理接口
 		MFW3D::MFW3D_CameraController* mCameraMan;           // 基本的相机控制器
-		MFW3D::MFW3D_AdRender* mControls; // 例子详细信息面板
         bool mCursorWasVisible;             // 当对话框出现的时候鼠标光标是否可见
         bool mDragLook;                     // 点击拖动四处查看
     };

@@ -45,10 +45,10 @@ namespace MFW3D
 			Ogre::NameValuePairList& options);
 		virtual void recoverLastScene();
 		virtual void shutdown();
-		MFW3D_Base* mCurrentScene;			// 当前运行的场景
-        bool mScenePaused;					// 当前场景是否暂停
-        bool mLastRun;						// 是否是第一次运行场景
-		MFW3D_Base* mLastScene;				// 重新加载配置后的场最后一个运行场景
-        Ogre::NameValuePairList mLastSampleState;     // 最后一个场景的状态
+		MFW3D_Base* mCurrentScene;						// 当前运行的场景
+        bool mScenePaused;								// 当前场景是否暂停
+        bool mLastRun;									// 是否是第一次运行场景
+		MFW3D_Base* mLastScene;							// 重新加载配置后的场最后一个运行场景
+        Ogre::NameValuePairList mLastSampleState;		// 最后一个场景的状态
     };
 }
