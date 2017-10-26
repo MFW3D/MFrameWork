@@ -60,6 +60,8 @@ Baidu cloud link：http://pan.baidu.com/s/1qYI6HwK  passwd：ra9s
  and the solution file are in the same directory
 4、Compile using debug x64, so that you configure the path of dependency.
 
+MFW3D Engine 架构
+![image](https://github.com/captainl1993/MFrameWork/blob/master/Doc/Imgs/MFW3DEngine.png)
 
 框架结构介绍：
 =============================================================
