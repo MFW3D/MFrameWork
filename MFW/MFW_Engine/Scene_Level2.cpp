@@ -49,7 +49,7 @@ Ogre::SceneNode* mLightPivots[NUM_LIGHTS];
 
 Scene_Level2::Scene_Level2()
 {
-	mInfo["Title"] = "大海";
+	mInfo["Title"] = "an";
 	mInfo["Description"] = "An example demonstrating ocean rendering using shaders.";
 	mInfo["Thumbnail"] = "thumb_ocean.png";
 	mInfo["Category"] = "Environment";

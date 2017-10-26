@@ -8,8 +8,8 @@ namespace MFW3D
 	class MFW3D_Object
 	{
 	public:
-		MFW3D_Point3D mPosition;//对象位置
-		bool mIsVisible = true;//是否可见
-
+		MFW3D_Point3D mPosition;		//对象位置
+		bool mIsVisible = true;			//是否可见
+		Ogre::SceneNode* mNode;			// 位置节点
 	};
 }

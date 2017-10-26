@@ -139,7 +139,12 @@
     <ClCompile Include="2D\Base\MFW2D_Object.cpp" />
     <ClCompile Include="3D\Animation\MFW3D_Animation.cpp" />
     <ClCompile Include="3D\Audio\MFW3D_Audio.cpp" />
+    <ClCompile Include="3D\Base\MFW3D_Drawing.cpp" />
     <ClCompile Include="3D\Base\MFW3D_Object.cpp" />
+    <ClCompile Include="3D\Base\MFW3D_Geometry.cpp" />
+    <ClCompile Include="3D\Camera\MFW3D_CameraBase.cpp" />
+    <ClCompile Include="3D\Camera\MFW3D_CameraFirst.cpp" />
+    <ClCompile Include="3D\Camera\MFW3D_CameraThird.cpp" />
     <ClCompile Include="3D\Effect\MFW3D_Effect.cpp" />
     <ClCompile Include="3D\Input\MFW3D_InputMgr.cpp" />
     <ClCompile Include="3D\Light\MFW3D_Light.cpp" />
@@ -170,12 +175,18 @@
     <ClCompile Include="Network\MFW3D_NetMgr.cpp" />
     <ClCompile Include="Physics\MFWPhysics_Base.cpp" />
     <ClCompile Include="Scripts\MFWScripts_Python.cpp" />
+    <ClCompile Include="Utility\MFWCommon_Global.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2D\Base\MFW2D_Object.h" />
     <ClInclude Include="3D\Animation\MFW3D_Animation.h" />
     <ClInclude Include="3D\Audio\MFW3D_Audio.h" />
+    <ClInclude Include="3D\Base\MFW3D_Drawing.h" />
     <ClInclude Include="3D\Base\MFW3D_Object.h" />
+    <ClInclude Include="3D\Base\MFW3D_Geometry.h" />
+    <ClInclude Include="3D\Camera\MFW3D_CameraBase.h" />
+    <ClInclude Include="3D\Camera\MFW3D_CameraFirst.h" />
+    <ClInclude Include="3D\Camera\MFW3D_CameraThird.h" />
     <ClInclude Include="3D\Effect\MFW3D_Effect.h" />
     <ClInclude Include="3D\Input\MFW3D_Input.h" />
     <ClInclude Include="3D\Input\MFW3D_InputMgr.h" />
@@ -208,6 +219,7 @@
     <ClInclude Include="Network\MFW3D_NetMgr.h" />
     <ClInclude Include="Physics\MFWPhysics_Base.h" />
     <ClInclude Include="Scripts\MFWScripts_Python.h" />
+    <ClInclude Include="Utility\MFWCommon_Global.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

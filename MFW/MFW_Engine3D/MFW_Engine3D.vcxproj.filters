@@ -94,6 +94,12 @@
     <Filter Include="Analysis\3D">
       <UniqueIdentifier>{eb8a0cd6-c9f6-453f-bfc0-365c31cddb1c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{439063bf-7e21-45ac-98b0-e896d7bdb20b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3D\Camera">
+      <UniqueIdentifier>{9b30323e-01f9-4eca-8cc6-0a9e5f3e9c57}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Data\Geo\MFWGeo_Datas.cpp">
@@ -197,6 +203,24 @@
     </ClCompile>
     <ClCompile Include="3D\Tools\MFW3D_AdRender.cpp">
       <Filter>3D\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="3D\Base\MFW3D_Geometry.cpp">
+      <Filter>3D\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="3D\Base\MFW3D_Drawing.cpp">
+      <Filter>3D\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\MFWCommon_Global.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="3D\Camera\MFW3D_CameraBase.cpp">
+      <Filter>3D\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="3D\Camera\MFW3D_CameraFirst.cpp">
+      <Filter>3D\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="3D\Camera\MFW3D_CameraThird.cpp">
+      <Filter>3D\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -307,6 +331,24 @@
     </ClInclude>
     <ClInclude Include="3D\Tools\MFW3D_AdRender.h">
       <Filter>3D\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="3D\Base\MFW3D_Geometry.h">
+      <Filter>3D\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="3D\Base\MFW3D_Drawing.h">
+      <Filter>3D\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\MFWCommon_Global.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="3D\Camera\MFW3D_CameraBase.h">
+      <Filter>3D\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="3D\Camera\MFW3D_CameraFirst.h">
+      <Filter>3D\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="3D\Camera\MFW3D_CameraThird.h">
+      <Filter>3D\Camera</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
