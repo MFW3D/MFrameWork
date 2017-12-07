@@ -29,6 +29,7 @@ public:
 	static int iptoint(  const char *ipstr);
 	static std::string inttoip(unsigned int ipint);
 	static void GetIpPort(uv_tcp_t* client, unsigned long& ip, int& port);
+	static void GetIpPort(uv_udp_t* client, unsigned long& ip, int& port);
 	static std::string BinToHex(const std::string &strBin, bool bIsUpper=false);
 	static std::string HexToBin(const std::string &strHex);
 

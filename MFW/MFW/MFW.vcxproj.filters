@@ -123,6 +123,12 @@
     <ClCompile Include="algorithms\binary_search_tree.cpp">
       <Filter>algorithms</Filter>
     </ClCompile>
+    <ClCompile Include="ikcp.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="NNUDPServerMgr.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cc.h">
@@ -436,6 +442,12 @@
     </ClInclude>
     <ClInclude Include="algorithms\gb18030.h">
       <Filter>algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="ikcp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="NNUDPServerMgr.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -102,6 +102,17 @@ void NetUtility::GetIpPort(uv_tcp_t* client, unsigned long& ip, int& port)
 	port = addrMy.sin_port;
 	return;
 }
+void NetUtility::GetIpPort(uv_udp_t* client, unsigned long& ip, int& port)
+{
+	sockaddr_in addrMy;
+	memset(&addrMy, 0, sizeof(addrMy));
+	int len = sizeof(addrMy);
+	uv_udp_getsockname(client, (sockaddr*)&addrMy, &len);
+	std::string ipstr = inet_ntoa(addrMy.sin_addr);
+	ip = NetUtility::iptoint(ipstr.c_str());
+	port = addrMy.sin_port;
+	return;
+}
 std::string NetUtility::BinToHex(const std::string &strBin, bool bIsUpper)
 {
 	std::string strHex;
